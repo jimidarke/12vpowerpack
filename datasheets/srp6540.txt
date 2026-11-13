@@ -1,0 +1,558 @@
+7.20 ± 0.3
+(.283 ± .012)
+1.70 ± 0.5
+(.067 ± .020)
+3.00 ± 0.3
+(.118 ± .012)
+3.40
+(.134) TYP.
+4.00
+(.157) MAX.
+3.70
+(.146)
+TYP.
+7.40
+(.291)
+TYP.
+6.50 ± 0.2
+(.256 ± .008)
+INDUCTANCE
+CODE
+MARKING
+Features
+■ Shielded construction
+■ Iron powder core
+■ High saturation current
+■ Inductance range: 0.56 to 47 µH
+■ Rated current up to 18 A
+■ RoHS compliant* and halogen free**
+ 
+Applications
+■ DC/DC converters
+■ Power supplies for: 
+    Portable communications equipment 
+    Laptop computers 
+    Camcorders, HDTV 
+    Video game consoles
+   SRP6540 Series - Shielded Power Inductors
+Product Dimensions
+DIMENSIONS: MM  (INCHES)
+Recommended Layout
+250
+Temperature (°C)
+0 50
+50
+200
+150
+100
++4.0 °C / sec. max. 150~200 °C / 60~120 sec. +3.0 °C / sec. max. -(1.0~5.0) °C / sec. max.
+Temperature
+Rising Area Preheat Area Reflow Area Forced Cooling Area
+200
+Time (Seconds)
+100 150
+60 ~ 150 sec.
+60 sec. max.
+217 °C
+60 ~ 120 sec.
+250
+Test Voltage ..................................0.25 V
+Test Frequency ......................... 100 KHz
+Operating Temperature
+  ................................-55 °C to +125 °C
+  (Temperature rise included)
+Storage Temperature
+  ................................-55 °C to +125 °C
+Resistance to Soldering Heat
+  .............................+250 °C for 10 sec.
+Moisture Sensitivity Level .....................3
+.................N/A
+1 Circuit design, component, PCB trace 
+cooling provisions all affect the part 
+temperature. Part temperature should be 
+ Materials
+Core .....................................Iron powder
+Wire ............................Enameled copper
+Terminal ....................................Cu/Ni/Sn
+Rated Current .........Ind. drops 20 % typ.
+  at Isat
+Temperature Rise ................... 40 °C typ.
+  at rated Irms
+Packaging ..... 1200 pcs. per 13-inch reel
+Bourns Part No.
+Inductance 
+L (μH) ±20 %
+DCR 
+(mΩ) Max.
+I rms 
+(A)
+I sat 
+(A)
+SRP6540-R56M 0.56 4.4 18 18
+SRP6540-R68M 0.68 5.0 16.5 17
+SRP6540-R82M 0.82 5.5 15 15
+SRP6540-1R0M 1.0 7.2 12 13.5
+SRP6540-1R5M 1.5 10.0 11 11
+SRP6540-2R2M 2.2 15.5 9 9
+SRP6540-3R3M 3.3 23.0 6.5 7
+SRP6540-4R7M 4.7 33.5 6 6.5
+SRP6540-5R6M 5.6 38.0 5.5 6
+SRP6540-6R8M 6.8 49.5 5 5.5
+SRP6540-8R2M 8.2 50.5 4.5 5
+SRP6540-100M 10 78.5 4 4
+SRP6540-150M 15 121 2.9 2.9
+SRP6540-220M 22 133 2.5 2.5
+SRP6540-270M 27 290 2 2
+SRP6540-390M 39 322 1.8 1.8
+SRP6540-470M 47 366 1.6 1.6
+Peak Temperature:  250 °C max.
+Time Above 245 °C:  30 sec. max.
+Time Above 217 °C:  60 ~ 150 sec. max.
+*RoHS COMPLIANT
+&
+**HALOGEN FREE
+* RoHS Directive 2002/95/EC Jan. 27, 2003 including annex and RoHS Recast 2011/65/EU June 8, 2011. 
+**Bourns considers a product to be “halogen free” if (a) the Bromine (Br) content is 900 ppm or less; (b) the Chlorine
+    (Cl) content is 900 ppm or less; and (c) the total Bromine (Br) and Chlorine (Cl) content is 1500 ppm or less.
+  WARNING  Cancer and Reproductive Harm - www.P65Warnings.ca.gov
+Speciﬁcations are subject to change without notice. Users should verify actual device performance in their speciﬁc 
+applications. The products described herein and this document are subject to speciﬁc legal disclaimers as set forth on
+ the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf
+ SRP6540 Series - Shielded Power Inductors
+L vs. I Charts
+0.0 2.0 4.0 6.0 8.0 10.0 12.00.0 2.0 4.0 6.0 8.0 10.0 12.0 14.0 0.0 2.0 4.0 6.0 8.0 10.0 12.0
+0.0 2.0 4.0 6.0 8.0 0.0 2.0 4.0 6.0 6.08.0 0.0 2.0 4.0
+L ( μH)
+L ( μH)
+L ( μH)
+L ( μH)
+L ( μH)
+L ( μH)
+L@ 25 °C L@ 25 °C L@ 25 °C
+L@ 25 °C
+L@ 25 °C L@ 25 °C
+L@ 25 °C L@ 25 °C
+0.0 
+0.2 
+0.4 
+0.6 
+0.8 
+1.0 
+IDC (A)
+0.0 
+0.2 
+0.4 
+0.6 
+0.8 
+1.0 
+1.2 
+1.4 
+1.6 
+IDC (A)
+0.0 
+0.4 
+0.8 
+1.2 
+1.6 
+2.0 
+2.4 
+IDC (A)
+0.0 
+0.5 
+1.0 
+1.5 
+2.0 
+2.5 
+3.0 
+3.5 
+4.0 
+IDC (A)
+0.0 
+1.0 
+2.0 
+3.0 
+4.0 
+5.0 
+IDC (A)
+0.0 
+1.0 
+2.0 
+3.0 
+4.0 
+5.0 
+6.0 
+IDC (A)
+SRP6540-1R0M
+SRP6540-3R3M
+SRP6540-2R2MSRP6540-1R5M
+SRP6540-5R6MSRP6540-4R7M
+0.0
+0.0 2.0 4.0 6.0 8.0 10.0 12.0 14.0 16.0 18.0 20.0
+0.0 5.0 10.0 15.0 20.0 25.0 30.0 35.0 40.0 0.0 5.0 10.0 15.0 20.0 25.0 30.0 35.0
+L@ 25 °C
+0.0 5.0 10.0 15.0 20.0 25.0 30.0
+0.2
+0.4
+0.6
+SRP6540-R56M
+L ( μH)
+0.0
+20.0
+10.0
+40.0
+30.0
+50.0
+0.0
+20.0
+10.0
+40.0
+30.0
+50.0
+0.0
+20.0
+10.0
+40.0
+30.0
+50.0
+IDC (A)
+0.0
+0.0 2.0 4.0 6.0 8.0 10.0 12.0 14.0 16.0
+0.2
+0.8
+0.6
+0.5
+0.3
+0.9
+SRP6540-R82M
+L ( μH)
+IDC (A)
+0.0
+0.0 2.0 4.0 6.0 8.0 10.0 12.0 14.0 16.0 18.0
+0.2
+0.6
+0.4
+0.8
+SRP6540-R68M
+L ( μH)
+IDC (A)
+T (°C)
+T (°C)
+T (°C)
+T@ 25 °C T@ 25 °C T@ 25 °C
+T@ 25 °C
+T@ 25 °C T@ 25 °C T@ 25 °C
+T@ 25 °C T@ 25 °C
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+T (°C)
+T (°C)
+T (°C)
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+0.0 2.0 4.0 6.0 8.0 10.0 12.0 14.0 0.0 2.0 4.0 6.0 8.0 10.0 12.00.0 2.0 4.0 6.0 8.0 10.0 14.012.0 16.0
+0.0 5.0 10.0 15.0 20.0 25.0 0.0 5.0 10.0 15.0 20.0 25.0 30.00.0 5.0 10.0 15.0 20.0 25.0 30.0
+T (°C)
+T (°C)
+T (°C)
+Speciﬁcations are subject to change without notice.
+Users should verify actual device performance in their speciﬁc applications. 
+The products described herein and this document are subject to speciﬁc legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+ 3312 - 2 mm SMD Trimming Potentiometer SRP6540 Series - Shielded Power Inductors
+L vs. I Charts
+0.0 
+2.0 
+4.0 
+6.0 
+8.0 
+10.0 
+12.0 
+14.0 
+16.0 
+0.0 
+2.0 
+4.0 
+6.0 
+8.0 
+10.0 
+12.0 
+14.0 
+16.0 
+18.0 
+20.0 
+22.0 
+0.0 
+3.0 
+6.0 
+9.0 
+12.0 
+15.0 
+18.0 
+21.0 
+24.0 
+27.0 
+30.0 
+0.0 
+5.0 
+10.0 
+15.0 
+20.0 
+25.0 
+30.0 
+35.0 
+40.0 
+45.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+SRP6540-150M
+SRP6540-390M
+SRP6540-270MSRP6540-220M
+SRP6540-470M
+0.0 1.0 2.0 3.0 4.0 5.0 0.0 1.0 2.0 3.0 4.0 5.0 0.0 0.5 1.0 1.5 2.0 2.5 3.0
+0.0 0.5 1.0 1.5 2.0 2.5 3.00.0 0.5 1.0 1.5 2.0 2.5 3.0
+L ( μH)
+L ( μH)
+L ( μH) L ( μH)
+L ( μH) L ( μH)
+L ( μH)
+L ( μH)
+L@ 25 °C L@ 25 °C
+L@ 25 °C
+L@ 25 °C
+L@ 25 °C
+L@ 25 °C L@ 25 °C L@ 25 °C
+IDC (A) IDC (A)
+IDC (A)
+IDC (A)
+IDC (A)
+0.0 
+1.0 
+2.0 
+3.0 
+4.0 
+5.0 
+6.0 
+7.0 
+8.0 
+0.0 2.0 4.0  6.0 
+IDC (A)
+0.0 
+2.0 
+4.0 
+6.0 
+8.0 
+10.0 
+0.0 2.0 4.0  6.0 0.0 1.0 2.0 3.0 4.0 5.0
+IDC (A)
+0.0 
+2.0 
+4.0 
+6.0 
+8.0 
+10.0 
+IDC (A)
+SRP6540-6R8M SRP6540-8R2M SRP6540-100M
+T (C)
+T@ 25 °C T@ 25 °C T@ 25 °C
+T@ 25 °C T@ 25 °C T@ 25 °C
+T@ 25 °C T@ 25 °C
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+50.0 50.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+0.0 
+10.0 
+20.0 
+30.0 
+40.0 
+50.0 
+0.0 2.0 4.0 6.0 8.0 10.0 12.00.0 2.0 4.0 6.0 8.0 10.0 12.0
+0.0 2.0 4.0 6.0 8.0 10.0 12.0 0.0 2.0 4.0 6.0 8.0 10.0 12.00.0 2.0 4.0 6.0 8.0 10.0 12.0
+0.0 2.0 4.0 6.0 8.0 10.0 12.0 0.0 2.0 4.0 6.0 8.0 10.0 12.00.0 2.0 4.0 6.0 8.0 10.0 12.0
+T (°C)
+T (°C)
+T (°C)
+T (°C)
+T (°C)
+T (°C)
+T (°C)
+T (°C)
+Electrical Schematic
+Speciﬁcations are subject to change without notice.
+Users should verify actual device performance in their speciﬁc applications. 
+The products described herein and this document are subject to speciﬁc legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+ SRP6540 Series - Shielded Power Inductors
+EMBOSSED
+CARRIER
+EMBOSSED
+CAVITY
+16.0
+(.630)CARRIER TAPE WIDTH
+DIMENSIONS: MM  (INCHES)
+REV. 03/18
+18.0 + 0
+(.709  +0)
+22.4
+(.882)
+2.0 ± 0.5
+(.079 ± .020)
+50.0 - 0
+(1.969 - 0)
+330.0
+(13.00)
+DIA.
+13.0 ± 0.5
+(.512 ± .020)DIA.
+21.0 ± 0.8
+(.827 ± .031)
+13.0 ± 0.5
+(.512 ± .020)
+DIA.
+12.0
+(.472)END START
+4.0
+(.157)
+USER DIRECTION OF FEED
+NO COMPONENT
+COMPONENTS200 (7.874)
+NO COMPONENT
+400
+(15.748)
+1200 PIECES PER REEL
+Speciﬁcations are subject to change without notice.
+Users should verify actual device performance in their speciﬁc applications. 
+The products described herein and this document are subject to speciﬁc legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+ Legal Disclaimer Notice
+This legal disclaimer applies to purchasers and users of Bourns® products manufactured by or on behalf of Bourns, Inc. and 
+P[ZHɉSPH[LZJVSSLJ[P]LS`¸)V\YUZ¹
+Unless otherwise expressly indicated in writing, Bourns® products and data sheets relating thereto are subject to change 
+^P[OV\[UV[PJL<ZLYZZOV\SKJOLJRMVYHUKVI[HPU[OLSH[LZ[YLSL]HU[PUMVYTH[PVUHUK]LYPM`[OH[Z\JOPUMVYTH[PVUPZJ\YYLU[
+and complete before placing orders for Bourns® products.
+The characteristics and parameters of a Bourns® product set forth in its data sheet are based on laboratory conditions, and 
+statements regarding the suitability of products for certain types of applications are based on Bourns’ knowledge of typical 
+requirements in generic applications.  The characteristics and parameters of a Bourns®WYVK\J[PUH\ZLYHWWSPJH[PVUTH`]HY`
+MYVT[OLKH[HZOLL[JOHYHJ[LYPZ[PJZHUKWHYHTL[LYZK\L[VP[OLJVTIPUH[PVUVM[OL)V\YUZ® product with other components 
+PU[OL\ZLY»ZHWWSPJH[PVUVYPP[OLLU]PYVUTLU[VM[OL\ZLYHWWSPJH[PVUP[ZLSM;OLJOHYHJ[LYPZ[PJZHUKWHYHTL[LYZVMH)V\YUZ® 
+WYVK\J[HSZVJHUHUKKV]HY`PUKPɈLYLU[HWWSPJH[PVUZHUKHJ[\HSWLYMVYTHUJLTH`]HY`V]LY[PTL<ZLYZZOV\SKHS^H`Z]LYPM`
+the actual performance of the Bourns®WYVK\J[PU[OLPYZWLJPÄJKL]PJLZHUKHWWSPJH[PVUZHUKTHRL[OLPYV^UPUKLWLUKLU[
+Q\KNTLU[ZYLNHYKPUN[OLHTV\U[VMHKKP[PVUHS[LZ[THYNPU[VKLZPNUPU[V[OLPYKL]PJLVYHWWSPJH[PVU[VJVTWLUZH[LMVY 
+KPɈLYLUJLZIL[^LLUSHIVYH[VY`HUKYLHS^VYSKJVUKP[PVUZ
+<USLZZ)V\YUZOHZL_WSPJP[S`KLZPNUH[LKHUPUKP]PK\HS)V\YUZ® product as meeting the requirements of a particular industry 
+Z[HUKHYKLN0:6;:  VYHWHY[PJ\SHYX\HSPÄJH[PVULN<3SPZ[LKVYYLJVNUPaLK)V\YUZPZUV[YLZWVUZPISLMVYHU`
+MHPS\YLVMHUPUKP]PK\HS)V\YUZ®WYVK\J[[VTLL[[OLYLX\PYLTLU[ZVMZ\JOPUK\Z[Y`Z[HUKHYKVYWHY[PJ\SHYX\HSPÄJH[PVU<ZLYZ
+of Bourns® products are responsible for ensuring compliance with safety-related requirements and standards applicable to 
+[OLPYKL]PJLZVYHWWSPJH[PVUZ
+Bourns®WYVK\J[ZHYLUV[YLJVTTLUKLKH\[OVYPaLKVYPU[LUKLKMVY\ZLPUU\JSLHYSPMLZH]PUNSPMLJYP[PJHSVYSPMLZ\Z[HPUPUN
+HWWSPJH[PVUZUVYPUHU`V[OLYHWWSPJH[PVUZ^OLYLMHPS\YLVYTHSM\UJ[PVUTH`YLZ\S[PUWLYZVUHSPUQ\Y`KLH[OVYZL]LYLWYVWLY[`
+VYLU]PYVUTLU[HSKHTHNL<USLZZL_WYLZZS`HUKZWLJPÄJHSS`HWWYV]LKPU^YP[PUNI`[^VH\[OVYPaLK)V\YUZYLWYLZLU[H[P]LZ
+on a case-by-case basis, use of any Bourns®WYVK\J[ZPUZ\JO\UH\[OVYPaLKHWWSPJH[PVUZTPNO[UV[ILZHMLHUK[O\ZPZH[
+[OL\ZLY»ZZVSLYPZR3PMLJYP[PJHSHWWSPJH[PVUZPUJS\KLKL]PJLZPKLU[PÄLKI`[OL<:-VVKHUK+Y\N(KTPUPZ[YH[PVUHZ*SHZZ000
+KL]PJLZHUKNLULYHSS`LX\P]HSLU[JSHZZPÄJH[PVUZV\[ZPKLVM[OL<UP[LK:[H[LZ
+)V\YUZL_WYLZZS`PKLU[PÄLZ[OVZL)V\YUZ®Z[HUKHYKWYVK\J[Z[OH[HYLZ\P[HISLMVY\ZLPUH\[VTV[P]LHWWSPJH[PVUZVUZ\JO
+WYVK\J[Z»KH[HZOLL[ZPU[OLZLJ[PVULU[P[SLK¸(WWSPJH[PVUZ¹<USLZZL_WYLZZS`HUKZWLJPÄJHSS`HWWYV]LKPU^YP[PUNI`[^V
+H\[OVYPaLK)V\YUZYLWYLZLU[H[P]LZVUHJHZLI`JHZLIHZPZ\ZLVMHU`V[OLY)V\YUZ®Z[HUKHYKWYVK\J[ZPUHUH\[VTV[P]L
+HWWSPJH[PVUTPNO[UV[ILZHMLHUK[O\ZPZUV[YLJVTTLUKLKH\[OVYPaLKVYPU[LUKLKHUKPZH[[OL\ZLY»ZZVSLYPZR0M)V\YUZ
+L_WYLZZS`PKLU[PÄLZHZ\IJH[LNVY`VMH\[VTV[P]LHWWSPJH[PVUPU[OLKH[HZOLL[MVYP[ZZ[HUKHYKWYVK\J[ZZ\JOHZPUMV[HPUTLU[
+VYSPNO[PUNZ\JOPKLU[PÄJH[PVUTLHUZ[OH[)V\YUZOHZYL]PL^LKP[ZZ[HUKHYKWYVK\J[HUKOHZKL[LYTPULK[OH[PMZ\JO)V\YUZ® 
+Z[HUKHYKWYVK\J[PZJVUZPKLYLKMVYWV[LU[PHS\ZLPUH\[VTV[P]LHWWSPJH[PVUZP[ZOV\SKVUS`IL\ZLKPUZ\JOZ\IJH[LNVY`VM
+H\[VTV[P]LHWWSPJH[PVUZ(U`YLMLYLUJL[V)V\YUZ®Z[HUKHYKWYVK\J[PU[OLKH[HZOLL[HZJVTWSPHU[^P[O[OL(,*8Z[HUKHYK
+VY¸H\[VTV[P]LNYHKL¹KVLZUV[I`P[ZLSMTLHU[OH[)V\YUZOHZHWWYV]LKZ\JOWYVK\J[MVY\ZLPUHUH\[VTV[P]LHWWSPJH[PVU
+Bourns®Z[HUKHYKWYVK\J[ZHYLUV[[LZ[LK[VJVTWS`^P[O<UP[LK:[H[LZ-LKLYHS(]PH[PVU(KTPUPZ[YH[PVUZ[HUKHYKZNLULYHSS`
+VYHU`V[OLYNLULYHSS`LX\P]HSLU[NV]LYUTLU[HSVYNHUPaH[PVUZ[HUKHYKHWWSPJHISL[VWYVK\J[ZKLZPNULKVYTHU\MHJ[\YLKMVY
+\ZLPUHPYJYHM[VYZWHJLHWWSPJH[PVUZ)V\YUZL_WYLZZS`PKLU[PÄLZ)V\YUZ® standard products that are suitable for use in aircraft 
+VYZWHJLHWWSPJH[PVUZVUZ\JOWYVK\J[Z»KH[HZOLL[ZPU[OLZLJ[PVULU[P[SLK¸(WWSPJH[PVUZ¹<USLZZL_WYLZZS`HUKZWLJPÄJHSS`
+HWWYV]LKPU^YP[PUNI`[^VH\[OVYPaLK)V\YUZYLWYLZLU[H[P]LZVUHJHZLI`JHZLIHZPZ\ZLVMHU`V[OLY)V\YUZ® standard 
+WYVK\J[PUHUHPYJYHM[VYZWHJLHWWSPJH[PVUTPNO[UV[ILZHMLHUK[O\ZPZUV[YLJVTTLUKLKH\[OVYPaLKVYPU[LUKLKHUKPZH[
+the user’s sole risk.
+;OL\ZLHUKSL]LSVM[LZ[PUNHWWSPJHISL[V)V\YUZ® custom products shall be negotiated on a case-by-case basis by Bourns 
+and the user for which such Bourns®J\Z[VTWYVK\J[ZHYLZWLJPHSS`KLZPNULK(IZLU[H^YP[[LUHNYLLTLU[IL[^LLU)V\YUZ
+HUK[OL\ZLYYLNHYKPUN[OL\ZLHUKSL]LSVMZ\JO[LZ[PUN[OLHIV]LWYV]PZPVUZHWWSPJHISL[V)V\YUZ® standard products shall 
+also apply to such Bourns® custom products.
+Users shall not sell, transfer, export or re-export any Bourns®WYVK\J[ZVY[LJOUVSVN`MVY\ZLPUHJ[P]P[PLZ^OPJOPU]VS]L[OL
+KLZPNUKL]LSVWTLU[WYVK\J[PVU\ZLVYZ[VJRWPSPUNVMU\JSLHYJOLTPJHSVYIPVSVNPJHS^LHWVUZVYTPZZPSLZUVYZOHSS[OL`\ZL
+Bourns®WYVK\J[ZVY[LJOUVSVN`PUHU`MHJPSP[`^OPJOLUNHNLZPUHJ[P]P[PLZYLSH[PUN[VZ\JOKL]PJLZ;OLMVYLNVPUNYLZ[YPJ[PVUZ
+HWWS`[VHSS\ZLZHUKHWWSPJH[PVUZ[OH[]PVSH[LUH[PVUHSVYPU[LYUH[PVUHSWYVOPIP[PVUZPUJS\KPUNLTIHYNVZVYPU[LYUH[PVUHS 
+YLN\SH[PVUZ-\Y[OLY)V\YUZ® products and Bourns technology and technical data may not under any circumstance be 
+exported or re-exported to countries subject to international sanctions or embargoes.  Bourns® products may not, without 
+WYPVYH\[OVYPaH[PVUMYVT)V\YUZHUKVY[OL<:.V]LYUTLU[ILYLZVSK[YHUZMLYYLKVYYLL_WVY[LK[VHU`WHY[`UV[LSPNPISL 
+[VYLJLP]L<:JVTTVKP[PLZZVM[^HYLHUK[LJOUPJHSKH[H
+;V[OLTH_PT\TL_[LU[WLYTP[[LKI`HWWSPJHISLSH^)V\YUZKPZJSHPTZPHU`HUKHSSSPHIPSP[`MVYZWLJPHSW\UP[P]LJVUZLX\LU[PHS
+PUJPKLU[HSVYPUKPYLJ[KHTHNLZVYSVZ[YL]LU\LZVYSVZ[WYVÄ[ZHUKPPHU`HUKHSSPTWSPLK^HYYHU[PLZPUJS\KPUNPTWSPLK^HYYHU[PLZ
+VMÄ[ULZZMVYWHY[PJ\SHYW\YWVZLUVUPUMYPUNLTLU[HUKTLYJOHU[HIPSP[`
+)RU\RXUFRQYHQLHQFHFRSLHVRIWKLV/HJDO'LVFODLPHU1RWLFHZLWK*HUPDQ6SDQLVK-DSDQHVH7UDGLWLRQDO&KLQHVHDQG6LPSOLÀHG&KLQHVH
+bilingual versions are available at:
+  Web Page: http://www.bourns.com/legal/disclaimers-terms-and-policies
+           PDF: http://www.bourns.com/docs/Legal/disclaimer.pdf
+*9

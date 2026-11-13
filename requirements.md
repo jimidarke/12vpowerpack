@@ -10,6 +10,7 @@ One build. No lithium variant, no charger IC, no USB-C PD input, no 12 V convert
 ## Input
 - **Car feed only:** ignition-switched 12 V socket or fuse tap, 11–14.8 V, automotive transients, reverse polarity possible.
 - The board never feeds the battery back into the car.
+- Surge protection is a simple clamp near 18 V. A 24 V jump start or an alternator load dump may blow the input fuse or the clamp; nothing else is damaged.
 - Not for mains adapters: there is no charge regulation, so the input must be a vehicle charging system (about 13.5–14.8 V when running).
 
 ## Battery and charging
@@ -32,6 +33,7 @@ One build. No lithium variant, no charger IC, no USB-C PD input, no 12 V convert
 - Socketed Seeed XIAO ESP32-C6 running ESPHome; Wi-Fi/MQTT to Home Assistant as carNet does, or BLE.
 - Reads car-feed voltage (ignition), battery voltage and battery temperature (probe on the battery). Can switch the 12 V output off.
 - Two current monitors (INA226, no more): power in from the car feed, and power out to the loads (12 V output plus the 5 V rail). Battery current is the difference.
+- One RGB status LED, driven from a single ESP32 pin. What it shows is a firmware choice (for example pulsing green on battery, flashing red when the battery is low).
 - No display.
 
 ## Safety

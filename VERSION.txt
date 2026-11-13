@@ -1,4 +1,11 @@
-0.3.0
+0.3.1
+
+## 0.3.1
+- Surge clamp decided: SMCJ18CA; a jump start or load dump blows the input fuse
+- Parts chosen and checked against datasheets: FETs, Zeners, diodes, charge resistor and fuse, fuse holders, inductor, DS18B20, SK6812
+- Added: two INA226 current monitors (LCSC), single SK6812 status LED, hold-up timer semantics (0 = no timeout, minimum 1 min)
+- Barrel jack PJ-063AH accepted at its −25 °C rating
+- `netlist.md`: pin-by-pin net table for hand capture in Flux; 15 new datasheet extracts
 
 ## 0.3.0
 - Requirements and architecture v3: vehicle-only 12 V AGM unit, battery floated on the car feed through a charge resistor

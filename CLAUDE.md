@@ -24,7 +24,8 @@ Research here, capture in Flux. Messaging the Flux agent costs credits; reading 
 - `requirements.md` is the spec (v3, vehicle-only). The Flux documents still describe v2 until they are replaced (see `flux-log.md`).
 - `architecture.md` is the single source for net names, resistor values, the power-control scheme, the ESP32 pin map, connectors and fuses. Block briefs refer to it and must stay consistent with it.
 - `blocks/NN-name.md` is one Flux message each, sent in numeric order: goal, parts with MPN and Flux library UID, verified datasheet facts, connections, "Done when", open items. `blocks/retired/` holds the v2 briefs (lithium, charger, PD, 12 V converter); do not send them.
-- `datasheets/*.txt` are text extracts of the TI datasheets. They are large (100–370 KB each), so search them instead of reading them whole.
+- `netlist.md` is the pin-by-pin net table the owner draws the schematic from by hand in Flux; it must stay consistent with `architecture.md`. Check the drawn schematic against it with the free reads.
+- `datasheets/*.txt` are text extracts of the part datasheets. They are large (100–370 KB each), so search them instead of reading them whole.
 - `plan.md` holds the part-choice reasoning, cost estimate, capture plan and bench verification plan.
 
 Values in `architecture.md` carry a status tag: **[DS]** read in a datasheet extract, **[calc]** arithmetic from datasheet values, **[TBC]** to confirm before capture. Keep the tags when editing, cite the datasheet section or table for any new **[DS]** value, and resolve **[TBC]** items against `datasheets/` before the block that depends on them is sent.
@@ -35,7 +36,7 @@ Values in `architecture.md` carry a status tag: **[DS]** read in a datasheet ext
 - Safety never depends on the ESP32. Fuses, the charge-limit resistor, reverse-polarity and backfeed blocking and the low-voltage cutoff are hardware; the socketed XIAO ESP32-C6 (ESPHome) only times the ignition-off hold-up (a firmware setting), reports voltages, temperature and power in/out, and can switch the 12 V output off.
 - The battery never feeds back into the car input, and the input is a vehicle charging system only (no mains adapters: there is no charge regulation).
 - The low-voltage cutoff covers both outputs and latches off until the ignition returns.
-- All parts must be rated −40 to 85 °C or better.
+- All parts must be rated −40 to 85 °C or better. The one accepted exception is the barrel jack (PJ-063AH, −25 °C).
 - Target is ≤ C$110 per board at a batch of about 12. Quote prices in CAD. The price checkpoint is applied after the whole-schematic check.
 
 ## Related project

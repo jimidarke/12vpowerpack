@@ -24,18 +24,23 @@ On 2026-11-13 the scope was cut back to what the first real use needs: a vehicle
 
 | Function | Choice | Why | Status |
 |---|---|---|---|
-| Car input diode | TI LM74700-Q1 + N-FET | reverse polarity, no backfeed to the car, 20 mV drop | datasheet read |
-| Battery discharge diode | second LM74700-Q1 + N-FET | same part; no 0.4 V loss or heat at 4–6 A | datasheet read |
-| Charge limit | 3.3 Ω power resistor + 1.5 A slow fuse | about 1 A into a flat battery; the fuse bounds a failed or reversed battery | values calculated, parts to choose |
+| Car input diode | TI LM74700-Q1 + CSD18543Q3A (60 V, 8.1 mΩ) | reverse polarity, no backfeed to the car, 20 mV drop | datasheet read |
+| Battery discharge diode | second LM74700-Q1 + CSD18543Q3A | same part; no 0.4 V loss or heat at 4–6 A | datasheet read |
+| Charge limit | Vishay AC10 3.3 Ω 10 W + Schurter UMT 250 1.6 A time-lag fuse | about 1 A into a flat battery; the fuse covers a reversed or dead-short battery | datasheets read |
+| Fuses | ATO/ATC blade fuses in Keystone 3560 holders | user-replaceable, −50 °C rated holder | datasheet read |
+| 5 V inductor | Bourns SRP6540-8R2M | 8.2 µH, 5 A saturation | datasheet read |
 | 5 V rail and low-voltage cutoff | TI LMR33630 | 36 V in, precision enable sets the cutoff, power-good drives the 12 V switch | datasheet read |
-| 12 V output switch | P-channel FET, ≥ 40 V, ≤ 20 mΩ, with a 7.5 A fuse | simplest switch that follows the 5 V rail's power-good | part to choose |
+| Surge clamp | SMCJ18CA (bidirectional, 18 V stand-off, 29.2 V clamp) | keeps the rail under the 36 V parts; a jump start or load dump blows the fuse (owner's decision) | datasheet read |
+| 12 V output switch | Diodes DMP4015SK3 (−40 V, 11 mΩ) with a 7.5 A fuse | simplest switch that follows the 5 V rail's power-good | datasheet read |
+| Power-control small parts | BSS84, 2N7002 ×2, BAT46W | hold switch, gate drivers, ignition diode | datasheets read |
 | USB-A port | TI TPS2514A | charging-port signature | datasheet read |
-| Controller | Seeed XIAO ESP32-C6, socketed 2×7 | carried over from v2 | pinout to confirm |
+| Controller | Seeed XIAO ESP32-C6, socketed 2×7 | carried over from v2; −40 to 85 °C | pin map read; footprint to confirm |
 | Current monitors | TI INA226 ×2 with 5 mΩ shunts: car input and total load | power in and out; battery current by difference; ESPHome native. Sourced from LCSC with the assembly order (owner's decision), two only | datasheet read |
-| Temperature | DS18B20 probe on the battery, 3-pin JST-XH | reads correctly at −40 °C without ADC calibration; ESPHome native | to confirm |
-| Barrel jack | Same Sky PJ-063AH (8 A) | carried over | plug size to confirm |
+| Temperature | DS18B20 probe on the battery, 3-pin JST-XH | −55 to 125 °C, ±2 °C over the full range; ESPHome native | datasheet read |
+| Status LED | SK6812 addressable RGB, one, on a single pin | WS2812B is only rated to −25 °C; SK6812 to −40 °C | datasheet read; logic level to bench-check |
+| Barrel jack | Same Sky PJ-063AH (8 A, 2.0 mm pin) | carried over | rated only to −25 °C; accepted by the owner |
 
-The ideal-diode FETs could be the CSD18540Q5B already placed in Flux (60 V, about C$5 each); a 40 V part would be cheaper.
+The ideal-diode FETs are CSD18543Q3A rather than the CSD18540Q5B already placed in Flux (about C$5 each); the smaller part does the job at 7 A. Its price is not checked yet.
 
 Considered and not chosen:
 - **BQ25751 charger:** proper three-stage charging with cold compensation and mains-adapter input, at about C$25–30 per board with its FETs and inductor. Dropped by the owner's decision; the cost is undercharging in deep cold.
@@ -48,9 +53,9 @@ About C$55–75 per board assembled, at a batch of 12, excluding battery and enc
 
 ## Open items
 
-1. Choose and document the FETs, TVS, charge resistor and fuses (`architecture.md`, open items).
-2. XIAO pinout, strapping pins, row spacing, temperature rating.
-3. LMR33630 output-stage values.
+1. Barrel jack: confirm the 2.0 mm plug size.
+2. MPNs for the screw terminals, USB-A receptacle and shunts.
+3. GPIO19 behaviour at boot; ESP32-C6 tolerance for the sense dividers' injected current.
 4. ESPHome: the hold-up timer as an adjustable, stored setting (0 = no timeout, otherwise 1 min or more), and whether to report over Wi-Fi/MQTT (as carNet does) or BLE. ESPHome's BLE server support needs checking before relying on it.
 5. Exact barrel plug size; battery size per unit.
 
@@ -59,7 +64,7 @@ About C$55–75 per board assembled, at a batch of 12, excluding battery and enc
 **Principle:** research here, capture there. Each message to the agent is one block with the verified facts attached, checked afterwards with the free reads.
 
 The v3 schematic is small (about 50 parts). Two ways to capture it:
-- **By hand in the Flux editor** from a pin-by-pin net table written here. No credits.
+- **By hand in the Flux editor** from `netlist.md`. No credits. This is the chosen route (owner's decision, 2026-11-13); each block is checked afterwards with the free reads.
 - **Through the agent**, one block per message. The two block 1 runs suggest about 4–5 credits per block.
 
 Planned blocks, in order:

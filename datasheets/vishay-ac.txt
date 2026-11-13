@@ -1,0 +1,1129 @@
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 1 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+Standard: AC, AEC-Q200 Qualified: AC-AT, Non-Inductive AC-NI 
+Cemented Axial Leaded, WSZ (SMD) Wirewound Resistors
+LINKS TO ADDITIONAL RESOURCES
+The AC, AC-AT and AC-NI series are the perfect choice for 
+general purpose power elec tronics, industrial and  
+automotive electronics applications. The robust silicone  
+cement coating can handle challenging ambient and  
+operating conditions. Typical applications include but not  
+limited to pre-charging, disc harging, snubber and in-rush 
+current limiting. For a given application, requirements of  
+ohmic value, rated power, peak voltage, pulse shape, pulse 
+duration, lead bending, and environmental conditions may 
+be submitted to recommend the most suitable product.
+Various lead forms are availabl e such as RT (radial taped), 
+WSZ (Z-form), DK (double kink), EK (single kink) with defined 
+mounting pitch.
+FEATURES
+• Standard: AC series
+• AEC-Q200 qualified: AC-AT series
+• AEC-Q200 qualified, non-inductive: AC-NI series
+• High power dissipation in small design
+• Flameproof insulation coating meets UL 94 V-0 
+requirements
+• Excellent pulse load capability
+• WSZ-form lead bending available for SMD mounting
+• Material categorization: fo r definitions of compliance  
+please see www.vishay.com/doc?99912
+APPLICATIONS
+• Automotive electronics:
+- Pre-charging / discharging applications in xEV
+- Snubber circuit
+- Energy absorber load resistor
+• Industrial electronics, energy meter
+• Power supplies
+• White goods
+Notes
+(1) Resistance value to be selected from E24 series
+(2) Temperature coefficient of resistive wire
+(3) Inductance values mentioned are typical, measured under controlled conditions. 
+For the product types and resistance ranges which are not given in above table, please contact factory at ww1resistors@vishay.com
+333DDD3 D
+3D Models
+STANDARD ELECTRICAL SPECIFICATIONS
+TYPE
+RATED
+DISSIPATION
+P40
+RATED
+DISSIPATION
+P70
+LIMITING
+VOLTAGE
+Umax.
+RESISTANCE
+RANGE (1)
+TCR =
+-10 ppm/K to
+-80 ppm/K (2)
+RESISTANCE
+RANGE (1)
+TCR =
++100 ppm/K to
++180 ppm/K (2)
+RESISTANCE
+RANGE (1)
+TCR = 
+± 100 ppm/K (2)
+RESISTANCE
+TOLERANCE
+AC01, AC01-AT 1 W 0.9 W 0.10 Ω to 33 Ω 36 Ω to 2.4 kΩ -± 5 %
+AC03 3 W 2.5 W 0.10 Ω to 390 Ω 430 Ω to 3.3 kΩ 3.6 kΩ to 5.1 kΩ ± 5 %
+AC03-AT 3 W 2.5 W 0.10 Ω to 390 Ω 430 Ω to 3.3 kΩ -± 5 %
+AC04, AC04-AT 4 W 3.5 W 0.10 Ω to 620 Ω 680 Ω to 6.8 kΩ -± 5 %
+AC05, AC05-AT 5 W 4.7 W 0.10 Ω to 910 Ω 1.0 kΩ to 10 kΩ -± 5 %
+AC07, AC07-AT 7 W 5.8 W 0.10 Ω to 820 Ω 910 Ω to 15 kΩ -± 5 %
+AC10, AC10-AT 10 W 8.4 W 0.22 Ω to 560 Ω 620 Ω to 27 kΩ -± 5 %
+ELECTRICAL SPECIFICATIONS FOR AC-NI
+TYPE
+RATED
+DISSIPATION
+P40
+RATED
+DISSIPATION
+P70
+LIMITING
+VOLTAGE
+Umax.
+RESISTANCE RANGE (1)
+TCR = -10 ppm/K to -80 ppm/K (2)
+RESISTANCE
+TOLERANCE
+TYPICAL
+INDUCTANCE (3)
+nH
+AC03-NI 3 W 2.5 W 0.10 Ω to 69 Ω ± 5 % 12 (for 0.1 Ω)
+AC04-NI 4 W 3.5 W 0.10 Ω to 68 Ω ± 5 % 12 (for 0.1 Ω)
+AC05-NI 5 W 4.7 W 0.18 Ω to 56 Ω ± 5 % 8 (for 0.18 Ω)
+P x R
+P x R
+P x R
+P x R
+P x R
+P x R
+P x R
+P x R
+P x R
+P x R
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 2 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+Note
+(1) RT = radial taped lead bending (refer page 11) 
+SWI = special winding 
+EK = single kink lead bending (refer page 10) 
+DK LP = double kink large pitch lead bending (refer page 10) 
+DK SP = double kink small pitch lead bending (refer page 10) 
+WSZ = “Z” form leads (refer page 11)
+PART NUMBER AND PRODUCT DESCRIPTION
+Part Number: AC03000001509JAC00 
+AC03AT0001509JAC00 
+AC03NI0001008JAC00
+MODEL VARIANT (1) TCR / MATERIAL VALUE TOLERANCE CODE PACKAGING CODE SPECIAL
+AC01000 = AC01
+AC03000 = AC03
+AC04000 = AC04
+AC05000 = AC05
+AC07000 = AC07
+AC10000 = AC10
+AC01AT0 = AC01-AT
+AC03AT0 = AC03-AT
+AC04AT0 = AC04-AT
+AC05AT0 = AC05-AT
+AC07AT0 = AC07-AT
+AC10AT0 = AC10-AT
+AC03NI0 = AC03-NI
+AC04NI0 = AC04-NI
+AC05NI0 = AC05-NI
+0 = neutral 
+1 = RT 
+2 = SWI 
+3 = DK SP 20 mm 
+4 = DK LP 33 mm  
+5 = DK LP 17.8 mm 
+6 = not in use for new 
+designs 
+7 = DK LP 25.4 mm 
+8 = DK SP 25.4 mm 
+9 = AC03 / AC03AT / 
+      AC03NI-WSZ 
+A = EK 22.5 mm 
+B = EK 17.8 mm 
+C = EK 25.4 mm 
+D = Cu wire 0.8 mm 
+E = EK 33 mm 
+G = DK SP 33 mm 
+H = EK 20 mm 
+I = DK SP 17.8 mm 
+K = AC05 / AC05AT /  
+       AC05NI-WSZ 
+N = AC10 EK 52 mm 
+P = AC10 DK SP 52 mm 
+Q = AC10 DK LP 52 mm
+0 = standard 3 digit value
+1 digit
+multiplier
+MULTIPLIER
+7 = *10-3
+8 = *10-2
+9 = *10-1
+0 = *100
+1 = *101
+2 = *102
+J = ± 5.0 % AC
+A1
+AB
+AE
+AQ
+R1
+LB
+LC
+LA
+BM
+BW
+RC
+00 = standard
+2 digit code = 
+customized
+version
+ 
+Product Description: AC03 15R 5 % AC 
+AC03AT 15R 5 % AC 
+AC03NI 1R0 5 % AC
+AC03 15R 5 % AC
+AC03-AT 15R 5 % AC
+AC03-NI 1R 5 % AC
+TYPE RESISTANCE TOLERANCE PACKAGING
+AC01
+AC03
+AC04
+AC05
+AC07
+AC10
+AC01-AT
+AC03-AT
+AC04-AT
+AC05-AT
+AC07-AT
+AC10-AT
+AC03-NI
+AC04-NI
+AC05-NI
+R10 = 0.1 Ω
+15R = 15 Ω
+1K2 = 1.2 kΩ
+5 % AC
+A1
+AB
+AE
+AQ
+R1
+LB
+LC
+BM
+BW
+RC
+LA
+3NI 0 0100C0 8JA 00A 0C
+3AT0 0150C0 9JA 00A 0C
+3000 0150C0 9JA 00A 0C
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 3 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+Notes
+(1) Manufacturing at different production locations may involve use of differently sized box
+(2) Refer to “Dimensions” table on page 10 for more details
+PACKAGING
+TYPE / SIZE PACKAGING CODE DESCRIPTION QUANTITY PACKAGING STYLE WIDTH PITCH DIMENSIONS PART NUMBER VARIANT (2)
+AC01 (1) 
+AC01-AT (1) A1 A1 1000
+Axial taped acc.
+to IEC 60286-1
+fan-folded in a box
+63 mm 10 mm 260 mm x 85 mm x 70 mm 260 mm x 85 mm x 80 mm 0
+AC01 EK/EK      
+AC01-AT DK/EK LC
+EK 17.8MM
+500 Bulk packaging - - 260 mm x 80 mm x 55 mm
+B
+DK SP 17.8MM I
+DK LP 17.8MM 5
+AC01 RT
+AC01-AT RT AE AE 2500
+Radial taped acc.
+to IEC 60286-2
+fan-folded in a box
+- 12.7 mm 200 mm x 46 mm x 334 mm 1
+AC03 
+AC03-AT 
+AC03-NI
+AC AC 500
+Axial taped acc.
+to IEC 60286-1
+fan-folded in a box
+63 mm 10 mm 260 mm x 85 mm x 58 mm 0
+AC03 DK/EK 
+AC03-AT DK/EK LC
+EK 20MM
+500 Bulk packaging - - 224 mm x 82 mm x 54 mm
+H
+EK 25.4MM C
+DK SP 20MM 3
+DK SP 25.4MM 8
+DK LP 17.8MM 5
+DK LP 25.4MM 7
+AC03 RT 
+AC03-AT RT AQ AQ 1800
+Radial taped acc.
+to IEC 60286-2
+fan-folded in a box
+- 12.7 mm 200 mm x 46 mm x 334 mm 1
+AC03 
+AC03-AT 
+AC03-NI
+R1 R1 1000 Axial taped acc. to IEC 60286-1 on reel 63 mm 10 mm 260 mm x 90 mm x 257 mm 0
+AC03 WSZ (1) 
+AC03-AT WSZ 
+AC03-NI WSZ
+BM BM 1250
+Z-form blister taped
+acc. to IEC 60286-3
+on reel
+- 8 mm 350 mm x 340 mm x 35 mm 9
+AC04 (1)
+AC04-AT (1) 
+AC04-NI (1)
+AC AC 500
+Axial taped acc.
+to IEC 60286-1
+fan-folded in a box
+63 mm 10 mm 260 mm x 85 mm x 70 mm 260 mm x 85 mm x 58 mm 0
+AC04 DK/EK 
+AC04-AT DK/EK LC
+EK 25.4MM
+500 Bulk packaging - - 224 mm x 82 mm x 54 mm
+C
+DK SP 20MM 3
+DK SP 25.4MM 8
+DK LP 25.4MM 7
+AC05 (1) 
+AC05-AT (1) 
+AC05-NI (1)
+AC AC 500
+Axial taped acc.
+to IEC 60286-1
+fan-folded in a box
+63 mm 10 mm 270 mm x 86 mm x 118 mm 270 mm x 86 mm x 125 mm 0
+AC05 DK/EK 
+AC05-AT DK/EK LC
+EK 22.5MM
+500 Bulk packaging - - 224 mm x 82 mm x 54 mm
+A
+EK 25.4MM C
+DK SP 20MM 3
+AC05 
+AC05-AT 
+AC05-NI
+RC RC 500
+Axial taped acc.
+to IEC 60286-1
+on reel
+63 mm 10 mm 260 mm x 90 mm x 257 mm 0
+AC05 WSZ (1) 
+AC05-AT WSZ 
+AC05-NI WSZ
+BW BW 350
+Z-form blister taped
+acc. to IEC 60286-3
+on reel
+- 16 mm 350 mm x 340 mm x 55 mm K
+AC05 RT
+AC05-AT RT 
+AC05-NI
+GC GC 500 Radial taped acc. to IEC 60286-2 on reel - 12.7 mm 365 mm x 370 mm x 67 mm 1
+AC07 
+AC07-AT AC AC 500
+Axial taped acc.
+to IEC 60286-1
+fan-folded in a box
+73 mm 10 mm 265 mm x 90 mm x 118 mm 0
+AC07 DK/EK 
+AC07-AT DK/EK LB
+EK 33MM
+250 Bulk packaging - - 224 mm x 82 mm x 54 mm
+E
+DK SP 33MM G
+DK LP 33MM 4
+AC10 
+AC10-AT AB AB 250
+Axial taped acc.
+to IEC 60286-1
+fan-folded in a box
+88 mm 10 mm 265 mm x 105 mm x 70 mm 0
+AC10 DK/EK LA
+EK 52MM
+100 Bulk packaging - - 224 mm x 82 mm x 54 mm
+N
+DK SP 52MM P
+DK LP 52MM Q
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 4 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+DESCRIPTION
+Wirewound resistors are best su ited for use in high power, 
+high current applications. The silicone cement lacquer  
+coating enables AC, AC-AT, AC-NI series to withstand  
+challenging operating and environmental conditions. The  
+coating is resistant to cleaning solvents specified in IEC 
+60115-1 (1). Production is strictly controlled and follows an 
+extensive set of instructions established for reproducibility.
+The winding is done with a specific material on a specially 
+developed fine ceramic body (Al2O3). The ceramic meets the 
+highest requirements against mechanical resistance,  
+thermal shocks, dielectric strength, and insulation  
+resistance at high temperature s. With different diameters 
+and turn spacings of resistive wire, a large ohmic value  
+range can be covered.
+The resistors are marked with resistance, rated dissipation 
+(P40) and tolerance. Product qua lity is verified by testing  
+procedures, performed on all individual resistors.
+Only accepted products are st uck directly on the adhesive 
+tapes according to IEC 60286-1 for axial leaded version,  
+according to IEC 60286-2 for th e radial version or blister  
+taped according to IEC 60286-3 for the WSZ version.
+Resistance is measured on the lead wires at a distance of  
+6 mm from the resistor body. If a greater length of lead wire 
+is used in the application, the user may need to consider the 
+additional wire resistance, pa rticularly with low resistance 
+products.
+MATERIALS
+Vishay acknowledges the following systems for the  
+regulation of hazardous substances:
+• IEC 62474, Material Declaration for Products of and for the 
+Electrotechnical Industry, with the list of declarable  
+substances given therein (2)
+• The Global Automotive Declarable Substance List  
+(GADSL) (3)
+• The REACH regulation (1907/2006/EC) and the related list 
+of substances with very high concern (SVHC) (4) for its 
+supply chain
+The products do not contain any of the banned substances 
+as per IEC 62474, GADSL,  or the SVHC list, see  
+www.vishay.com/how/leadfree. Hence the products fully  
+comply with the following directives:
+• 2000/53/EC End-of-Life Vehicle Directive (ELV) and  
+Annex II (ELV II)
+• 2011/65/EU Restriction of the Use of Hazardous  
+Substances Directive (RoHS) with amendment  
+2015/863/EU
+• 2012/19/EU Waste Electrical and Electronic Equipment  
+Directive (WEEE)
+Vishay pursues the eliminatio n of conflict minerals from  
+its supply chain, see the Conflict Minerals Policy at  
+www.vishay.com/doc?49037
+ASSEMBLY
+The resistors are axial or bend leads for soldering. Z bend 
+leads offer SMD mounting co mpatibility. The terminals of  
+the resistors are completely lead (Pb)-free, the special matte 
+tin plating provides compatibility with lead (Pb)-free and  
+lead-containing soldering processes.
+Special lead forms may be av ailable on request, please  
+inquire at ww1resistors@vishay.com. As these components 
+are high power dissipation resistors, customers are advised 
+to use a high melting point solder.
+APPLICATION INFORMATION
+The power dissipation of the resistor generates a  
+temperature rise with respect to the ambient. The  
+permissible dissipation is de rated for tempe ratures above 
+40 °C, as shown in the derating  diagram, in order to avoid 
+overheating of the resistor. The heat dissipated from the  
+resistor may affect adjace nt components, hence proper  
+clearance will be required in order to avoid overheating. The 
+resistive wire is encapsulated by a protective lacquer  
+coating. 
+All materials used are non-flammable and inorganic. 
+These resistors do not feature a limited lifetime when  
+operated within the permissibl e limits. However, resistance 
+value drift increasing over operating time may result in  
+exceeding a limit acceptable to the specific application,  
+thereby establishing a functional lifetime.
+APPROVALS
+AC-AT, AC-NI series are AEC-Q200 qualified, specifically for 
+the use in automotive applications.
+RELATED PRODUCTS
+UL approved, special cement coated fusible resistor is also 
+available. For details please see the datasheet:
+“AC01-CS, AC03-CS, AC05-CS - Axial Cemented Fusible  
+Wirewound Safety Resistors” www.vishay.com/doc?28909
+For high surge wirewound products, silicone cement coated 
+Z300-Cxx series is available, see the datasheet:
+“Z300-Cxx - High Surge Axial Cemented Wirewound  
+Resistors” www.vishay.com/doc?21027
+For precision applications, cemented leaded wirewound  
+PAC series is available, see the datasheet:
+“PAC Series - Cemented Wi rewound Precision Resistors” 
+www.vishay.com/doc?28731
+Notes
+(1) Other cleaning solvents with aggressive chemicals should be evaluated in actual cleaning process for their suitability
+(2) The IEC 62474 list of declarable substances is maintained in a dedicated database, which is available at http://std.iec.ch/iec62474
+(3) The Global Automotive Declarable Substance List (GADSL) is maintained by the American Chemistry Council and available at www.gadsl.org
+(4) The SVHC list is maintained by the European Chemical Agency (ECHA) and available at http://echa.europa.eu/candidate-list-table
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 5 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+PULSE DIAGRAMS FOR AC, AC-AT SERIES 
+(ti = pulse duration; tp = repetition time)
+AC01 and AC01-AT Pulse on a regular basis; max. permissible 
+peak pulse power ( max.) as a function of pulse duration (ti)
+AC04 and AC04-AT Pulse on a regular basis; max. permissible 
+peak pulse power ( max.) as a function of pulse duration (ti)
+AC07 and AC07-AT Pulse on a regular basis; max. permissible 
+peak pulse power ( max.) as a function of pulse duration (ti)
+AC03 and AC03-AT Pulse on a regular basis; max. permissible 
+peak pulse power ( max.) as a function of pulse duration (ti)
+AC05 and AC05-AT Pulse on a regular basis; max. permissible 
+peak pulse power ( max.) as a function of pulse duration (ti)
+AC10 and AC10-AT Pulse on a regular basis; max. permissible 
+peak pulse power ( max.) as a function of pulse duration (ti)
+1 
+10 
+100 
+1000 
+ 10 000 
+10-6  10 -5  10 -4  10 -2 10 -1 1 
+Pmax. (W) 
+ti (s) 
+ˆ
+10-3
+tp/ti = 1000 
+tp/ti = 200 
+tp/ti = 50 
+tp/ti = 10 
+tp/ti = 2 
+1R0 
+R10 
+10R 
+100R 
+2K0 
+Pˆ
+1 
+10 
+100 
+1000 
+ 10 000 
+10-6 10-5 10-4 10-3 10-1 1 
+Pmax. (W) 
+ti (s) 
+ˆ
+10-2
+tp/ti = 1000 
+tp/ti = 200 
+tp/ti = 50 
+tp/ti = 10 
+tp/ti = 2 
+R10 
+1R0 
+10R 
+100R 
+6K8 
+Pˆ
+1 
+10 
+100 
+1000 
+ 10 000 
+10-6  10 -5  10 -4  10-3  10 -1 1 10 
+Pmax. (W) 
+ti (s) 
+ˆ
+10-2
+tp/ti = 1000 
+tp/ti = 200 
+tp/ti = 50 
+tp/ti = 10 
+tp/ti = 2 
+1R1 
+R10 
+11R 
+100R 
+15K 
+Pˆ
+1 
+10 
+100 
+1000 
+ 10 000 
+10-6 10-5 10-3 10-2 10-1 1 
+Pmax. (W) 
+ti (s) 
+ˆ
+10-4
+tp/ti = 1000 
+tp/ti = 200 
+tp/ti = 50 
+tp/ti = 10 
+tp/ti = 2 
+R10 
+1R0 
+10R 
+110R 
+4K7 
+Pˆ
+1 
+10 
+100 
+1000 
+ 10 000 
+10-6  10 -5  10 -4  10-3  10 -1 1 10 
+Pmax. (W) 
+ti (s) 
+ˆ
+10-2
+tp/ti = 1000 
+tp/ti = 200 
+tp/ti = 50 
+tp/ti = 10 
+tp/ti = 2 
+1R1 
+R10 
+11R 
+100R 
+8K2 
+Pˆ
+1 
+10 
+100 
+1000 
+ 10 000 
+10-6  10 -5  10 -4  10 -3  10 -1 110 
+Pmax. (W) 
+ti (s) 
+ˆ
+10-2
+tp/ti = 1000 
+tp/ti = 200 
+tp/ti = 50 
+tp/ti = 10 
+tp/ti = 2 
+R68 
+2R2 
+33R 
+240R 
+15K 
+Pˆ
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 6 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+PULSE DIAGRAMS FOR AC, AC-AT SERIES
+Pulse energy in joules or wattseconds is calculated with the help of the R-value to be used in the application. Choose the R
+value on X axis and look for the corresponding E (Ws/Ω) value on Y axis. Multiplying both the R (Ω) to corresponding E (Ws/Ω), 
+will be resultant total pulse Energy (Ws or J) for adiabatic conditions (for very short single pulses of duration typically ≤ 10 ms).
+AC01 and AC01-AT Pulse capability; E (Ws) as a function of R (Ω)
+AC04 and AC04-AT Pulse capability; E (Ws) as a function of R (Ω)
+AC07 and AC07-AT Pulse capability; E (Ws) as a function of R (Ω)
+AC03 and AC03-AT Pulse capability; E (Ws) as a function of R (Ω)
+AC05 and AC05-AT Pulse capability; E (Ws) as a function of R (Ω)
+AC10 and AC10-AT Pulse capability; E (Ws) as a function of R (Ω)
+0.0001 
+0.001 
+0.01 
+0.1 
+1 
+10 
+100 
+0.1 1 10 100 1000  10 000 
+Pulse Energy (Ws/Ω)
+R (Ω) 
+0.0001 
+0.001 
+0.01 
+0.1 
+1 
+10 
+100 
+1000 
+0.1 1 10 100 1000  10 000 
+Pulse Energy (Ws/Ω)
+R (Ω) 
+0.0001 
+0.001 
+0.01 
+0.1 
+1 
+10 
+100 
+1000 
+0.1 1 10 100 1000  10 000 
+Pulse Energy (Ws/Ω) 
+R (Ω) 
+0.00001 
+0.0001 
+0.001 
+0.01 
+0.1 
+1 
+10 
+100 
+1000 
+0.1 1 10 100 1000  10 000 
+Pulse Energy (Ws/Ω)
+R (Ω) 
+0.0001 
+0.001 
+0.01 
+0.1 
+1 
+10 
+100 
+1000 
+0.1 1 10 100 1000  10 000 
+Pulse Energy (Ws/Ω)
+R (Ω) 
+0.0001 
+0.001 
+0.01 
+0.1 
+1 
+10 
+100 
+1000 
+0.1 1 10 100 1000  10 000  100 000 
+Pulse Energy (Ws/Ω) 
+R (Ω) 
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 7 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+AC01 and AC01-AT Pulse on a regular basis; max. permissible 
+peak pulse voltage ( max.) as a function of pulse duration (ti)
+AC04 and AC04-AT Pulse on a regular basis; max. permissible 
+peak pulse voltage ( max.) as a function of pulse duration (ti)
+AC07 and AC07-AT Pulse on a regular basis; max. permissible 
+peak pulse voltage ( max.) as a function of pulse duration (ti)
+AC03 and AC03-AT Pulse on a regular basis; max. permissible 
+peak pulse voltage ( max.) as a function of pulse duration (ti)
+AC05 and AC05-AT Pulse on a regular basis; max. permissible 
+peak pulse voltage ( max.) as a function of pulse duration (ti)
+AC10 and AC10-AT Pulse on a regular basis; max. permissible 
+peak pulse voltage ( max.) as a function of pulse duration (ti)
+ti (s)
+Vmax. (V)ˆ
+1500
+0
+500
+10-6 10-5 10-4 10-3 10-2 10-1 1
+1000
+Vˆ
+2500
+2000
+1500
+0
+500
+1000
+ti (s)
+Vmax. (V)ˆ
+10-6 10-5 10-4 10-3 10-2 10-1 1
+Vˆ
+5000
+4000
+3000
+0
+1000
+2000
+ti (s)
+Vmax. (V)ˆ
+10-6 10-5 10-4 10-3 10-2 10-1 1
+Vˆ
+ti (s)
+Vmax. (V)ˆ
+10-6 10-5 10-4 10-3 10-2 10-1 1
+2000
+1500
+0
+500
+1000
+Vˆ
+2500
+2000
+1500
+0
+500
+1000
+ti (s)
+Vmax. (V)ˆ
+10-6 10-5 10-4 10-3 10-2 10-1 1
+Vˆ
+5000
+4000
+3000
+0
+1000
+2000
+ti (s)
+Vmax. (V)ˆ
+10-6 10-5 10-4 10-3 10-2 10-1 1
+Vˆ
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 8 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+FUNCTIONAL PERFORMANCE
+0
+20
+40
+60
+80
+100
+120
+-55 50 100 150 200 250 300 350
+Ambient Temperature in °C
+Rated Power in %
+0
+40
+Derating
+0
+100
+150
+200
+250
+300
+350
+010155
+Temperature Rise
+50
+Power in W
+Temperature Rise in K
+AC10,
+AC10-AT
+AC05,
+AC05-AT
+AC04,
+AC04-AT
+AC03,
+AC03-AT
+AC01,
+AC01-AT
+AC07,
+AC07-AT
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 9 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+TEST PROCEDURES AND REQUIREMENTS
+All tests are carried out in accordance with the following  
+specifications:
+• IEC 60115-1, generic specification (includes tests)
+The test and requirements table contains only the most  
+important tests. For the full test schedule refer to the  
+documents above.
+The tests are carried out in accordance with IEC 60068-2-xx 
+test method and under standard atmospheric conditions in 
+accordance with IEC 60068-1, 4.3.
+Climatic category -55 / 200 / 56 (rated temperature range: 
+lower category temperature, upper category temperature; 
+damp heat, steady state, test duration: 56 days) is valid.
+Unless otherwise specified the following values apply:
+• Temperature: 15 °C to 35 °C
+• Relative humidity: 25 % to 75 %
+• Air pressure: 86 kPa to 106 kPa (860 mbar to 1060 mbar)
+For performing some of the tests, the components are  
+mounted on a test board in accordance with IEC 60115-1, 
+5.5.
+In test procedures and requirem ents table, only the tests 
+and requirements are listed wi th reference to the relevant  
+clauses of IEC 60115-1 and IEC 60068-2-xx test methods. 
+A short description of the test procedure is also given.
+TEST PROCEDURES AND REQUIREMENTS
+IEC 60115-1
+CLAUSE
+IEC 60068-2
+TEST
+METHOD
+TEST PROCEDURE REQUIREMENTS PERMISSIBLE CHANGE (ΔRMAX.)
+8.1 - Short term overload
+Room temperature; 
+10x rated power P40;
+5 s
+± (2 % R + 0.1 Ω)
+9.5
+21 (Ua1)
+21 (Ub)
+21 (Uc)
+Robustness of
+terminations Tensile, bending and torsion No damage ± (0.5 % R + 0.05 Ω)
+11.2 20 (Tb) Resistance to soldering heat Unmounted components (260 ± 5) °C; (10 ± 1) s ± (0.5 % R + 0.05 Ω)
+10.1 14 (Na) Rapid change of temperature 30 min at -55 °C and 30 min at +200 °C; 5 cycles ± (1.5 % R + 0.05 Ω)
+10.3 Climatic sequence:
+10.3.4.2 2 (Bb) Dry heat 16 h; 200 °C
+± (1 % R  + 0.05 Ω)
+10.3.4.3 30 (Db)
+Damp heat
+(accelerated)
+1st cycle
+24 h; 55 °C;
+90 % to 100 % RH
+10.3.4.4 1 (Ab)  Cold 2 h; -55 °C
+10.3.4.5 13 (M) Low air pressure 1 h; (1 ± 0.1) kPa; 15 °C to 35 °C
+10.3.4.6 30 (Db) Damp heat remaining cyclic 5 days; 55 °C; 95 % to 100 % RH; 5 cycles
+10.4 78 (Cab) Damp heat, (steady state) 56 days; (40 ± 2) °C; (93 ± 5) % RH ± (5 % R + 0.1 Ω)
+7.2 - Endurance (at room temperature) 1000 h; loaded with 116 % of P70 1.5 h ON and 0.5 h OFF ± (5 % R + 0.1 Ω)
+7.3 - Endurance at maximum temperature 200 °C; 30 % of P70; 1000 h ± (5 % R + 0.1 Ω)
+12.4 - Passive flammability IEC 60695-11-5 needle flame test; 10 s No burning after 30 s
+10.5 67 C(y) Damp heat, steady state, accelerated
+(85 ± 2) °C; RH (85 ± 3) %;
+1000 h;
+10 % of operation power (P70)
+U ≤ 0.3 x Umax.
+± (5 % R + 0.1 Ω)
+8.5 - Electrostatic discharge test 2 discharges, 8 kV (1 positive, 1 negative) ± (5 % R + 0.1 Ω)
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 10 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+DIMENSION AND MASS
+LEAD TERMINATION BENDING FORMS FOR AC, AC-AT
+Note
+(1) Terminal wire material is FeCu with Sn coating
+DIMENSIONS in millimeters
+TYPE Lmax. Dmax. d (1) xmax. BMASS PER UNIT (g)
+AC01, AC01-AT 11.0 4.3
+0.8 ± 0.03
+2 63 ± 1 0.52
+AC03, AC03-AT 13.0 4.8 2 63 ± 1 0.75
+AC03-NI 13.0 4.8 2 63 ± 1 0.78
+AC04, AC04-AT 16.5 5.5 3 63 ± 1 1.10
+AC04-NI 16.5 5.5 3 63 ± 1 1.11
+AC05, AC05-AT 18.0 7.5 3 63 ± 1 1.90
+AC05-NI 18.0 7.5 3 63 ± 1 2.00
+AC07, AC07-AT 26.0 7.5 3 73 ± 1 2.60
+AC10, AC10-AT 44.0 8.0 3 88 ± 1 4.50
+DIMENSIONS - Single and double kink lead type outline
+TYPE Ø Dmax. (mm) Lmax. (mm) KINK TYPE TERMINATION WIRE DIAMETER (1) Ø d (mm) h ± 1 (mm) P ± 0.5 (mm) P1 ± 0.5 (mm) P2 ± 3 (mm) Smax. (mm) Ø B ± 0.1 (mm) MASS (g) PART NUMBER VARIANT
+AC01 
+AC01-AT 4.3 11.0
+EK 0.8 ± 0.03 8.0 17.8 - - 2 1.0 0.52 B
+DK SP 0.8 ± 0.03 8.0 - 19.8 17.8 2 1.0 0.52 I
+DK LP 0.8 ± 0.03 8.0 - 17.8 17.8 2 1.0 0.52 5
+AC03 
+AC03-AT 4.8 13.0
+EK 0.8 ± 0.03 8.0 20.0 - - 2 1.0 0.75 H
+EK 0.8 ± 0.03 8.0 25.4 - - 2 1.0 0.75 C
+DK SP 0.8 ± 0.03 8.0 - 22.0 20.0 2 1.0 0.75 3
+DK SP 0.8 ± 0.03 8.0 - 27.4 25.4 2 1.0 0.75 8
+DK LP 0.8 ± 0.03 8.0 - 17.8 17.8 2 1.0 0.75 5
+DK LP 0.8 ± 0.03 8.0 - 25.4 25.4 2 1.0 0.75 7
+AC04 
+AC04-AT 5.5 16.5
+EK 0.8 ± 0.03 8.0 25.4 - - 2 1.0 1.10 C
+DK SP 0.8 ± 0.03 8.0 - 22.0 20.0 2 1.0 1.10 3
+DK SP 0.8 ± 0.03 8.0 - 27.4 25.4 2 1.0 1.10 8
+DK LP 0.8 ± 0.03 8.0 25.4 25.4 2 1.0 1.10 7
+AC05 
+AC05-AT 7.5 18.0
+EK 0.8 ± 0.03 8.0 22.5 - - 2 1.0 1.90 A
+EK 0.8 ± 0.03 8.0 25.4 - - 2 1.0 1.90 C
+DK SP 0.8 ± 0.03 8.0 - 22.0 20.0 2 1.0 1.90 3
+AC07 
+AC07-AT 7.5 26.0
+EK 0.8 ± 0.03 8.0 33.0 - - 2 1.0 2.60 E
+DK SP 0.8 ± 0.03 8.0 - 35.0 33.0 2 1.0 2.60 G
+DK LP 0.8 ± 0.03 8.0 - 33.0 33.0 2 1.0 2.60 4
+AC10 8.0 44.0
+EK 0.8 ± 0.03 8.0 52.0 - - 2 1.0 4.50 N
+DK SP 0.8 ± 0.03 8.0 - 54.0 52.0 2 1.0 4.50 P
+DK LP 0.8 ± 0.03 8.0 - 52.0 52.0 2 1.0 4.50 Q
+D
+d
+B
+L
+x
+Ø d
+P2
+Ø B
+Ø D
+SMAX.
+P1
+Ø B
+L
+LEAD BENDING STYLE = DK SP
+(Double Kink Small Pitch)
+LEAD BENDING STYLE = DK LP
+(Double Kink Large Pitch)
+P
+LEAD BENDING STYLE
+= EK (Single Kink)
+P1
+L
+h
+L
+Ø B
+Ø d Ø dhh
+P2
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 11 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+Notes
+(1) Terminal wire material is FeCu with Sn coating
+• Dimensions “m” and “n” present minimum conducting track area in ac tual PCB, based on test condit ions at full rated power. Cust omers 
+needs to reassess temperature restrictions based on the solder type, PCB material, and other factors specific to their application
+AC01 WITH RADIAL TAPING
+LEAD BENDING STYLE = RT (Radial Taped)
+AC03 WITH RADIAL TAPING
+LEAD BENDING STYLE = RT (Radial Taped)
+Z-FORM LEADS FOR SMD MOUNTING in millimeters
+LEAD BENDING 
+STYLE = WSZ 
+(Z-form)
+TYPE WSZ Ø d (1) Ø Dmax. ABF H Lablmn
+AC03, AC03-AT, AC03-NI 0.8 ± 0.03 4.8 17 ± 0.3 11 - 12 4.8 ± 0.3 3.6 ± 0.2 5.0 ± 0.5 4 8 12.2 25 2
+AC05, AC05-AT, AC05-NI 0.8 ± 0.03 7.5 23.5 ± 0.5 18 max. 7.7 ± 0.5 5.73 ± 0.5 7.9 ± 0.7 4 10 18.7 25 2
+A
+B
+L
+H
+F
+Ø D
+Ø d
+Recommended solder pad dimensions
+n
+m
+b
+la
+ 
+ 
+P
+H1
+L1
+W
+F
+DIMENSIONS in millimeters
+Pitch of components P 12.7 ± 1.0 
+Lead spacing F 5.0 + 0.6, - 0.1 
+Width of carrier tape W 18.0 ± 0.5 
+Height for cutting (max.) L1 11
+Height for insertion (max.) H1 32
+ 
+P
+H1
+L1
+W
+F
+DIMENSIONS in millimeters
+Pitch of components P 12.7 ± 1.0 
+Lead spacing F 5.0 + 0.4, - 0.2 
+Width of carrier tape W 18.0 ± 0.5 
+Height for cutting (max.) L1 11
+Height for insertion (max.) H1 32
+AC, AC-AT, AC-NI
+www.vishay.com Vishay Draloric
+  
+ 
+Revision: 05-Dec-2024 12 Document Number: 28730
+For technical questions, contact: ww1resistors@vishay.com
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+AC05 WITH RADIAL TAPING
+LEAD BENDING STYLE = RT (Radial Taped)
+P
+H1
+L1
+W
+F
+DIMENSIONS in millimeters
+Pitch of components P 12.7 ± 1.0 
+Lead spacing F 7.50 ± 0.5
+Width of carrier tape W 18.0 ± 0.5 
+Height for cutting (max.) L1 11
+Height for insertion (max.) H1 37
+Legal Disclaimer Notice
+www.vishay.com Vishay
+   
+ 
+Revision: 01-Jan-2026 1 Document Number: 91000
+THIS DOCUMENT IS SUBJECT TO CHANGE WITHOUT NOTICE. THE PRODUCTS DESCRIBED HEREIN AND THIS DOCUMENT
+ARE SUBJECT TO SPECIFIC DISCLAIMERS, SET FORTH AT www.vishay.com/doc?91000
+Disclaimer
+ALL PRODUCT, PRODUCT SPECIFICATIONS AND DATA AR E SUBJECT TO CHANGE WITH OUT NOTICE TO IMPROVE 
+RELIABILITY, FUNCTION OR DESIGN OR OTHERWISE. 
+Vishay Intertechnology, Inc., its affiliates, agents, and employee s, and all persons acting on it s or their behalf (collectivel y, 
+“Vishay”), disclaim any and all liability for any errors, inaccuracies or incompleteness contained in any datasheet or in any other 
+disclosure relating to any product.
+Vishay makes no warranty, representation or guarantee regarding the suitability of the products for any particular purpose or 
+the continuing production of any product. To the maximum extent permitted by applicable law, Vishay disclaims (i) any and all 
+liability arising out of the application or use of any product , (ii) any and all liability, including without limitation specia l, 
+consequential or incidental damages, and (iii) any and all implied warranties, incl uding warranties of fitness for particular  
+purpose, non-infringement and merchantability.
+Statements regarding the suitability of pro ducts for certain types of applications are based on Vishay's knowledge of typical 
+requirements that are often placed on Vishay products in ge neric applications. Such statements are not binding statements 
+about the suitability of products for a particular application. It is the customer's responsibility to validate that a particular product 
+with the properties described in the product specification is suitable for use in a particular application. Parameters provided in 
+datasheets and / or specificat ions may vary in different applications and performance may vary over time. All operating  
+parameters, including typical parameters, must be validated for each customer application by the customer's technical experts. 
+Product specifications do not expand or otherwise modify Vishay's terms and conditions of purchase, including but not limited 
+to the warranty expressed therein.
+Hyperlinks included in this datasheet may direct users to third-party websites. These links are provided as a convenience and 
+for informational purposes only. Inclusion of these hyperlinks does not constitute an endorsement or an approval by Vishay of 
+any of the products, services or opinions of the corporation, organization or individual associated with the third-party website. 
+Vishay disclaims any and all liability and be ars no responsibility for the accuracy, legality or content of the third-party web site 
+or for that of subsequent links.
+Vishay products are not designed for use in life-saving or life -sustaining applications or any application in which the failure  of 
+the Vishay product could result in personal injury or death unless specifically qualified in writing by Vishay. Customers using or 
+selling Vishay products not expressly indicated for use in such applications do so  at their own risk. Please contact authorized 
+Vishay personnel to obtain written terms and conditions regarding products designed for such applications.
+No license, express or implied, by estoppel or otherwise, to any intellectual property rights is granted by this document or by 
+any conduct of Vishay. Product names and markings noted herein may be trademarks of their respective owners.
+© 2026 VISHAY INTERTECHNOLOGY, INC. ALL RIGHTS RESERVED

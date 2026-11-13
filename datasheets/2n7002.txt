@@ -1,0 +1,465 @@
+ 
+2N7002 
+Document number: DS11303 Rev. 40 - 2 
+1 of 5 
+www.diodes.com  
+July 2024 
+©  2024 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+2N7002 
+  
+ 
+N-CHANNEL ENHANCEMENT MODE FIELD EFFECT TRANSISTOR 
+ 
+Product Summary 
+BVDSS RDS(ON) Max ID Max TA = +25°C 
+60V 
+5Ω @ VGS = 10V 210mA 
+7.5Ω @ VGS = 5V 170mA 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Description and Applications 
+This MOSFET has been designed to minimize the on-state resistance 
+(RDS(ON)) yet maintain superior switching performance, making it ideal 
+for high-efficiency power-management applications. 
+ 
+• Motor controls 
+• Power-management functions 
+ 
+Features and Benefits 
+• Low On-Resistance 
+• Low Gate Threshold Voltage 
+• Low Input Capacitance 
+• Fast Switching Speed  
+• Small Surface-Mount Package 
+• Totally Lead-Free & Fully RoHS Compliant (Notes 1 & 2) 
+• Halogen and Antimony Free. “Green” Device (Note 3) 
+• This part is qualified to JEDEC standards (as references in 
+AEC-Q) for High Reliability. 
+https://www.diodes.com/quality/product-definitions/ 
+• An automotive-compliant part is available under separate 
+datasheet (2N7002Q)  
+ 
+Mechanical Data 
+• Package: SOT23 
+• Package Material: Molded Plastic, “Green” Molding Compound.    
+UL Flammability Classification Rating 94V-0 
+• Moisture Sensitivity: Level 1 per J-STD-020 
+• Terminals: Finish ⎯ Matte Tin Plated Leads. Solderable per MIL-
+STD-202, Method 208 
+• Terminal Connections: See Diagram 
+• Weight: 0.009 grams (Approximate) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Ordering Information (Note 4) 
+Part Number Package Packing Qty. Carrier 
+2N7002-7-F SOT23 (Standard) 3,000 Tape & Reel 
+2N7002-13-F SOT23 (Standard) 10,000 Tape & Reel 
+Notes: 1. No purposely added lead. Fully EU Directive 2002/95/EC (RoHS), 2011/65/EU (RoHS 2) & 2015/863/EU (RoHS 3) compliant.  
+2. See https://www.diodes.com/quality/lead-free/ for more information about Diodes Incorporated’s definitions of Halogen- and Antimony-free, "Green" and 
+Lead-free.                     
+ 3. Halogen- and Antimony-free "Green” products are defined as those which contain <900ppm bromine, <900ppm chlorine (<1500ppm total Br + Cl) and  
+        <1000ppm antimony compounds. 
+4. For packaging details, go to our website at https://www.diodes.com/design/support/packaging/diodes-packaging/. 
+ 
+Marking Information 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Date Code Key 
+Year 2002 - 2024 2025 2026 2027 2028 2029 2030 2031 2032 2033 
+Code N - L M N P R S T U V  W 
+ 
+Month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
+Code 1 2 3 4 5 6 7 8 9 O N D 
+SOT23 (Standard)  
+Top View Equivalent Circuit Top View 
+D
+G S
+K72 = Product Type Marking Code  
+YM = Date Code Marking  
+Y or Y or Y = Year (ex: L = 2024) 
+M or M = Month (ex: 9 = September) 
+ 
+Source
+Gate
+Drain
+K72
+YM
+e3
+ 
+2N7002 
+Document number: DS11303 Rev. 40 - 2 
+2 of 5 
+www.diodes.com  
+July 2024 
+©  2024 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+2N7002 
+ 
+ 
+ 
+ 
+Maximum Ratings (@TA = +25°C, unless otherwise specified.)  
+Characteristic Symbol Value Unit 
+Drain-Source Voltage VDSS 60 V 
+Drain-Gate Voltage RGS  1.0MΩ VDGR 60 V 
+Gate-Source Voltage Continuous Pulsed (Note 8) VGSS ±20 ±40 V 
+Continuous Drain Current (Note 5) VGS = 10V Steady State 
+TA = +25°C 
+TA = +85°C 
+TA = +100°C 
+ID 
+170 
+120 
+105 
+mA 
+Continuous Drain Current (Note 6) VGS = 10V Steady State 
+TA = +25°C 
+TA = +85°C 
+TA = +100°C 
+ID 
+210 
+150 
+135 
+mA 
+Maximum Continuous Body Diode Forward Current (Note 6) Continuous Pulsed (Note 8)  IS 0.2 0.5 A 
+Pulsed Drain Current (10µs Pulse, Duty Cycle = 1%)   IDM 800 mA 
+ 
+ 
+Thermal Characteristics (@ TA = +25°C, unless otherwise specified.) 
+Characteristic Symbol Value Unit 
+Total Power Dissipation  (Note 5) PD 370 mW (Note 6) 540 
+Thermal Resistance, Junction to Ambient  (Note 5) RθJA 348 °C/W (Note 6) 241 
+Thermal Resistance, Junction to Case   (Note 6) RθJC 91 
+Operating and Storage Temperature Range TJ, TSTG -55 to +150 °C 
+ 
+ 
+Electrical Characteristics (@ TA = +25°C, unless otherwise specified.) 
+Characteristic Symbol Min Typ Max Unit Test Condition 
+OFF CHARACTERISTICS (Note 7) 
+Drain-Source Breakdown Voltage BVDSS 60 70 ⎯ V VGS = 0V, ID = 10µA 
+Zero Gate Voltage Drain Current @ TJ = +25°C @ TJ = +125°C IDSS ⎯ ⎯ ⎯ ⎯ 1.0 500 µA VDS = 60V, VGS = 0V 
+Gate-Body Leakage IGSS ⎯ ⎯ ±10 nA VGS = ±20V, VDS = 0V 
+ON CHARACTERISTICS (Note 7) 
+Gate Threshold Voltage VGS(TH) 1.0 ⎯ 2.5 V VDS = VGS, ID = 250µA 
+Static Drain-Source On-Resistance 
+@ TJ = +25°C 
+@ TJ = +25°C 
+@ TJ = +125°C 
+RDS(ON) 
+⎯ 
+⎯ 
+⎯ 
+3.2 
+2.4 
+4.4 
+7.5 
+5.0 
+13.5 
+Ω 
+VGS = 5.0V, ID = 0.05A 
+VGS = 10V, ID = 0.5A 
+VGS = 10V, ID = 0.5A 
+On-State Drain Current ID(ON) 0.5 1.0 ⎯ A VGS = 10V, VDS = 7.5V 
+Forward Transconductance gFS 80 ⎯ ⎯ mS VDS = 10V, ID = 0.2A 
+Diode Forward Voltage  VSD ⎯ 0.78 1.5 V VGS = 0V, IS = 115mA 
+DYNAMIC CHARACTERISTICS (Note 8) 
+Input Capacitance Ciss ⎯ 22 50 pF 
+VDS = 25V, VGS = 0V 
+f = 1.0MHz Output Capacitance Coss ⎯ 11 25 pF Reverse Transfer Capacitance Crss ⎯ 2.0 5.0 pF 
+Gate Resistance  Rg ⎯ 120 ⎯ Ω VDS = 0V, VGS = 0V  f = 1.0MHz 
+Total Gate Charge (VGS = 4.5V) Qg ⎯ 223 ⎯ 
+pC VDS = 10V, ID = 250mA Gate-Source Charge  Qgs ⎯ 82 ⎯ 
+Gate-Drain Charge  Qgd ⎯ 178 ⎯ 
+Turn-On Delay Time  tD(ON) ⎯ 2.8 ⎯ 
+ns 
+VDD = 30V, ID = 0.2A  
+RL = 150Ω, VGEN = 10V 
+RGEN = 25Ω 
+Turn-On Rise Time  tR ⎯ 3.0 ⎯ 
+Turn-Off Delay Time  tD(OFF) ⎯ 7.6 ⎯ 
+Turn-Off Fall Time  tF ⎯ 5.6 ⎯ 
+Notes: 5. Device mounted on FR-4 PCB, with minimum recommended pad layout. 
+6. Device mounted on 1” x 1” FR-4 PCB with high coverage 2oz. copper, single sided. 
+7. Short duration pulse test used to minimize self-heating effect. 
+8. Guaranteed by design. Not subject to product testing. 
+ 
+2N7002 
+Document number: DS11303 Rev. 40 - 2 
+3 of 5 
+www.diodes.com  
+July 2024 
+©  2024 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+2N7002 
+ 
+ 
+ 
+ 
+0
+0.2
+0.4
+0.6
+0.8
+1.0
+0 1 2 3 4 5
+V , DRAIN-SOURCE VOLTAGE (V)
+Fig. 1  On-Region Characteristics
+DS
+I , DRAIN-SOURCE CURRENT (A)D
+ 
+0
+1
+2
+3
+4
+5
+0 0.2
+I , DRAIN CURRENT (A)
+Fig. 2  On-Resistance vs. Drain Current
+D
+6
+7
+0.4 0.6 0.8 1.0
+R , NORMALIZED DRAIN-SOURCE 
+ON-RESISTANCE ( )
+DS(ON)
+  
+1.0
+1.5
+2.0
+2.5
+3.0
+-55 -30 -5 20 45 70 95 120 145
+T , JUNCTION TEMPERATURE ( C)
+Fig. 3  On-Resistance vs. Junction Temperature
+j °
+V  = 10V,
+I  = 200mA
+GS
+D
+R , STATIC DRAIN-SOURCE 
+ON-RESISTANCE ( )
+DS(ON)
+
+ 
+0
+V , GATE TO SOURCE VOLTAGE (V)
+Fig. 4  On-Resistance vs. Gate-Source Voltage
+GS
+I = 50mAD 
+I = 500mAD 
+1
+2
+3
+4
+5
+6
+0 2 4 6 8 10 12 14 16 18
+R , NORMALIZED DRAIN-SOURCE 
+ON-RESISTANCE ( )
+DS(ON)
+  
+0
+2
+1
+4
+3
+0 0.2 0.4 0.6 0.8 1
+V  GATE SOURCE CURRENT (V)GS,
+I , DRAIN CURRENT (A)
+Fig. 5  Typical Transfer Characteristics
+D
+6
+5
+8
+7
+10
+9
+ 
+0
+50
+100
+150
+200
+250
+300
+350
+0 25 50 75 100 125 150 175 200
+P , POWER DISSIPATION (mW)d
+T , AMBIENT TEMPERATURE ( C)
+Fig. 6  Max Power Dissipation vs. Ambient Temperature
+A °
+400  
+ 
+ 
+2N7002 
+Document number: DS11303 Rev. 40 - 2 
+4 of 5 
+www.diodes.com  
+July 2024 
+©  2024 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+2N7002 
+ 
+ 
+ 
+ 
+Package Outline Dimensions 
+Please see http://www.diodes.com/package-outlines.html for the latest version. 
+ 
+SOT23 (Standard) 
+ 
+A1
+A A2
+L
+GAUGE PLANE
+0.25
+D
+L1b
+E E1
+e
+e1F
+a
+c
+ 
+ 
+SOT23 (Standard) 
+Dim Min Max Typ 
+A 0.90 1.15 1.025 
+A1 0.00 0.10 0.05 
+A2 0.85 1.10 0.975 
+b 0.30 0.51 0.40 
+c 0.080 0.202 0.11 
+D 2.80 3.00 2.90 
+E 2.25 2.55 2.40 
+E1 1.20 1.40 1.30 
+e 0.89 1.03 0.915 
+e1 1.78 2.05 1.83 
+F 0.40 0.60 0.535 
+L1 0.45 0.61 0.55 
+L 0.25 0.55 0.40 
+a 0° 8° -- 
+All Dimensions in mm 
+ 
+ 
+ 
+Suggested Pad Layout 
+Please see http://www.diodes.com/package-outlines.html for the latest version. 
+ 
+SOT23 (Standard) 
+ 
+ 
+ 
+X
+Y
+Y1 C
+X1
+ 
+ 
+ 
+Dimensions Value (in mm) 
+C 2.0 
+X 0.8 
+X1 1.35 
+Y 0.9 
+Y1 2.9 
+ 
+ 
+2N7002 
+Document number: DS11303 Rev. 40 - 2 
+5 of 5 
+www.diodes.com  
+July 2024 
+©  2024 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+2N7002 
+ 
+ 
+ 
+ 
+ 
+IMPORTANT NOTICE 
+ 
+1. DIODES INCORPORATED (Diodes) AND ITS SUBSIDIARIES MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH 
+REGARDS TO ANY INFORMATION CONTAINED IN THIS DOCUMENT, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY 
+RIGHTS (AND THEIR EQUIVALENTS UNDER THE LAWS OF ANY JURISDICTION).   
+ 
+2. The Information contained herein is for informational purpose only and is provided only to illustrate the operation of Diodes’ products 
+described herein and application examples. Diodes does not assume any liability arising out of the application or use of this document or any 
+product described herein. This document is intended for skilled and technically trained engineering customers and users who design with Diodes’ 
+products. Diodes’ products may be used to facilitate safety-related applications; however, in all instances customers and users are responsible for 
+(a) selecting the appropriate Diodes products for their applications, (b) evaluating the suitability of Diodes’ products for their intended applications, 
+(c) ensuring their applications, which incorporate Diodes’ products, comply the applicable legal and regulatory requirements as well as safety and 
+functional-safety related standards, and (d) ensuring they design with appropriate safeguards (including testing, validation, quality control 
+techniques, redundancy, malfunction prevention, and appropriate treatment for aging degradation) to minimize the risks associated with their 
+applications.    
+ 
+3. Diodes assumes no liability for any application-related information, support, assistance or feedback that may be provided by Diodes 
+from time to time. Any customer or user of this document or products described herein will assume all risks and liabilities associated with such 
+use, and will hold Diodes and all companies whose products are represented herein or on Diodes’ websites, harmless against all damages and 
+liabilities.   
+ 
+4. Products described herein may be covered by one or more United States, international or foreign patents and pending patent 
+applications. Product names and markings noted herein may also be covered by one or more United States, international or foreign trademarks 
+and trademark applications. Diodes does not convey any license under any of its intellectual property rights or the rights of any third parties 
+(including third parties whose products and services may be described in this document or on Diodes’ website) under this document.   
+ 
+5. Diodes’ products are provided subject to Diodes’ Standard Terms and Conditions of Sale 
+(https://www.diodes.com/about/company/terms-and-conditions/terms-and-conditions-of-sales/) or other applicable terms. This document does not 
+alter or expand the applicable warranties provided by Diodes. Diodes does not warrant or accept any liability whatsoever in respect of any 
+products purchased through unauthorized sales channel.   
+ 
+6. Diodes’ products and technology may not be used for or incorporated into any products or systems whose manufacture, use or sale is 
+prohibited under any applicable laws and regulations. Should customers or users use Diodes’ products in contravention of any applicable laws or 
+regulations, or for any unintended or unauthorized application, customers and users will (a) be solely responsible for any damages, losses or 
+penalties arising in connection therewith or as a result thereof, and (b) indemnify and hold Diodes and its representatives and agents harmless 
+against any and all claims, damages, expenses, and attorney fees arising out of, directly or indirectly, any claim relating to any noncompliance with 
+the applicable laws and regulations, as well as any unintended or unauthorized application. 
+ 
+7. While efforts have been made to ensure the information contained in this document is accurate, complete and current, it may contain 
+technical inaccuracies, omissions and typographical errors. Diodes does not warrant that information contained in this document is error-free and 
+Diodes is under no obligation to update or otherwise correct this information. Notwithstanding the foregoing, Diodes reserves the right to make 
+modifications, enhancements, improvements, corrections or other changes without further notice to this document and any product described 
+herein. This document is written in English but may be translated into multiple languages for reference. Only the English version of this document 
+is the final and determinative format released by Diodes. 
+ 
+8. Any unauthorized copying, modification, distribution, transmission, display or other use of this document (or any portion hereof) is 
+prohibited. Diodes assumes no responsibility for any losses incurred by the customers or users or any third parties arising from any such 
+unauthorized use. 
+ 
+9.  This Notice may be periodically updated with the most recent version available at https://www.diodes.com/about/company/terms-and-
+conditions/important-notice 
+ 
+ 
+The Diodes logo is a registered trademark of Diodes Incorporated in the United States and other countries. 
+All other trademarks are the property of their respective owners. 
+©  2024 Diodes Incorporated. All Rights Reserved. 
+   
+www.diodes.com 
+ 
+ 
+ 

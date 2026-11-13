@@ -1,0 +1,667 @@
+ 
+DMP4015SK3 
+Document number: DS35480 Rev. 8 - 2 
+1 of 7 
+www.diodes.com  
+September 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+DMP4015SK3 
+  
+ 
+P-CHANNEL ENHANCEMENT MODE MOSFET 
+Product Summary 
+BVDSS RDS(ON) Max ID TC = +25°C  
+-40V 11mΩ @ VGS = -10V -35A 15mΩ @ VGS = -4.5V -30A 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Description and Applications 
+This new generation MOSFET is designed to minimize the on-state 
+resistance (RDS(ON)) yet maintain superior switching performance, 
+making it ideal for high-efficiency power-management applications. 
+ 
+ DC-DC converters 
+ Power-management functions 
+ Backlighting  
+ 
+Features and Benefits 
+ 100% Unclamped Inductive Switch (UIS) test in production 
+ Low On-Resistance 
+ Fast Switching Speed 
+ Lead-Free Finish; RoHS Compliant (Notes 1 & 2) 
+ Halogen and Antimony Free. “Green” Device (Note 3) 
+ This part is qualified to JEDEC standards (as references in 
+AEC-Q) for High Reliability.   
+https://www.diodes.com/quality/product-definitions/ 
+ An automotive-compliant part is available under separate 
+datasheet (DMP4015SK3Q) 
+ 
+Mechanical Data 
+ Package: TO252 
+ Package Material: Molded Plastic, “Green” Molding Compound.  
+UL Flammability Classification Rating 94V-0 
+ Moisture Sensitivity: Level 1 per J-STD-020 
+ Terminal Connections: See Diagram 
+ Terminals: Finish – Matte Tin Finish Annealed over Copper 
+Leadframe. Solderable per MIL-STD-202, Method 208 
+ Weight: 0.33 grams (Approximate) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Ordering Information (Note 4) 
+Part Number Package Packing Qty. Carrier 
+DMP4015SK3-13 TO252 (DPAK) 2,500 Tape & Reel 
+Notes: 1. EU Directive 2002/95/EC (RoHS), 2011/65/EU (RoHS 2) & 2015/863/EU (RoHS 3) compliant. All applicable RoHS exemptions applied. 
+ 2. See https://www.diodes.com/quality/lead-free/ for more information about Diodes Incorporated’s definitions of Halogen- and Antimony-free, "Green" and 
+ Lead-free. 
+            3. Halogen- and Antimony-free "Green” products are defined as those which contain <900ppm bromine, <900ppm chlorine (<1500ppm total Br + Cl) and  
+               <1000ppm antimony compounds. 
+4. For packaging details, go to our website at https://www.diodes.com/design/support/packaging/diodes-packaging/.  
+ 
+Marking Information 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Equivalent Circuit 
+G S
+D
+D
+Top View 
+Pin-Out 
+Top View 
+TO252 (DPAK) 
+ 
+Green
+e3
+YYWW 
+  
+P4015S .        = Manufacturer’s Marking P4015S = Product Type Marking Code 
+YYWW = Date Code Marking 
+YY = Year (ex: 23 = 2023) 
+WW = Week (01 to 53) 
+
+ 
+DMP4015SK3 
+Document number: DS35480 Rev. 8 - 2 
+2 of 7 
+www.diodes.com  
+September 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+DMP4015SK3 
+ 
+ 
+ 
+ 
+Maximum Ratings (@ TA = +25°C, unless otherwise specified.)  
+Characteristic Symbol Value Unit 
+Drain-Source Voltage VDSS -40 V 
+Gate-Source Voltage VGSS ±25 V 
+Continuous Drain Current (Note 5) VGS = -10V Steady State TC = +25°C TC = +70°C ID -35 -27 A 
+Continuous Drain Current (Note 5) VGS = -10V 
+Steady 
+State 
+TA = +25°C 
+TA = +70°C ID -14 -11 A 
+t < 10s TA = +25°C TA = +70°C ID -22 -18 A 
+Pulsed Drain Current (10µs Pulse, Duty Cycle = 1%) IDM -100 A 
+Maximum Body Diode Forward Current (Note 5) IS -5.5 A 
+Avalanche Current  L = 1mH IAS -22 A 
+Avalanche Energy  L = 1mH EAS 242 mJ 
+ 
+ 
+Thermal Characteristics (@ TA = +25°C, unless otherwise specified.) 
+Characteristic Symbol Value Unit 
+Total Power Dissipation (Note 5) TA = +25°C PD 3.5 W TA = +70°C  2.2 
+Thermal Resistance, Junction to Ambient (Note 5) Steady State RθJA 36 °C/W t < 10s 15 
+Thermal Resistance, Junction to Case (Note 5) Steady State RθJC 4.5 
+Operating and Storage Temperature Range TJ, TSTG -55 to +150 °C  
+ 
+ 
+Electrical Characteristics (@ TA = +25°C, unless otherwise specified.) 
+Characteristic Symbol Min Typ Max Unit Test Condition 
+OFF CHARACTERISTICS (Note 6) 
+Drain-Source Breakdown Voltage BVDSS -40   V VGS = 0V, ID = -250µA 
+Zero Gate Voltage Drain Current IDSS   -1 µA  VDS = -40V, VGS = 0V 
+Gate-Source Leakage IGSS   100 nA VGS = 25V, VDS = 0V 
+ON CHARACTERISTICS (Note 6) 
+Gate Threshold Voltage VGS(TH) -1.5 -2 -2.5 V VDS = VGS, ID = -250µA 
+Static Drain-Source On-Resistance RDS(ON)  7 11 mΩ VGS = -10V, ID = -9.8A  9 15 VGS = -4.5V, ID = -9.8A 
+Forward Transfer Admittance |Yfs|  26  S VDS = -20V, ID = -9.8A 
+Diode Forward Voltage VSD  -0.7 -1 V VGS = 0V, IS = -1A 
+DYNAMIC CHARACTERISTICS (Note 7) 
+Input Capacitance Ciss  4,234  
+pF VDS = -20V, VGS = 0V f = 1MHz Output Capacitance Coss  1,036  Reverse Transfer Capacitance Crss  526  
+Gate Resistance RG  7.77  Ω VDS = 0V, VGS = 0V, f = 1MHz 
+Total Gate Charge  Qg  47.5  
+nC VDS = -20V, VGS = -5V ID = -9.8A Gate-Source Charge  Qgs  14.2  Gate-Drain Charge  Qgd  13.5  
+Turn-On Delay Time  tD(ON)  13.2  
+ns VGS = -10V, VDD = -20V,  RG = 6Ω, ID = -1A Turn-On Rise Time  tR  10  Turn-Off Delay Time  tD(OFF)  302.7  
+Turn-Off Fall Time  tF  137.9 
+Notes: 5. Device mounted on FR-4 substrate PC board, 2oz copper, with thermal bias to bottom layer 1inch square copper plate. 
+6. Short duration pulse test used to minimize self-heating effect. 
+ 7. Guaranteed by design. Not subject to production testing. 
+                
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DMP4015SK3 
+Document number: DS35480 Rev. 8 - 2 
+3 of 7 
+www.diodes.com  
+September 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+DMP4015SK3 
+ 
+ 
+ 
+ 
+-V , DRAIN -SOURCE VOLTAGE(V)
+Fig. 1 Typical Output Characteristics
+DS
+-I , DRAIN CURRENT (A)D
+0.0 
+5.0 
+10.0 
+15.0 
+20.0 
+25.0 
+30.0 
+0 0.5 1 1.5 2
+-V = 10VGS  
+-V = 4.5VGS  
+-V = 4.0VGS  
+-V = 3.5VGS 
+-V = 3.0VGS 
+ 
+-I , DRAIN CURRENT (A)D
+0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5
+0
+5
+10
+15
+20
+25
+30
+-V , GATE-SOURCE VOLTAGE (V)GS
+Fig. 2 Typical Transfer Characteristics  
+-I , DRAIN SOURCE CURRENT
+Fig. 3  Typical On-Resistance vs. 
+Drain Current and Gate Voltage 
+D
+R ,DRAIN-SOURCE ON-RESISTANCE( )DS(ON) 
+0
+0.005
+0.01
+0.015
+0.02
+0 5 10 15 20 25 30
+ 
+-I , DRAIN SOURCE CURRENT (A)
+Fig. 4  Typical On-Resistance vs. 
+Drain Current and Temperature 
+D
+R , DRAIN-SOURCE ON-RESISTANCE( )DS(ON) 
+0
+0.005
+0.01
+0.015
+0.02
+0 5 10 15 20 25 30
+-V = 4.5VGS
+T  = -55 CA 
+T  = 25 CA 
+T  = 85 CA 
+T  = 125 CA 
+T  = 150 CA   
+-50 -25 0 25 50 75 100 125 150
+T , JUNCTION TEMPERATURE ( C)J 
+Fig. 5  On-Resistance Variation with Temperature
+R , DRAIN-SOURCE ON-RESISTANCE
+(Normalized)
+DS(ON)
+0.6
+0.8
+1
+1.2
+1.4
+1.6
+ 
+-50 -25 0 25 50 75 100 125 150
+T , JUNCTION TEMPERATURE ( C)J 
+Fig. 6  On-Resistance Variation with Temperature
+R , DRAIN-SOURCE ON-RESISTANCE ( )DS(ON) 
+-V = 10V
+-I = 10A
+GS
+D
+  
+  
+-V = 4.5V
+-I = 5.0A
+GS
+D
+ 
+  
+0
+0.004
+0.008
+0.012
+0.016
+0.020  
+ 
+DMP4015SK3 
+Document number: DS35480 Rev. 8 - 2 
+4 of 7 
+www.diodes.com  
+September 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+DMP4015SK3 
+ 
+ 
+ 
+ 
+-50 -25 0 25 50 75 100 125 150
+T , AMBIENT TEMPERATURE (癈 )
+Fig. 7 Gate Threshold Variation vs. Ambient Temperature
+A
+-V , GATE THRESHOLD VOLTAGE (V)GS(TH)
+0
+0.4
+0.8
+1.2
+1.6
+2
+2.4
+ 
+ 
+        
+100
+1000
+10000
+0 5 10 15 20 25 30
+C , JUNCTION CAPACITANCE (pF)T
+V , DRAIN-SOURCE VOLTAGE (V)DS
+Figure 9 Typical Junction Capacitance
+Ciss
+Coss
+Crss
+f=1MHz  
+-V , DRAIN-SOURCE VOLTAGE(V)
+Fig. 10 Typical Drain-Source Leakage Current vs. Voltage
+DS
+-I , LEAKAGE CURRENT (nA)DSS
+0.1
+1
+10
+100
+1000
+10000
+0 5 10 15 20 25 30
+T  =150癈A
+T  =125癈A
+T  =85癈A
+T  =25癈A  
+0
+2
+4
+6
+8
+10
+Q , TOTAL GATE CHARGE (nC)
+Fig. 11 Gate-Charge Characteristics
+g
+V , GATE-SOURCE VOLTAGE (V)GS
+0 20 40 60 80 100 120
+ 
+ 
+ 
+(oC) 
+TA = 25oC 
+TA = 85oC 
+TA = 125oC 
+TA = 150oC 
+-I , SOURCE CURRENT (A)S
+-V , SOURCE-DRAIN VOLTAGE (V)
+Fig. 8 Diode Forward Voltage vs. Current
+SD
+0 0.2 0.4 0.6 0.8 1 1.2 1.4
+0
+5
+10
+15
+20
+25
+30
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+0.001 0.01 0.1 1 10 100 1,000
+t1, PULSE DURATION TIME (sec)
+Fig. 12 Single Pulse Maximum Power Dissipation
+P , PEAK TRANSIENT POWER (W)(pk)
+Single Pulse
+R  = 72癈 /WJA
+R (t) = r(t) * R
+ = P * R
+
+
+JA JA
+J A JAT  - T
+72oC/W 
+ 
+DMP4015SK3 
+Document number: DS35480 Rev. 8 - 2 
+5 of 7 
+www.diodes.com  
+September 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+DMP4015SK3 
+ 
+ 
+ 
+ 
+0.2 0.4 0.6 0.8 1.0
+INDUCTOR (mH)
+Fig. 13 Single-Pulse Avalanche Tested
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+I, AVALANCHE CURRENT (A) AS
+0
+100
+200
+300
+400
+500
+600
+E , AVALANCHE ENERGY (mJ)AS
+EAS
+IAS
+0.1 0.3 0.5 0.7 0.9
+Starting Temperature (T ) = 25癈J
+ 
+0.1 1 10 100
+-V , DRAIN-SOURCE VOLTAGE (V)
+Fig. 14 SOA, Safe Operation Area
+DS
+0.01
+0.1
+1
+10
+100-I , DRAIN CURRENT (A)D
+R
+Limited
+DS(on)
+T  = 150癈
+T  = 25癈
+J(max)
+A
+V  = -10V
+Single Pulse
+GS
+DUT on 1 * MRP Board
+DC
+P  = 10sW
+P  = 1sW
+P  = 100msW
+P  = 10msW
+P  = 1msW
+P  = 100祍W
+P  = 10 sW µ  
+0.001 0.01 0.1 1 10 100 1,000 10,000
+t1, PULSE DURATION TIMES (sec)
+Fig. 15 Transient Thermal Resistance
+0.001
+0.01
+0.1
+r(t), TRANSIENT THERMAL RESISTANCE
+1
+R (t) = r(t) * R
+R  = 72癈 /W
+Duty Cycle, D = t1/ t2
+
+
+JA JA
+JA
+D = 0.9
+D = 0.7
+D = 0.5
+D = 0.3
+D = 0.1
+D = 0.50
+D = 0.02
+D = 0.01
+D = 0.005
+D = Single Pulse
+ 
+ 
+ 
+TJ = 25oC 
+100μs 
+150oC 
+25oC 
+72oC/W 
+ 
+DMP4015SK3 
+Document number: DS35480 Rev. 8 - 2 
+6 of 7 
+www.diodes.com  
+September 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+DMP4015SK3 
+ 
+ 
+ 
+ 
+Package Outline Dimensions 
+Please see http://www.diodes.com/package-outlines.html for the latest version. 
+ 
+TO252 (DPAK) 
+b3
+E
+L3
+D
+L4
+b2( 2x)
+b( 3x)
+e
+c
+A
+7°±1°
+H
+Seating Plane
+A1
+Gauge Plane
+a
+0.508
+L
+2.74REF
+D1
+A2
+E1
+ 
+TO252 (DPAK) 
+Dim Min Max Typ 
+A 2.19 2.39 2.29 
+A1 0.00 0.13 0.08 
+A2 0.97 1.17 1.07 
+b 0.64 0.88 0.783 
+b2 0.76 1.14 0.95 
+b3 5.21 5.50 5.33 
+c 0.45 0.58 0.531 
+D 6.00 6.20 6.10 
+D1 5.21 -- -- 
+e 2.286 BSC 
+E 6.45 6.70 6.58 
+E1 4.32 -- -- 
+H 9.40 10.41 9.91 
+L 1.40 1.78 1.59 
+L3 0.88 1.27 1.08 
+L4 0.64 1.02 0.83 
+a 0° 10° -- 
+All Dimensions in mm 
+ 
+ 
+ 
+ 
+Suggested Pad Layout 
+Please see http://www.diodes.com/package-outlines.html for the latest version. 
+ 
+TO252 (DPAK) 
+X1
+X
+Y2
+Y1
+Y
+C
+ 
+Dimensions Value (in mm) 
+C 4.572 
+X 1.060 
+X1 5.632 
+Y 2.600 
+Y1 5.700 
+Y2 10.700 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DMP4015SK3 
+Document number: DS35480 Rev. 8 - 2 
+7 of 7 
+www.diodes.com  
+September 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+DMP4015SK3 
+ 
+ 
+ 
+ 
+ 
+IMPORTANT NOTICE 
+ 
+1. DIODES INCORPORATED (Diodes) AND ITS SUBSIDIARIES MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH 
+REGARDS TO ANY INFORMATION CONTAINED IN THIS DOCUMENT, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY 
+RIGHTS (AND THEIR EQUIVALENTS UNDER THE LAWS OF ANY JURISDICTION).   
+ 
+2. The Information contained herein is for informational purpose only and is provided only to illustrate the operation of Diodes’ products 
+described herein and application examples. Diodes does not assume any liability arising out of the application or use of this document or any 
+product described herein. This document is intended for skilled and technically trained engineering customers and users who design with Diodes’ 
+products. Diodes’ products may be used to facilitate safety-related applications; however, in all instances customers and users are responsible for 
+(a) selecting the appropriate Diodes products for their applications, (b) evaluating the suitability of Diodes’ products for their intended applications, 
+(c) ensuring their applications, which incorporate Diodes’ products, comply the applicable legal and regulatory requirements as well as safety and 
+functional-safety related standards, and (d) ensuring they design with appropriate safeguards (including testing, validation, quality control 
+techniques, redundancy, malfunction prevention, and appropriate treatment for aging degradation) to minimize the risks associated with their 
+applications.    
+ 
+3. Diodes assumes no liability for any application-related information, support, assistance or feedback that may be provided by Diodes 
+from time to time. Any customer or user of this document or products described herein will assume all risks and liabilities associated with such 
+use, and will hold Diodes and all companies whose products are represented herein or on Diodes’ websites, harmless against all damages and 
+liabilities.   
+ 
+4. Products described herein may be covered by one or more United States, international or foreign patents and pending patent 
+applications. Product names and markings noted herein may also be covered by one or more United States, international or foreign trademarks 
+and trademark applications. Diodes does not convey any license under any of its intellectual property rights or the rights of any third parties 
+(including third parties whose products and services may be described in this document or on Diodes’ website) under this document.   
+ 
+5. Diodes’ products are provided subject to Diodes’ Standard Terms and Conditions of Sale 
+(https://www.diodes.com/about/company/terms-and-conditions/terms-and-conditions-of-sales/) or other applicable terms. This document does not 
+alter or expand the applicable warranties provided by Diodes. Diodes does not warrant or accept any liability whatsoever in respect of any 
+products purchased through unauthorized sales channel.   
+ 
+6. Diodes’ products and technology may not be used for or incorporated into any products or systems whose manufacture, use or sale is 
+prohibited under any applicable laws and regulations. Should customers or users use Diodes’ products in contravention of any applicable laws or 
+regulations, or for any unintended or unauthorized application, customers and users will (a) be solely responsible for any damages, losses or 
+penalties arising in connection therewith or as a result thereof, and (b) indemnify and hold Diodes and its representatives and agents harmless 
+against any and all claims, damages, expenses, and attorney fees arising out of, directly or indirectly, any claim relating to any noncompliance with 
+the applicable laws and regulations, as well as any unintended or unauthorized application. 
+ 
+7. While efforts have been made to ensure the information contained in this document is accurate, complete and current, it may contain 
+technical inaccuracies, omissions and typographical errors. Diodes does not warrant that information contained in this document is error-free and 
+Diodes is under no obligation to update or otherwise correct this information. Notwithstanding the foregoing, Diodes reserves the right to make 
+modifications, enhancements, improvements, corrections or other changes without further notice to this document and any product described 
+herein. This document is written in English but may be translated into multiple languages for reference. Only the English version of this document 
+is the final and determinative format released by Diodes. 
+ 
+8. Any unauthorized copying, modification, distribution, transmission, display or other use of this document (or any portion hereof) is 
+prohibited. Diodes assumes no responsibility for any losses incurred by the customers or users or any third parties arising from any such 
+unauthorized use. 
+ 
+9. This Notice may be periodically updated with the most recent version available at https://www.diodes.com/about/company/terms-and-
+conditions/important-notice 
+ 
+ 
+The Diodes logo is a registered trademark of Diodes Incorporated in the United States and other countries. 
+All other trademarks are the property of their respective owners. 
+© 2023 Diodes Incorporated. All Rights Reserved. 
+   
+www.diodes.com 
+ 
+ 
+ 
+ 

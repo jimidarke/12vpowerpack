@@ -1,0 +1,257 @@
+1
+Fuses UMT 250https://www.schurter.com /PG01_2
+Circuit Protection
+ 
+Surface Mount Fuse, 3 x 10.1 mm, Time-Lag T, 250 VAC, 125 VDC
+See below: 
+Approvals and CompliancesIEC 60127-4 · 250 VAC · up to 250 VDC · Time-Lag T
+Description
+- High current range from 80 mA to 10 A
+- High breaking capacity of 200 A @ 250 VAC (IEC)
+- UL approval for 277 VAC and 250 VDC
+- Impermeable to potting compound used to achieve hermetic seal for 
+use in intrinsically safe applications according to ATEx and IECEx re-
+quirements.
+Unique Selling Proposition
+- Compact design
+- Maximum breaking capacity at minimal footprint
+- Suitable for pulse-shaped continuous currents
+Applications
+- Primary protection on SMD PCBs
+- Medical Equipment
+- Battery protection
+References
+Fuse Kit  Fuse Kit UMT 250 / UMZ 250 
+Weblinks
+pdf data sheet, html datasheet, General Product Information, Distributor-
+Stock-Check, Detailed request for product, Microsite
+ Application Note Primary Protection in Equipmentwith further information on increased   Pulse Strength and their test conditions according to inter-
+national standards see   Impulse Withstand Voltage
+Technical Data
+Rated Voltage 250 VAC, up to 250 VDC
+Rated current 0.08 - 10 A
+Breaking Capacity 35 A - 200 A
+Characteristic Time-Lag T
+Mounting PCB,SMT
+Admissible Ambient Temp. -55 °C to 125 °C
+Climatic Category 55/125/21 acc. to IEC 60068-1
+Material: Housing Ceramic
+Material: Terminals Copper alloy, tin-plated
+Unit Weight 0.23 g
+Storage Conditions 0 °C to 60 °C, max. 70% r.h.
+Product Marking , Rated current, Voltage, Cha-
+racteristic, Breaking Capacity
+ 
+Soldering Methods Reflow, Wave 
+Soldering Profile
+Solderability 245 °C / 3 sec acc. to IEC 60068-2-58, 
+Test Td
+Resistance to Soldering Heat 260 °C / 10 sec acc. to IEC 60068-2-58
+Moisture Sensitivity Level MSL 1, J-STD-020 
+Moisture Sensitivity Level MIL-STD-202, Method 106 
+(50 cycles in a temp./mister chamber)
+Operational Time MIL-STD-202, Method 108 
+(1000h @ 0.42*In @ 70°C)
+Mechanical Shock MIL-STD-202, Method 213 Condition A
+Resistance to Solvents MIL-STD-202, Method 215
+Terminal Strength MIL-STD-202, Method 211A 
+(Deflection of board 1 mm for 1 minute)
+Approvals and Compliances
+Detailed information on product approvals, code requirements, usage instructions and detailed test conditions can be looked up in  Details about 
+Approvals 
+ 
+ 
+SCHURTER products are designed for use in industrial environments. They have approvals from independent testing bodies according to national 
+and international standards. Products with specific characteristics and requirements such as required in the automotive sector according to IATF 
+16949, medical technology according to ISO 13485 or in the aerospace industry can be offered exclusively with customer-specific, individual agree-
+ments by SCHURTER.
+2
+FusesUMT 250 https://www.schurter.com /PG01_2
+Circuit Protection
+Approvals
+The approval mark is used by the testing authorities to certify compliance with the safety requirements placed on electronic products. 
+Approval Reference Type: UMT 250
+Approval Logo Certificates Certification Body Description
+VDE Approvals VDE VDE Certificate Number: 40013121
+UL Approvals UL UL File Number: UL E300707
+UL Approvals UL UR File Number: UR E41599
+CQC Approvals CQC CQC Certificate Number: CQC11012062827
+KTL Approvals KTL Korea Testing Laboratory 
+METI Approvals METI Japan Electrical Safety and Environment technology Laboratories 
+Product standards
+Product standards that are referenced
+Organization Design Standard Description
+Designed according to IEC 60127-4/2 Miniature fuses. Part 4. Universal modular fuse-links for through-hole and 
+surface mount types
+Designed according to UL 248-14 Low voltage fuses - Part 14: Supplemental fuses
+Designed according to CSA22.2 No. 248.14 Low-Voltage Fuses - Part 14: Supplemental Fuses
+Application standards
+Application standards where the product can be used
+Organization Design Standard Description
+Suitable for applications acc. IEC/UL 62368-1 Audio/video, information and communication technology equipment - Part 
+1: Safety requirements
+Compliances
+The product complies with following Guide Lines
+Identification Details Initiator Description
+CE declaration of conformity SCHURTER AG The CE marking declares that the product complies with the applicable 
+requirements laid down in the harmonisation of Community legislation on 
+its affixing in accordance with EU Regulation 765/2008.
+UKCA declaration of conformity SCHURTER AG The UKCA marking declares that the product complies with the applicable 
+requirements laid down in the British Amendment of Regulation (EC) 
+765/2008.
+RoHS SCHURTER AG Directive RoHS 2011/65/EU, Amendment (EU) 2015/863
+China RoHS SCHURTER AG The law SJ / T 11363-2006 (China RoHS) has been in force since 1 March 
+2007. It is similar to the EU directive RoHS.
+REACH SCHURTER AG On 1 June 2007, Regulation (EC) No 1907/2006 on the Registration, 
+Evaluation, Authorization and Restriction of Chemicals 1 (abbreviated as 
+"REACH") entered into force.
+SCHURTER AG Universal Modular Fuse meets the standard IEC 60127-4
+AECQ200 Automotive SCHURTER AG AEC-Q200 is a test standard for passive components used in automotive applications. SCHURTER tests components according to the customer's 
+agreement and is certified according to IATF 16949.
+3
+Fuses UMT 250https://www.schurter.com /PG01_2
+Circuit Protection
+Dimension [mm]  10.1 mm
+ 
+10.1
+1.6 0.4 1.43
+3
+26.5
+3.75
+Soldering pads
+Derating CurvesPercentage of Rating [%]
+140
+120
+100
+80
+60
+40
+20
+-60  -40    -20      0         20        40        60        80       100      120
+23°C
+Ambient Temperature [°C]
+Pre-Arcing Time
+Rated Current In 1.0 x In min. 1.25 x In min. 2.0 x In max. 10.0 x In min. 10.0 x In max.
+0.08 A - 6.3 A - 60 min 120 s 10 ms 100 ms
+8 A - 10 A 4 h - 120 s 10 ms 100 ms
+4
+FusesUMT 250 https://www.schurter.com /PG01_2
+Circuit Protection
+Time-Current-CurvesTime in Seconds
+Current in Amperes 
+Variants
+ 
+Rated Cur-
+rent [A]
+Rated Vol-
+tage [VAC]
+Rated Vol-
+tage [VDC]
+Breaking 
+Capacity
+Voltage Drop 
+1.0 In max. 
+[mV]
+Voltage Drop 
+1.0 In typ. 
+[mV]
+Power Dissi-
+pation 1.25 In 
+max [mW]
+Melting I²t 
+10.0 In typ. 
+[A²s]
+Order Number
+0.08 250 250 6) - 1030 200 0.026 l  l  l l 3403.0155.11
+0.08 250 250 6) - 1030 200 0.026 l  l  l l 3403.0155.24
+0.1 250 125 1) 1300 870 200 0.04 l  l  l l 3403.0156.11
+0.1 250 125 1) 1300 870 200 0.04 l  l  l l 3403.0156.24
+0.125 250 125 1) 1000 700 200 0.056 l  l  l l 3403.0157.11
+0.125 250 125 1) 1000 700 200 0.056 l  l  l l 3403.0157.24
+0.16 250 250 6) 1000 540 240 0.056 l  l  l l 3403.0158.11
+0.16 250 250 6) 1000 540 240 0.056 l  l  l l 3403.0158.24
+0.2 250 125 1) 1000 460 500 0.128 l  l  l l 3403.0159.11
+0.2 250 125 1) 1000 460 500 0.128 l  l  l l 3403.0159.24
+0.25 250 125 1) 800 395 500 0.2 l  l  l l 3403.0160.11
+0.25 250 125 1) 800 395 500 0.2 l  l  l l 3403.0160.24
+0.315 250 125 1) 750 343 500 0.27 l l l  l l 3403.0161.11
+0.315 250 125 1) 750 343 500 0.27 l l l  l l 3403.0161.24
+0.4 250 125 1) 700 290 500 0.4 l l l  l l 3403.0162.11
+0.4 250 125 1) 700 290 500 0.4 l l l  l l 3403.0162.24
+0.5 250 125 1) 600 257 500 0.6 l l l  l l 3403.0163.11
+0.5 250 125 1) 600 257 500 0.6 l l l  l l 3403.0163.24
+0.63 250 125 1) 500 216 500 1.11 l l l  l l 3403.0164.11
+0.63 250 125 1) 500 216 500 1.11 l l l  l l 3403.0164.24
+0.8 250 125 1) 400 190 500 1.28 l l l  l l 3403.0165.11
+0.8 250 125 1) 400 190 500 1.28 l l l  l l 3403.0165.24
+1 250 125 2) 300 164 500 2.5 l l l l l l 3403.0166.11
+1 250 125 2) 300 164 500 2.5 l l l l l l 3403.0166.24
+1.25 250 125 2) 300 138 1000 4.38 l l l l l l 3403.0167.11
+1.25 250 125 2) 300 138 1000 4.38 l l l l l l 3403.0167.24
+1.6 250 125 2) 300 124 1000 5.89 l l l l l l 3403.0168.11
+1.6 250 125 2) 300 124 1000 5.89 l l l l l l 3403.0168.24
+5
+Fuses UMT 250https://www.schurter.com /PG01_2
+Circuit Protection
+Rated Cur-
+rent [A]
+Rated Vol-
+tage [VAC]
+Rated Vol-
+tage [VDC]
+Breaking 
+Capacity
+Voltage Drop 
+1.0 In max. 
+[mV]
+Voltage Drop 
+1.0 In typ. 
+[mV]
+Power Dissi-
+pation 1.25 In 
+max [mW]
+Melting I²t 
+10.0 In typ. 
+[A²s]
+Order Number
+2 250 125 2) 300 102 1000 7.2 l l l l l l 3403.0169.11
+2 250 125 2) 300 102 1000 7.2 l l l l l l 3403.0169.24
+2.5 250 125 2) 300 90 1200 16.8 l l l l l l 3403.0170.11
+2.5 250 125 2) 300 90 1200 16.8 l l l l l l 3403.0170.24
+3.15 250 125 2) 300 95 1500 11.6 l l l l l l 3403.0171.11
+3.15 250 125 2) 300 95 1500 11.6 l l l l l l 3403.0171.24
+4 250 125 2) 300 78 2000 25.6 l l l l l l 3403.0172.11
+4 250 125 2) 300 78 2000 25.6 l l l l l l 3403.0172.24
+5 250 125 3) 300 76 2500 37.5 l  l l l l 3403.0173.11
+5 250 125 3) 300 76 2500 37.5 l  l l l l 3403.0173.24
+6.3 250 125 3) 300 71 3000 67.5 l  l l l l 3403.0174.11
+6.3 250 125 3) 300 71 3000 67.5 l  l l l l 3403.0174.24
+8 250 125 4) 220 72 3000 115   l l   3403.0175.11
+8 250 125 4) 220 72 3000 115   l l   3403.0175.24
+10 250 125 4) 220 73 3500 170   l l   3403.0176.11
+10 250 125 4) 220 73 3500 170   l l   3403.0176.24
+Availability for all products can be searched real-time: https://www.schurter.com/en/info-center/support-tools/stock-check-distributors
+1) IEC: 200 A @ 250 VAC / 100 A @ 125 VDC
+1) UL: 200 A @ 277 VAC / 100 A @ 125 VDC / 35 A @ 250 VDC / 200 A @ 63 VAC/DC
+2) IEC: 200 A @ 250 VAC / 100 A @ 125 VDC
+2) UL: 200 A @ 277 VAC / 100 A @ 125 VDC / 35 A @ 250 VDC / 200 A @ 63 VAC/DC
+2) PSE: 100 A @ 250 VAC
+3) IEC: 100 A @ 250 VAC / 100 A @ 125 VDC
+3) UL: 100 A @ 250 VAC / 100 A @ 125 VDC / 35 A @ 250 VDC / 200 A @ 63 VAC/DC
+3) PSE: 100 A @ 250 VAC
+4) UL: 35 A @ 250 VAC / 35 A @ 125 VDC / 200 A @ 63 VAC/DC
+4) PSE: 100 A @ 250 VAC
+5) UL: 200 A @ 63 VAC / 200 A @ 63 VDC
+6) IEC: 200 A @ 250 VAC / 100 A @ 250 VDC
+6) UL: 200 A @ 277 VAC / 100 A @ 125 VDC / 35 A @ 250 VDC / 200 A @ 63 VAC/DC
+ 
+The 80 mA variant may not be to replace the 80 mA used with gold caps UMT (Au).
+Packaging Unit  
+acc. IEC 60286-3 Type 2a
+.xx = .11 100 pcs in ESD-plastic bag
+.xx = .24 2000 pcs. in tape [W: 24mm and P1: 8mm] on reel [A: 33cm]
+The specifications, descriptions and illustrations indicated in this document are based on current 
+information. All content is subject to modifications and amendments. Information furnished is believed 
+to be accurate and reliable. However, users should independently evaluate the suitability and test each 
+product selected for their own applications.
+21.07.2026

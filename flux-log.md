@@ -54,10 +54,11 @@ State of the Flux project against v3:
 - Credits spent to date on the root thread and its sub-threads: 20.9.
 
 ## Pending (v3)
-The v2 briefs are in `blocks/retired/`. The v3 briefs are not written yet; the planned order is in `plan.md`.
-- [ ] Block 0 — replace the Flux documents with v3 and remove the lithium parts
-- [ ] Block 1 — input protection, battery path and fuses
-- [ ] Block 2 — 5 V rail, USB-A, power control and the 12 V output switch
-- [ ] Block 3 — XIAO socket, sensing and temperature probe
-- [ ] Block 4 — whole-schematic check and price checkpoint
-- [ ] Block 5 — layout
+Capture is by hand in the Flux editor from `netlist.md` (owner's decision, 2026-11-13); no agent messages are planned until a final review. The v2 briefs are in `blocks/retired/`.
+- [ ] Owner: delete the 31 lithium parts and mark the v2 Flux documents superseded
+- [ ] Block A — input, battery path, current monitors (drawn by hand, checked with free reads)
+- [ ] Block B — 5 V rail, power control, 12 V output, USB, LED
+- [ ] Block C — controller socket and sensors
+- [ ] Whole-schematic check against `netlist.md` and price checkpoint
+- [ ] Optional: one agent review of the finished schematic
+- [ ] Layout

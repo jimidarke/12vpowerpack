@@ -4,7 +4,7 @@ A small in-vehicle UPS on one PCB: a 12 V sealed AGM battery floated on the car'
 
 ## Status
 
-Design phase. The requirements and architecture were cut back to this vehicle-only design (v3) on 2026-11-13; the capture briefs for it are not written yet, and nothing has been built or tested. Values marked **[TBC]** in `architecture.md` are still to be confirmed. The earlier two-chemistry design (v2) is in git at tag `v0.2.1`.
+Design phase. The requirements and architecture were cut back to this vehicle-only design (v3) on 2026-11-13; the parts are chosen and the net table for drawing the schematic is written, but nothing has been captured, built or tested. Values marked **[TBC]** in `architecture.md` are still to be confirmed. The earlier two-chemistry design (v2) is in git at tag `v0.2.1`.
 
 ## Specification
 
@@ -13,7 +13,7 @@ Design phase. The requirements and architecture were cut back to this vehicle-on
 - **12 V output:** unregulated, about 10.9–14.8 V, 3 A continuous with 5 A peaks, 5.5 mm barrel jack.
 - **5 V output:** 2 A USB-A with charging-port signature.
 - **Power control:** outputs stay on for an adjustable time after ignition-off (a firmware setting, default 30 min; 0 = no timeout), then everything switches off until the ignition returns. A hardware low-voltage cutoff near 11.0 V protects the battery.
-- **Monitoring:** socketed Seeed XIAO ESP32-C6 running ESPHome, reporting car voltage, battery voltage, battery temperature, and power in and out from two INA226 current monitors. No display.
+- **Monitoring:** socketed Seeed XIAO ESP32-C6 running ESPHome, reporting car voltage, battery voltage, battery temperature, and power in and out from two INA226 current monitors. One RGB status LED. No display.
 - **Safety:** fuses, the charge limit, reverse-polarity blocking and the low-voltage cutoff are hardware. The board stays safe with the ESP32 removed.
 - **Environment:** parts rated −40 to 85 °C.
 
@@ -45,6 +45,7 @@ Car 12 V in ─ fuse ─ TVS ─ ideal diode ─ SYS ─┬─ switch ─ fuse �
 |---|---|
 | [`requirements.md`](requirements.md) | What the board must do |
 | [`architecture.md`](architecture.md) | Block diagram, net names, values, power control, ESP32 pin map, connectors |
+| [`netlist.md`](netlist.md) | Pin-by-pin net table for drawing the schematic |
 | [`plan.md`](plan.md) | Part-choice reasoning, cost estimate, capture plan, bench test plan |
 | [`blocks/`](blocks) | Capture briefs, one per schematic block; `retired/` holds the v2 briefs |
 | [`datasheets/`](datasheets) | Text extracts of the datasheets the values were taken from |

@@ -1,0 +1,490 @@
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+Document number: DS19003 Rev. 20 - 2 
+1 of 6 
+www.diodes.com  
+June 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+ 
+ 
+ 
+1500W SURFACE-MOUNT TRANSIENT VOLTAGE SUPPRESSOR 
+ 
+Features 
+ 1500W Peak Pulse Power Dissipation 
+ 5.0V to 200V Standoff Voltages 
+ Glass Passivated Die Construction 
+ Unidirectional and Bidirectional Versions Available 
+ Excellent Clamping Capability 
+ Fast Response Time 
+ Lead-Free Finish; RoHS Compliant (Notes 1 & 2) 
+ Halogen and Antimony Free. “Green” Device (Note 3) 
+ An automotive-compliant part is available under separate 
+datasheet (SMCJ5.0(C)AQ – SMCJ110(C)AQ) 
+ 
+Mechanical Data 
+ Package: SMC  
+ Package Material:  Molded Plastic. UL Flammability 
+Classification Rating 94V-0 
+ Moisture Sensitivity: Level 1 per J-STD-020 
+ Terminals: Lead-Free Plating (Matte Tin Finish). Solderable per 
+MIL-STD-202, Method 208 
+ Polarity Indicator: Cathode Band (Note: Bidirectional devices 
+have no polarity indicator.) 
+ Weight: 0.21 grams (Approximate) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Ordering Information (Notes 4 & 5) 
+Part Number Package Packing Qty. Carrier 
+SMCJX.X(C)A-13-F  SMC 3000 Tape & Reel 
+SMCJXX(C)A-13-F SMC 3000 Tape & Reel 
+SMCJXXX(C)A-13-F SMC 3000 Tape & Reel 
+*X = Device Voltage, e.g., SMCJ170A-13-F. 
+Notes: 1. EU Directive 2002/95/EC (RoHS), 2011/65/EU (RoHS 2) & 2015/863/EU (RoHS 3) compliant. All applicable RoHS exemptions applied. 
+ 2. See https://www.diodes.com/quality/lead-free/ for more information about Diodes Incorporated’s definitions of Halogen- and Antimony-free, "Green" and 
+Lead-free. 
+ 3. Halogen- and Antimony-free "Green” products are defined as those which contain <900ppm bromine, <900ppm chlorine (<1500ppm total Br + Cl) and  
+        <1000ppm antimony compounds. 
+4. For packaging details, go to our website at https://www.diodes.com/design/support/packaging/diodes-packaging/. 
+5. Product manufactured with Date Code 0924 (week 24, 2009) and newer are built with Green Molding Compound. 
+ 
+ 
+ 
+Marking Information 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+Top View Bottom View 
+xxx = Product Type Marking Code (See Page 3) 
+       = Manufacturers’ Code Marking 
+YWW = Date Code Marking 
+Y = Last Digit of Year (ex: 3 for 2023) 
+WW = Week Code (01 to 53) 
+ 
+ 
+  YWW
+xxx
+ 
+SMC 
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+Document number: DS19003 Rev. 20 - 2 
+2 of 6 
+www.diodes.com  
+June 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+ 
+ 
+ 
+ 
+ 
+Maximum Ratings (@TA = +25°C, unless otherwise specified.)  
+Characteristic Symbol Value Unit 
+Peak Pulse Power Dissipation 
+(Non-Repetitive Current Pulse Derated Above TA = +25°C)         (Note 6) PPK 1500 W 
+Peak Forward Surge Current,  
+8.3ms Single Half Sine Wave Superimposed on Rated Load   (Notes 6, 7, 8)                                                                                                                                            IFSM 200 A 
+Steady-State Power Dissipation @ TL = +75°C PM(AV) 5.0 W 
+Instantaneous Forward Voltage @ IPP = 100A                          (Notes 6 & 8) VF See Note 9 V 
+ 
+ 
+ 
+Thermal Characteristics    
+Characteristic Symbol Value Unit 
+Operating Temperature Range TJ -55 to +150 °C 
+Storage Temperature Range TSTG -55 to +175 °C 
+Notes: 6. Valid provided that terminals are kept at ambient temperature. 
+7. Measured with 8.3ms single half sine wave. Duty cycle = 4 pulses per minute maximum. 
+8. Unidirectional units only. 
+  9. VF = 3.5V for SMCJ5.0A through SMCJ90A, and VF = 5.0V for SMCJ100A through SMCJ200A.  
+  
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+Document number: DS19003 Rev. 20 - 2 
+3 of 6 
+www.diodes.com  
+June 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+ 
+ 
+ 
+ 
+ 
+Electrical Characteristics (@TA = +25°C, unless otherwise specified.) 
+Part Number 
+Add C For 
+Bidirectional 
+(Note 10) 
+Reverse 
+Standoff 
+Voltage 
+Breakdown 
+Voltage 
+VBR @ IT (Note 11) 
+Test 
+Current 
+Max Reverse 
+Leakage @ 
+VRWM (Note 12) 
+Max Clamping 
+Voltage @ IPP 
+Max Peak Pulse 
+Current IPP Marking Code 
+VRWM (V) Min (V) Max (V) IT (mA) IR (µA) VC (V) (A) BI UNI 
+SMCJ5.0(C)A 5.0 6.40 7.07 10 1000 9.2 163.0 BDE GDE 
+SMCJ6.0(C)A 6.0 6.67 7.37 10 1000 10.3 145.6 BDG GDG 
+SMCJ6.5(C)A 6.5 7.22 7.98 10 500 11.2 133.9 BDK GDK 
+SMCJ7.0(C)A 7.0 7.78 8.60 10 200 12.0 125.0 BDM GDM 
+SMCJ7.5(C)A 7.5 8.33 9.21 1.0 100 12.9 116.3 BDP GDP 
+SMCJ8.0(C)A 8.0 8.89 9.83 1.0 50 13.6 110.3 BDR GDR 
+SMCJ8.5(C)A 8.5 9.44 10.4 1.0 20 14.4 104.2 BDT GDT 
+SMCJ9.0(C)A 9.0 10.00 11.1 1.0 10 15.4 97.4 BDV GDV 
+SMCJ10(C)A 10.0 11.10 12.3 1.0 5.0 17.0 88.2 BDX GDX 
+SMCJ11(C)A 11.0 12.20 13.5 1.0 5.0 18.2 82.4 BDZ GDZ 
+SMCJ12(C)A 12.0 13.30 14.7 1.0 5.0 19.9 75.3 BEE GEE 
+SMCJ13(C)A 13.0 14.40 15.9 1.0 5.0 21.5 69.7 BEG GEG 
+SMCJ14(C)A 14.0 15.60 17.2 1.0 5.0 23.2 64.7 BEK GEK 
+SMCJ15(C)A 15.0 16.70 18.5 1.0 5.0 24.4 61.5 BEM GEM 
+SMCJ16(C)A 16.0 17.80 19.7 1.0 5.0 26.0 57.7 BEP GEP 
+SMCJ17(C)A 17.0 18.90 20.9 1.0 5.0 27.6 53.3 BER GER 
+SMCJ18(C)A 18.0 20.00 22.1 1.0 5.0 29.2 51.4 BET GET 
+SMCJ20(C)A 20.0 22.20 24.5 1.0 5.0 32.4 46.3 BEV GEV 
+SMCJ22(C)A 22.0 24.40 27.0 1.0 5.0 35.5 42.2 BEX GEX 
+SMCJ24(C)A 24.0 26.70 29.5 1.0 5.0 38.9 38.6 BEZ GEZ 
+SMCJ26(C)A 26.0 28.90 31.9 1.0 5.0 42.1 35.6 BFE GFE 
+SMCJ28(C)A 28.0 31.10 34.4 1.0 5.0 45.4 33.0 BFG GFG 
+SMCJ30(C)A 30.0 33.30 36.8 1.0 5.0 48.4 31.0 BFK GFK 
+SMCJ33(C)A 33.0 36.70 40.6 1.0 5.0 53.3 28.1 BFM GFM 
+SMCJ36(C)A 36.0 40.00 44.2 1.0 5.0 58.1 25.8 BFP GFP 
+SMCJ40(C)A 40.0 44.40 49.1 1.0 5.0 64.5 23.2 BFR GFR 
+SMCJ43(C)A 43.0 47.80 52.8 1.0 5.0 69.4 21.6 BFT GFT 
+SMCJ45(C)A 45.0 50.00 55.3 1.0 5.0 72.7 20.6 BFV GFV 
+SMCJ48(C)A 48.0 53.30 58.9 1.0 5.0 77.4 19.4 BFX GFX 
+SMCJ51(C)A 51.0 56.70 62.7 1.0 5.0 82.4 18.2 BFZ GFZ 
+SMCJ54(C)A 54.0 60.00 66.3 1.0 5.0 87.1 17.2 BGE GGE 
+SMCJ58(C)A 58.0 64.40 71.2 1.0 5.0 93.6 16.0 BGG GGG 
+SMCJ60(C)A 60.0 66.70 73.7 1.0 5.0 96.8 15.5 BGK GGK 
+SMCJ64(C)A 64.0 71.10 78.6 1.0 5.0 103.0 14.6 BGM GGM 
+SMCJ70(C)A 70.0 77.80 86.0 1.0 5.0 113.0 13.3 BGP GGP 
+SMCJ75(C)A 75.0 83.30 92.1 1.0 5.0 121.0 12.4 BGR GGR 
+SMCJ78(C)A 78.0 86.70 95.8 1.0 5.0 126.0 11.4 BGT GGT 
+SMCJ85(C)A 85.0 94.40 104 1.0 5.0 137.0 10.4 BGV GGV 
+SMCJ90(C)A 90.0 100.00 111 1.0 5.0 146.0 10.3 BGX GGX 
+SMCJ100(C)A 100.0 111.00 123 1.0 5.0 162.0 9.3 BGZ GGZ 
+SMCJ110(C)A 110.0 122.00 135 1.0 5.0 177.0 8.4 BHE GHE 
+SMCJ120(C)A 120.0 133.00 147 1.0 5.0 193.0 7.9 BHG GHG 
+SMCJ130(C)A 130.0 144.00 159 1.0 5.0 209.0 7.2 BHK GHK 
+SMCJ150(C)A 150.0 167.00 185 1.0 5.0 243. 0 6.2 BHM GHM 
+SMCJ160(C)A 160.0 178.00 197 1.0 5.0 259. 0 5.8 BHP GHP 
+SMCJ170(C)A 170.0 189.00 209 1.0 5.0 275.0 5.5 BHR GHR 
+SMCJ200(C)A 200.0 224.00 248 1.0 1.0 324.0 4.6 BHV GHV 
+Notes: 10. Suffix C denotes bidirectional device.  
+11. VBR measured with IT current pulse = 10 to 15ms.  
+12. For bidirectional devices having VRWM of 10V and under, the IR is doubled. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+Document number: DS19003 Rev. 20 - 2 
+4 of 6 
+www.diodes.com  
+June 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+  
+10 X 1000 Waveform
+as defined by REA
+0 25 50 75 100 125 150 175 200
+100
+75
+50
+25
+0
+T , AMBIENT TEMPERATURE ( C)
+Fig. 1  Pulse Derating Curve
+A °
+PEAK PULSE DERATING IN % OF
+PEAK POWER OR CURRENT
+1 10 100 1,000
+10
+100
+1,000
+10,000
+V , REVERSE STANDOFF VOLTAGE (V)
+Fig. 2  Typical Total Capacitance
+RWM
+C , CAPACITANCE (pF)T
+Measured at
+zero bias
+Unidirectional
+Bidirectional
+T  = 25 Cj °
+f = 1.0 MHz
+V  = 50 mV p-psig
+0.1 1.0
+0.1
+10 100
+1.0
+10
+1,000 10,000
+T  = 25 Cj °
+P , PEAK PULSE POWER (kW)d
+100
+Non repetitive
+pulse waveform
+shown in Fig. 4
+I , PEAK PULSE CURRENT (%I )P pp
+t, TIME (ms)
+Fig. 4  Pulse Waveform
+10
+200
+100
+2 105
+PEAK FORWARD SURGE CURRENT, (A)
+NUMBER OF CYCLES AT 60Hz
+Fig. 5,  Maximum Non-Repetitive Surge Current
+20 50 1001
+0.0
+1.0
+2.0
+3.0
+0 25 50 75 100 125 150 175 200
+PM  STEADY STATE POWER DISSIPATION (W)(AV),
+T , LEAD TEMPERATURE ( C)
+Fig. 6  Steady State Power Derating Curve
+L °
+4.0
+5.0
+Figure 1. Pulse Derating Curve Figure 2. Typical Total Capacitance 
+Figure 3. Pulse Rating Curve 
+Figure 4. Pulse Waveform 
+Figure 5. Maximum Non-Repetitive Surge Current Figure 6. Steady-State Power Derating Curve  
+PD, 
+STEADY-STATE POWER DISSIPATION (W) 
+TJ = 25°C 
+TJ = 25°C 
+Non-repetitive 
+pulse waveform 
+shown in Figure 4 
+Pulse width 8.3ms 
+single half sine wave 
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+Document number: DS19003 Rev. 20 - 2 
+5 of 6 
+www.diodes.com  
+June 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+ 
+ 
+ 
+ 
+ 
+Package Outline Dimensions 
+Please see http://www.diodes.com/package-outlines.html for the latest version. 
+ 
+ 
+SMC 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Suggested Pad Layout 
+Please see http://www.diodes.com/package-outlines.html for the latest version. 
+ 
+ 
+SMC 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+SMC 
+Dim Min Max 
+A 5.59 6.22 
+B 6.60 7.11 
+C 2.75 3.18 
+D 0.15 0.31 
+E 7.75 8.13 
+G 0.10 0.20 
+H 0.76 1.52 
+J 2.00 2.50 
+All Dimensions in mm 
+Dimensions Value (in mm) 
+C 6.90 
+G 4.40 
+X 2.50 
+X1 9.40 
+Y 3.30 
+A
+B
+C
+D
+GH
+E
+J
+X1
+Y
+C
+G
+X
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+Document number: DS19003 Rev. 20 - 2 
+6 of 6 
+www.diodes.com  
+June 2023 
+© 2023 Copyright Diodes Incorporated. All Rights Reserved. 
+ 
+SMCJ5.0(C)A – SMCJ200(C)A 
+ 
+ 
+ 
+ 
+ 
+ 
+IMPORTANT NOTICE 
+ 
+1. DIODES INCORPORATED (Diodes) AND ITS SUBSIDIARIES MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH 
+REGARDS TO ANY INFORMATION CONTAINED IN THIS DOCUMENT, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY 
+RIGHTS (AND THEIR EQUIVALENTS UNDER THE LAWS OF ANY JURISDICTION).   
+ 
+2. The Information contained herein is for informational purpose only and is provided only to illustrate the operation of Diodes’ products 
+described herein and application examples. Diodes does not assume any liability arising out of the application or use of this document or any 
+product described herein. This document is intended for skilled and technically trained engineering customers and users who design with Diodes’ 
+products. Diodes’ products may be used to facilitate safety-related applications; however, in all instances customers and users are responsible for 
+(a) selecting the appropriate Diodes products for their applications, (b) evaluating the suitability of Diodes’ products for their intended applications, 
+(c) ensuring their applications, which incorporate Diodes’ products, comply the applicable legal and regulatory requirements as well as safety and 
+functional-safety related standards, and (d) ensuring they design with appropriate safeguards (including testing, validation, quality control 
+techniques, redundancy, malfunction prevention, and appropriate treatment for aging degradation) to minimize the risks associated with their 
+applications.    
+ 
+3. Diodes assumes no liability for any application-related information, support, assistance or feedback that may be provided by Diodes 
+from time to time. Any customer or user of this document or products described herein will assume all risks and liabilities associated with such 
+use, and will hold Diodes and all companies whose products are represented herein or on Diodes’ websites, harmless against all damages and 
+liabilities.   
+ 
+4. Products described herein may be covered by one or more United States, international or foreign patents and pending patent 
+applications. Product names and markings noted herein may also be covered by one or more United States, international or foreign trademarks 
+and trademark applications. Diodes does not convey any license under any of its intellectual property rights or the rights of any third parties 
+(including third parties whose products and services may be described in this document or on Diodes’ website) under this document.   
+ 
+5. Diodes’ products are provided subject to Diodes’ Standard Terms and Conditions of Sale 
+(https://www.diodes.com/about/company/terms-and-conditions/terms-and-conditions-of-sales/) or other applicable terms. This document does not 
+alter or expand the applicable warranties provided by Diodes. Diodes does not warrant or accept any liability whatsoever in respect of any 
+products purchased through unauthorized sales channel.   
+ 
+6. Diodes’ products and technology may not be used for or incorporated into any products or systems whose manufacture, use or sale is 
+prohibited under any applicable laws and regulations. Should customers or users use Diodes’ products in contravention of any applicable laws or 
+regulations, or for any unintended or unauthorized application, customers and users will (a) be solely responsible for any damages, losses or 
+penalties arising in connection therewith or as a result thereof, and (b) indemnify and hold Diodes and its representatives and agents harmless 
+against any and all claims, damages, expenses, and attorney fees arising out of, directly or indirectly, any claim relating to any noncompliance with 
+the applicable laws and regulations, as well as any unintended or unauthorized application. 
+ 
+7. While efforts have been made to ensure the information contained in this document is accurate, complete and current, it may contain 
+technical inaccuracies, omissions and typographical errors. Diodes does not warrant that information contained in this document is error-free and 
+Diodes is under no obligation to update or otherwise correct this information. Notwithstanding the foregoing, Diodes reserves the right to make 
+modifications, enhancements, improvements, corrections or other changes without further notice to this document and any product described 
+herein. This document is written in English but may be translated into multiple languages for reference. Only the English version of this document 
+is the final and determinative format released by Diodes. 
+ 
+8. Any unauthorized copying, modification, distribution, transmission, display or other use of this document (or any portion hereof) is 
+prohibited. Diodes assumes no responsibility for any losses incurred by the customers or users or any third parties arising from any such 
+unauthorized use. 
+ 
+9. This Notice may be periodically updated with the most recent version available at https://www.diodes.com/about/company/terms-and-
+conditions/important-notice 
+ 
+ 
+The Diodes logo is a registered trademark of Diodes Incorporated in the United States and other countries. 
+All other trademarks are the property of their respective owners. 
+© 2023 Diodes Incorporated. All Rights Reserved. 
+   
+www.diodes.com 
+ 
+ 
+ 
+ 
+ 
