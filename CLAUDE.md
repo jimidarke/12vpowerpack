@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-A design-brief repository for a 12 V power manager PCB. There is no code, build, lint or test step. The schematic and layout live in Flux (project `jimidarke/12v-power-manager`, reached through the `flux` MCP server); this folder holds the research and the messages sent to the Flux agent.
+A design-brief repository for a 12 V in-vehicle UPS PCB (12 V AGM battery, pass-through 12 V output, 5 V USB output). There is no code, build, lint or test step. The schematic and layout live in Flux (project `jimidarke/12v-power-manager`, reached through the `flux` MCP server); this folder holds the research and the messages sent to the Flux agent.
 
 The remote is named `12vpowerpack`; the local folder is `powerBoard`.
 
@@ -21,25 +21,26 @@ Research here, capture in Flux. Messaging the Flux agent costs credits; reading 
 
 ## How the documents fit together
 
-- `requirements.md` is the spec (v2). It replaces the Flux document `project-specification`.
-- `architecture.md` is the single source for net names, the build-variant table, resistor values, the I2C map, the ESP32 pin map and connectors. Block briefs refer to it and must stay consistent with it.
-- `blocks/NN-name.md` is one Flux message each, sent in numeric order: goal, parts with MPN and Flux library UID, verified datasheet facts, connections, "Done when", open items.
+- `requirements.md` is the spec (v3, vehicle-only). The Flux documents still describe v2 until they are replaced (see `flux-log.md`).
+- `architecture.md` is the single source for net names, resistor values, the power-control scheme, the ESP32 pin map, connectors and fuses. Block briefs refer to it and must stay consistent with it.
+- `blocks/NN-name.md` is one Flux message each, sent in numeric order: goal, parts with MPN and Flux library UID, verified datasheet facts, connections, "Done when", open items. `blocks/retired/` holds the v2 briefs (lithium, charger, PD, 12 V converter); do not send them.
 - `datasheets/*.txt` are text extracts of the TI datasheets. They are large (100–370 KB each), so search them instead of reading them whole.
-- `plan.md` holds the part-choice reasoning, fallbacks, price target, cut list and bench verification plan.
+- `plan.md` holds the part-choice reasoning, cost estimate, capture plan and bench verification plan.
 
 Values in `architecture.md` carry a status tag: **[DS]** read in a datasheet extract, **[calc]** arithmetic from datasheet values, **[TBC]** to confirm before capture. Keep the tags when editing, cite the datasheet section or table for any new **[DS]** value, and resolve **[TBC]** items against `datasheets/` before the block that depends on them is sent.
 
 ## Design invariants
 
-- One PCB, two builds fixed at assembly: lithium (4S1P, BQ25750, BQ7791502 protector fitted) or lead-acid (12 V AGM, BQ25751, protector section DNP with a 0 Ω link `B-` to `GND`). Any change must state its effect on both builds.
-- Safety never depends on the ESP32. Charge voltage, current limits, protection and the 12 V setpoint are resistor-set; the socketed XIAO ESP32-C6 (ESPHome) only monitors, displays and switches the 12 V output.
-- In the lithium build `B-` and `GND` are different nets, joined only through the sense resistor and protection FETs. Nothing else connects to `B-`.
-- Lead-acid build parts must be rated −40 to 85 °C or better. The lithium build does not charge below 0 °C.
-- Target is ≤ $110 per board at a batch of about 12. The price checkpoint and cut list are applied after block 7.
+- One build: vehicle-only, 12 V sealed AGM. No lithium variant, no charger IC, no USB-C PD input, no 12 V converter, no display. The v2 two-build design is in git at tag `v0.2.1`.
+- Safety never depends on the ESP32. Fuses, the charge-limit resistor, reverse-polarity and backfeed blocking and the low-voltage cutoff are hardware; the socketed XIAO ESP32-C6 (ESPHome) only times the ignition-off hold-up (a firmware setting), reports voltages, temperature and power in/out, and can switch the 12 V output off.
+- The battery never feeds back into the car input, and the input is a vehicle charging system only (no mains adapters: there is no charge regulation).
+- The low-voltage cutoff covers both outputs and latches off until the ignition returns.
+- All parts must be rated −40 to 85 °C or better.
+- Target is ≤ C$110 per board at a batch of about 12. Quote prices in CAD. The price checkpoint is applied after the whole-schematic check.
 
 ## Related project
 
-The lead-acid build's first use is the carNet in-car UPS, a separate project at `/home/jimi/code/carNet`.
+The board's first use is the carNet in-car UPS, a separate project at `/home/jimi/code/carNet`.
 
 ## Versioning
 

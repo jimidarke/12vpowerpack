@@ -1,4 +1,12 @@
-0.2.1
+0.3.0
+
+## 0.3.0
+- Requirements and architecture v3: vehicle-only 12 V AGM unit, battery floated on the car feed through a charge resistor
+- Dropped: lithium build, charger IC, USB-C PD input, 12 V converter, display
+- 12 V output unregulated (3 A continuous, 5 A peak); hardware low-voltage cutoff from the 5 V buck's enable and power-good pins
+- XIAO ESP32-C6 kept for the adjustable ignition-off timer, voltage and battery temperature reporting
+- Two INA226 current monitors: power in from the car feed and power out to the loads
+- v2 block briefs moved to `blocks/retired/`; Flux log: second block 1 run and the scope change recorded
 
 ## 0.2.1
 - Block 1 brief: AVDD capacitor, CTRC/CTRD tied to VSS, protected CHG gate network with 16 V Zener

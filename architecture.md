@@ -1,95 +1,125 @@
-# Power board — architecture
+# Power board — architecture (v3)
 
 Status key: **[DS]** read in the datasheet extract in `datasheets/`; **[calc]** my arithmetic from DS values; **[TBC]** to confirm before capture.
+
+v3 is the vehicle-only design: one build, 12 V AGM, no charger IC, no USB-C PD input, no 12 V converter, no display. The v2 architecture is in git at tag `v0.2.1`.
 
 ## Block diagram
 
 ```
-J_CAR ─ F1 ─ TVS ─ ideal diode (LM74700-Q1) ─┐
-                                             ├─ VIN ─ ACFETs ─┬─ SYS ─┬─ U_12V TPS552882 ─ INA226 ─ F_OUT ─ J_12V barrel
-J_USBC_IN ─ TPS25730 (20 V) ─ ideal diode ───┘                │       └─ U_5V LMR33630 ─ INA226 ─ TPS2514A ─ J_USBA
-                                              buck-boost stage (4 FETs, L)        └─ D ─ XIAO 5V pin
-                                                              │
-                                                    RBAT_SNS ─ BATFETs ─ VBAT
-   Lithium build:  VBAT = PACK+ ; PACK− ─ CHG/DSG FETs ─ RSNS ─ B− ; BQ77915 on cell taps
-   Lead-acid build: VBAT = SLA+ via fuse ; SLA− = GND ; protector section DNP
+J_CAR ─ F_IN ─ TVS ─ VIN_CAR ─ U_OR1 (LM74700-Q1 + Q_OR1) ─ SYS_IN ─ R_SNS_IN ─ SYS
+
+SYS ─┬─ R_SNS_OUT ─ LOAD ─┬─ Q_OUT (P-FET) ─ F_OUT ─ J_12V barrel
+     │                    └─ U_5V LMR33630 ─ 5V ─┬─ TPS2514A ─ J_USBA
+     │                                           └─ D ─ XIAO 5V pin
+     ├─ F_CHG ─ R_CHG ──────────────┐   (charge)
+     └─ U_OR2 (LM74700-Q1 + Q_OR2) ─┤   (discharge: anode VBAT, cathode SYS)
+                                  VBAT ─ F_BAT ─ J_SLA
 ```
 
+- Ignition on: `SYS` follows the car feed. The loads run from the car; the battery charges through R_CHG.
+- Ignition off: U_OR1 blocks, `SYS` falls to the battery voltage and U_OR2 conducts. The loads run from the battery.
+- The car feed and the battery can share a load if the feed sags under it. Nothing needs them kept apart.
+
 ## Net names
-`VIN_CAR`, `VIN_PD`, `VIN` (OR'ed, charger VAC), `SYS`, `VBAT`, `B-` (lithium cell-stack negative), `GND` (= PACK−), `C1` `C2` `C3` (cell taps), `B+`, `12V_OUT`, `5V`, `3V3` (from the XIAO), `SDA`, `SCL`, `NTC_BAT`.
+`VIN_CAR` (after F_IN and the TVS, car side of U_OR1), `SYS_IN` (U_OR1 output, before the input shunt), `SYS`, `LOAD` (after the output shunt), `VBAT`, `12V_OUT`, `5V`, `3V3` (from the XIAO), `EN_SRC`, `EN_5V`, `OUT_EN`, `HOLD`, `VCAR_SENSE`, `VBAT_SENSE`, `TEMP_DQ`, `SDA`, `SCL`, `GND`.
 
-Lithium rule: `B-` and `GND` are different nets, joined only through the sense resistor and protection FETs. `B-` connects only to the cell-stack negative (J_PACK, J_BAL pin 1), the sense resistor, and the BQ77915's own VSS-referenced pins, filters and thermistor. No load, charger, converter, monitor or connector return may use `B-`.
+## Input protection
+- F_IN 10 A, ≥ 32 V DC. Car-feed current is about 5 A continuous and 7 A at the output peak (requirements, sizing figures) **[calc]**.
+- TVS on `VIN_CAR`: stand-off ≥ 16 V, clamp ≤ 36 V at the surge current. 36 V is the LMR33630's operating maximum and 38 V its absolute maximum **[DS LMR33630 §7.1, §7.3]**. Part **[TBC]**.
+- U_OR1, LM74700-Q1 with an external N-FET: blocks reverse polarity on J_CAR and stops the battery feeding the car. 3.2–65 V input, −65 V reverse rating, 20 mV regulated forward drop **[DS LM74700-Q1 features, §6.1]**. Q_OR1 ≥ 40 V, ≤ 10 mΩ **[TBC part]**.
 
-## Build variants
+## Battery path
+- **Discharge:** U_OR2, a second LM74700-Q1 with Q_OR2, anode on `VBAT`, cathode on `SYS`. Carries up to 4 A continuous, 6 A peak **[calc]**. An ideal diode instead of a Schottky so the 12 V output does not lose 0.4 V and nothing runs hot. Q_OR2 as Q_OR1.
+- **Charge:** F_CHG then R_CHG from `SYS` to `VBAT`. R_CHG 3.3 Ω **[calc]**:
 
-| Item | Lithium | Lead-acid |
+| Battery voltage (feed at 14.4 V) | Charge current | Power in R_CHG |
 |---|---|---|
-| U_CHG | BQ25750 | BQ25751 (pin-identical, 36-VQFN) **[DS: pin tables match]** |
-| FB divider, RTOP 249 kΩ **[DS §9.2 uses 249 kΩ]** | RBOT 24.9 kΩ + 499 Ω → 16.59 V (4.15 V/cell, under the protector's 4.20 V trip with tolerance) **[calc]** | RBOT 32.4 kΩ → float 13.34 V, absorb 109.1 % = 14.55 V at 25 °C **[DS Table 7-3, calc]** |
-| RICHG (KICHG = 50 A·kΩ, 5 mΩ sense) **[DS]** | 33.2 kΩ → 1.5 A | 49.9 kΩ → 1.0 A (raise for batteries ≥ 7 Ah) |
-| Temperature | Charger TS: JEITA window with 103AT to `GND` (J_NTC). Protector TS: a second 103AT to `B-` (J_NTC_BMS) **[DS BQ77915 Table 6-1 note 1: thermistor from TS to VSS]**; the two cannot share one thermistor because `B-` and `GND` are different nets | TS: 103AT on the battery; −3 mV/°C/cell compensation; charge suspended below T1 (0 °C with the standard network) **[DS §7.3.4.5.1, EC table]** |
-| Protector section (BQ77915, 2 FETs, shunt, cell filters) | fitted | DNP; 0 Ω link `B-`→`GND` |
-| Battery connector | XT30 + JST-XH-5 + 2× JST-XH-2 (charger NTC, protector NTC) | fused screw terminal or XT60 + JST-XH-2 (NTC) |
+| 12.6 V (after a normal stop) | 0.55 A | 1.0 W |
+| 11.0 V (at the low-voltage cutoff) | 1.0 A | 3.5 W |
+| 10.5 V (one shorted cell) | 1.2 A | 4.6 W |
 
-**[TBC]** BQ25751 cold cutoff for the car: T1 is a ratio of REGN (73.25 %), so the TS divider can move it below 0 °C; check the effect on compensation accuracy, or accept "no charge below 0 °C until the trunk warms". Decide in block 3.
-**[TBC]** Whether temperature compensation is on by default with no I2C host (Table 7-3 lists it under default settings; confirm the register reset value).
-
-## Input window (both builds) **[calc from DS §9.2.1.2.1: VREF_ACUV 1.1 V, VREF_ACOV 1.2 V]**
-RAC1 1 MΩ, RAC2 52.3 kΩ, RAC3 53.6 kΩ →
-- input disconnect (falling) 11.5 V, charge throttles to hold input ≥ 12.5 V, over-voltage cutoff 24.8 V.
-- Effect: charges only from a running alternator (≥ 12.5 V) or USB-C 20 V; cranking dips hand over to the battery.
-
-Input current limit, one value for both sources and both builds: RAC_SNS 5 mΩ, RILIM 6.65 kΩ → 3.0 A. KILIM = 50 A·kΩ is defined for a 2 mΩ sense resistor and scales by 2/RAC_SNS, so 50 × 2/5 / 6.65 = 3.01 A **[DS BQ25750 §9.2.1.2.7, calc]**. 5 mΩ is chosen over 2 mΩ for accuracy at this current (15 mV sense at 3 A); it dissipates 0.125 W at 5 A **[calc]**. Fits a 65 W USB-C source at 20 V.
-
-What the limit does **[DS BQ25750 §8.3.5.1, BQ25751 §7.3.5.1]**:
-- It throttles charging only. When input current reaches 3 A the charger reduces charge current, down to zero. It cannot limit the load, because `SYS` is connected straight to the input through the ACFETs.
-- A load above the limit is not interrupted; the input simply carries more than 3 A with charging at zero.
-- If the source sags below the 11.5 V disconnect, the charger stops and the battery powers `SYS`. Input and battery never supply the load together.
-- Effect on the car feed (13.5 V, 40 W at the limit) **[calc]**: lithium charges at full rate up to about 12 W of load and not at all near 36 W; lead-acid charges at full rate up to about 22 W of load. carNet (5 W) is unaffected.
-- Effect on USB-C (20 V, 60 W at the limit) **[calc]**: about 20 W is left for charging at a 36 W load. A 5 A output peak needs about 3.3 A, just over a 65 W source's 3.25 A; if the source trips, the battery carries the peak.
-- **[TBC, bench]** how cleanly the input-to-battery handover behaves under a 5 A peak.
+- F_CHG 1.5 A slow-blow bounds the fault cases **[calc]**: it opens when the battery is below about 9.4 V (current above 1.5 A), so R_CHG never sees more than about 7.4 W continuously. R_CHG rated ≥ 7 W; part and mounting **[TBC]**. A reversed battery puts about 26 V across R_CHG and blows F_CHG.
+- F_BAT 10 A at the battery connector.
+- Charge current tapers to zero as the battery reaches the feed voltage; there is no absorb/float staging and no temperature compensation (accepted in requirements v3).
+- Recharge is slow: replacing a 3 Ah discharge takes several hours of driving. Lower R_CHG (and raise F_CHG and the resistor rating to match) if a unit is used that way; 3.3 Ω suits 2–12 Ah batteries on the carNet duty.
 
 ## Rails
-- **12 V:** 3 A continuous, 5 A peak for several seconds. Thermal design is for 3 A; current limit, fuse and jack are sized for the 5 A peak. TPS552882, VREF 1.2 V **[DS]**; FB 180 kΩ / 20 kΩ → 12.0 V **[calc]**. EN/UVLO threshold 1.15 V with 5 µA hysteresis current **[DS]**: set falling ≈ 11.0 V, rising ≈ 12.0 V on `SYS` (lead-acid low-voltage cutoff). Buck-side FETs are external (DR1H/DR1L) **[DS]**. Soft-start fixed 4 ms **[DS]**.
-- **5 V:** LMR33630 from `SYS`. Precision enable: rising 1.231 V, 100 mV hysteresis **[DS LMR33630 EC table, VEN-H / VEN-HYS]**. EN divider from `SYS` 887 kΩ / 102 kΩ → off below 10.97 V falling, on above 11.94 V rising **[calc]**, matching the 12 V rail so the low-voltage cutoff covers both rails. The XIAO is fed from `5V` and powers down with it. Both builds; in the lithium build the protector's 2.9 V/cell trip (11.6 V) normally acts first.
-- ESP32 can pull the 12 V converter's enable low (router off after ignition-off).
+- **12 V output:** `LOAD` through Q_OUT (P-channel FET, high side) and F_OUT 7.5 A to J_12V. Unregulated, about 10.9–14.8 V. Q_OUT ≥ 40 V, ≤ 20 mΩ, gate-source clamp and a slowed turn-on for capacitive loads; part **[TBC]**. Overcurrent protection is F_OUT alone; there is no electronic current limit.
+- **5 V:** LMR33630 from `LOAD`, 3.8–36 V in **[DS]**. Feeds the TPS2514A USB-A port and the XIAO.
 
-## I2C map
-| Device | Address |
+## Power control
+One threshold, set at the LMR33630's precision enable, controls everything. No comparator or logic IC.
+
+```
+VIN_CAR ─ D_IGN (Schottky) ─┐
+                            ├─ EN_SRC ─ 887 kΩ ─ EN_5V (LMR33630 EN) ─ 102 kΩ ─ GND
+SYS ─ Q_HOLD (P-FET) ───────┘
+        gate ← N-FET ← HOLD (XIAO GPIO, 100 kΩ pull-down)     JP_HOLD solder jumper across Q_HOLD
+
+LMR33630 PG ─ OUT_EN ─ 100 kΩ pull-up to 5V ─ N-FET gate ─ pulls Q_OUT gate low (12 V output on)
+                 └─ XIAO GPIO, open-drain: pull low to switch the 12 V output off
+```
+
+- **Thresholds:** EN rising 1.231 V, 100 mV hysteresis **[DS LMR33630 EC table, VEN-H / VEN-HYS]**. With 887 kΩ / 102 kΩ: on above 11.94 V, off below 10.97 V at `EN_SRC` **[calc]**. On the ignition path D_IGN adds about 0.2 V, so the board starts at about 12.1–12.2 V on the car feed **[calc]**.
+- **Ignition on:** `EN_SRC` is fed from `VIN_CAR`, the 5 V rail starts, the XIAO boots and drives `HOLD` high, which connects `EN_SRC` to `SYS` as well.
+- **Ignition off, hold-up:** `EN_SRC` stays on `SYS` (the battery) through Q_HOLD. The XIAO sees `VCAR_SENSE` fall and starts its timer.
+- **Timer expires:** the hold-up time is an ESPHome setting, adjustable from Home Assistant and stored in flash (default 30 min, minimum 1 min). When it expires the XIAO releases `HOLD`. A setting of 0 disables the timer: `HOLD` stays high and the board runs until the hardware low-voltage cutoff. `EN_SRC` falls to zero, the 5 V rail and the XIAO switch off, and nothing can turn back on until the car feed returns.
+- **Low-voltage cutoff (hardware):** during hold-up the same divider is watching the battery. Below 10.97 V the 5 V rail switches off, the XIAO loses power, `HOLD` drops and the board latches off until the ignition returns. This needs no firmware.
+- **12 V output follows the 5 V rail:** PG is an open-drain flag, high when the output is in regulation and forced low when EN is low **[DS LMR33630 pin table, §8.3.1]**; pull-up 100 kΩ to VOUT as the datasheet suggests **[DS §8.3.1]**. So the 12 V output has the same cutoff as the 5 V rail and comes on about 4 ms after it **[DS §8.3.1]**. Side effect: an overload that pulls the 5 V rail out of regulation also switches the 12 V output off.
+- **XIAO faults:** stuck with `HOLD` high, the outputs run until the hardware cutoff. Stuck low, removed or not fitted, the outputs follow the ignition.
+- **JP_HOLD** (open by default): closed, it replaces the XIAO's hold, so a board without a controller stays on until the low-voltage cutoff and restarts when the battery recovers above 11.94 V.
+
+## Standby drain (everything off, ignition off) **[calc]**
+| Item | Current |
 |---|---|
-| BQ25750 / BQ25751 | 0x6B **[DS family table]** |
-| INA226 (12 V out) | 0x40 |
-| INA226 (5 V out) | 0x41 |
-| SSD1306 OLED | 0x3C |
+| U_OR2, powered from `VBAT` | 80 µA typ, 130 µA max **[DS LM74700-Q1 EC table, I(Q)]** |
+| LMR33630 in shutdown | 5 µA typ, 10 µA max **[DS ISD]** |
+| `VBAT_SENSE` divider | 21 µA |
+| Two INA226 VBUS inputs, 830 kΩ each **[DS INA226 EC table]** | about 30 µA, assuming the input divider stays connected with the supply off **[TBC, bench]** |
+| Total | about 0.14 mA, or 0.1 Ah per month |
 
-Pull-ups 4.7 kΩ to `3V3`.
+A 7 Ah AGM loses more than that to self-discharge. For long storage, pull F_BAT.
+
+## Sensing (XIAO)
+- `VCAR_SENSE`: divider on `VIN_CAR`, top resistor ≥ 100 kΩ plus a clamp so reverse polarity or a transient cannot harm the pin. Ignition detect and car-feed voltage.
+- `VBAT_SENSE`: divider on `VBAT`, 560 kΩ / 100 kΩ with a clamp → 3.03 V at 20 V, 2.27 V at 15 V **[calc]**. Accuracy is that of the ESP32 ADC; calibrate in ESPHome.
+- **Current monitors:** two INA226 on I2C, powered from `3V3`, so they are off when the board is off.
+  - U_MON_IN (0x40) across R_SNS_IN, between `SYS_IN` and `SYS`; VBUS on `SYS`. Power in from the car feed.
+  - U_MON_OUT (0x41) across R_SNS_OUT, between `SYS` and `LOAD`; VBUS on `LOAD`. Power out to the 12 V output and the 5 V rail together, including the XIAO's own draw.
+  - Battery current is in minus out: positive while charging, and equal to the output current with the ignition off.
+  - Both shunts 5 mΩ 1 %, 2512. Input peak 7 A → 35 mV, 0.25 W; output peak 6 A → 30 mV, 0.18 W **[calc]**. The INA226 shunt range is ±81.92 mV **[DS INA226 EC table]**, so the resolution is 2.5 µV, or 0.5 mA **[calc]**.
+  - Both shunts sit behind U_OR1, so reverse polarity on J_CAR never reaches the INA226 inputs (−0.3 V minimum, 40 V absolute maximum, 36 V operating **[DS INA226 §5.1, §5.3]**). The TVS clamp limit of 36 V covers them.
+  - Address pins and pull-ups: 4.7 kΩ on `SDA` / `SCL` to `3V3`; address strapping **[TBC from the datasheet's address table]**.
+- `TEMP_DQ`: DS18B20 probe on the battery through J_TEMP, 4.7 kΩ pull-up to `3V3`. Reporting only; nothing in hardware acts on it. Temperature range and ESPHome support **[TBC]**.
 
 ## ESP32 socket (Seeed XIAO ESP32-C6, 2×7, 2.54 mm) — provisional, **[TBC]** against Seeed's pinout and footprint
 | XIAO pin | Use |
 |---|---|
-| D4 / D5 | SDA / SCL |
-| D0 (ADC) | `VCAR_SENSE`: `VIN_CAR` via divider (ignition). Total input voltage is read from the charger ADC over I2C |
-| D1 | charger INT |
-| D2 | charger PG (any input present, car or USB-C) |
-| D3 | 12 V output enable (open-drain, default enabled) |
-| D6 | user button |
-| D7 | charger CE override (default: charging allowed by hardware) |
-| 5V | from `5V` rail through a Schottky diode (no backfeed from the module's USB) |
-| 3V3 | powers OLED, INA226 logic, I2C pull-ups |
+| D0 (ADC) | `VCAR_SENSE` |
+| D1 (ADC) | `VBAT_SENSE` |
+| D2 | `TEMP_DQ` (1-Wire) |
+| D4 / D5 | `SDA` / `SCL` (INA226 ×2) |
+| D3 | `OUT_EN`, open-drain: low switches the 12 V output off; released = on |
+| D8 | `HOLD`: high keeps the board on after ignition-off. Must not be a strapping pin or one that pulses at boot **[TBC]** |
+| 5V | from the `5V` rail through a Schottky diode (no backfeed from the module's USB) |
+| 3V3 | INA226 supply, I2C and `TEMP_DQ` pull-ups |
 
-## Connectors
+Every ESP32-driven line has a pull resistor that leaves the board in its defined state with the module removed: `HOLD` low, `OUT_EN` high.
+
+## Connectors and fuses
 | Ref | Part | Notes |
 |---|---|---|
 | J_CAR | 2-pin, ≥ 10 A | fused at the car end as well |
-| J_USBC_IN | USB-C receptacle | sink only |
+| J_SLA | 2-pin, ≥ 10 A (screw terminal or XT60) | battery; F_BAT 10 A beside it |
 | J_12V | Same Sky PJ-063AH, 8 A | **[TBC]** pin diameter vs the plugs in use (2.0 / 2.1 / 2.5 mm) |
 | J_USBA | USB-A receptacle | |
-| J_PACK | XT30 (PACK+/B−) | lithium build |
-| J_BAL | JST-XH 5-pin: B−, C1, C2, C3, B+ | lithium build; taps only, never pack current |
-| J_NTC | JST-XH 2-pin | charger 103AT on the cells / battery, returns to `GND`; both builds |
-| J_NTC_BMS | JST-XH 2-pin | protector 103AT on the cells, returns to `B-`; lithium build only |
-| J_SLA | fused terminal | lead-acid build |
-| J_OLED | 4-pin header: GND, 3V3, SCL, SDA | check module pin order before ordering |
+| J_TEMP | JST-XH 3-pin: GND, DQ, 3V3 | DS18B20 probe on the battery |
+| F_IN / F_BAT / F_OUT / F_CHG | 10 A / 10 A / 7.5 A / 1.5 A slow | holder or SMD type **[TBC]**; all ≥ 32 V DC |
 
-## Cell board (separate Flux project)
-Four PCB-mount 18650 holders in series, pack fuse (10 A) in B+, a 1 kΩ-class series element or fuse in each tap **[TBC: effect on the 33 Ω balance filter]**, two 103AT NTCs against the cells (one for the charger, one for the protector, electrically separate), XT30 + JST-XH-5 + 2× JST-XH-2. Holder current rating **[TBC]**.
+## Open items before capture
+1. Parts for Q_OR1/Q_OR2, Q_OUT, Q_HOLD, the TVS, R_CHG and the fuses, each with a −40 to 85 °C rating and a datasheet extract in `datasheets/`.
+2. XIAO ESP32-C6 pinout, strapping pins, row spacing and temperature rating from Seeed's documents.
+3. LMR33630 output stage values (inductor, capacitors, feedback divider) from the datasheet's 5 V example.
+4. DS18B20 probe: operating range at −40 °C and the ESPHome component.
+5. Bench: the ignition-off handover with a 5 A load, F_CHG behaviour with a deeply discharged battery, and the 12 V output's turn-on into a capacitive load.

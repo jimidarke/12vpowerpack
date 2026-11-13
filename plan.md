@@ -1,107 +1,86 @@
-# Power board: research foundation and Flux working method
+# Power board: plan (v3)
 
 ## Context
 
-The Flux project `jimidarke/4s-12v-battery-pack` has an empty schematic and two research documents; ~11 credits were spent with nothing captured, mostly on datasheet lookups. The scope has since grown from "4S pack with 12 V out" to a 12 V power manager for lithium or lead-acid. This plan records the architecture and part choices from research done here (free), and sets up a way of briefing the Flux agent so its credits go to schematic capture instead of research.
+v1 was a 4S lithium pack with 12 V out. v2 grew into a two-chemistry power manager with a buck-boost charger, USB-C PD input, a regulated 12 V converter, current monitors and a display; its ten most expensive parts alone came to about C$73 per board, and two Flux capture runs (9.1 credits) placed 31 lithium-protector parts with no wiring.
 
-Flux currently has no credits; every step that messages the agent waits for a top-up. Until then the work is local brief-writing only.
+On 2026-11-13 the scope was cut back to what the first real use needs: a vehicle-only UPS for carNet. The v2 plan, architecture and briefs are in git at tag `v0.2.1`; the v2 briefs are also in `blocks/retired/`.
 
-## Requirements (as agreed)
+## Requirements (as agreed, v3)
 
-- One PCB design, built as **either** a lithium unit (4S1P, four 18650 on a separate cell board) **or** a lead-acid unit (small 12 V AGM). Chemistry is fixed at build time by which charger chip and resistors are fitted.
-- Charge from an ignition-switched car feed (11–14.8 V) and from USB-C PD at 20 V (65 W laptop charger).
-- Outputs: regulated 12 V, 3 A continuous and 5 A peak, barrel jack; 5 V 2 A USB-A (non-PD USB-C optional).
-- Battery temperature sensing; OLED showing volts/amps at input, battery and each output.
-- Socketed ESP32 dev board running ESPHome (MQTT to Home Assistant, as carNet does).
-- Batch of ~12; fab-assembled where it pays, hot-air at home otherwise. Full-featured first, then cut on price.
-- Uses: carNet in-car UPS (lead-acid build; ~5 W load, ~30 min after ignition off; in the trunk under an interior flap; winters to −40 °C, warming slowly while driving) and a portable lithium pack.
-- Decision: build custom rather than buy.
+- Vehicle only: ignition-switched car feed in, about 14 V when running.
+- 12 V sealed AGM battery, charged straight from the car feed through a current-limiting resistor. No charger IC.
+- 12 V output passed through unregulated (about 10.9–14.8 V), 3 A continuous, 5 A peak, barrel jack.
+- 5 V 2 A USB-A from a buck converter.
+- Socketed XIAO ESP32-C6 (ESPHome): ignition-off timer (a firmware setting: default 30 min, minimum 1 min, 0 = no timeout, run to the low-voltage cutoff), car and battery voltage, battery temperature, power in and power out. No display.
+- Batch of ~12, ≤ C$110 per board excluding battery and enclosure.
+- Environment: trunk, −40 °C winters.
 
 ## Design rule
 
-**The board must be safe with the ESP32 unplugged, crashed or mid-update.** Charge voltage, current limits, protection and the 12 V setpoint are set in hardware. The ESP32 only monitors, displays and trims.
+**The board must be safe with the ESP32 unplugged, crashed or mid-update.** Fuses, the charge limit, backfeed and reverse-polarity blocking and the low-voltage cutoff are hardware. The ESP32 only times the hold-up, reports, and can switch the 12 V output off.
 
-## Architecture
+## Part choices
 
-```
-Car 12 V in ─ fuse ─ TVS ─ ideal diode ─┐
-                                        ├─ charger (buck-boost, power path) ─ SYS ─┬─ 12 V buck-boost ─ limit/fuse ─ barrel jack
-USB-C PD sink (20 V) ─ ideal diode ─────┘        │                                 └─ 5 V buck ─ USB-A (+ optional USB-C)
-                                              battery
-   Lithium build: BQ25750 + BQ77915 protector/FETs; pack on XT30 + JST-XH balance + NTC
-   Lead-acid build: BQ25751; battery on a fused terminal; protector section not fitted; NTC on the battery
-XIAO ESP32-C6 (socketed) ── I2C ── charger ADC (0x6B), INA226 ×2, OLED (0x3C), PD sink
-```
-
-The charger's power path feeds the loads from the car/USB-C input while charging, and from the battery otherwise.
-
-## Part choices (research result)
-
-| Function | Choice | Why | Fallback |
+| Function | Choice | Why | Status |
 |---|---|---|---|
-| Charger, lithium build | TI BQ25750 | Li-ion profile, voltage set by resistor divider, standalone, 4.4–70 V input, power path, 16-bit ADC | BQ25756 (same family, no power path; datasheet read) |
-| Charger, lead-acid build | TI BQ25751 | Native bulk/absorb/float, built-in cold compensation of charge voltage via the battery NTC, same package and family | — |
-| Li protector | TI BQ7791502 | Verified: 4.20 / 2.90 V, standalone, internal balancing | — |
-| 12 V rail | TI TPS552882 (resistor-set) | 16 A switch limit; setpoint needs no firmware | LM5176 |
-| 5 V rail | TI LMR33630 | 36 V in, 3 A, 25 µA standby, hand-solderable | TPS54302 |
-| USB-A port | TPS2514A | Charging-port signature | — |
-| USB-C out (optional) | TPS25810 | Correct non-PD 3 A port | drop the port |
-| USB-C PD input | TPS25730 (pin-strapped to 20 V); TI pairs it with this charger family in PMP41100 | Works without the ESP32 | STUSB4500, CH224K |
-| Car input protection | Fuse + TVS + LM74700-Q1 ideal diode (also on the PD input, to OR the two) | Charger tolerates 70 V | add LTC4368 cutoff |
-| Output monitors | INA226 ×2 (12 V out, 5 V out) | ESPHome native | INA238 |
-| Display | SSD1306 0.96" I2C module on a header | ESPHome native | SH1106 1.3" |
-| Controller | Genuine Seeed XIAO ESP32-C6, socketed 2×7; buy 15 | 85 °C rating, external-antenna option, fixed footprint; cheap SuperMini clones have a known antenna fault | XIAO ESP32-C3 (same socket) |
-| Barrel jack | Same Sky PJ-063AH (8 A) | Most jacks are 2–5 A | XT30 |
-| Pack cabling | XT30 for pack current, JST-XH 5-pin for taps, two 2-pin NTCs (charger to `GND`, protector to `B-`) | Ribbon is acceptable for taps only | — |
+| Car input diode | TI LM74700-Q1 + N-FET | reverse polarity, no backfeed to the car, 20 mV drop | datasheet read |
+| Battery discharge diode | second LM74700-Q1 + N-FET | same part; no 0.4 V loss or heat at 4–6 A | datasheet read |
+| Charge limit | 3.3 Ω power resistor + 1.5 A slow fuse | about 1 A into a flat battery; the fuse bounds a failed or reversed battery | values calculated, parts to choose |
+| 5 V rail and low-voltage cutoff | TI LMR33630 | 36 V in, precision enable sets the cutoff, power-good drives the 12 V switch | datasheet read |
+| 12 V output switch | P-channel FET, ≥ 40 V, ≤ 20 mΩ, with a 7.5 A fuse | simplest switch that follows the 5 V rail's power-good | part to choose |
+| USB-A port | TI TPS2514A | charging-port signature | datasheet read |
+| Controller | Seeed XIAO ESP32-C6, socketed 2×7 | carried over from v2 | pinout to confirm |
+| Current monitors | TI INA226 ×2 with 5 mΩ shunts: car input and total load | power in and out; battery current by difference; ESPHome native. Sourced from LCSC with the assembly order (owner's decision), two only | datasheet read |
+| Temperature | DS18B20 probe on the battery, 3-pin JST-XH | reads correctly at −40 °C without ADC calibration; ESPHome native | to confirm |
+| Barrel jack | Same Sky PJ-063AH (8 A) | carried over | plug size to confirm |
 
-Carried over from the validation: BQ77915 shunt 7–8 mΩ (trip ≈ 9–10 A); CCFG to AVDD; cell filters 33 Ω / 1 µF; CBI to VSS; PRES as the pack's on/ship switch.
+The ideal-diode FETs could be the CSD18540Q5B already placed in Flux (60 V, about C$5 each); a 40 V part would be cheaper.
 
-## Competitive check and price target
+Considered and not chosen:
+- **BQ25751 charger:** proper three-stage charging with cold compensation and mains-adapter input, at about C$25–30 per board with its FETs and inductor. Dropped by the owner's decision; the cost is undercharging in deep cold.
+- **eFuse for the 12 V output:** adds an electronic current limit, but the ones I know are rated near 23 V, below the surge clamp level. Revisit if the fuse-only protection proves a nuisance.
+- **Hardware timer instead of the ESP32:** cheaper, but fixed and with no reporting.
 
-- **Closest product:** Mini-Box OpenUPS, ~$119 (unconfirmed): both chemistries, 6–30 V in, 12 V 6 A out. Lacks USB-C input, 5 V USB, display, car-transient protection.
-- **Module stack:** ~$70–80, but no transient or reverse protection, two chargers to switch, poor monitoring.
-- **Custom board estimate at qty 12:** $75–110 per board (parts $55–80, PCB + assembly $15–25), excluding cells, cell board and enclosure; allow one re-spin at $300–500. This is an estimate from snippet prices, not quotes.
-- **To reuse:** TI reference designs PMP41100 / PMP41062 (this charger family with a PD controller) and PMP31190 / PMP31276 (BQ25751) as schematic starting points for Flux; ignition-sense with a shutdown delay; the watchdog/re-apply patterns from `JohnNeville/esphome-bq-drivers` for the ESPHome side.
-- **Cut list if the price is too high:** USB-C output port, second INA226, PD input (use a barrel-jack laptop brick instead), fab assembly of the easy parts.
+## Cost estimate
 
-## Open items (checked in the block briefs before capture)
+About C$55–75 per board assembled, at a batch of 12, excluding battery and enclosure. The LCSC price for the INA226 is converted from US$0.62–0.86; DigiKey Canada lists it at C$4.47. This is my rough estimate from the CAD snapshot prices collected on 2026-11-13 (LM74700-Q1 C$2.59, LMR33630 about C$4.50, XIAO C$8.29, INA226 about C$1 from LCSC, PJ-063AH about C$2.20) plus guesses for the parts not yet chosen; it is not a costed BOM. The price checkpoint is after capture.
 
-1. Confirm BQ25750 and BQ25751 are pin-for-pin compatible (BQ25751 and BQ25756 match on all shared pins; BQ25750 not yet read) and list the resistor differences between builds.
-2. BQ25751 cold behaviour: datasheet shows −2 to −3 mV/°C/cell compensation and a selectable cold cutoff (−10/−20 °C). Decide the cutoff and what happens below it (battery still powers the load; charging resumes as the trunk warms). NTC goes on the battery.
-3. Lead-acid low-voltage cutoff (~11 V, on both the 12 V and the 5 V rail through their enable pins) and a hard off switch so nothing drains either battery.
-4. Inrush into the 12 V converter versus the BQ77915 short-circuit trip.
-5. ESPHome: no existing component for this charger family; needs a small custom one (read-only monitoring is enough).
-6. Before ordering: XIAO row spacing and temperature rating from Seeed's documents; 18650 holder current ratings; exact barrel plug size.
+## Open items
+
+1. Choose and document the FETs, TVS, charge resistor and fuses (`architecture.md`, open items).
+2. XIAO pinout, strapping pins, row spacing, temperature rating.
+3. LMR33630 output-stage values.
+4. ESPHome: the hold-up timer as an adjustable, stored setting (0 = no timeout, otherwise 1 min or more), and whether to report over Wi-Fi/MQTT (as carNet does) or BLE. ESPHome's BLE server support needs checking before relying on it.
+5. Exact barrel plug size; battery size per unit.
 
 ## Working method with Flux
 
-**Principle:** research here, capture there. Each message to the agent is one block, carries the verified facts as an attachment, and is checked afterwards with the free reads.
+**Principle:** research here, capture there. Each message to the agent is one block with the verified facts attached, checked afterwards with the free reads.
 
-Local brief folder `/home/jimi/code/powerBoard/`:
-- `requirements.md` — the spec above (replaces Flux's `project-specification`).
-- `architecture.md` — block diagram, net names, connector pinouts, I2C address map, ESP32 pin map, build-variant table.
-- `blocks/NN-name.md` — one file per Flux message: goal, parts (MPN), pin-by-pin connections, values with datasheet section references, done criteria.
-- `datasheets/` — text extracts, so facts can be re-checked.
-- `flux-log.md` — what was sent, what came back, credits per message.
+The v3 schematic is small (about 50 parts). Two ways to capture it:
+- **By hand in the Flux editor** from a pin-by-pin net table written here. No credits.
+- **Through the agent**, one block per message. The two block 1 runs suggest about 4–5 credits per block.
 
-Steps:
-1. Write the brief folder (no credits): requirements, architecture, and the block briefs, resolving the open items against the datasheets.
-2. After a credit top-up, send blocks in order on the existing root thread ("4x18650 Battery Pack"), each verified before the next:
-   0. Replace the project specification with v2; no capture.
-   1. Li protector block (BQ77915, FETs, shunt, pack connectors).
-   2. Inputs: car protection, USB-C PD sink, ideal-diode OR.
-   3. Charger and power path, with the build-variant parts.
-   4. 12 V rail and output protection.
-   5. 5 V rail and USB ports.
-   6. ESP32 socket, monitors, OLED, switch and button.
-   7. Whole-schematic electrical check and BOM → **price checkpoint; apply the cut list here**.
-   8. Layout: placement, then routing, then manufacturing files.
-   9. Cell board as a second, small Flux project.
+Planned blocks, in order:
+0. Replace the Flux documents with v3 and remove the 31 lithium parts.
+1. Input protection, battery path and fuses.
+2. 5 V rail, USB-A, power control and the 12 V output switch.
+3. XIAO socket, sensing and temperature probe.
+4. Whole-schematic electrical check and BOM → **price checkpoint**.
+5. Layout: placement, then routing, then manufacturing files.
 
 Rules: one objective per message; parts by designator; outcomes with constraints attached; never chain capture, layout and export.
 
 ## Verification
 
-- After each Flux run: `get_components`, `get_nets`, `get_bom` (free) compared pin-by-pin against the block brief and datasheet extract; mismatches go back as a correction on the same thread.
-- After block 7: Flux's electrical check clean, plus an independent review here of the full netlist.
-- Bench, before real batteries: current-limited supply as a cell simulator; tap order, over/under-voltage, temperature trips, overcurrent and short-circuit; charger voltage in each build with the ESP32 removed; a 5 A output peak on each input (car feed at 12.5 V, a 65 W USB-C source) to see the charge throttle and the input-to-battery handover without a 12 V dropout; both rails switching off at the low-voltage cutoff.
+- After each Flux run: `get_components`, `get_nets`, `get_bom` (free) compared against the block brief; mismatches go back as a correction on the same thread.
+- After block 4: Flux's electrical check clean, plus an independent review here of the full netlist.
+- Bench, before it goes in the car:
+  - reverse polarity on the car input and on the battery connector;
+  - no current back into the car input with the battery connected;
+  - ignition-off handover with a 5 A load on the 12 V output;
+  - low-voltage cutoff near 11.0 V and restart only when the car feed returns, with the ESP32 removed and with it fitted;
+  - hold-up timer expiry switching everything off;
+  - charge current into a battery at 11 V, and F_CHG opening on a 9 V supply standing in for a failed battery;
+  - standby drain with everything off.
