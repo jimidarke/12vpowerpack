@@ -1,4 +1,7 @@
-0.1.0
+0.1.1
+
+## 0.1.1
+- Add README.md and CLAUDE.md
 
 ## 0.1.0
 - Initial commit: requirements, architecture, plan, block briefs, datasheets
