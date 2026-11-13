@@ -15,8 +15,12 @@
 - Thresholds (Table 6-1/6-2, BQ7791502): OV 4.200 V / 1 s / 200 mV hyst; UV 2.900 V / 1 s / 400 mV hyst, load-removal recovery; OCD1 70 mV / 180 ms; OCD2 70 mV / 180 ms; SCD 120 mV / 0.96 ms; OCC 70 mV; OTD 65 °C, OTC 45 °C, UTD −10 °C, UTC 0 °C; balancing starts at 3.8 V.
 - Current thresholds are ±20 % (EC table, VCCAH). With 8 mΩ: OCD 8.75 A (7.0–10.5 A), SCD 15 A (12–18 A), OCC 8.75 A.
 - 4-cell configuration: **CCFG to AVDD** (Table 9-7). Unused cell input shorted per Figure 9-12 / §11.
-- Pins (Table 7-1): 1 VDD, 2 AVDD (capacitor only), 3–8 VC5…VC0, 9 VSS, 10 SRP (battery side of R_SNS), 11 SRN (pack side), 12 DSG, 13 CHG, 14 LD, 15 LPWR (float), 16 CBI, 17 OCDP, 18 TS, 19 VTB, 20 CCFG, 21 CBO (float), 22 PRES, 23 CTRC, 24 CTRD (CHG and DSG override inputs, each through 10 MΩ per the recommended components).
-- Recommended components (§8.3): cell input filter for internal balancing **33 Ω + 1 µF** per cell; VDD filter 1 kΩ + 1 µF; thermistor 103AT from TS to VSS with 10 kΩ 1 % from VTB to TS; gate-source resistors 1 MΩ; DSG gate resistor 4.5 kΩ; CHG gate resistor 1 kΩ (or 1 MΩ with the extra CHG-protection parts — follow Figure 9-12); LD resistor 470 kΩ; CTRC/CTRD via 10 MΩ.
+- Pins (Table 7-1): 1 VDD, 2 AVDD (capacitor only), 3–8 VC5…VC0, 9 VSS, 10 SRP (battery side of R_SNS), 11 SRN (pack side), 12 DSG, 13 CHG, 14 LD, 15 LPWR (float), 16 CBI, 17 OCDP, 18 TS, 19 VTB, 20 CCFG, 21 CBO (float), 22 PRES, 23 CTRC, 24 CTRD (CHG and DSG override inputs).
+- Recommended components (§8.3): cell input filter for internal balancing **33 Ω + 1 µF** per cell; VDD filter 1 kΩ + 1 µF; thermistor 103AT from TS to VSS with 10 kΩ 1 % from VTB to TS; DSG gate-source resistor 1 MΩ; DSG gate resistor 4.5 kΩ; LD resistor 470 kΩ; PRES pull-up (RHIB) 10 kΩ.
+- **AVDD capacitor: 1 µF ±20 % from AVDD to VSS** (EC table gives VAVDD with CVDD = 1 µF; the application figures label the AVDD capacitor CVDD).
+- **CTRC and CTRD tie directly to VSS (`B-`), no resistor.** For a single device the datasheet connects both straight to ground (§10.2.2.1); the driver is enabled below 0.6 V with respect to VSS (EC table, VCTR1). The 10 MΩ resistors are only for stacked devices.
+- **CHG gate network, protected version (Figure 10-4):** RCHG 1 MΩ in series from the CHG pin to the Q_CHG gate; a small-signal diode in parallel with RCHG, anode at the CHG pin and cathode at the gate, so CHG can pull the gate high; a 16 V Zener from Q_CHG gate to source (cathode at the gate); RGS_CHG 3.3 MΩ gate to source. Reasons: the FET's VGS limit is ±20 V and PACK− can be pulled to pack voltage (16.8 V) with CHG off (§10.1.1.3); 3.3 MΩ rather than 1 MΩ because this variant uses load removal for UV recovery (Table 10-1).
+- Cell filters in Figure 9-12: five RIN and five CIN, one RIN in every tap line including VC0. The unused input is VC4, shorted to VC3 (VC5 = B+, VC3 = C3, VC2 = C2, VC1 = C1, VC0 = B−). Read where each CIN returns from the figure; that is the one item still to take from the datasheet.
 - **CBI to VSS** enables balancing (§9.3.4); max 50 mA; only while charging.
 - OCDP: 100 kΩ 1 % to VSS selects the factory delays (Table 9-3).
 - PRES must be > 1.5 V for NORMAL mode; floating = HIBERNATE after 4.5 s (§9.3.5). Wire PRES through the recommended resistor to a net `PACK_EN` that the power switch pulls up; this is the pack's on/ship switch.
@@ -27,6 +31,9 @@
 - Low-side protection: `B-` → R_SNS → Q_DSG / Q_CHG back-to-back → `GND` (PACK−). Besides that path, `B-` connects only to J_PACK, J_BAL pin 1 and U_BMS's own VSS-referenced pins, filters and thermistor (J_NTC_BMS). No load, charger, converter or other connector return may use `B-`.
 - J_BAL pin order: B−, C1, C2, C3, B+. J_PACK: B+ (= `VBAT`), B−.
 - `VBAT` leaves the block to the charger block; do not connect anything else to it here.
+
+## State after the first run (2026-11-13, stopped when credits ran out)
+Placed with metadata, nothing wired: U_BMS, Q_DSG, Q_CHG, RT_BMS. Still to add: R_SNS, J_PACK, J_BAL, J_NTC_BMS and all resistors, capacitors and diodes. Role values to normalise to Protection / Switching / Sensing.
 
 ## Done when
 All parts placed with Role / Role Details metadata; nets named as in the architecture; electrical check shows no unconnected power pins; reply lists every pin of U_BMS with its net. Stop there — no charger, no converters.

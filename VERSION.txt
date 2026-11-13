@@ -1,4 +1,8 @@
-0.2.0
+0.2.1
+
+## 0.2.1
+- Block 1 brief: AVDD capacitor, CTRC/CTRD tied to VSS, protected CHG gate network with 16 V Zener
+- Flux log: block 1 partial run recorded
 
 ## 0.2.0
 - 12 V output respecified: 3 A continuous, 5 A peak
