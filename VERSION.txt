@@ -1,4 +1,11 @@
-0.1.1
+0.2.0
+
+## 0.2.0
+- 12 V output respecified: 3 A continuous, 5 A peak
+- Single 3 A input limit (RAC_SNS 5 mΩ, RILIM 6.65 kΩ); loads have priority over charging
+- Low-voltage cutoff on the 5 V rail through the LMR33630 enable divider
+- Ignition sensed on `VIN_CAR`; `B-` rule reworded; second thermistor (J_NTC_BMS) for the lithium protector
+- Flux log: block 0 sent and verified; project renamed 12V Power Manager
 
 ## 0.1.1
 - Add README.md and CLAUDE.md

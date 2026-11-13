@@ -1,7 +1,8 @@
 # Flux log
 
-Project: https://www.flux.ai/jimidarke/4s-12v-battery-pack~zn
-Root thread ("4x18650 Battery Pack"): https://www.flux.ai/jimidarke/4s-12v-battery-pack~zn?thread=cf30e89b-018d-407f-9f30-a2736a6d9810
+Project: https://www.flux.ai/jimidarke/12v-power-manager~zn
+Root thread ("4x18650 Battery Pack"): https://www.flux.ai/jimidarke/12v-power-manager~zn?thread=cf30e89b-018d-407f-9f30-a2736a6d9810
+(Project renamed "12V Power Manager" by block 0 on 2026-11-13; the slug changed from `4s-12v-battery-pack` to `12v-power-manager`. The spec document slug is now `power-board-requirements-v2`, short id `1d`.)
 (The "4S BMS Schematic" thread is the agent's own sub-thread; message the root thread.)
 
 ## Rules
@@ -15,9 +16,24 @@ Root thread ("4x18650 Battery Pack"): https://www.flux.ai/jimidarke/4s-12v-batte
 |---|---|---|---|---|
 | 2026-10-01 | root | initial requirements chat, spec v1 | `project-specification` written | 2.2 |
 | 2026-10-01, 2026-11-12 | sub-thread | BMS capture (two attempts) | research only, `bms-capture-handoff`; 0 components | 9.1 |
+| 2026-11-13 | root | Block 0 — spec update; `requirements.md` + `architecture.md` attached; shunt stated as 8 mΩ. First attempt 02:36 CST refused (usage rate limit, reset 02:40); resent 02:42 | Verified: spec replaced (slug now `power-board-requirements-v2`), `architecture` created, `bms-capture-handoff` marked superseded with 8 mΩ shunt, project renamed; 0 components, 0 nets. Agent raised four conflicts (below) | 0.6 |
 
-## Pending (blocked on credits)
-- [ ] Block 0 — spec update
+## Conflicts raised by the agent in block 0 (resolved locally 2026-11-13; see below)
+1. Input current limit 3 A (RILIM) cannot supply 60 W continuous 12 V out from the car feed without battery assist; at 20 V it leaves no margin for losses, the 5 V rail or charging at full load.
+2. Low-voltage cutoff is applied only to the 12 V converter (EN/UVLO); the 5 V rail can still discharge the AGM battery.
+3. Input-present from combined `VIN` / charger PG cannot tell car ignition from USB-C power.
+4. "Nothing else may connect to `B-`" conflicts literally with the cell-tap and protector connections; reword to separate sensing connections from protection-bypass paths.
+
+Resolution (owner's decisions, 2026-11-13), applied to `requirements.md`, `architecture.md`, blocks 1–5 and `plan.md`:
+1. 12 V output is now 3 A continuous, 5 A peak. One 3 A input limit for both sources (RAC_SNS 5 mΩ, RILIM 6.65 kΩ); the limit throttles charging only, loads have priority.
+2. LMR33630 EN divider from `SYS` (887 kΩ / 102 kΩ) gives the 5 V rail the same cutoff window as the 12 V rail.
+3. Ignition is sensed on `VIN_CAR` (`VCAR_SENSE`); charger PG means any input.
+4. `B-` rule reworded. Also found: the protector's thermistor returns to `B-` and the charger's to `GND`, so the lithium build has two thermistors (J_NTC and new J_NTC_BMS).
+
+**The Flux documents `architecture` and `power-board-requirements-v2` are stale** (they hold the block 0 versions). Block 1's message must ask the agent to replace both from the attachment before capturing.
+
+## Pending
+- [x] Block 0 — spec update (2026-11-13)
 - [ ] Block 1 — lithium protector
 - [ ] Block 2 — inputs
 - [ ] Block 3 — charger

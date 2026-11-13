@@ -18,7 +18,7 @@ Design phase. The requirements, architecture and per-block capture briefs are wr
 ## Specification
 
 - **Inputs:** ignition-switched car 12 V (11–14.8 V, reverse-polarity and transient protected) and USB-C PD sink at 20 V. The input is used only above about 12.5 V and dropped below about 11.5 V, so a parked car's battery is not drained.
-- **12 V output:** regulated, 5 A continuous, 5.5 mm barrel jack.
+- **12 V output:** regulated, 3 A continuous with 5 A peaks, 5.5 mm barrel jack.
 - **5 V output:** 2 A USB-A with charging-port signature.
 - **Monitoring:** socketed Seeed XIAO ESP32-C6 running ESPHome, reporting over MQTT to Home Assistant, with an SSD1306 OLED showing volts and amps at the input, battery and each output.
 - **Safety:** charge voltage, current limits, protection and the 12 V setpoint are set by resistors. The board stays safe with the ESP32 removed.
@@ -60,7 +60,7 @@ USB-C PD sink (20 V) ─ ideal diode ─────┘        │              
 | [`datasheets/`](datasheets) | Text extracts of the datasheets the values were taken from |
 | [`flux-log.md`](flux-log.md) | Log of schematic-capture runs |
 
-The schematic and layout are being done in [Flux](https://www.flux.ai/jimidarke/4s-12v-battery-pack~zn). This repository holds the research and briefs that drive that work.
+The schematic and layout are being done in [Flux](https://www.flux.ai/jimidarke/12v-power-manager~zn). This repository holds the research and briefs that drive that work.
 
 ## Cost target
 

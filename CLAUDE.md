@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-A design-brief repository for a 12 V power manager PCB. There is no code, build, lint or test step. The schematic and layout live in Flux (project `jimidarke/4s-12v-battery-pack`, reached through the `flux` MCP server); this folder holds the research and the messages sent to the Flux agent.
+A design-brief repository for a 12 V power manager PCB. There is no code, build, lint or test step. The schematic and layout live in Flux (project `jimidarke/12v-power-manager`, reached through the `flux` MCP server); this folder holds the research and the messages sent to the Flux agent.
 
 The remote is named `12vpowerpack`; the local folder is `powerBoard`.
 

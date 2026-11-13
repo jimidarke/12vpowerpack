@@ -1,6 +1,6 @@
 # Block 4 — 12 V output rail
 
-**Goal:** `SYS` (9–25 V) → regulated 12.0 V, 5 A continuous, on a barrel jack, correct with no ESP32. Capture only.
+**Goal:** `SYS` (9–25 V) → regulated 12.0 V, 3 A continuous and 5 A peak for several seconds, on a barrel jack, correct with no ESP32. Capture only.
 
 ## Parts
 | Function | Part | Note |
@@ -18,7 +18,7 @@
 - FB: 180 kΩ / 20 kΩ → 12.0 V.
 - EN/UVLO divider on `SYS`: output off below ≈ 11.0 V falling, on above ≈ 12.0 V rising (this is the lead-acid low-voltage cutoff). Compute from the datasheet's UVLO equations.
 - An open-drain net `12V_EN_N` from the ESP32 can pull EN low; default (ESP32 absent) = enabled.
-- Average inductor limit sized for 6 A output at 11 V input (≈ 7.5 A inductor current) with margin; frequency and inductor per the datasheet design procedure.
+- Average inductor limit sized for 6 A output at 11 V input (≈ 7.5 A inductor current) with margin, so a 5 A peak never reaches the limit; frequency and inductor per the datasheet design procedure. Inductor saturation current covers the peak; thermal sizing (inductor RMS, FET dissipation) is for 3 A continuous.
 - Keep input capacitance on `SYS` modest and report the total, for the protector inrush check.
 
 ## Done when

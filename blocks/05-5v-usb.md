@@ -13,7 +13,7 @@
 
 ## Values
 - Output 5.1 V at the regulator (cable drop). Feedback divider and inductor per the LMR33630 design procedure for 400 kHz-class operation.
-- Always on while `SYS` is present (it powers the ESP32).
+- EN divider from `SYS`: 887 kΩ top, 102 kΩ bottom. With the precision enable (rising 1.231 V, 100 mV hysteresis, verified in the EC table) this gives off below 10.97 V falling and on above 11.94 V rising, the same window as the 12 V rail. This is the low-voltage cutoff for the 5 V rail in both builds; the ESP32 is fed from `5V` and powers down with it. Do not tie EN to `VIN`/`SYS` directly.
 
 ## Done when
-5 V rail and USB-A captured; USB-C source captured as a clearly separable group; reply lists the divider, inductor and the port current limits.
+5 V rail and USB-A captured; USB-C source captured as a clearly separable group; reply lists the feedback divider, the EN divider with its computed thresholds, the inductor and the port current limits.

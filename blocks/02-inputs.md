@@ -18,7 +18,8 @@
 - Reverse polarity on J_CAR must do no damage.
 - PD negotiation must work with no ESP32 present. If the source cannot give 15 V or 20 V, the port stays off (5 V is below the charger's input window).
 - Start from TI reference design **PMP41100** (BQ25756E + TPS25730, sink-only) for the PD-controller wiring.
-- Add a test point on `VIN` and a divider to the ESP32 ADC net `VIN_SENSE` (scale 25 V → ≤ 3.0 V).
+- Add a test point on `VIN`.
+- Ignition sense: a divider from `VIN_CAR` (car side of its ideal diode, after F1 and the TVS) to the ESP32 ADC net `VCAR_SENSE` (scale 25 V → ≤ 3.0 V). Top resistor ≥ 100 kΩ plus a clamp so reverse polarity or a transient on J_CAR cannot harm the ESP32 pin. It must read zero when only USB-C is connected.
 
 ## Design values to take from the datasheets (agent reads these two only)
 - TPS25730: the ADCIN1–4 resistor-divider codes for min/max voltage and current.
