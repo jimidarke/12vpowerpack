@@ -1,4 +1,10 @@
-0.5.0
+0.5.1
+
+## 0.5.1
+- R_CHG sourced as the straight-lead Vishay AC10000003308JAB00 from Mouser Canada (594-AC10000003308JAB), owner's decision 2026-11-14: the kinked-lead AC10 the footprint is drawn for is not sold in small quantities, and DigiKey Canada lists the straight-lead part only at 3,000 minimum. Leads bent by hand to the 52 mm footprint pitch, at least 3 mm from the body, with a spacer; footprint and board unchanged
+- Yageo SQP10AJB-3R3 considered (DigiKey Canada, C$1.81) and not chosen: needs a longer footprint
+- Thermal fuse on R_CHG considered and not added (owner's decision); recorded in `architecture.md`
+- `netlist.md`: new "Hand-soldered, from Mouser Canada" table; `gen_sch.py` reads it (Fit = Mouser); schematic regenerated, ERC clean, netlist matches pin for pin
 
 ## 0.5.0
 - Capture moved from Flux to KiCad 10 (`kicad/`): schematic generated from `netlist.md` by `kicad/gen/gen_sch.py`, checked by `kicad/gen/check_sch.py` (ERC clean, every pin matches)

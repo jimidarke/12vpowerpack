@@ -137,7 +137,7 @@ Leaves the module: `VIN_CAR`, `SYS_IN`. Check: only F_IN touches `J_CAR_P`; Q_OR
 | C_OR2 | 100 nF, 25 V | `OR2_VCAP` to `VBAT` |
 | Q_OR2 | CSD18543Q3A | source `VBAT`; gate `OR2_GATE`; drain `SYS` |
 | F_CHG | Schurter UMT 250, 1.6 A time-lag (3403.0168.xx), SMD | `SYS` to `CHG_F` |
-| R_CHG | Vishay AC10, 3.3 Ω, 10 W, 5 %, axial | `CHG_F` to `VBAT` |
+| R_CHG | Vishay AC10 (AC10000003308JAB00), 3.3 Ω, 10 W, 5 %, axial, straight leads bent to 52 mm | `CHG_F` to `VBAT` |
 | C_SYS1, C_SYS2 | 10 µF, 50 V, 1210 (two) | `SYS` to `GND` |
 
 Leaves the module: `SYS`, `VBAT`. Check: the only paths from `SYS` to `VBAT` are F_CHG + R_CHG and Q_OR2; Q_OR2's source is on `VBAT`.
@@ -250,6 +250,7 @@ This is the BOM for ordering. It was read live from the JLCPCB parts library on 
 - **fab:** JLCPCB fits it.
 - **hand:** the owner hand-solders it. Order these from LCSC with the JLCPCB order so they ship together.
 - **DK:** the owner hand-solders it. Order these from DigiKey Canada, because they are out of stock at LCSC or are through-hole parts better bought in CAD.
+- **Mouser:** the owner hand-solders it. Order it from Mouser Canada, because neither LCSC nor DigiKey Canada stocks it in small quantities.
 
 Rule: the fab fits every B and PE part plus the four fine-pitch or thermal-pad IC types; every other E part is hand-soldered. Moving one more E type to the fab costs about C$0.85 per board at a batch of 5.
 
@@ -301,7 +302,6 @@ Rule: the fab fits every B and PE part plus the four fine-pitch or thermal-pad I
 | Part | Designators | Qty | Note |
 |---|---|---|---|
 | Keystone 3557-2 | F_IN, F_BAT, F_OUT | 3 | 30 A, −50 to 145 °C **[DS Keystone 3557]**. LCSC C352820 has only 22 in stock (15 needed) |
-| Vishay AC10, 3.3 Ω 10 W, kinked "EK" leads | R_CHG | 1 | out of stock at LCSC. The in-stock LCSC alternative, TE SBCHE153R3K (C1367870, 17 W, ±10 %), is a different body; only use it with a matching footprint |
 | Schurter UMT 250, 1.6 A time-lag (3403.0168.11) | F_CHG | 1 | out of stock at LCSC. The LCSC alternative, SETsafe SCT1032T1.6A250V (C19712561), has no DC rating stated, so it is not used |
 | Phoenix Contact MKDS 1,5/2 (1715022), 2-way, 5.0 mm | J_CAR, J_SLA | 2 | 15 A; the family is rated −40 to 105 °C (LCSC C3817933; the 2-way listing leaves it blank, the 3-way states it). Replaces the XY301V, which has no temperature rating. Same 5.0 mm pitch as the placed XY301V symbol; check the hole size at layout |
 | Phoenix Contact MKDS 1,5/3 (1715035), 3-way, 5.0 mm | J_TEMP | 1 | −40 to 105 °C (LCSC C6787349). Replaces the jumper placeholder |
@@ -311,6 +311,12 @@ Rule: the fab fits every B and PE part plus the four fine-pitch or thermal-pad I
 | Seeed XIAO ESP32-C6 | J_XIAO | 1 | |
 | ATO/ATC blade fuses 10 A, 10 A, 7.5 A | in the 3557-2 holders | 3 | |
 | DS18B20 probe, 1 m | on J_TEMP | 1 | |
+
+### Hand-soldered, from Mouser Canada
+
+| Part | Designators | Qty | Note |
+|---|---|---|---|
+| Vishay AC10000003308JAB00, straight leads, 3.3 Ω 10 W 5 % (Mouser 594-AC10000003308JAB) | R_CHG | 1 | chosen 2026-11-14 (owner's decision). The kinked-lead AC10000N03308JLA00 that the footprint is drawn for is not sold in small quantities; DigiKey Canada lists the straight-lead part only at 3,000 minimum. Bend the leads to the footprint's 52 mm pitch, at least 3 mm from the body (the coating can run 3 mm onto the leads, **[DS Vishay AC]** dimension table), and hold the body off the board with a spacer. Considered: Yageo SQP10AJB-3R3 (DigiKey Canada 3.3W-10-ND, C$1.81), same ratings class but 48 mm long, so it needs a longer footprint |
 
 ## Open
 1. **Barrel jack:** the PJ-063AH has a 2.0 mm centre pin, which is the size for 5.5 × 2.1 mm plugs (the 2.5 mm version is the PJ-063BH). Check your plugs are 2.1 mm.

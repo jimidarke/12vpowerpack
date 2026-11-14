@@ -133,10 +133,11 @@ def parse_netlist_md(path):
         if m:
             _, rows = table_rows(lines, i + 1)
             modules.append((int(m.group(1)), m.group(2).strip(), rows))
-        m = re.match(r"### (Fitted by JLCPCB|Hand-soldered, from LCSC|Hand-soldered, from DigiKey)", ln)
+        m = re.match(r"### (Fitted by JLCPCB|Hand-soldered, from LCSC|Hand-soldered, from DigiKey|Hand-soldered, from Mouser)", ln)
         if m:
             fit = {"Fitted by JLCPCB": "fab", "Hand-soldered, from LCSC": "hand",
-                   "Hand-soldered, from DigiKey": "DK"}[m.group(1)]
+                   "Hand-soldered, from DigiKey": "DK",
+                   "Hand-soldered, from Mouser": "Mouser"}[m.group(1)]
             header, rows = table_rows(lines, i + 1)
             col = {h: k for k, h in enumerate(header)}
             for r in rows:
