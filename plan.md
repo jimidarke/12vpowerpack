@@ -26,7 +26,7 @@ On 2026-11-13 the scope was cut back to what the first real use needs: a vehicle
 |---|---|---|---|
 | Car input diode | TI LM74700-Q1 + CSD18543Q3A (60 V, 8.1 mΩ) | reverse polarity, no backfeed to the car, 20 mV drop | datasheet read |
 | Battery discharge diode | second LM74700-Q1 + CSD18543Q3A | same part; no 0.4 V loss or heat at 4–6 A | datasheet read |
-| Charge limit | Vishay AC10 3.3 Ω 10 W + Schurter UMT 250 1.6 A time-lag fuse | about 1 A into a flat battery; the fuse covers a reversed or dead-short battery | datasheets read |
+| Charge limit | Vishay AC10 3.3 Ω 10 W (straight leads, from Mouser Canada) + Schurter UMT 250 1.6 A time-lag fuse | about 1 A into a flat battery; the fuse covers a reversed or dead-short battery | datasheets read |
 | Fuses | ATO/ATC blade fuses in Keystone 3557-2 holders (changed from 3560 on 2026-11-14) | user-replaceable, 30 A, −50 to 145 °C, about C$1.92 against C$4.16 | datasheet read |
 | 5 V inductor | Bourns SRP6540-8R2M | 8.2 µH, 5 A saturation | datasheet read |
 | 5 V rail and low-voltage cutoff | TI LMR33630 | 36 V in, precision enable sets the cutoff, power-good drives the 12 V switch | datasheet read |
@@ -51,7 +51,7 @@ Considered and not chosen:
 
 This replaces the 2026-11-13 checkpoint, which priced a batch of 12 from DigiKey and Mouser snapshots at about C$85–95 per board (it is in git history).
 
-Basis: per board, at a batch of 5, in CAD at 1.39 CAD/USD, excluding battery, enclosure, wiring, tax, duty and brokerage. The fab-fitted and LCSC parts are priced from the JLCPCB parts library, read live on 2026-11-14 (USD, qty 10–50). JLCPCB fees are from its assembly price page (updated 2026-10-22). DigiKey Canada lines are the 2026-11-13 snapshots; "est." marks a line with no price found.
+Basis: per board, at a batch of 5, in CAD at 1.39 CAD/USD, excluding battery, enclosure, wiring, tax, duty and brokerage. The fab-fitted and LCSC parts are priced from the JLCPCB parts library, read live on 2026-11-14 (USD, qty 10–50). JLCPCB fees are from its assembly price page (updated 2026-10-22). DigiKey Canada lines are the 2026-11-13 snapshots, and the AC10 line is a Mouser listing; "est." marks a line with no price found.
 
 | Item | Per board (C$) | Source |
 |---|---|---|
@@ -61,7 +61,7 @@ Basis: per board, at a batch of 5, in CAD at 1.39 CAD/USD, excluding battery, en
 | Hand-soldered SMT from LCSC (DMP4015, SMCJ18CA, SRP6540, shunts ×2, BZT52C12 ×2, BAT46W ×2, green LED, 887 k, 102 k, 24.9 k) | 4.47 | JLCPCB library, live |
 | Keystone 3557-2 ×3 | 5.76 | DigiKey Canada snapshot |
 | Seeed XIAO ESP32-C6 | 8.29 | DigiKey Canada snapshot |
-| Vishay AC10 3.3 Ω | 2.50 | est. |
+| Vishay AC10 3.3 Ω | 2.98 | Mouser listing, 2026-11-14 (currency not confirmed; treated as CAD) |
 | Schurter UMT 250 1.6 A | 2.46 | DigiKey Canada snapshot (other values) |
 | PJ-063AH | 2.20 | DigiKey Canada snapshot |
 | Phoenix MKDS 1,5 terminals: 2-way ×2, 3-way ×1 | 4.00 | est. |
@@ -81,7 +81,8 @@ Where the saving came from:
 - Hand-soldering eleven E part types instead of paying their feeder fees: about C$9.40 per board. Paying them instead puts the total at about C$75–80.
 
 Footprint and stock points this created (all in `netlist.md`, LCSC part table):
-- The Vishay AC10 and the Schurter UMT 250 are out of stock at LCSC; buy them from DigiKey Canada.
+- The Schurter UMT 250 is out of stock at LCSC; buy it from DigiKey Canada.
+- The Vishay AC10 is out of stock at LCSC, and DigiKey Canada lists it only at 3,000 minimum; buy the straight-lead AC10000003308JAB00 from Mouser Canada and bend the leads to 52 mm.
 - The Keystone 3557-2 has only 22 at LCSC, so buy it from DigiKey Canada too.
 - The SRP6540-8R2M is C2041807; the Flux part's C1329351 is the 4.7 µH value.
 

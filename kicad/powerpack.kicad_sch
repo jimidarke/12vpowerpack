@@ -17298,7 +17298,7 @@
 				)
 			)
 		)
-		(property "Description" "Vishay AC10, 3.3 Ω, 10 W, 5 %, axial"
+		(property "Description" "Vishay AC10 (AC10000003308JAB00), 3.3 Ω, 10 W, 5 %, axial, straight leads bent to 52 mm"
 			(at 86.36 175.26 90)
 			(hide yes)
 			(show_name no)
@@ -17309,7 +17309,7 @@
 				)
 			)
 		)
-		(property "MPN" "Vishay AC10, 3.3 Ω 10 W"
+		(property "MPN" "Vishay AC10000003308JAB00"
 			(at 86.36 175.26 90)
 			(hide yes)
 			(show_name no)
@@ -17320,7 +17320,7 @@
 				)
 			)
 		)
-		(property "Fit" "DK"
+		(property "Fit" "Mouser"
 			(at 86.36 175.26 90)
 			(hide yes)
 			(show_name no)
