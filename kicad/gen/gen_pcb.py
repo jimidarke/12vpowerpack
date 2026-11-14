@@ -143,10 +143,10 @@ def patch_project():
     ns = d["net_settings"]
     default = next(c for c in ns["classes"] if c["name"] == "Default")
     default.update(clearance=0.13, track_width=0.25, via_diameter=0.6, via_drill=0.3)
-    power = dict(default, name="Power", clearance=0.2, track_width=1.5, via_diameter=0.8, via_drill=0.4,
+    power = dict(default, name="Power", clearance=0.13, track_width=1.5, via_diameter=0.8, via_drill=0.4,
                  priority=0)
     ns["classes"] = [default, power]
-    ns["netclass_patterns"] = [{"netclass": "Power", "pattern": n} for n in POWER_NETS]
+    ns["netclass_patterns"] = [{"netclass": "Power", "pattern": "/" + n} for n in POWER_NETS]
     r = d["board"]["design_settings"]["rules"]
     r.update(min_clearance=0.127, min_track_width=0.127, min_via_diameter=0.45, min_through_hole_diameter=0.3,
              min_copper_edge_clearance=0.3, min_hole_clearance=0.25, min_hole_to_hole=0.25)

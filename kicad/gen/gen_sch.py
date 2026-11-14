@@ -20,6 +20,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 KICAD = os.path.normpath(os.path.join(HERE, ".."))
 REPO = os.path.normpath(os.path.join(KICAD, ".."))
 STOCK = "/usr/share/kicad/symbols"
+if not os.path.isdir(STOCK):  # Windows KiCad run from WSL: the libraries sit beside the interpreter
+    STOCK = os.path.normpath(os.path.join(os.path.dirname(sys.executable), "..", "share", "kicad", "symbols"))
 PROJECT = "powerpack"
 G = 1.27  # schematic grid
 

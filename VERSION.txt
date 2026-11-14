@@ -1,4 +1,10 @@
-0.7.1
+0.8.0
+
+## 0.8.0
+- Silkscreen pass (2026-11-14, owner's request), by the new `kicad/gen/silk_pcb.py`: reference labels 1.0 → 0.8 mm (below JLCPCB's stated 1.0 mm minimum height, accepted to make room; they may print soft); 32 functional labels at 1.0 mm or more, added as a group `silk_labels`: `-`/`+` and CAR/BATT under J_CAR and J_SLA, 3V3/DQ/GND under J_TEMP, "DS18B20 PROBE", "12V AGM ONLY", fuse ratings (10A, 10A, 7.5A, 1.6A T), "12V OUT / 3A 5A PEAK / CENTRE +", "USB 5V OUT", net names beside TP1–TP8, "XIAO ESP32-C6" in the socket outline, "HOT!" by R_CHG, the JP_HOLD note, board name and "REV 0.8". F_IN, F_BAT and D_TVS labels moved to make room. Only F.Silkscreen text changed; DRC unchanged (13 edge-silkscreen warnings)
+- Net class fix: the `Power` class patterns did not match the board's net names (`GND` against `/GND`), so every net was checked as `Default`. Patterns now carry the slash. `Power` clearance 0.2 → 0.13 mm: at 0.2 the corrected class fails on 27 gaps of 0.14–0.19 mm, two of them inside the Q_OR1/Q_OR2 footprints; the pours keep their own 0.3 mm
+- `gen_sch.py` finds the Windows KiCad symbol library, so the schematic check runs from WSL on the laptop
+- Routing review, still to fix by hand: the GND plane neck to J_CAR pin 2 is about 1.7 mm (cut by the `TEMP_DQ` track on the bottom); D_TVS pin 2 has one GND via; C_IN5, C_HF5 and C_O1–C_O4 have one or two
 
 ## 0.7.1
 - Voltage and power budget (2026-11-14), new section in `architecture.md`: car input (nominal 13.8–14.4 V, start 11.5–12.7 V across tolerances, clamp 18 V stand-off / 29.2 V surge, reverse to −18 V), 12 V output (about 10.8–14.8 V at the plug, 9.9 V worst case at 5 A near the cutoff; car faults pass through to about 22 V), 5 V rail (5.016 V, 4.86–5.17 V worst case, at least 3.37 A available), heat (about 9 W worst case, 3.6 W of it in R_CHG)

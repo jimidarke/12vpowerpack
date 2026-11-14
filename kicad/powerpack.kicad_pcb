@@ -104,7 +104,7 @@
 			(uuid "f069873f-a70b-4e30-8b15-9685c84c51ad")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -513,7 +513,7 @@
 			(uuid "83002eae-37b4-4386-82e8-23362e2dc9e2")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -826,7 +826,7 @@
 			(uuid "5bea303f-788f-439a-a1fd-09909637f060")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -1009,7 +1009,7 @@
 			(uuid "647e4010-1d46-4d1b-bf65-ba29ba8ca4a4")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -1187,12 +1187,12 @@
 		(descr "Diode SMC (DO-214AB)")
 		(tags "Diode SMC (DO-214AB)")
 		(property "Reference" "D_TVS"
-			(at 0 -4.345 0)
+			(at 1 4.2 0)
 			(layer "F.SilkS")
 			(uuid "e5b5d3fe-07b5-48ba-bc49-5e5f4bb2cbc6")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -1495,7 +1495,7 @@
 			(uuid "e39d971c-f9fa-419a-af1a-52be33e77181")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -1677,7 +1677,7 @@
 			(uuid "703109a5-a362-43ec-9718-30f40a0b2b60")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -3815,7 +3815,7 @@
 			(uuid "dff44eb6-523a-45dd-aaf5-fc86ee1ea1f3")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -3998,7 +3998,7 @@
 			(uuid "3b19159e-81f0-4faa-8455-acdba6513098")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -4181,7 +4181,7 @@
 			(uuid "bd1cfb0b-1ad9-4625-a775-0d5b58e93871")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -4364,7 +4364,7 @@
 			(uuid "ee7f8eb1-0bf8-4dc0-b331-fb44931728ea")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -4547,7 +4547,7 @@
 			(uuid "deb252e4-a999-4779-b87c-b93ee50fb0ea")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -4730,7 +4730,7 @@
 			(uuid "e7ffc4ca-22de-4610-863a-0e840a7d7821")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -5021,7 +5021,7 @@
 			(uuid "3b3ff2e7-4e69-467b-b34f-ff62d5171023")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -5414,7 +5414,7 @@
 			(uuid "00129ea3-1ab0-4003-899b-4dbbc8079d5e")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -5597,7 +5597,7 @@
 			(uuid "1b2a0f0e-c199-4510-b047-9fb3d6d3551a")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -5780,7 +5780,7 @@
 			(uuid "6e2ea93a-a499-4ef5-86d0-1f38d17344d4")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -5879,7 +5879,7 @@
 			(uuid "76a599c9-e514-405e-895a-3e55670353e1")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -6062,7 +6062,7 @@
 			(uuid "944ff491-fcec-4337-b011-b14f6852eb01")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -6245,7 +6245,7 @@
 			(uuid "ecd5cafa-2298-4a0c-990a-6bcd28f32154")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -6428,7 +6428,7 @@
 			(uuid "4358a1fb-4cb1-4f72-8534-c4ca6d0ceecd")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -6611,7 +6611,7 @@
 			(uuid "66ef3dab-465a-492a-baa8-d15753cc4c94")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -6924,7 +6924,7 @@
 			(uuid "2b3f4d3e-5156-4a95-9c13-aa3855fb32b6")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -7107,7 +7107,7 @@
 			(uuid "1da53052-b580-44bf-a46d-de166dde450d")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -7290,7 +7290,7 @@
 			(uuid "3f00c7dc-b5ab-428d-bca9-df67a7dfec9b")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -7473,7 +7473,7 @@
 			(uuid "3692ecf6-9f74-427e-9337-989d0106e0aa")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -7656,7 +7656,7 @@
 			(uuid "3c0b8792-32a1-4020-ad0c-107dc2ec2e5f")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -7839,7 +7839,7 @@
 			(uuid "6a7e9fcb-4342-43d0-82be-97a328fef1d9")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -8022,7 +8022,7 @@
 			(uuid "11982687-f117-491d-b96e-01c47df814ba")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -8205,7 +8205,7 @@
 			(uuid "1977f574-2b76-4d2a-bfaf-31aec56f2820")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -8304,7 +8304,7 @@
 			(uuid "996078e6-f113-45c2-bbba-49158625f4ba")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -8707,7 +8707,7 @@
 			(uuid "e16ad165-0285-426e-a89a-c4670f193e1d")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -8890,7 +8890,7 @@
 			(uuid "d19e9efa-fde0-432d-aefb-fc3599b3650b")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -9073,7 +9073,7 @@
 			(uuid "ab74be9e-7569-4c49-8d2b-2d1d5bdaebc7")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -9256,7 +9256,7 @@
 			(uuid "c3652510-b94a-43dd-b13a-166e0acebb7e")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -9488,7 +9488,7 @@
 			(uuid "0bd8bd2a-ec5e-4ff7-8e47-b97a12964c0a")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -9865,7 +9865,7 @@
 			(uuid "ce106273-d27d-41a4-95fa-87bde7714fe0")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -10048,7 +10048,7 @@
 			(uuid "8d75b0c6-7ed7-41d8-899c-28cdcffddf31")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -10231,7 +10231,7 @@
 			(uuid "2e49f5c6-1aa2-4bb1-bb38-ec182153b318")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -10414,7 +10414,7 @@
 			(uuid "070a3b8e-e984-4822-b98a-b8d40ffb18d7")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -10823,7 +10823,7 @@
 			(uuid "ed303163-73b2-44fe-ad8e-24c3cdc98cf7")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -11006,7 +11006,7 @@
 			(uuid "94a179bc-974a-4dfe-99a4-3dc7bb21671e")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -11189,7 +11189,7 @@
 			(uuid "19ff50f0-d3af-4ab4-83f0-895da8ee5ca7")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -11288,7 +11288,7 @@
 			(uuid "c22af605-8f91-4940-956b-0920f7d13ab2")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -11471,7 +11471,7 @@
 			(uuid "927db947-3af2-40d5-90e8-5a36b318c50a")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -11784,7 +11784,7 @@
 			(uuid "cab7242a-c6e5-4ec0-9b64-100051e1fd63")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -11961,12 +11961,12 @@
 		(at 127.995 66.2 180)
 		(descr "Keystone 3557-2 ATO/ATC blade fuse holder, 30 A. Pads 1+2 one clip, 3+4 the other (13.5 mm between pairs, 3.4 mm within a pair)")
 		(property "Reference" "F_BAT"
-			(at -0.005 4.355 0)
+			(at 6.595 4.55 0)
 			(layer "F.SilkS")
 			(uuid "2deb2ba6-5987-4bf8-a993-7ea82f7cac1f")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -12314,7 +12314,7 @@
 			(uuid "6b28a168-914f-418e-b325-c0eeeb2ee21d")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -12690,7 +12690,7 @@
 			(uuid "0a4efb19-e681-44fa-8919-0c7dd4453f9d")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -12953,7 +12953,7 @@
 			(uuid "7bb97c90-f07a-4b34-9e50-d369c2deb7ad")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -13266,7 +13266,7 @@
 			(uuid "a58f7785-5474-4daa-a78c-9615d868b8d2")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -13579,7 +13579,7 @@
 			(uuid "5c827698-474b-4e02-8819-7d5b2d0c732c")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -13954,7 +13954,7 @@
 			(uuid "a2706c23-69be-4b43-b82c-7d965df880db")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -14083,7 +14083,7 @@
 			(uuid "a7130ffb-e9a9-4e87-9965-bb704f260f43")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -14323,7 +14323,7 @@
 			(uuid "5d67544c-ea2a-42b0-890a-d31e49e9e4eb")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -14700,7 +14700,7 @@
 			(uuid "d952960a-e715-4cd4-bba5-35719532d099")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -15103,7 +15103,7 @@
 			(uuid "1cc50bc0-e3ab-439b-9650-30199432b283")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -15185,6 +15185,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -15491,7 +15492,7 @@
 			(uuid "14cf7eb0-9019-48b5-b99b-1ab15f769644")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -15674,7 +15675,7 @@
 			(uuid "2a5c7bdc-6f5d-4db6-805e-8ec64be98716")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -15851,12 +15852,12 @@
 		(at 62.005 66.2)
 		(descr "Keystone 3557-2 ATO/ATC blade fuse holder, 30 A. Pads 1+2 one clip, 3+4 the other (13.5 mm between pairs, 3.4 mm within a pair)")
 		(property "Reference" "F_IN"
-			(at -0.005 -4.355 0)
+			(at -7.705 -4.55 0)
 			(layer "F.SilkS")
 			(uuid "b1b94601-9bb1-48e4-b952-fb370c36202e")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -16096,7 +16097,7 @@
 			(uuid "7b34b023-69a7-4758-b4e1-79c90b292ea3")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -16328,7 +16329,7 @@
 			(uuid "b95100ef-5895-4b5b-9fac-9a5007ce0cc1")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -16511,7 +16512,7 @@
 			(uuid "1f410076-7b73-45b4-b23b-10963bc83ce9")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -16853,7 +16854,7 @@
 			(uuid "89f6257f-f191-4de0-b29d-6798db584bc0")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -16952,7 +16953,7 @@
 			(uuid "e5f5c353-fec6-4e45-85e9-d31c800941d0")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -17051,7 +17052,7 @@
 			(uuid "65f45ec2-8011-420b-b1ab-e1f69d0e4cd5")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -17233,7 +17234,7 @@
 			(uuid "ca354d80-01ac-40ab-84ac-d5684aa338eb")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -17504,7 +17505,7 @@
 			(uuid "567a02f8-8654-40e4-91c7-5daec514f3f3")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -17687,7 +17688,7 @@
 			(uuid "509fdfe5-03e6-4565-89e7-4d923e0fe7ac")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -17769,6 +17770,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -18115,7 +18117,7 @@
 			(uuid "b84b2e60-c772-4ffb-affe-516f9253ada5")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -18197,6 +18199,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -18503,7 +18506,7 @@
 			(uuid "1c1c5ea9-1c46-48ac-a9c8-727a626664b2")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -18784,7 +18787,7 @@
 			(uuid "6b84a317-be32-4700-a554-cb7c273854b0")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -18967,7 +18970,7 @@
 			(uuid "5bc69c09-87dc-4d31-9d84-104b8ff3d989")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -19150,7 +19153,7 @@
 			(uuid "2ef6410c-a537-4821-8056-c54e0cbde375")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -19333,7 +19336,7 @@
 			(uuid "a0c13e27-2499-491e-9ee6-6e6f889468ec")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -19432,7 +19435,7 @@
 			(uuid "ea116fd5-07b9-4e28-a700-a8ca931a53d6")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -19835,7 +19838,7 @@
 			(uuid "9cea51bf-e66c-4937-9fe7-e90176fa0139")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -20018,7 +20021,7 @@
 			(uuid "00e52393-011b-4c70-ae63-a737c38d33f9")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -20572,7 +20575,7 @@
 			(uuid "eef41010-dd03-4cfa-97ef-8d41bb2fbd53")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -20670,7 +20673,7 @@
 			(uuid "befe051f-dcfc-4b81-887e-a5368f8fd83b")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -20830,7 +20833,7 @@
 			(uuid "000c618c-2198-4bed-b3fa-a72e8a6e787a")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -21013,7 +21016,7 @@
 			(uuid "f12c6ac1-d750-48b3-b2cf-b8c396d6a110")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -21112,7 +21115,7 @@
 			(uuid "a05563c1-b4b9-49c2-8e8c-42482bd7e747")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -21295,7 +21298,7 @@
 			(uuid "b6c12547-d613-481c-87b4-4245f60234f7")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -21478,7 +21481,7 @@
 			(uuid "36c513a2-a0cb-4c07-b8b8-4f842ba29f2b")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -21688,6 +21691,358 @@
 		)
 		(layer "Edge.Cuts")
 		(uuid "0524b34e-22b8-4a4f-bbab-ad2c27de3bc6")
+	)
+	(gr_text "10A"
+		(at 57.8 61.65 0)
+		(layer "F.SilkS")
+		(uuid "816df1c7-3188-4f27-b42a-c07caab20b3d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "CAR"
+		(at 63.5 61.65 0)
+		(layer "F.SilkS")
+		(uuid "0913bc73-52a1-469a-8023-4f6dc117dc1b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "XIAO ESP32-C6"
+		(at 63.5 90 0)
+		(layer "F.SilkS")
+		(uuid "2d9414d9-7e8d-4329-bc84-ca83940690b8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "USB 5V OUT"
+		(at 64.5 111.4 0)
+		(layer "F.SilkS")
+		(uuid "fdba1906-9185-4893-a76f-25fc5c1e914d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "12V VEHICLE UPS"
+		(at 64.5 114.7 0)
+		(layer "F.SilkS")
+		(uuid "db235b65-36ad-4937-9d64-9cf93f0366c6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "REV 0.8"
+		(at 64.5 116.6 0)
+		(layer "F.SilkS")
+		(uuid "813e8e80-afeb-48d3-91b0-7dcc10e28142")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "3V3"
+		(at 75 105.2 0)
+		(layer "F.SilkS")
+		(uuid "1f5c3233-2377-4319-a46f-8108e1cb620e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "VIN_CAR"
+		(at 78.4 51.55 0)
+		(layer "F.SilkS")
+		(uuid "cf4365d0-0f2d-44b7-a4aa-14ef6c7ab47a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "EN_5V"
+		(at 81.7513 102.7 0)
+		(layer "F.SilkS")
+		(uuid "8e96dda8-446d-4cbb-8af5-1360d9ea9762")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "3V3"
+		(at 95 61.75 0)
+		(layer "F.SilkS")
+		(uuid "1a04df65-1135-4804-882f-8b3773f103cc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "DQ"
+		(at 100 61.75 0)
+		(layer "F.SilkS")
+		(uuid "b71d1ae8-630b-4efb-a364-691d2c585cd7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "LOAD"
+		(at 103.7513 86.3 0)
+		(layer "F.SilkS")
+		(uuid "79c71822-051d-493d-b3ab-ee403ff1fad6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "GND"
+		(at 105 61.75 0)
+		(layer "F.SilkS")
+		(uuid "ea02850c-2b91-436c-8c36-88c620e7a621")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "SYS"
+		(at 109.7513 74.4 0)
+		(layer "F.SilkS")
+		(uuid "cbb7c60d-2e82-4af6-bd14-c2cd95b10d56")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "5V"
+		(at 115.0513 100 0)
+		(layer "F.SilkS")
+		(uuid "e60fcd45-36aa-405c-a9a4-37e6de222117")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "< DS18B20 PROBE"
+		(at 115.55 51.5 0)
+		(layer "F.SilkS")
+		(uuid "0e3d4d94-0519-4622-bd5c-127e736e761e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "VBAT"
+		(at 116.0013 64.15 0)
+		(layer "F.SilkS")
+		(uuid "8b421ccc-68dd-40db-9407-2b7951c7d3ff")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "JP_HOLD: CLOSE IF NO XIAO"
+		(at 120 77.8 0)
+		(layer "F.SilkS")
+		(uuid "f92c57e9-d52e-494b-8a90-59b781564102")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "12V AGM ONLY >"
+		(at 120.75 53.5 0)
+		(layer "F.SilkS")
+		(uuid "6c1b31b5-2adf-4d3a-a8c9-2ebd02013942")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "10A"
+		(at 125.4 61.65 0)
+		(layer "F.SilkS")
+		(uuid "2a34da7a-0acf-48fd-9311-96f7baaccd9a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "BATT"
+		(at 134.5 61.65 0)
+		(layer "F.SilkS")
+		(uuid "71bd534d-8045-4a37-8ad6-2340d1b065d9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "3A  5A PEAK"
+		(at 136 113.9 0)
+		(layer "F.SilkS")
+		(uuid "c2d553f6-e400-4131-9633-df9a9ae56f01")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "CENTRE +"
+		(at 136 115.7 0)
+		(layer "F.SilkS")
+		(uuid "893ee384-c4e6-4b1c-ae9f-beb8715e7598")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "GND"
+		(at 137.3013 78.2 0)
+		(layer "F.SilkS")
+		(uuid "8df98b7a-2b54-4161-93ff-ae27a9c21a14")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "1.6A T"
+		(at 137.5 74.3 0)
+		(layer "F.SilkS")
+		(uuid "42cf84d5-d6ea-42bb-8ab8-52f060ff6534")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "7.5A"
+		(at 137.85 105 90)
+		(layer "F.SilkS")
+		(uuid "3e0f84c9-b878-487e-a6c7-43278a89b535")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "HOT!"
+		(at 139.6 92 90)
+		(layer "F.SilkS")
+		(uuid "cd67137b-5f52-4bdc-914c-73ee3d67df13")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.2)
+			)
+		)
+	)
+	(gr_text "12V OUT"
+		(at 136 112 0)
+		(layer "F.SilkS")
+		(uuid "b77d5e12-b0c4-40c1-8618-3adcdff55bca")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "-"
+		(at 61 61.65 0)
+		(layer "F.SilkS")
+		(uuid "551a063f-0e5f-4bed-a2c9-29a4220bde7a")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+			)
+		)
+	)
+	(gr_text "+"
+		(at 66 61.65 0)
+		(layer "F.SilkS")
+		(uuid "7bd38cf0-2745-45fd-b443-04bde27b20b8")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+			)
+		)
+	)
+	(gr_text "-"
+		(at 131.6 61.65 0)
+		(layer "F.SilkS")
+		(uuid "be3d6af1-0428-4a87-99cf-d25eeda0c6f7")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+			)
+		)
+	)
+	(gr_text "+"
+		(at 137.4 61.65 0)
+		(layer "F.SilkS")
+		(uuid "8f05f9b0-6973-4eca-b1e0-b1fd2c78ac70")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+			)
+		)
 	)
 	(segment
 		(start 92.579 98.0299)
@@ -27617,6 +27972,26 @@
 				(xy 133 67.154194) (xy 133 65.245803) (xy 133.019685 65.178764) (xy 133.072489 65.133009) (xy 133.141647 65.123065)
 				(xy 133.205203 65.15209) (xy 133.234485 65.189508) (xy 133.269555 65.258337) (xy 133.852297 64.675595)
 			)
+		)
+	)
+	(group "silk_labels"
+		(uuid "73132013-6a08-4d27-a7a9-98588898667b")
+		(members "0913bc73-52a1-469a-8023-4f6dc117dc1b" "0e3d4d94-0519-4622-bd5c-127e736e761e"
+			"1a04df65-1135-4804-882f-8b3773f103cc" "1f5c3233-2377-4319-a46f-8108e1cb620e"
+			"2a34da7a-0acf-48fd-9311-96f7baaccd9a" "2d9414d9-7e8d-4329-bc84-ca83940690b8"
+			"3e0f84c9-b878-487e-a6c7-43278a89b535" "42cf84d5-d6ea-42bb-8ab8-52f060ff6534"
+			"551a063f-0e5f-4bed-a2c9-29a4220bde7a" "6c1b31b5-2adf-4d3a-a8c9-2ebd02013942"
+			"71bd534d-8045-4a37-8ad6-2340d1b065d9" "79c71822-051d-493d-b3ab-ee403ff1fad6"
+			"7bd38cf0-2745-45fd-b443-04bde27b20b8" "813e8e80-afeb-48d3-91b0-7dcc10e28142"
+			"816df1c7-3188-4f27-b42a-c07caab20b3d" "893ee384-c4e6-4b1c-ae9f-beb8715e7598"
+			"8b421ccc-68dd-40db-9407-2b7951c7d3ff" "8df98b7a-2b54-4161-93ff-ae27a9c21a14"
+			"8e96dda8-446d-4cbb-8af5-1360d9ea9762" "8f05f9b0-6973-4eca-b1e0-b1fd2c78ac70"
+			"b71d1ae8-630b-4efb-a364-691d2c585cd7" "b77d5e12-b0c4-40c1-8618-3adcdff55bca"
+			"be3d6af1-0428-4a87-99cf-d25eeda0c6f7" "c2d553f6-e400-4131-9633-df9a9ae56f01"
+			"cbb7c60d-2e82-4af6-bd14-c2cd95b10d56" "cd67137b-5f52-4bdc-914c-73ee3d67df13"
+			"cf4365d0-0f2d-44b7-a4aa-14ef6c7ab47a" "db235b65-36ad-4937-9d64-9cf93f0366c6"
+			"e60fcd45-36aa-405c-a9a4-37e6de222117" "ea02850c-2b91-436c-8c36-88c620e7a621"
+			"f92c57e9-d52e-494b-8a90-59b781564102" "fdba1906-9185-4893-a76f-25fc5c1e914d"
 		)
 	)
 	(embedded_fonts no)

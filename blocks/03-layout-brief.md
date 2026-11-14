@@ -55,7 +55,7 @@ This is a sketch of neighbours, not a drawing to scale. The rules behind it:
 - **Q_OUT (TO-252):** drain tab pour on `12V_SW`; the gate network (R_OG1, C_OG, D_ZO, R_OG2, Q_OUTDRV) next to it.
 - **J_XIAO:** the socket at a board edge, with the ESP32-C6's ceramic antenna end at or over the edge and no copper (any layer) under the antenna. The XIAO's USB-C stays reachable, or the module comes out of its socket to flash; after the first flash, ESPHome updates are over the air.
 - **Sense dividers** (R_VC1/R_VC2/C_VC, R_VB1/R_VB2/C_VB), the pull-ups and module 8 near J_XIAO, away from `SW_5V`.
-- **Test points** TP1–TP8 (`VIN_CAR`, `SYS`, `LOAD`, `VBAT`, `5V`, `3V3`, `EN_5V`, `GND`) where a probe reaches them with the board in the case base. They are not yet in the schematic; add them in the v3.1 edits or as bare pads at layout.
+- **Test points** TP1–TP8 (`VIN_CAR`, `SYS`, `LOAD`, `VBAT`, `5V`, `3V3`, `EN_5V`, `GND`) where a probe reaches them with the board in the case base. In KiCad they are in the schematic and on the board, each with its net name on the silkscreen.
 
 ## Agent message 1: placement only (draft, not sent)
 

@@ -518,7 +518,7 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.13,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -544,43 +544,43 @@
     "netclass_patterns": [
       {
         "netclass": "Power",
-        "pattern": "J_CAR_P"
+        "pattern": "/J_CAR_P"
       },
       {
         "netclass": "Power",
-        "pattern": "VIN_CAR"
+        "pattern": "/VIN_CAR"
       },
       {
         "netclass": "Power",
-        "pattern": "SYS_IN"
+        "pattern": "/SYS_IN"
       },
       {
         "netclass": "Power",
-        "pattern": "SYS"
+        "pattern": "/SYS"
       },
       {
         "netclass": "Power",
-        "pattern": "LOAD"
+        "pattern": "/LOAD"
       },
       {
         "netclass": "Power",
-        "pattern": "J_SLA_P"
+        "pattern": "/J_SLA_P"
       },
       {
         "netclass": "Power",
-        "pattern": "VBAT"
+        "pattern": "/VBAT"
       },
       {
         "netclass": "Power",
-        "pattern": "12V_SW"
+        "pattern": "/12V_SW"
       },
       {
         "netclass": "Power",
-        "pattern": "12V_OUT"
+        "pattern": "/12V_OUT"
       },
       {
         "netclass": "Power",
-        "pattern": "GND"
+        "pattern": "/GND"
       }
     ]
   },
