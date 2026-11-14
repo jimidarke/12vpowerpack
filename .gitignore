@@ -1,0 +1,10 @@
+# KiCad per-user and generated files
+*.kicad_prl
+*.lck
+*-backups/
+_autosave-*
+fp-info-cache
+~*.lck
+kicad/out/
+__pycache__/
+kicad/lib/lcsc.3dshapes/

@@ -4,7 +4,7 @@ A small in-vehicle UPS on one PCB: a 12 V sealed AGM battery floated on the car'
 
 ## Status
 
-Design phase. The requirements and architecture were cut back to this vehicle-only design (v3) on 2026-11-13, and the schematic was captured in Flux and checked against the net table that day. On 2026-11-14 the parts were trimmed for a DIY batch of 5 (v3.1), and the schematic was updated and re-checked (77 parts). The board is not laid out, and nothing has been built or tested. Values marked **[TBC]** in `architecture.md` are still to be confirmed. The earlier two-chemistry design (v2) is in git at tag `v0.2.1`.
+Design phase. The requirements and architecture were cut back to this vehicle-only design (v3) on 2026-11-13, and the schematic was captured in Flux and checked against the net table that day. On 2026-11-14 the parts were trimmed for a DIY batch of 5 (v3.1), and the schematic was updated and re-checked (77 parts). Later that day capture moved to KiCad 10: the schematic is generated from the net table and every part is pre-placed on the board. The board is not routed, and nothing has been built or tested. Values marked **[TBC]** in `architecture.md` are still to be confirmed. The earlier two-chemistry design (v2) is in git at tag `v0.2.1`.
 
 ## Specification
 
@@ -46,13 +46,14 @@ Car 12 V in ─ fuse ─ TVS ─ ideal diode ─ SYS ─┬─ switch ─ fuse �
 |---|---|
 | [`requirements.md`](requirements.md) | What the board must do |
 | [`architecture.md`](architecture.md) | Block diagram, net names, values, power control, ESP32 pin map, connectors |
-| [`netlist.md`](netlist.md) | Pin-by-pin net table the schematic was drawn from and is checked against |
+| [`netlist.md`](netlist.md) | Pin-by-pin net table the KiCad schematic is generated from and checked against |
+| [`kicad/`](kicad) | KiCad 10 project: generated schematic, board, project library, generator and check scripts ([README](kicad/README.md)) |
 | [`plan.md`](plan.md) | Status, part-choice reasoning, cost estimate, how the capture was done, bench test plan |
-| [`blocks/`](blocks) | Messages for the Flux agent and their templates, the v3.1 schematic edit list and the layout brief; `retired/` holds the v2 briefs |
+| [`blocks/`](blocks) | Placement plan (`04-placement*`), layout brief, and the Flux messages and edit lists (history); `retired/` holds the v2 briefs |
 | [`datasheets/`](datasheets) | Text extracts of the datasheets the values were taken from |
-| [`flux-log.md`](flux-log.md) | Log of Flux agent runs, credits and the capture checklist |
+| [`flux-log.md`](flux-log.md) | Log of the Flux agent runs and credits (Flux archived 2026-11-14) |
 
-The schematic is in [Flux](https://www.flux.ai/jimidarke/12v-power-manager~zn), and the layout will be done there. This repository holds the research and the net table that work is checked against.
+The schematic and board are in KiCad 10 (`kicad/`). The earlier Flux capture ([project](https://www.flux.ai/jimidarke/12v-power-manager~zn)) is archived.
 
 ## Cost target
 

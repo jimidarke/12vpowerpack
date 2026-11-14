@@ -78,6 +78,8 @@ LMR33630 PG ─ OUT_EN ─ 100 kΩ pull-up to 5V ─ N-FET gate ─ pulls Q_OUT 
 - **12 V output follows the 5 V rail:** PG is an open-drain flag, high when the output is in regulation and forced low when EN is low **[DS LMR33630 pin table, §8.3.1]**; pull-up 100 kΩ to VOUT as the datasheet suggests **[DS §8.3.1]**. D_OEN keeps the 5 V pull-up off the XIAO's 3.3 V pin; with the pin low `OUT_EN` sits at about 0.3–0.45 V, under the 2N7002's 1.0 V minimum threshold **[DS 2N7002, BAT46W]**. So the 12 V output has the same cutoff as the 5 V rail and comes on about 4 ms after it **[DS §8.3.1]**. Side effect: an overload that pulls the 5 V rail out of regulation also switches the 12 V output off.
 - **Soft cutoff (firmware):** 10.97 V is close to empty for a lightly loaded AGM, and a discharged lead-acid battery freezes at roughly −10 °C while a full one survives below −40 °C (published freeze-point figures disagree in detail; take the battery maker's table where there is one) **[TBC]**. So the firmware releases `HOLD` earlier, at a battery voltage that rises as `TEMP_DQ` falls. Starting values to confirm on the bench with the real battery **[TBC]**: 11.9 V above 0 °C, 12.2 V from 0 to −20 °C, 12.4 V below −20 °C, measured under load and filtered over a few seconds. The hardware cutoff stays as the backstop when the firmware is missing or wrong.
 - **XIAO faults:** stuck with `HOLD` high, the outputs run until the hardware cutoff. Stuck low, removed or not fitted, the outputs follow the ignition.
+- **The latch needs the XIAO to lose power.** The low-voltage latch works because the XIAO dies with the 5 V rail and `HOLD` drops. If the XIAO is powered from anywhere else (a USB-C cable on the bench, a LiPo on its BAT pads), it keeps `HOLD` high: at 10.97 V the 5 V rail stops, the unloaded battery recovers above 11.94 V and the board restarts, cycling the battery down. So: no LiPo on the XIAO (owner's decision 2026-11-14; it would also be charged below 0 °C by the XIAO's charger, which has no temperature cutoff, and the BAT pads are not reachable through the socket), and unplug USB-C before testing the cutoff on a battery.
+- **"Last gasp" report (firmware):** before releasing `HOLD` at the soft cutoff or timer expiry, the XIAO publishes battery voltage, temperature, energy used since ignition-off and the reason for shutdown. This gives the shutdown telemetry without a backup battery.
 - **JP_HOLD** (open by default): closed, it replaces the XIAO's hold, so a board without a controller stays on until the low-voltage cutoff and restarts when the battery recovers above 11.94 V.
 
 ## Standby drain (everything off, ignition off) **[calc]**
@@ -137,20 +139,23 @@ Every ESP32-driven line leaves the board in its defined state with the module re
 | F_IN / F_BAT / F_OUT | 10 A / 10 A / 7.5 A blade fuses | Keystone 3557-2 holders, hand-soldered. Captured as generic fuse symbols; the holder footprint is set at layout |
 | F_CHG | 1.6 A time-lag, Schurter UMT 250 | SMD. Captured as a generic fuse symbol |
 
-## Capture status (2026-11-13)
+## Capture status (2026-11-14: KiCad)
+The schematic and board moved to KiCad 10 on 2026-11-14 (`kicad/`, see `kicad/README.md`). The schematic is generated from `netlist.md`: ERC clean, every pin matches the table, and every net matches the Flux capture except one Flux error (Q_OR2's gate not wired). The Flux-specific items below (symbols, LCSC numbers on Flux parts, the 90 Ω tag) no longer apply; in KiCad the BSS84 symbol is G 1, S 2, D 3 as in the datasheet, L1 carries C2041807, J_CAR/J_SLA/J_TEMP use the Phoenix MKDS 1,5 footprints, and R_CHG and F_CHG have their footprints.
+
+### Flux capture (history, 2026-11-13)
 The schematic is in Flux: 80 parts, every net checked against `netlist.md` with the free reads. The owner wired it by hand; the Flux agent only placed the parts.
 
 Differences between the captured schematic and this document, to settle before layout or ordering:
 0. **v3.1 changes (2026-11-14): done and verified.** 77 parts, 41 nets. Left over: Flux's inherited 90 Ω controlled-impedance tag on `USB_D` and `5V`, to clear before routing.
 1. **Packages:** done 2026-11-14 from the LCSC part table (0603 / 0805 / 1206 / 2512). Only R_CHG is left: it is still a generic 0603 symbol and needs the axial AC10 footprint.
-2. **J_TEMP** is a jumper symbol standing in for the 3-way terminal.
-3. **Q_HOLD** uses the library part BSS84LT1G, whose symbol numbers drain as pin 2 and source as pin 3; the usual SOT-23 numbering is source 2, drain 3. Check against the onsemi datasheet before layout.
+2. ~~J_TEMP~~ done 2026-11-14: KF301-5.0-3P footprint; order the Phoenix MKDS 1,5/3 (1715035, −40 °C) for it.
+3. **Q_HOLD:** the library symbol BSS84LT1G numbers drain as pin 2 and source as pin 3, but the onsemi datasheet (SOT-23 case 318, style 21) gives gate 1, source 2, drain 3 **[DS onsemi BSS84LT1/D, read 2026-11-14]**. As wired by name, the body diode would hold `EN_SRC` at `SYS` permanently and break the timer and the latch-off. **To fix before layout:** wire symbol pin 2 (named D) to `SYS` and pin 3 (named S) to `EN_SRC`. The 2N7002s (G 1, S 2, D 3) and Q_OUT (G 1, D 2, S 3) match their packages.
 4. ~~D_TVS~~ done 2026-11-14: Diodes SMCJ18CAQ-13-F.
 5. **L1** shows 8.2 µH and SRP6540-8R2M but carries the 4.7 µH part's LCSC number (C1329351); the 8.2 µH part is C2041807.
 6. ~~F_BAT~~ done 2026-11-14: 10 A.
 6a. ~~D_5V~~ done 2026-11-14: B5819W (SOD-123, LCSC C64885).
 6b. **J_CAR, J_SLA** are XY301V symbols; v3.1 uses the Phoenix MKDS 1,5/2 (same 5.0 mm pitch; check the footprint).
-7. **Fuses, J_XIAO:** generic or surface-mount symbols; the holder and socket footprints are chosen at layout.
+7. **Fuses, J_XIAO:** done 2026-11-14: F_IN/F_BAT/F_OUT are Keystone 3557-2 parts (confirm at layout that pads 1 and 3 share a clip) and J_XIAO is the through-hole XIAO ESP32C6 part. Still open: F_CHG (Schurter UMT 250) and R_CHG (axial, 52 mm) footprints, and the stackup, which is set to 4-layer instead of 2-layer 1 oz.
 8. **Test points** (`VIN_CAR`, `SYS`, `LOAD`, `VBAT`, `5V`, `3V3`, `EN_5V`, `GND`) are not placed.
 
 ## Open items

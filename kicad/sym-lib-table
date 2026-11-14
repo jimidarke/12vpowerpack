@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "pwrpack")(type "KiCad")(uri "${KIPRJMOD}/lib/pwrpack.kicad_sym")(options "")(descr "12vpowerpack project symbols"))
+)

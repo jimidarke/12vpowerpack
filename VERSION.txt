@@ -1,4 +1,12 @@
-0.4.0
+0.5.0
+
+## 0.5.0
+- Capture moved from Flux to KiCad 10 (`kicad/`): schematic generated from `netlist.md` by `kicad/gen/gen_sch.py`, checked by `kicad/gen/check_sch.py` (ERC clean, every pin matches)
+- Project library `pwrpack`: XIAO ESP32-C6 socket, Keystone 3557-2 (pads 1+2 / 3+4 are the clip pairs), DMP4015SK3, AC10 52 mm, SRP6540, Würth USB-A; built by `kicad/gen/build_lib.py`
+- Board pre-placed from `blocks/04-placement-gen.py` by `kicad/gen/gen_pcb.py`: 100 × 80 mm, 4 × M3, net classes; DRC 0 parity errors, 0 shorts, 0 courtyard overlaps
+- Net-by-net comparison with Flux found Q_OR2's gate unwired there (KiCad is correct)
+- Placement plan: D_TVS and C_SYSIN turned 90°, F_BAT, R_OG1 and C_VIN moved; doc rewritten for KiCad
+- `.gitignore` and `.gitattributes` for KiCad files; CLAUDE.md working method rewritten
 
 ## 0.4.0
 - v3.1 cost trim for a DIY batch of 5 (owner's decisions 2026-11-14): TPS2514A removed (USB D+ tied to D−, dumb loads only); SK6812 + 1N4148W replaced by red and green 0603 LEDs on D9/D10; fuse holders Keystone 3560 → 3557-2 (30 A, −50 to 145 °C); D_5V B140B → B5819W; screw terminals Phoenix MKDS 1,5 (−40 °C rated)

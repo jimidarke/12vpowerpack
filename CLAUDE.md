@@ -4,28 +4,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-A design-brief repository for a 12 V in-vehicle UPS PCB (12 V AGM battery, pass-through 12 V output, 5 V USB output). There is no code, build, lint or test step. The schematic and layout live in Flux (project `jimidarke/12v-power-manager`, reached through the `flux` MCP server); this folder holds the research, the net table the schematic is checked against, and the messages sent to the Flux agent.
+A design-brief repository for a 12 V in-vehicle UPS PCB (12 V AGM battery, pass-through 12 V output, 5 V USB output). The schematic and board are a KiCad 10 project in `kicad/` (moved from Flux on 2026-11-14); this folder also holds the research and the net table the schematic is generated from.
 
 The GitHub repository is `jimidarke/12vpowerpack`.
 
 ## Working method
 
-Research here, capture in Flux. Messaging the Flux agent costs credits; reading the project does not. The owner wires the schematic by hand in the Flux editor (free) and asks for a check; the agent is used sparingly, mainly to place parts. Earlier runs that asked the agent to research or wire spent about 20 credits and wired nothing.
+Research here, generate and check here, lay out on the owner's laptop. This box is headless: it runs `kicad-cli` and the `pcbnew` Python module (KiCad 10.0.8, PPA `kicad/kicad-10.0-releases`); the owner runs the KiCad GUI on a Windows laptop. Files move by git push and pull. `kicad/README.md` has the commands and the file ownership.
 
-- When the owner says "check", read the schematic back with the free reads (`get_nets`, `get_components`, `get_project`) and compare it pin by pin with `netlist.md`. Report mismatches by designator and pin.
-- Message the Flux agent only when the owner asks for it. Before messaging, read `flux-log.md` for the state and the credits spent.
-- One objective per message, on the root thread named in `flux-log.md` (not the agent's sub-thread). Bulk tables go in the attachment field.
-- Prefer place-only messages: exact library link or part UID per designator, values included, no other properties, no wiring, no research, no electrical check, "if an edit fails, stop and report". Watch the run and send a stop message if it starts retrying. The template is `blocks/01-agent-capture.md`.
-- After each run, verify with the free reads before anything else.
-- Never chain schematic capture, layout and export in one message.
-- Record every message in `flux-log.md`: what was sent, what came back, credits used.
+- `netlist.md` is the source of the schematic. To change the schematic, edit `netlist.md` and run `python3 kicad/gen/gen_sch.py` then `python3 kicad/gen/check_sch.py` (ERC, and KiCad's netlist compared pin by pin with `netlist.md`). Never edit `kicad/powerpack.kicad_sch` by hand.
+- The board (`kicad/powerpack.kicad_pcb`) belongs to the owner. Read it, run DRC on it, render it; do not write it unless the owner hands it over for a specific change. Schematic changes reach it through "Update PCB from Schematic" on the laptop.
+- When the owner says "check": `git pull`, then `check_sch.py` and `kicad-cli pcb drc --schematic-parity`, and report by designator and pin.
+- Render images with `kicad-cli ... export svg` and `rsvg-convert` and look at them before reporting layout or schematic changes.
+- Use stock KiCad 10 symbols and footprints where they exist; parts from LCSC come in through `easyeda2kicad` (venv `~/.venvs/kicad-tools`) and `kicad/gen/build_lib.py`. Check every pin number against the datasheet before use.
+- Flux (project `jimidarke/12v-power-manager`, `flux` MCP server) is archived. Free reads are fine for comparison; do not message its agent (it costs credits). `flux-log.md` holds the history.
 
 ## How the documents fit together
 
 - `requirements.md` is the spec (v3, vehicle-only). The Flux project carries a short copy, `power-board-specification-v3`; its other documents are marked superseded.
 - `architecture.md` is the single source for net names, resistor values, the power-control scheme, the ESP32 pin map, connectors and fuses, and it lists how the captured schematic differs from it ("Capture status").
 - `blocks/00-reset-v3.md` is the message that reset the Flux project to v3 (sent). `blocks/01-agent-capture.md` holds the templates for agent messages. `blocks/02-v31-schematic-edits.md` lists the v3.1 edits to make in Flux (hand edits, plus a properties-only agent draft, not sent). `blocks/03-layout-brief.md` is the board and placement brief (draft, not sent). `blocks/retired/` holds the v2 briefs (lithium, charger, PD, 12 V converter); do not send them.
-- `netlist.md` is the pin-by-pin net table, in eight modules, with the Flux library part for each designator, notes on the symbols as placed, and the LCSC part table that is the BOM for the fab. The schematic in Flux was drawn from it and verified against it on 2026-11-13; the v3.1 changes of 2026-11-14 are in the table but not yet in Flux. It must stay consistent with `architecture.md`.
+- `netlist.md` is the pin-by-pin net table, in eight modules, and the LCSC part table that is the BOM for the fab. `kicad/gen/gen_sch.py` generates the KiCad schematic from it (module tables for the connections, the LCSC tables for the LCSC, MPN and Fit fields). It must stay consistent with `architecture.md`. Its notes on the Flux symbols are history.
+- `kicad/` is the KiCad project: generated schematic, owner's board, project library, and the generator and check scripts in `kicad/gen/`. `blocks/04-placement-gen.py` is the placement plan the board was first placed from.
 - `datasheets/*.txt` are text extracts of the part datasheets. They are large (100–370 KB each), so search them instead of reading them whole.
 - `plan.md` holds the status, part-choice reasoning, cost estimate, what was learned about using the Flux agent, and the bench verification plan.
 - `flux-log.md` records every agent message, its result and credits, and the checklist of what is done.

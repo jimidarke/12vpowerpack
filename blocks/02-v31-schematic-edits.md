@@ -45,6 +45,6 @@ Attachment: the "LCSC part table" from `netlist.md`, cut down to the columns des
 - **F_CHG:** the Schurter UMT 250 footprint, or the LCSC alternative in the part table.
 - **J_TEMP:** replace the 1×3 jumper placeholder with the 3-way screw terminal from the part table (Phoenix MKDS 1,5/3, 1715035); pin 1 `GND`, pin 2 `TEMP_DQ`, pin 3 `3V3`.
 - **J_CAR, J_SLA:** the placed XY301V-A-5.0-2P has the same 5.0 mm pitch as the Phoenix MKDS 1,5/2 (1715022) chosen in the part table; check the hole size and body outline against Phoenix's drawing, or swap to a Phoenix library part.
-- **Q_HOLD (BSS84LT1G):** compare the symbol's pin numbers (G 1, D 2, S 3) against the onsemi SOT-23 drawing, or swap to the LCSC basic BSS84 from the part table and rewire by pin name.
+- **Q_HOLD (BSS84LT1G):** confirmed wrong on 2026-11-14. The real part is G 1, S 2, D 3 (onsemi datasheet, style 21). Swap its two wires: symbol pin 2 (named D) to `SYS`, symbol pin 3 (named S) to `EN_SRC`. Add a canvas note: "Q_HOLD symbol D/S names swapped; wired by pad number".
 - **J_XIAO:** two 1×7 female headers on 2.54 mm pitch. Take the row spacing from Seeed's XIAO dimension drawing; the board is 21 × 17.8 mm.
 - **R_CHG:** an axial footprint with 52 mm lead pitch (Vishay AC10, kinked "EK" leads, body 44 × 8 mm **[DS Vishay AC]**), raised off the board.

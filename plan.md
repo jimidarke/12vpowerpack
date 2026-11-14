@@ -93,12 +93,17 @@ Options looked at and not taken:
 ## Status (2026-11-14)
 
 - Requirements, architecture and part choices: v3.1 (cost trim for a batch of 5).
-- Schematic: v3.1 captured in Flux and verified against `netlist.md` on 2026-11-14 (77 parts, every net).
+- Schematic: moved to KiCad 10 on 2026-11-14 (`kicad/`), generated from `netlist.md`, ERC clean, every pin checked. The Flux capture is archived; comparing it net by net found Q_OR2's gate unwired there.
+- Board: 100 × 80 mm outline, 4 × M3, every part pre-placed from `blocks/04-placement-gen.py`; unrouted. The owner lays it out in KiCad on the laptop.
 - Price checkpoint: about C$65–70 per board at a batch of 5 (table above).
-- Next: the v3.1 hand edits in Flux and a "check"; part properties (package, MPN, LCSC number); footprints; then layout from `blocks/03-layout-brief.md`.
-- Not started: layout, firmware, bench tests.
+- Next: the laptop checks in `kicad/README.md` (terminal-block wire entry, datasheet-drawn footprints), then routing in KiCad by the owner, DRC here, then the JLCPCB export.
+- Not started: routing, firmware, bench tests.
 
 ## Next steps
+
+From 2026-11-14 the work is in KiCad (`kicad/README.md`): routing by the owner on the laptop, then DRC and the JLCPCB files (Gerbers, BOM and pick-and-place filtered on the `Fit` field) generated here with `kicad-cli`. The Flux steps below are history.
+
+### Flux steps (history)
 
 1. ~~v3.1 schematic edits~~ done and checked 2026-11-14. Leftovers: delete the six empty net labels.
 2. **Part properties:** package, MPN and LCSC number from the LCSC part table, by hand or with the properties-only agent draft (part B; about 1 credit; send only on the owner's go).
@@ -114,10 +119,14 @@ Options looked at and not taken:
 2. Live prices for the DigiKey Canada lines and a real PCB and shipping quote at order time.
 3. CJ 2N7002 temperature rating; the effective capacitance of the 1206 X5R parts on the buck (`netlist.md`).
 4. GPIO19 glitch at boot (bench); ESP32-C6 tolerance for the sense dividers' injected current.
-5. ESPHome: the hold-up timer as an adjustable, stored setting (0 = no timeout, otherwise 1 min or more); the soft-cutoff voltages per temperature (`architecture.md`, power control); Wi-Fi/MQTT (as carNet does) or BLE. ESPHome's BLE server support needs checking before relying on it.
+5. ESPHome: a "last gasp" report before releasing `HOLD` (no LiPo backup; owner's decision 2026-11-14); the hold-up timer as an adjustable, stored setting (0 = no timeout, otherwise 1 min or more); the soft-cutoff voltages per temperature (`architecture.md`, power control); Wi-Fi/MQTT (as carNet does) or BLE. ESPHome's BLE server support needs checking before relying on it.
 6. Confirm the barrel plugs in use are 5.5 × 2.1 mm; battery size per unit; each car's running feed voltage.
 
-## Working method with Flux
+## Working method with KiCad (from 2026-11-14)
+
+The owner found Flux's layout cumbersome, so capture moved to KiCad 10 before layout started. `netlist.md` stays the source: `kicad/gen/gen_sch.py` writes the schematic from it and `kicad/gen/check_sch.py` proves it pin by pin, at no cost and in seconds. The owner owns the board and lays it out in the KiCad GUI on the laptop; this box (headless) runs DRC, renders and the fab exports with `kicad-cli`. Git carries the files both ways. Details in `kicad/README.md`.
+
+## Working method with Flux (history)
 
 **Principle:** research here, capture there, check with the free reads.
 

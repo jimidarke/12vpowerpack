@@ -2,7 +2,9 @@
 
 This is the pin-by-pin definition of the schematic; `architecture.md` explains why each value is what it is. Every part is rated −40 °C or colder except the barrel jack (−25 °C, accepted by the owner).
 
-**Status:** captured in Flux and verified against this table on 2026-11-13 (80 parts, all nets). The owner wired it by hand, module by module; the Flux agent placed the parts. Use this table to re-check the schematic after any later edit.
+**KiCad (2026-11-14):** this table is now the source of the KiCad schematic. `kicad/gen/gen_sch.py` reads the module tables (Connect column) and the LCSC part tables (LCSC, MPN and Fit fields) and writes `kicad/powerpack.kicad_sch`; `kicad/gen/check_sch.py` compares KiCad's netlist with this table pin by pin. Keep the Connect column in the forms the generator reads: `` `A` to `B` `` for two-pin parts, otherwise `pin spec `NET`` items separated by semicolons, with "open" for unconnected pins. In KiCad the 3557-2 holders use pads 1+2 for the first net and 3+4 for the second (the footprint's real clip pairs), and TP1–TP8 are placed. The Flux notes below are history.
+
+**Flux status (history):** captured in Flux and verified against this table on 2026-11-13 (80 parts, all nets). The owner wired it by hand, module by module; the Flux agent placed the parts. Use this table to re-check the schematic after any later edit.
 
 **v3.1 (2026-11-14), captured and verified the same day:** module 4 lost U_USB (D+ and D− tied on `USB_D`), module 6 swapped the SK6812 status LED for two plain LEDs, D_TVS became the Diodes SMCJ18CAQ-13-F and D_5V a B5819W. The owner did the edits by hand; the agent placed the six new parts. The schematic has 77 parts and every net matches this table (`GND` 47 pins). The empty net labels were deleted the same day (41 nets), and every SMT part now carries the package, MPN and LCSC number from the LCSC part table below (checked with `get_bom`).
 
@@ -96,12 +98,14 @@ What the placed symbols look like, read back from Flux:
 
 | Part | Symbol pins | Note |
 |---|---|---|
-| J_XIAO | `D0` … `D10`, `5V`, `3V3`, `GND`, plus bottom pads (`3V3_1`, `GND_1`, `GND_PAD`, `BAT +`, `BAT -`, `MTDO`, `MTDI`, `MTCK`, `MTMS`, `EN`, `BOOT`) | Replaced on 2026-11-13 with the library part "Seeed Studio XIAO ESP32C6 SMD No-DrillHole" after the first one was deleted by accident. Its pin names are plain D-numbers, which is clearer than the first symbol. Leave every bottom pad open |
-| Q_HOLD (BSS84LT1G) | G 1, D 2, S 3 | **Suspect symbol.** The usual SOT-23 numbering is gate 1, source 2, drain 3. Wiring by name is right for the schematic, but check the footprint against the onsemi datasheet before layout, or swap to another BSS84 library part |
+| J_XIAO | Library part "Seeed Studio XIAO ESP32C6" (through-hole, placed 2026-11-14): pins 1–11 are D0–D10 with long names (e.g. `SDIO-DATA1_GPIO21_D3`, `D8_SCK_GPIO19_SDIO-CLK`), 12 `3V3`, 13 `GND`, 14 `5V`, 15–25 bottom pads | Footprint checked: 14 plated holes of 1.1 mm, rows 15.24 mm apart, 2.54 mm pitch (Seeed: 15.25 mm, 1.0 mm). The footprint also carries the bottom SMD pads (BAT+, BAT−, GND_PAD, JTAG): leave them unconnected and keep traces clear. Leave every bottom pad open; no LiPo |
+| Q_HOLD (BSS84LT1G symbol, ordered as LRC LBSS84LT1G) | G 1, D 2, S 3 | **Symbol is wrong (confirmed 2026-11-14).** The onsemi BSS84LT1 datasheet (SOT-23 case 318, style 21) gives gate 1, **source 2, drain 3**; the LRC part is a pin-compatible second source. Wired by name, pad 2 would put `EN_SRC` on the physical source and pad 3 `SYS` on the drain, so the body diode would feed `EN_SRC` from the battery permanently and the board could never time out or latch off. Fix: wire by pin number, so symbol pin **D (2) goes to `SYS`** and symbol pin **S (3) goes to `EN_SRC`**, with a note on the canvas. No corrected Flux library part was found |
 | Q_OUTDRV (2N7002) | G 1, S 2, D 3 | as expected |
 | Q_OUT (DMP4015SK3) | G 1, D 2, S 3 | as expected; no separate tab pin |
 | Q_OR1, Q_OR2 (CSD18543Q3A, `kicad-part-library` entry) | S 1, 2, 3; G 4; D 5 | all three source pins join the same net |
-| F_IN, F_BAT, F_OUT, F_CHG (generic "Fuse") | P1, P2 | |
+| F_IN, F_BAT, F_OUT (Keystone 3557-2, placed 2026-11-14) | 1, 2, 3, 4 | Wired 1+3 to the supply side and 2+4 to the load side. **Check at layout that pads 1 and 3 are the two legs of the same clip;** if 1 and 2 share a clip this wiring shorts across the fuse |
+| F_CHG (generic "Fuse") | P1, P2 | footprint still to set |
+| J_TEMP (KF301-5.0-3P, C474882) | 1, 2, 3 | pin 1 `GND`, 2 `TEMP_DQ`, 3 `3V3`. The KF301 is rated only to −30 °C; order the Phoenix MKDS 1,5/3 (1715035), which fits the same 5.0 mm footprint |
 | JP_HOLD ("Jumper 2 Open") | A 1, B 2 | |
 | D_IGN, D_ZO, D_5V | C 1, A 2 | cathode and anode are named |
 | D_TVS | 1, 2 | no polarity |
@@ -230,7 +234,7 @@ Check: Q_OUT's source is on `LOAD` (the supply side); D_ZO's cathode is on `LOAD
 | R_EN1 | 887 kΩ | `EN_SRC` to `EN_5V` |
 | R_EN2 | 102 kΩ | `EN_5V` to `GND` |
 | C_EN | 10 nF, 16 V | `EN_5V` to `GND` |
-| Q_HOLD | BSS84 (SOT-23), P-channel | source `SYS`; drain `EN_SRC`; gate `G_HOLD` |
+| Q_HOLD | BSS84 (SOT-23), P-channel | physical source (pad 2) `SYS`; physical drain (pad 3) `EN_SRC`; gate (pad 1) `G_HOLD`. On the Flux symbol, whose names are swapped, that is pin **D (2) to `SYS`**, pin **S (3) to `EN_SRC`** |
 | R_HG1 | 1 MΩ | `SYS` to `G_HOLD` |
 | D_ZH | BZT52C12 (SOD-123), 12 V Zener | cathode `SYS`; anode `G_HOLD` |
 | R_HG2 | 470 kΩ | `G_HOLD` to `HOLD_D` |
@@ -311,6 +315,6 @@ Rule: the fab fits every B and PE part plus the four fine-pitch or thermal-pad I
 ## Open
 1. **Barrel jack:** the PJ-063AH has a 2.0 mm centre pin, which is the size for 5.5 × 2.1 mm plugs (the 2.5 mm version is the PJ-063BH). Check your plugs are 2.1 mm.
 2. **Ratings still [TBC]:** CJ 2N7002 temperature (blank in the listing), and the effective capacitance of the 1206 X5R parts on the buck input and output.
-3. **BSS84LT1G symbol:** its drain and source pin numbers look swapped against the usual SOT-23 numbering; settle before layout.
+3. **BSS84LT1G symbol:** confirmed swapped (onsemi datasheet, style 21: G 1, S 2, D 3). Rewire Q_HOLD by pin number as in module 8 before layout.
 4. **XIAO footprint:** the library part is a surface-mount version; the socket footprint is settled at layout.
 5. The tidy and before-layout lists under "As captured in Flux".
