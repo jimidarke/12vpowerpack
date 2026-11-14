@@ -1,6 +1,8 @@
 # Power board — architecture (v3)
 
-Status key: **[DS]** read in the datasheet extract in `datasheets/`; **[calc]** my arithmetic from DS values; **[TBC]** to confirm before capture.
+Status key: **[DS]** read in the datasheet extract in `datasheets/`; **[calc]** my arithmetic from DS values; **[TBC]** still to confirm (before layout or ordering, as noted).
+
+The schematic was captured in Flux on 2026-11-13 and matches `netlist.md`; see "Capture status" at the end.
 
 v3 is the vehicle-only design: one build, 12 V AGM, no charger IC, no USB-C PD input, no 12 V converter, no display. The v2 architecture is in git at tag `v0.2.1`.
 
@@ -22,11 +24,11 @@ SYS ─┬─ R_SNS_OUT ─ LOAD ─┬─ Q_OUT (P-FET) ─ F_OUT ─ J_12V bar
 - The car feed and the battery can share a load if the feed sags under it. Nothing needs them kept apart.
 
 ## Net names
-`VIN_CAR` (after F_IN and the TVS, car side of U_OR1), `SYS_IN` (U_OR1 output, before the input shunt), `SYS`, `LOAD` (after the output shunt), `VBAT`, `12V_OUT`, `5V`, `3V3` (from the XIAO), `EN_SRC`, `EN_5V`, `OUT_EN`, `HOLD`, `VCAR_SENSE`, `VBAT_SENSE`, `TEMP_DQ`, `LED_DIN`, `SDA`, `SCL`, `GND`.
+Main nets: `VIN_CAR` (after F_IN and the TVS, car side of U_OR1), `SYS_IN` (U_OR1 output, before the input shunt), `SYS`, `LOAD` (after the output shunt), `VBAT`, `12V_OUT`, `5V`, `3V3` (from the XIAO), `XIAO_5V`, `EN_SRC`, `EN_5V`, `OUT_EN`, `OUT_OFF`, `HOLD`, `VCAR_SENSE`, `VBAT_SENSE`, `TEMP_DQ`, `LED_DIN`, `SDA`, `SCL`, `GND`. The full list, including the local nets, is the "Nets" table in `netlist.md`.
 
 ## Input protection
 - F_IN 10 A automotive blade fuse (ATO/ATC) in a Keystone 3560 PC-mount holder, rated 30 A and −50 to 145 °C **[DS Keystone blade holders]**. F_BAT and F_OUT use the same holder. Car-feed current is about 5 A continuous and 7 A at the output peak (requirements, sizing figures) **[calc]**.
-- TVS on `VIN_CAR`: bidirectional, 18 V stand-off, clamp ≤ 36 V at its rated surge current (owner's decision 2026-11-13: lower clamp, keep it simple). Part: SMCJ18CA, 1500 W: stand-off 18.0 V, breakdown 20.0–22.1 V, clamps at 29.2 V at 51.4 A, −55 to 150 °C **[DS SMCJ electrical table]**. The limit comes from the parts on `SYS`: LMR33630 36 V operating, 38 V absolute maximum **[DS LMR33630 §7.1, §7.3]**; INA226 36 V operating, 40 V absolute maximum **[DS INA226 §5.1]**.
+- TVS on `VIN_CAR`: bidirectional, 18 V stand-off, clamp ≤ 36 V at its rated surge current (owner's decision 2026-11-13: lower clamp, keep it simple). Part: SMCJ18CA, 1500 W (order the Diodes Inc. SMCJ18CAQ-13-F; the Liown version in the Flux library is flagged not recommended for new designs): stand-off 18.0 V, breakdown 20.0–22.1 V, clamps at 29.2 V at 51.4 A, −55 to 150 °C **[DS SMCJ electrical table]**. The limit comes from the parts on `SYS`: LMR33630 36 V operating, 38 V absolute maximum **[DS LMR33630 §7.1, §7.3]**; INA226 36 V operating, 40 V absolute maximum **[DS INA226 §5.1]**.
   - Bidirectional so that reverse polarity (to −16 V) does not conduct through it; U_OR1 blocks the reverse voltage.
   - Accepted consequence: this is below the LM74700-Q1 datasheet's advice to stand off a 24 V jump start and a 35 V suppressed load dump **[DS LM74700-Q1 §10.1.1.3]**. Either event makes the TVS conduct and blows F_IN, or the TVS itself fails short. Nothing downstream is damaged; the unit needs a new fuse or TVS.
 - U_OR1, LM74700-Q1 with an external N-FET (VCAP capacitor ≥ 0.1 µF and at least 10 × the FET's CISS; ≥ 100 nF on the cathode **[DS LM74700-Q1 §10.1.1.2.3]**): blocks reverse polarity on J_CAR and stops the battery feeding the car. 3.2–65 V input, −65 V reverse rating, 20 mV regulated forward drop **[DS LM74700-Q1 features, §6.1]**. Q_OR1: TI CSD18543Q3A, 60 V, ±20 V gate, 8.1 mΩ at 10 V, CISS 1150 pF max (so the 0.1 µF VCAP minimum applies), 3.3 mm SON, −55 to 150 °C **[DS CSD18543Q3A]**. At 7 A it dissipates about 0.4 W **[calc]**.
@@ -101,42 +103,56 @@ A 7 Ah AGM loses more than that to self-discharge. For long storage, pull F_BAT.
 
 ## Status LED
 - One addressable RGB LED, D_STAT, on `LED_DIN`. Part: SK6812 (5050), not WS2812B. The WS2812B is rated only −25 to 80 °C **[DS WS2812B]**; the SK6812 is rated −40 to 85 °C **[DS SK6812]**.
-- Logic level: the SK6812 wants 3.4 V for a high at a 5.0 V supply **[DS SK6812]**, more than the XIAO's 3.3 V output guarantees. Feed the LED's VDD from `5V` through one 1N4148W (about 4.3 V), which lowers the threshold in proportion to about 2.9 V **[calc; TBC, bench]**. 100 nF at the LED, and a series resistor of a few hundred ohms in `LED_DIN`.
+- Logic level: the SK6812 wants 3.4 V for a high at a 5.0 V supply **[DS SK6812]**, more than the XIAO's 3.3 V output guarantees. Feed the LED's VDD from `5V` through one 1N4148W (about 4.3 V), which lowers the threshold in proportion to about 2.9 V **[calc; TBC, bench]**. C_LED 100 nF at the LED, and R_LED 330 Ω in series with `LED_DIN`.
 - It is powered from the 5 V rail, so it is off and draws nothing when the board is off. Any low-battery warning has to come from a firmware threshold above the 10.97 V hardware cutoff, because at the cutoff the LED loses power with everything else.
 - Behaviour is firmware only; nothing depends on it.
 
 ## ESP32 socket (Seeed XIAO ESP32-C6, 2×7, 2.54 mm)
-Pin-to-GPIO map and the −40 to 85 °C rating are from Seeed's getting-started page (read 2026-11-13). Row spacing and footprint **[TBC]** from Seeed's drawing.
+Pin-to-GPIO map and the −40 to 85 °C rating are from Seeed's getting-started page (read 2026-11-13). The Flux symbol in use is "Seeed Studio XIAO ESP32C6 SMD No-DrillHole", a surface-mount footprint; the socket footprint and row spacing are **[TBC]** before layout.
 | XIAO pin | Use |
 |---|---|
 | D0, GPIO0 (ADC) | `VCAR_SENSE` |
 | D1, GPIO1 (ADC) | `VBAT_SENSE` |
 | D2, GPIO2 | `TEMP_DQ` (1-Wire) |
 | D4, GPIO22 / D5, GPIO23 | `SDA` / `SCL` (INA226 ×2) |
-| D3, GPIO21 | `OUT_EN`, open-drain: low switches the 12 V output off; released = on |
+| D3, GPIO21 | `OUT_OFF`: drive low to switch the 12 V output off (through D_OEN); high or floating = on |
 | D10, GPIO18 | `LED_DIN` (status LED data) |
 | D8, GPIO19 | `HOLD`: high keeps the board on after ignition-off. Not the boot pin (GPIO9), the UART pins (D6/D7) or the antenna-switch pins (GPIO3, GPIO14). Confirm against Espressif's strapping-pin list that GPIO19 does not pulse at boot **[TBC]** |
-| 5V | from the `5V` rail through D_5V, a B140 (40 V, 1 A, −65 to 150 °C **[DS B120–B160]**), so the module's USB cannot backfeed the rail |
+| 5V | from the `5V` rail through D_5V, a B140B (40 V, 1 A, −65 to 150 °C **[DS B120–B160]**), so the module's USB cannot backfeed the rail |
 | 3V3 | INA226 supply, I2C and `TEMP_DQ` pull-ups |
 
-Every ESP32-driven line has a pull resistor that leaves the board in its defined state with the module removed: `HOLD` low, `OUT_EN` high.
+Every ESP32-driven line leaves the board in its defined state with the module removed: `HOLD` is pulled low by R_HOLD, and `OUT_EN` is pulled high by R_PG because D_OEN isolates the unconnected `OUT_OFF` pin. D6, D7 and D9 are unused.
 
 ## Connectors and fuses
 | Ref | Part | Notes |
 |---|---|---|
-| J_CAR | 2-pin, ≥ 10 A | fused at the car end as well |
-| J_SLA | 2-pin, ≥ 10 A (screw terminal or XT60) | battery; F_BAT 10 A beside it |
-| J_12V | Same Sky PJ-063AH, 24 V, 8 A, 2.0 mm centre pin | rated −25 to 85 °C **[DS PJ-063AH]**. Accepted as the one exception to the −40 °C rule (owner's decision, 2026-11-13). Pin size must match the plugs in use |
-| J_USBA | USB-A receptacle | |
-| J_TEMP | 3-way PCB screw terminal: GND, DQ, 3V3 | DS18B20 probe on the battery. Not JST-XH, which is rated only to −25 °C |
-| F_IN / F_BAT / F_OUT | 10 A / 10 A / 7.5 A blade fuses | Keystone 3560 holders |
-| F_CHG | 1.6 A time-lag, Schurter UMT 250 | SMD |
+| J_CAR | 2-pin screw terminal, ≥ 10 A. Captured as XY301V-A-5.0-2P (5 mm, 15 A) | fused at the car end as well. The terminal's temperature rating is **[TBC]** |
+| J_SLA | same part as J_CAR | battery; F_BAT 10 A beside it |
+| J_12V | Same Sky PJ-063AH, 24 V, 8 A, 2.0 mm centre pin (for 5.5 × 2.1 mm plugs) | rated −25 to 85 °C **[DS PJ-063AH]**. Accepted as the one exception to the −40 °C rule (owner's decision, 2026-11-13). Pin size must match the plugs in use |
+| J_USBA | USB-A receptacle. Captured as Würth 61400416021 (no shell pin on the symbol) | temperature rating **[TBC]** |
+| J_TEMP | 3-way PCB screw terminal: GND, DQ, 3V3 | DS18B20 probe on the battery. Not JST-XH, which is rated only to −25 °C. Captured as a 1×3 jumper symbol as a placeholder; replace before layout |
+| F_IN / F_BAT / F_OUT | 10 A / 10 A / 7.5 A blade fuses | Keystone 3560 holders. Captured as generic fuse symbols; the holder footprint is set at layout |
+| F_CHG | 1.6 A time-lag, Schurter UMT 250 | SMD. Captured as a generic fuse symbol |
 
-## Open items before capture
-The pin-by-pin table for drawing is in `netlist.md`.
-1. J_12V: confirm the 2.0 mm centre pin against the plugs in use.
-2. MPNs for the screw terminals, the USB-A receptacle and the 5 mΩ shunts (value, package and −40 °C rating are set).
-3. XIAO footprint (use the Flux library part); GPIO19 behaviour at boot; the ESP32-C6's tolerance for the sense dividers' injected current.
-4. ESPHome components for the DS18B20, INA226 and the status LED (on the ESP32-C6), and the hold-up timer.
-5. Status LED: data level from the 3.3 V pin at −40 °C with the diode-dropped supply.
-6. Bench: the ignition-off handover with a 5 A load, F_CHG and R_CHG with a deeply discharged battery, the 12 V output's turn-on into a capacitive load, and standby drain.
+## Capture status (2026-11-13)
+The schematic is in Flux: 80 parts, every net checked against `netlist.md` with the free reads. The owner wired it by hand; the Flux agent only placed the parts.
+
+Differences between the captured schematic and this document, to settle before layout or ordering:
+1. **Packages:** every generic resistor and capacitor was placed as 0603. The shunts are 2512, R_CHG is axial, and the 10 µF and 22 µF capacitors are 1210.
+2. **J_TEMP** is a jumper symbol standing in for the 3-way terminal.
+3. **Q_HOLD** uses the library part BSS84LT1G, whose symbol numbers drain as pin 2 and source as pin 3; the usual SOT-23 numbering is source 2, drain 3. Check against the onsemi datasheet before layout.
+4. **D_TVS** is the Liown library part; replace with SMCJ18CAQ-13-F.
+5. **L1** shows 8.2 µH and SRP6540-8R2M but carries the 4.7 µH part's LCSC number.
+6. **F_BAT** is still at the symbol's 5 A default; it should be 10 A.
+7. **Fuses, J_XIAO:** generic or surface-mount symbols; the holder and socket footprints are chosen at layout.
+8. **Test points** (`VIN_CAR`, `SYS`, `LOAD`, `VBAT`, `5V`, `3V3`, `EN_5V`, `GND`) are not placed.
+
+## Open items
+1. Price checkpoint: a costed BOM in CAD against the C$110 target.
+2. The capture differences above.
+3. J_12V: confirm the plugs in use are 5.5 × 2.1 mm.
+4. MPNs for the 5 mΩ shunts; temperature ratings of the screw terminals and the USB-A receptacle.
+5. GPIO19 behaviour at boot; the ESP32-C6's tolerance for the sense dividers' injected current.
+6. ESPHome components for the DS18B20, INA226 and the status LED (on the ESP32-C6), and the hold-up timer.
+7. Status LED: data level from the 3.3 V pin at −40 °C with the diode-dropped supply.
+8. Bench: the ignition-off handover with a 5 A load, F_CHG and R_CHG with a deeply discharged battery, the 12 V output's turn-on into a capacitive load, and standby drain.

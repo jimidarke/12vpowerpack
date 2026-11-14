@@ -4,7 +4,7 @@ A small in-vehicle UPS on one PCB: a 12 V sealed AGM battery floated on the car'
 
 ## Status
 
-Design phase. The requirements and architecture were cut back to this vehicle-only design (v3) on 2026-11-13; the parts are chosen and the net table for drawing the schematic is written, but nothing has been captured, built or tested. Values marked **[TBC]** in `architecture.md` are still to be confirmed. The earlier two-chemistry design (v2) is in git at tag `v0.2.1`.
+Design phase. The requirements and architecture were cut back to this vehicle-only design (v3) on 2026-11-13; the schematic is captured in Flux and checked against the net table (2026-11-13), but the board is not laid out and nothing has been built or tested. Values marked **[TBC]** in `architecture.md` are still to be confirmed. The earlier two-chemistry design (v2) is in git at tag `v0.2.1`.
 
 ## Specification
 
@@ -32,7 +32,9 @@ Car 12 V in ─ fuse ─ TVS ─ ideal diode ─ SYS ─┬─ switch ─ fuse �
 
 | Function | Part |
 |---|---|
-| Input and battery ideal diodes | TI LM74700-Q1 ×2 |
+| Input and battery ideal diodes | TI LM74700-Q1 ×2 with CSD18543Q3A FETs |
+| Surge clamp | SMCJ18CA |
+| 12 V output switch | Diodes DMP4015SK3 |
 | 5 V rail and low-voltage cutoff | TI LMR33630 |
 | USB-A port controller | TI TPS2514A |
 | Current monitors | TI INA226 ×2 |
@@ -45,13 +47,13 @@ Car 12 V in ─ fuse ─ TVS ─ ideal diode ─ SYS ─┬─ switch ─ fuse �
 |---|---|
 | [`requirements.md`](requirements.md) | What the board must do |
 | [`architecture.md`](architecture.md) | Block diagram, net names, values, power control, ESP32 pin map, connectors |
-| [`netlist.md`](netlist.md) | Pin-by-pin net table for drawing the schematic |
-| [`plan.md`](plan.md) | Part-choice reasoning, cost estimate, capture plan, bench test plan |
-| [`blocks/`](blocks) | Capture briefs, one per schematic block; `retired/` holds the v2 briefs |
+| [`netlist.md`](netlist.md) | Pin-by-pin net table the schematic was drawn from and is checked against |
+| [`plan.md`](plan.md) | Status, part-choice reasoning, cost estimate, how the capture was done, bench test plan |
+| [`blocks/`](blocks) | Messages sent to the Flux agent and their templates; `retired/` holds the v2 briefs |
 | [`datasheets/`](datasheets) | Text extracts of the datasheets the values were taken from |
-| [`flux-log.md`](flux-log.md) | Log of schematic-capture runs |
+| [`flux-log.md`](flux-log.md) | Log of Flux agent runs, credits and the capture checklist |
 
-The schematic and layout are being done in [Flux](https://www.flux.ai/jimidarke/12v-power-manager~zn). This repository holds the research and briefs that drive that work.
+The schematic is in [Flux](https://www.flux.ai/jimidarke/12v-power-manager~zn), and the layout will be done there. This repository holds the research and the net table that work is checked against.
 
 ## Cost target
 

@@ -1,4 +1,11 @@
-0.3.1
+0.3.2
+
+## 0.3.2
+- Schematic captured in Flux: 80 parts, every net verified against `netlist.md` (owner wired by hand; agent placed parts)
+- `netlist.md` reorganised into eight modules, with the Flux library part per designator and notes on the symbols as placed
+- `architecture.md`: capture status and differences to settle before layout; `plan.md`: status and what was learned about using the Flux agent
+- Flux log: v3 reset, three place-only runs, module checklist; `blocks/00-reset-v3.md` and `blocks/01-agent-capture.md` added
+- Docs aligned: CLAUDE.md working method, README status and layout
 
 ## 0.3.1
 - Surge clamp decided: SMCJ18CA; a jump start or load dump blows the input fuse

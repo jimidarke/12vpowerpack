@@ -2,14 +2,17 @@
 
 Project: https://www.flux.ai/jimidarke/12v-power-manager~zn
 Root thread ("4x18650 Battery Pack"): https://www.flux.ai/jimidarke/12v-power-manager~zn?thread=cf30e89b-018d-407f-9f30-a2736a6d9810
-(Project renamed "12V Power Manager" by block 0 on 2026-11-13; the slug changed from `4s-12v-battery-pack` to `12v-power-manager`. The spec document slug is now `power-board-requirements-v2`, short id `1d`.)
-(The "4S BMS Schematic" thread is the agent's own sub-thread; message the root thread.)
+Project renamed "12V Power Manager" on 2026-11-13; the slug changed from `4s-12v-battery-pack` to `12v-power-manager`. The project's description line in Flux still describes the v2 two-battery design.
+
+Flux documents: `power-board-specification-v3` (short id `1d`) is current. `power-board-architecture`, `bms-capture-handoff` and `block-1-capture-status` are v2 and carry a "superseded" banner.
+
+Sub-threads ("4S BMS Schematic", "4S Battery Protector Capture", "Li Protector Schematic Capture") are the agent's own, all from the cancelled lithium work; message the root thread.
 
 ## Rules
-- One block per message; the block file is the message, `architecture.md` and any datasheet excerpt go in the attachment field.
-- Tell the agent which facts are already verified so it does not re-research them.
-- After each run, verify with the free reads (`get_components`, `get_nets`, `get_bom`) against the block's "Done when" before sending the next.
-- Corrections go on the same thread, naming designators.
+- Message the agent only when the owner asks. One objective per message, on the root thread; bulk tables in the attachment.
+- Prefer place-only messages with exact library links, and tell the agent which facts are verified so it does not research. Template: `blocks/01-agent-capture.md`.
+- After each run, verify with the free reads (`get_components`, `get_nets`, `get_bom`) before anything else. Watch the run; stop it if it retries failed edits.
+- Record every message here: what was sent, what came back, credits used.
 
 ## History
 | Date | Thread | Sent | Result | Credits |
@@ -20,6 +23,12 @@ Root thread ("4x18650 Battery Pack"): https://www.flux.ai/jimidarke/12v-power-ma
 | 2026-11-13 | root → new sub-thread "4S Battery Protector Capture" | Block 1 — lithium protector; brief + updated `architecture.md` + `requirements.md` attached | **Partial; stopped when credits ran out.** Docs replaced (architecture slug now `power-board-architecture`). Placed, unwired: U_BMS, Q_DSG, Q_CHG, RT_BMS; 0 nets. Missing: R_SNS, connectors, all passives. Agent asked for the AVDD capacitor value, the CTRC/CTRD connection and the CHG gate network; all three now answered from the datasheet in `blocks/01-li-protector.md` | 4.8 (root 0.8, sub 4.0) |
 | 2026-11-13 11:21 CST | root | Block 1 resume (wiring only, brief attached) | **Refused, not delivered:** usage rate limit, resets 2026-11-13 13:41 CST (19:41:11 UTC). Design unchanged: 4 parts, 0 nets, all threads idle. Not retried | 0 |
 | 2026-11-13 13:45 CST | root → new sub-thread "Li Protector Schematic Capture" (`33ff301e-6d55-4a23-86d6-d37222c746e3`) | Block 1 resume (wiring only, brief attached, no doc edits) | **Partial; stopped again when credits ran out (`rate_limited`).** 27 parts added with metadata (31 placed in total): R_SNS, J_PACK (XT30PW-M), J_BAL (B5B-XH-A), J_NTC_BMS (B2B-XH-A), R_VC5/3/2/1/0, C_VC5/3/2/1/0, R_VDD, C_VDD, C_AVDD, R_VTB, R_OCDP, R_PRES, R_LD, R_DSG (4.53 kΩ), RGS_DSG, R_CHG, RGS_CHG, D_CHG (1N4148W-13-F), DZ_CHG (BZT52C16-7-F). **Still 0 nets.** Roles of U_BMS, Q_DSG, Q_CHG, RT_BMS not normalised. Documents untouched. Agent's open points below | 4.3 (root 0.4, sub 3.9) |
+| 2026-11-13 15:41 CST | root | Block 0 (v3 reset: delete the 31 lithium parts, replace the spec with `blocks/00-reset-v3.md`) | **Refused, not delivered:** usage rate limit, resets 2026-11-13 18:45 CST (2026-11-14 00:45:35 UTC). Project unchanged | 0 |
+| 2026-11-13 15:54 CST | root | Block 0 (v3 reset), after the owner received one-time extra credits; `blocks/00-reset-v3.md` | **Verified:** 0 components, 0 nets; spec document is now `power-board-specification-v3` (short id `1d`); `power-board-architecture`, `bms-capture-handoff` and `block-1-capture-status` carry the superseded banner. The project description still describes v2 | 0.9 |
+| 2026-11-13 16:22 CST | root | Place-only message: one of each of 20 library parts, unwired (owner asked, to avoid searching the library by hand) | **Partial, stopped by a second message** after the agent began retrying failed edits. 19 parts placed, 0 nets; Q_OR1 (CSD18543Q3A) not placed. L1 has MPN SRP6540-8R2M and 8.2 µH but keeps the 4.7 µH LCSC number. Findings on the symbols are in `netlist.md` (XIAO pin names carry ESP32-C3 GPIO numbers; BSS84LT1G drain/source numbering suspect) | 1.3 |
+| 2026-11-13 ~16:35 CST | root (owner, in the Flux UI) | Owner asked the agent to restore J_XIAO after deleting it by accident | J_XIAO is now "Seeed Studio XIAO ESP32C6 SMD No-DrillHole" (pins `D0`–`D10`, `5V`, `3V3`, `GND`), unwired; the net labels survived. Usable as is | 1.0 |
+| 2026-11-13 16:55 CST | root | One-batch place-only message: the remaining 61 parts with designators and values, unwired | 54 placed (73 on the canvas), existing 14 nets untouched, values verified by spot check. Skipped: Q_OR1, Q_OR2 (library entry could not be added), F_IN, F_BAT, F_OUT, F_CHG and JP_HOLD (no search result). J_TEMP placed as a 1x3 jumper symbol | 0.7 |
+| 2026-11-13 17:42 CST | root | Place-only message for the seven skipped parts, close alternatives allowed | All seven placed, unwired: Q_OR1 and Q_OR2 (CSD18543Q3A, `kicad-part-library` entry), four generic fuses (each defaulted to 5 A; ratings to set), JP_HOLD ("Jumper 2 Open"). 80 parts on the canvas | 0.9 |
 
 ## Conflicts raised by the agent in block 0 (resolved locally 2026-11-13; see below)
 1. Input current limit 3 A (RILIM) cannot supply 60 W continuous 12 V out from the car feed without battery assist; at 20 V it leaves no margin for losses, the 5 V rail or charging at full load.
@@ -45,20 +54,22 @@ Root thread total is now 20.9 credits. Block 1 has cost 9.1 credits over two run
 6. New parts carry Roles outside the three named in the brief (Connector, Power Filtering, Decoupling, Pull Up / Down). R_DSG is 4.53 kΩ (E96) rather than 4.5 kΩ.
 
 ## Scope change to v3 (owner's decision, 2026-11-13)
-The design was cut back to a vehicle-only AGM unit with no charger IC, no USB-C PD input, no 12 V converter and no display (`requirements.md` v3, `architecture.md` v3). Nothing has been sent to Flux about this yet.
+The design was cut back to a vehicle-only AGM unit with no charger IC, no USB-C PD input, no 12 V converter and no display (`requirements.md` v3, `architecture.md` v3). Block 0 of v3 cleared the lithium parts and replaced the Flux spec. Credits spent to date on the root thread and its sub-threads: 25.7.
 
-State of the Flux project against v3:
-- The 31 placed parts are all lithium protector parts (Functional Group `Li Protector`) and are no longer wanted. The two CSD18540Q5B FETs (`Q_DSG`, `Q_CHG`) could be reused as the ideal-diode FETs if that part is chosen.
-- The Flux documents `power-board-requirements-v2`, `power-board-architecture`, `bms-capture-handoff` and `block-1-capture-status` describe v2 and need replacing or marking superseded.
-- The block 1 open points above are closed by the scope change.
-- Credits spent to date on the root thread and its sub-threads: 20.9.
-
-## Pending (v3)
-Capture is by hand in the Flux editor from `netlist.md` (owner's decision, 2026-11-13); no agent messages are planned until a final review. The v2 briefs are in `blocks/retired/`.
-- [ ] Owner: delete the 31 lithium parts and mark the v2 Flux documents superseded
-- [ ] Block A — input, battery path, current monitors (drawn by hand, checked with free reads)
-- [ ] Block B — 5 V rail, power control, 12 V output, USB, LED
-- [ ] Block C — controller socket and sensors
-- [ ] Whole-schematic check against `netlist.md` and price checkpoint
-- [ ] Optional: one agent review of the finished schematic
+## Checklist (v3)
+The owner drew the schematic by hand in the Flux editor from `netlist.md`, module by module; each module was checked with the free reads. The agent placed the parts in three place-only runs. Credits are to be used sparingly: the weekly allowance was spent on 2026-11-13 and the owner is on one-time extra credits.
+- [x] Block 0 — reset to v3 (2026-11-13)
+- [x] Module 1 — car input (signal and power nets verified 2026-11-13)
+- [x] Module 2 — battery and charge path (verified 2026-11-13)
+- [x] Module 3 — current monitors (verified 2026-11-13 after the U_MON_IN fix)
+- [x] Module 4 — USB-A port (drawn by the owner, verified by free read 2026-11-13)
+- [x] Module 5 — 5 V buck (drawn by the owner, verified by free read 2026-11-13)
+- [x] Module 6 — controller, sensors, status LED (drawn by the owner, verified by free read 2026-11-13; test points deferred; J_TEMP pins C and B are swapped against `netlist.md`, harmless until the symbol is replaced)
+- [x] Module 7 — 12 V output switch (verified 2026-11-13, F_OUT in)
+- [x] Module 8 — enable and hold (verified 2026-11-13, JP_HOLD in)
+- [x] Ground net restored: 48 pins on `GND` (verified by free read 2026-11-13)
+- [ ] Tidy: F_BAT rating (still 5 A, should be 10 A); swap D_TVS to SMCJ18CAQ-13-F; L1's LCSC number; delete R1, C1 and the empty nets `Net 1`, `J_12V` and `C_SYSIN`; test points
+- [x] Whole-schematic check against `netlist.md`: all 80 parts placed and every net matches (2026-11-13; drawn by the owner by hand, 3.8 credits spent on the reset and three place-only runs, 1.0 on restoring the XIAO)
+- [ ] Price checkpoint (BOM in CAD)
+- [ ] Before layout: packages for the generic parts, J_TEMP symbol, BSS84LT1G pin numbering, XIAO socket footprint
 - [ ] Layout
