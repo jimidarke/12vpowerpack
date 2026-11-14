@@ -98,7 +98,7 @@ Options looked at and not taken:
 
 - Requirements, architecture and part choices: v3.1 (cost trim for a batch of 5).
 - Schematic: moved to KiCad 10 on 2026-11-14 (`kicad/`), generated from `netlist.md`, ERC clean, every pin checked. The Flux capture is archived; comparing it net by net found Q_OR2's gate unwired there.
-- Board: 100 × 70 mm outline, 4 × M3, every part placed; unrouted. First placed from `blocks/04-placement-gen.py` at 100 × 80 mm, then re-placed by `kicad/gen/place_pcb.py` on 2026-11-14 so the parts are spread out and every silkscreen label is readable. The owner lays it out in KiCad on the laptop.
+- Board: 100 × 70 mm outline, 4 × M3, every part placed; first routing pass done on 2026-11-14 (power pours by `kicad/gen/route_pcb.py`, signal nets by Freerouting; DRC clean, 0 unconnected). Thermal vias, fiducials and hand tidying are still to do. First placed from `blocks/04-placement-gen.py` at 100 × 80 mm, then re-placed by `kicad/gen/place_pcb.py` on 2026-11-14 so the parts are spread out and every silkscreen label is readable. The owner lays it out in KiCad on the laptop.
 - Price checkpoint: about C$66–68 per board at a batch of 5 (second pass 2026-11-14, table above).
 - Next: the laptop checks in `kicad/README.md` (terminal-block wire entry, datasheet-drawn footprints), then routing in KiCad by the owner, DRC here, then the JLCPCB export.
 - Not started: routing, firmware, bench tests.

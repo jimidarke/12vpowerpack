@@ -36,6 +36,17 @@ python3 kicad/gen/place_pcb.py    # placement pass on an unrouted board: moves p
 
 `place_pcb.py` holds the placement table (courtyard centres in mm from the bottom-left corner, y up). It fails without writing if courtyards overlap, a part leaves the board or enters a mounting-hole keep-out, a label has no clear spot, or a neighbour rule is broken (ideal-diode controller by its FET, INA226 by its shunt, buck parts by U_5V, R_CHG 10 mm from the XIAO, the INA226s and the capacitor banks). Add `--dry-run` to check without writing.
 
+### First routing pass
+
+`gen/route.sh` routes a placed, unrouted board (done on 2026-11-14):
+
+1. `gen/route_pcb.py zones` draws the power path as top-layer copper zones (J_CAR_P, VIN_CAR, SYS_IN, SYS, LOAD, VBAT, 12V_SW, 12V_OUT, 5V, SW_5V), a GND zone over the whole bottom layer, J_SLA_P as a bottom zone under J_SLA and F_BAT, and a no-copper rule area under the XIAO antenna.
+2. `gen/route_pcb.py dsn` exports a copy for the autorouter with finer net classes and track keep-outs over the necks of the pours, so signal tracks cross them on the bottom layer instead of cutting them. The keep-outs are not in the board.
+3. Freerouting 1.9.0 routes the signal nets (0.2 mm tracks; 0.6 mm on 5V, XIAO_5V).
+4. `gen/route_pcb.py ses` imports the result, adds the tracks in its `MANUAL` list (CHG_F on the bottom at 1.0 mm, the Q_OR2 gate hop, the INA226 Kelvin sense lines, the links under U_OR1 and U_OR2, the G_OUT bus) and refills the zones.
+
+To redo it after a placement change: restore the unrouted board (`git checkout v0.6.0 -- kicad/powerpack.kicad_pcb` or your own unrouted copy), run `place_pcb.py`, then `bash kicad/gen/route.sh`. From here on, route by hand in KiCad; these scripts refuse a board that already has tracks.
+
 ### On the laptop (WSL)
 
 The laptop's WSL has no Linux KiCad. The Windows KiCad 10 binaries run from WSL and do the same job; use them in place of `python3` and `kicad-cli` above for anything that needs `pcbnew` or KiCad itself:
@@ -54,7 +65,7 @@ Close the board in KiCad before running anything that writes it. Output paths ou
 ## State on 2026-11-14
 
 - Schematic: 77 parts plus TP1–TP8, H1–H4 and six PWR_FLAGs; 41 nets. ERC clean; netlist matches `netlist.md` pin for pin. Cross-checked net by net against the Flux schematic: identical except that Flux leaves Q_OR2's gate unconnected (see `../flux-log.md`).
-- Board: 100 × 70 mm, 2 layers, 4 × M3 at (4, 4), (96, 4), (4, 66), (96, 66), every part placed, unrouted. DRC: 0 parity errors, 0 shorts, 0 courtyard overlaps, 0 silkscreen overlaps; 183 unconnected pads; 13 "silkscreen clipped by board edge" warnings, all from connector outlines that are meant to reach the edge (J_USBA's shell, and the pin-1 arrows of the three terminal blocks).
+- Board: 100 × 70 mm, 2 layers, 4 × M3 at (4, 4), (96, 4), (4, 66), (96, 66), every part placed, first routing pass done (369 track segments, 60 vias, 12 zones). DRC: 0 unconnected, 0 shorts, 0 clearance errors, 0 parity errors, 0 courtyard overlaps; 13 "silkscreen clipped by board edge" warnings, all from connector outlines that are meant to reach the edge (J_USBA's shell, and the pin-1 arrows of the three terminal blocks).
 
 ## To check on the laptop
 
@@ -62,3 +73,4 @@ Close the board in KiCad before running anything that writes it. Output paths ou
 2. **Footprints drawn from datasheets** (no vendor file): AC10 (52 mm pitch, 1.2 mm holes for 0.8 mm leads), SRP6540 (pads 2.0 × 3.7 mm at ±2.7 mm, read from Bourns' recommended layout), XIAO sockets (rows 15.24 mm apart). Compare with the parts in hand before ordering.
 3. **3557-2 holes** are 1.8 mm (from the LCSC footprint); Keystone recommends 1.60 mm. Check against the holder's legs.
 4. **J_USBA** overhangs the bottom edge by 4.2 mm, as the generator placed it. Check against the Würth drawing and the case wall whether the shell should stick out that far.
+5. **Routing, still to do by hand:** thermal vias under Q_OR1, Q_OR2, Q_OUT and U_5V (none yet; U_5V has the footprint's 8); a top-layer GND fill with stitching vias if wanted; fiducials for JLCPCB assembly; tidy the autorouted signal tracks. The power pours follow `blocks/03-layout-brief.md` except where a part's own pads are narrower (the LOAD feed to the buck is 1.6 mm; the VBAT charge leg over F_BAT is 2.1 mm).

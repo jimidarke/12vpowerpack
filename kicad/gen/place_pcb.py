@@ -99,8 +99,14 @@ PLACE = {
     "F_OUT": (83.5, 20, 270, "VR"),
     "J_12V": (72, 7.5, 0, "VR"),
     "C_12V": (72, 17.5, 0, "T"),
-    # test points, one row
-    **{f"TP{n}": (61.5 + 3.8 * i, 41.8, 0, "T") for i, n in enumerate((2, 3, 4, 5, 6, 7, 8))},
+    # test points, each on or beside its own net's copper (TP1 VIN_CAR is with module 1)
+    "TP2": (57, 45.6, 0, "B"),      # SYS, on the pour's leg to F_CHG
+    "TP3": (57, 33.7, 0, "T"),      # LOAD, on the pour
+    "TP4": (66, 53.6, 0, "B"),      # VBAT, on the pour
+    "TP5": (67.3, 20, 0, "B"),      # 5V, on the pour below L1
+    "TP6": (25, 17, 0, "T"),        # 3V3, beside the XIAO
+    "TP7": (35.5, 17.3, 0, "B"),    # EN_5V, beside the enable divider
+    "TP8": (84.3, 41.8, 0, "T"),    # GND
 }
 
 HIDE = {"H1", "H2", "H3", "H4"}  # no silkscreen label

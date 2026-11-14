@@ -1,4 +1,11 @@
-0.6.1
+0.7.0
+
+## 0.7.0
+- First routing pass: `kicad/gen/route_pcb.py` adds the power path as copper zones (top), GND zone (bottom), J_SLA_P bottom zone and the XIAO antenna keep-out; Freerouting 1.9.0 routes the signal nets; hand-placed tracks for CHG_F (bottom, 1.0 mm), the Q_OR2 gate, the INA226 Kelvin sense lines and the G_OUT bus. DRC: 0 unconnected, 0 shorts, 0 clearance errors, 0 parity errors
+- Test points moved off the single row onto or beside their own nets (TP2 SYS, TP3 LOAD, TP4 VBAT, TP5 5V on the pours; TP6 3V3 by the XIAO; TP7 EN_5V by the enable divider)
+- Project net class `Power`: clearance 0.3 → 0.2 mm (the INA226 sense pins are on power nets at 0.5 mm pitch)
+- J_CAR, J_SLA, J_TEMP fields on the board updated to the LCSC parts (matches the 0.6.1 schematic)
+- Still to do by hand: thermal vias under Q_OR1, Q_OR2, Q_OUT, U_5V; fiducials; tidy autorouted tracks
 
 ## 0.6.1
 - BOM second pass (2026-11-14): every LCSC number checked live through the JLCPCB and LCSC APIs, the DigiKey Canada lines read live; all parts in stock. About C$66–68 per board at a batch of 5 (was C$65–70)
