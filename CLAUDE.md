@@ -14,6 +14,8 @@ Research here, generate and check here, lay out on the owner's laptop. This box 
 
 - `netlist.md` is the source of the schematic. To change the schematic, edit `netlist.md` and run `python3 kicad/gen/gen_sch.py` then `python3 kicad/gen/check_sch.py` (ERC, and KiCad's netlist compared pin by pin with `netlist.md`). Never edit `kicad/powerpack.kicad_sch` by hand.
 - The board (`kicad/powerpack.kicad_pcb`) belongs to the owner. Read it, run DRC on it, render it; do not write it unless the owner hands it over for a specific change. Schematic changes reach it through "Update PCB from Schematic" on the laptop.
+- On the owner's laptop the session runs in WSL, which has no Linux KiCad. Use the Windows KiCad 10 binaries from WSL instead: `"/mnt/c/Program Files/KiCad/10.0/bin/python.exe"` for scripts that import `pcbnew` and `kicad-cli.exe` beside it (see `kicad/README.md`). The repository is then the same folder KiCad has open, so the owner closes the board before anything writes it.
+- `kicad/gen/place_pcb.py` is the placement pass (table of positions, label placement, checks). It only runs on an unrouted board and only when the owner asks for a placement pass.
 - When the owner says "check": `git pull`, then `check_sch.py` and `kicad-cli pcb drc --schematic-parity`, and report by designator and pin.
 - Render images with `kicad-cli ... export svg` and `rsvg-convert` and look at them before reporting layout or schematic changes.
 - Use stock KiCad 10 symbols and footprints where they exist; parts from LCSC come in through `easyeda2kicad` (venv `~/.venvs/kicad-tools`) and `kicad/gen/build_lib.py`. Check every pin number against the datasheet before use.

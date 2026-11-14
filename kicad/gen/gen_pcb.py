@@ -22,7 +22,7 @@ KICAD = os.path.normpath(os.path.join(HERE, ".."))
 REPO = os.path.normpath(os.path.join(KICAD, ".."))
 PCB = os.path.join(KICAD, "powerpack.kicad_pcb")
 STOCK_FP = "/usr/share/kicad/footprints"
-BW, BH = 100.0, 80.0
+BW, BH = 100.0, 70.0
 X0, Y0 = 50.0, 50.0  # board top-left on the KiCad page
 
 # Rotations (degrees, KiCad: positive = counter-clockwise on screen) from the placement notes.
@@ -39,7 +39,7 @@ ROT = {
 }
 # Parts not in the placement plan.
 EXTRA = {f"TP{i + 1}": (80 + 4 * (i % 2), 50 - 4 * (i // 2)) for i in range(8)}
-HOLES = {"H1": (4, 4), "H2": (96, 4), "H3": (4, 76), "H4": (96, 76)}
+HOLES = {"H1": (4, 4), "H2": (96, 4), "H3": (4, 66), "H4": (96, 66)}
 NOT_PLACED = re.compile(r"^(TP\d+|JP_.*|H\d+)$")  # no pick-and-place, no BOM line
 
 POWER_NETS = ["J_CAR_P", "VIN_CAR", "SYS_IN", "SYS", "LOAD", "J_SLA_P", "VBAT", "12V_SW", "12V_OUT", "GND"]
@@ -232,7 +232,7 @@ def main():
     tb = board.GetTitleBlock()
     tb.SetTitle("12 V vehicle UPS power board")
     tb.SetRevision(open(os.path.join(REPO, "VERSION.txt")).readline().strip())
-    tb.SetComment(0, "Board 100 x 80 mm, 2 layers. Pre-placed from blocks/04-placement-gen.py")
+    tb.SetComment(0, f"Board {BW:g} x {BH:g} mm, 2 layers. Pre-placed from blocks/04-placement-gen.py")
 
     pcbnew.SaveBoard(PCB, board)
     patch_project()

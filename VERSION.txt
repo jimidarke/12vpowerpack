@@ -1,4 +1,12 @@
-0.5.1
+0.6.0
+
+## 0.6.0
+- Board re-placed by the new `kicad/gen/place_pcb.py` (owner's request): outline 100 × 80 → 100 × 70 mm, mounting holes at (4, 4), (96, 4), (4, 66), (96, 66); small parts laid in rows instead of stacks; every reference label 1.0 mm in a spot clear of pads, courtyards and other labels; mounting-hole labels hidden
+- Screw terminals J_CAR, J_SLA, J_TEMP turned 180° so the wire entries face the top edge (they faced into the board)
+- Test points TP2–TP8 in one row; TP1 beside J_CAR
+- DRC: 0 parity errors, 0 courtyard overlaps, 0 silkscreen overlaps; pad nets and symbol links unchanged (264 pads compared)
+- R_CHG fields on the board updated to the Mouser part (matches the 0.5.1 schematic)
+- `kicad/.history/` ignored; README and CLAUDE.md describe running the Windows KiCad binaries from WSL
 
 ## 0.5.1
 - R_CHG sourced as the straight-lead Vishay AC10000003308JAB00 from Mouser Canada (594-AC10000003308JAB), owner's decision 2026-11-14: the kinked-lead AC10 the footprint is drawn for is not sold in small quantities, and DigiKey Canada lists the straight-lead part only at 3,000 minimum. Leads bent by hand to the 52 mm footprint pitch, at least 3 mm from the body, with a spacer; footprint and board unchanged

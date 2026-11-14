@@ -12,6 +12,8 @@ The generator checks that no two parts overlap, that every part is on the board,
 
 ## How it reaches KiCad
 
+**Superseded for the board itself:** the board was re-placed at 100 × 70 mm by `kicad/gen/place_pcb.py` later on 2026-11-14; that script's table is the current placement. This document is the first plan.
+
 `kicad/gen/gen_pcb.py` read this table on 2026-11-14 and wrote `kicad/powerpack.kicad_pcb` with every footprint at these coordinates (board 100 × 80 mm, origin at the bottom-left corner, y up; in KiCad the board's top-left corner sits at (50, 50) on the page). It centres each footprint on its outline, turns the parts listed in its `ROT` table, and nudged 23 small parts by up to about 1 mm so that no courtyards overlap. The board now belongs to the owner: further moves are made in KiCad, not here.
 
 - **Edges:** the top edge takes the wiring terminals (wire entries facing out). The bottom edge takes the outputs (USB-A and barrel jack openings flush with the edge). The left edge takes the XIAO antenna (no copper under it on either layer) and the two LEDs (light pipe or hole in the case).
