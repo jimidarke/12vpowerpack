@@ -246,9 +246,9 @@ Check: `EN_SRC` has exactly three feeds (D_IGN, Q_HOLD, JP_HOLD) and one load (R
 
 ## LCSC part table (v3.1, batch of 5)
 
-This is the BOM for ordering. It was read live from the JLCPCB parts library on 2026-11-14; prices are in USD at qty 10–50. Library type: **B** Basic and **PE** Preferred Extended carry no feeder fee on JLCPCB Economic PCBA, while **E** Extended carries US$3.07 per part type per order (JLCPCB assembly price page, updated 2026-10-22). "Fit" says who solders the part:
+This is the BOM for ordering. It was read live from the JLCPCB parts library on 2026-11-14 and re-checked the same day (second pass: JLCPCB and LCSC APIs for every LCSC number, DigiKey Canada pages for the rest); prices are in USD at the quantity for 5 boards. Library type: **B** Basic and **PE** Preferred Extended carry no feeder fee on JLCPCB Economic PCBA, while **E** Extended carries US$3.07 per part type per order (JLCPCB assembly price page, updated 2026-10-22). "Fit" says who solders the part:
 - **fab:** JLCPCB fits it.
-- **hand:** the owner hand-solders it. Order these from LCSC with the JLCPCB order so they ship together.
+- **hand:** the owner hand-solders it. Order these from LCSC with the JLCPCB order so they ship together. LCSC minimum quantities apply (for example 100 for 0603 resistors).
 - **DK:** the owner hand-solders it. Order these from DigiKey Canada, because they are out of stock at LCSC or are through-hole parts better bought in CAD.
 - **Mouser:** the owner hand-solders it. Order it from Mouser Canada, because neither LCSC nor DigiKey Canada stocks it in small quantities.
 
@@ -261,7 +261,7 @@ Rule: the fab fits every B and PE part plus the four fine-pitch or thermal-pad I
 | TI LM74700QDBVRQ1 | U_OR1, U_OR2 | 2 | C2941042 | E | 2.456 | −40 to 150 | |
 | TI CSD18543Q3A | Q_OR1, Q_OR2 | 2 | C840100 | E | 1.154 | −55 to 150 | |
 | TI INA226AIDGSR | U_MON_IN, U_MON_OUT | 2 | C49851 | E | 0.560 | −40 to 125 | |
-| TI LMR33630ADDAR | U_5V | 1 | C841384 | E | 0.525 | −40 to 125 (TJ) | listed as "ESOP-8" |
+| TI LMR33630ADDAR | U_5V | 1 | C841384 | E | 0.632 | −40 to 125 (TJ) | listed as "ESOP-8". Was 0.525 earlier on 2026-11-14 |
 | LRC LBSS84LT1G | Q_HOLD | 1 | C8492 | PE | 0.028 | −55 to 150 | −50 V; no Basic BSS84 exists. Check the pin numbering against its SOT-23 drawing (part C of `blocks/02-v31-schematic-edits.md`) |
 | CJ 2N7002 | Q_HOLDDRV, Q_OUTDRV | 2 | C8545 | B | 0.016 | **[TBC]** (blank in the listing) | Nexperia 2N7002,215 (C65189, E, −65 to 150) if the CJ rating cannot be confirmed |
 | MDD B5819W | D_5V | 1 | C64885 | PE | 0.020 | −55 to 125 (listing) | replaces the B140B (SMB): 40 V, 1 A, SOD-123 |
@@ -286,9 +286,9 @@ Rule: the fab fits every B and PE part plus the four fine-pitch or thermal-pad I
 
 | Part | Designators | Qty | LCSC | USD each | Temp | Note |
 |---|---|---|---|---|---|---|
-| Diodes DMP4015SK3-13 | Q_OUT | 1 | C513222 | 0.992 | −55 to 150 | TO-252 |
-| Diodes SMCJ18CA-13-F | D_TVS | 1 | C135149 | 0.275 | −55 to 150 | the part in `datasheets/smcj.txt` (that extract is the non-Q datasheet). The automotive SMCJ18CAQ-13-F (C1975830, US$1.28, 20 in stock) has the same footprint; either will do |
-| Bourns SRP6540-8R2M | L1 | 1 | **C2041807** | 1.352 | −55 to 125 **[DS SRP6540]** | the Flux part carries C1329351, which is the 4.7 µH SRP6540-4R7M |
+| Diodes DMP4015SK3-13 | Q_OUT | 1 | C513222 | 1.211 | −55 to 150 | TO-252 |
+| Diodes SMCJ18CA-13-F | D_TVS | 1 | C135149 | 0.280 | −55 to 150 | the part in `datasheets/smcj.txt` (that extract is the non-Q datasheet). **Low stock: 62 at LCSC (2026-11-14); order early.** The automotive SMCJ18CAQ-13-F (C1975830, US$1.28, 20 in stock) has the same footprint; either will do. Liown SMCJ18CA (C2925539, US$0.15, 1,105 in stock) is a possible third choice; its temperature rating and clamp voltage are not checked **[TBC]** |
+| Bourns SRP6540-8R2M | L1 | 1 | **C2041807** | 1.605 | −55 to 125 **[DS SRP6540]** | **Low stock: 58 at LCSC (2026-11-14).** Fallback: DigiKey Canada SRP6540-8R2MCT-ND, C$1.84 (1,506 in stock). The Flux part carries C1329351, which is the 4.7 µH SRP6540-4R7M |
 | RALEC LR2512-22R005F4, 5 mΩ 1 % 2 W | R_SNS_IN, R_SNS_OUT | 2 | C108931 | 0.127 | −55 to 170 | 2512 |
 | CJ BZT52C12 | D_ZH, D_ZO | 2 | C43491 | 0.021 | −55 to 150 | no Basic BZT52C12 exists |
 | Diodes BAT46W-7-F | D_IGN, D_OEN | 2 | C83152 | 0.129 | −55 to 125 | the part in `datasheets/bat46w.txt`; no Basic Schottky ≥ 100 V exists |
@@ -296,27 +296,34 @@ Rule: the fab fits every B and PE part plus the four fine-pitch or thermal-pad I
 | RALEC RTT038873FTP, 887 kΩ | R_EN1 | 1 | C103858 | ~0.002 | | sets the low-voltage cutoff; keep the exact value |
 | UNI-ROYAL 102 kΩ | R_EN2 | 1 | C22858 | ~0.002 | | as above |
 | UNI-ROYAL 24.9 kΩ | R_FBB | 1 | C25962 | ~0.002 | | sets 5.0 V; the nearest Basic value (24 kΩ) would give 5.17 V |
+| Phoenix Contact MKDS 1,5/2 (1715022), 2-way, 5.0 mm | J_CAR, J_SLA | 2 | C3817933 | 0.424 | −40 to 105 (family) | 15 A. The 2-way listing leaves the temperature blank; the 3-way states it. Replaces the XY301V, which has no temperature rating. Same 5.0 mm pitch as the placed footprint; check the hole size at layout. Moved from DigiKey (C$1.72) on 2026-11-14 |
+| Phoenix Contact MKDS 1,5/3 (1715035), 3-way, 5.0 mm | J_TEMP | 1 | C6787349 | 0.667 | −40 to 105 | replaces the KF301 placeholder footprint's part (−30 °C). Moved from DigiKey (C$2.54) on 2026-11-14 |
+| HCTL PM254-1-07-Z-8.5, 1×7 female header, 2.54 mm, 8.5 mm tall | J_XIAO socket | 2 | C2897370 | 0.145 | −40 to 105 | LCSC minimum 6. Moved from the DigiKey table on 2026-11-14 |
 
 ### Hand-soldered, from DigiKey Canada (through-hole, plus F_CHG)
 
 | Part | Designators | Qty | Note |
 |---|---|---|---|
-| Keystone 3557-2 | F_IN, F_BAT, F_OUT | 3 | 30 A, −50 to 145 °C **[DS Keystone 3557]**. LCSC C352820 has only 22 in stock (15 needed) |
-| Schurter UMT 250, 1.6 A time-lag (3403.0168.11) | F_CHG | 1 | out of stock at LCSC. The LCSC alternative, SETsafe SCT1032T1.6A250V (C19712561), has no DC rating stated, so it is not used |
-| Phoenix Contact MKDS 1,5/2 (1715022), 2-way, 5.0 mm | J_CAR, J_SLA | 2 | 15 A; the family is rated −40 to 105 °C (LCSC C3817933; the 2-way listing leaves it blank, the 3-way states it). Replaces the XY301V, which has no temperature rating. Same 5.0 mm pitch as the placed XY301V symbol; check the hole size at layout |
-| Phoenix Contact MKDS 1,5/3 (1715035), 3-way, 5.0 mm | J_TEMP | 1 | −40 to 105 °C (LCSC C6787349). Replaces the jumper placeholder |
-| Same Sky PJ-063AH | J_12V | 1 | −25 °C, the accepted exception (LCSC C22434582 has 37 in stock) |
-| Würth 61400416021 | J_USBA | 1 | −40 to 105 °C (LCSC C6264900 listing) |
-| 1×7 female header, 2.54 mm, about 8.5 mm tall | J_XIAO socket | 2 | e.g. HCTL PM254-1-07-Z-8.5 (LCSC C2897370, −40 to 105 °C) |
-| Seeed XIAO ESP32-C6 | J_XIAO | 1 | |
-| ATO/ATC blade fuses 10 A, 10 A, 7.5 A | in the 3557-2 holders | 3 | |
-| DS18B20 probe, 1 m | on J_TEMP | 1 | |
+| Keystone 3557-2 | F_IN, F_BAT, F_OUT | 3 | 30 A, −50 to 145 °C **[DS Keystone 3557]**. DigiKey 36-3557-2-ND, C$1.566 at 10+. LCSC C352820 has none in stock (2026-11-14) |
+| Schurter UMT 250, 1.6 A time-lag (3403.0168.11) | F_CHG | 1 | DigiKey 486-1249-ND, C$2.356 at 5+ (250 V AC, 125 V DC). Out of stock at LCSC. The LCSC alternative, SETsafe SCT1032T1.6A250V (C19712561), has no DC rating stated, so it is not used |
+| Same Sky PJ-063AH | J_12V | 1 | −25 °C, the accepted exception. DigiKey CP-063AH-ND, C$2.42 (LCSC C22434582: 42 in stock, US$2.76) |
+| Würth 61400416021 | J_USBA | 1 | −40 to 105 °C. DigiKey 732-2106-ND, C$1.49 |
+| Seeed XIAO ESP32-C6 | J_XIAO | 1 | Seeed 113991254, C$8.52 at DigiKey Canada (427 in stock, 2026-11-14). Seeed's own Amazon or AliExpress store is fine if cheaper |
+
+### Common parts, any source
+
+Not on the board; buy wherever is convenient (Amazon, AliExpress, a car-parts store), in packs for other projects too.
+
+| Part | Where it goes | Qty | Note |
+|---|---|---|---|
+| ATO/ATC blade fuses 10 A, 10 A, 7.5 A | in the 3557-2 holders | 3 | any branded ATO/ATC fuse. Reference: Littelfuse 0287010.PXCN at DigiKey Canada, C$0.65 |
+| DS18B20 waterproof probe, 1 m, 3-wire | on J_TEMP | 1 | Universal Solder (Canada) C$2.69 at 3–9, or a pack from AliExpress/Amazon. Most are clone chips, and some read poorly near −40 °C; the probe is wired with its own 3V3 (not parasite power), which avoids the usual clone fault. Check each probe in a freezer before trusting its cold readings |
 
 ### Hand-soldered, from Mouser Canada
 
 | Part | Designators | Qty | Note |
 |---|---|---|---|
-| Vishay AC10000003308JAB00, straight leads, 3.3 Ω 10 W 5 % (Mouser 594-AC10000003308JAB) | R_CHG | 1 | chosen 2026-11-14 (owner's decision). The kinked-lead AC10000N03308JLA00 that the footprint is drawn for is not sold in small quantities; DigiKey Canada lists the straight-lead part only at 3,000 minimum. Bend the leads to the footprint's 52 mm pitch, at least 3 mm from the body (the coating can run 3 mm onto the leads, **[DS Vishay AC]** dimension table), and hold the body off the board with a spacer. Considered: Yageo SQP10AJB-3R3 (DigiKey Canada 3.3W-10-ND, C$1.81), same ratings class but 48 mm long, so it needs a longer footprint |
+| Vishay AC10000003308JAB00, straight leads, 3.3 Ω 10 W 5 % (Mouser 594-AC10000003308JAB) | R_CHG | 1 | chosen 2026-11-14 (owner's decision). The kinked-lead AC10000N03308JLA00 that the footprint is drawn for is not sold in small quantities; DigiKey Canada lists the straight-lead part only at 3,000 minimum. Bend the leads to the footprint's 52 mm pitch, at least 3 mm from the body (the coating can run 3 mm onto the leads, **[DS Vishay AC]** dimension table), and hold the body off the board with a spacer. Price: US$2.98 at 1–9 (about C$4.14) from aggregator listings; Mouser blocks automated reads, so check mouser.ca before ordering. Mouser Canada ships free only over C$100 (search result, not confirmed), and five AC10s are about C$21, so expect a shipping charge or add parts to the order. Considered: Yageo SQP10AJB-3R3 (DigiKey Canada 3.3W-10-ND, C$1.81), same ratings class but 48 mm long, so it needs a longer footprint |
 
 ## Open
 1. **Barrel jack:** the PJ-063AH has a 2.0 mm centre pin, which is the size for 5.5 × 2.1 mm plugs (the 2.5 mm version is the PJ-063BH). Check your plugs are 2.1 mm.
