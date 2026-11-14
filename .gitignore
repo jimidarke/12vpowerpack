@@ -8,3 +8,4 @@ fp-info-cache
 kicad/out/
 __pycache__/
 kicad/lib/lcsc.3dshapes/
+kicad/.history/
