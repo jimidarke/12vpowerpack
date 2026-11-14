@@ -1,4 +1,12 @@
-0.6.0
+0.6.1
+
+## 0.6.1
+- BOM second pass (2026-11-14): every LCSC number checked live through the JLCPCB and LCSC APIs, the DigiKey Canada lines read live; all parts in stock. About C$66–68 per board at a batch of 5 (was C$65–70)
+- J_CAR, J_SLA, J_TEMP (Phoenix MKDS 1,5) and the XIAO headers moved from DigiKey to LCSC hand-soldered (about C$2.10 per board against C$6.00 at DigiKey); schematic Fit and LCSC fields updated
+- Prices up about 20 %: LMR33630, DMP4015, SRP6540. Low stock at LCSC: SRP6540-8R2M (58; DigiKey fallback C$1.84) and SMCJ18CA-13-F (62)
+- New "Common parts, any source" table: blade fuses and the DS18B20 probe (Amazon/AliExpress fine; freezer-check clone probes)
+- AC10 price corrected to about C$4.14 (US$2.98); Mouser shipping threshold noted
+- DigiKey part numbers added to the DigiKey table
 
 ## 0.6.0
 - Board re-placed by the new `kicad/gen/place_pcb.py` (owner's request): outline 100 × 80 → 100 × 70 mm, mounting holes at (4, 4), (96, 4), (4, 66), (96, 66); small parts laid in rows instead of stacks; every reference label 1.0 mm in a spot clear of pads, courtyards and other labels; mounting-hole labels hidden

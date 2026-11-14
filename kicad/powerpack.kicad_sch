@@ -7,7 +7,7 @@
 	(title_block
 		(title "12 V vehicle UPS power board")
 		(date "2026-11-14")
-		(rev "0.5.0")
+		(rev "0.6.1")
 		(comment 1 "Generated from netlist.md by kicad/gen/gen_sch.py. Edit netlist.md, not this sheet.")
 		(comment 2 "Every pin carries a net label; labels with the same name are connected.")
 	)
@@ -12736,6 +12736,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C3817933"
+			(at 35.56 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "MPN" "Phoenix Contact MKDS 1,5/2 (1715022), 2-way, 5.0 mm"
 			(at 35.56 33.02 0)
 			(hide yes)
@@ -12747,7 +12758,7 @@
 				)
 			)
 		)
-		(property "Fit" "DK"
+		(property "Fit" "hand"
 			(at 35.56 33.02 0)
 			(hide yes)
 			(show_name no)
@@ -14179,6 +14190,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C3817933"
+			(at 35.56 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "MPN" "Phoenix Contact MKDS 1,5/2 (1715022), 2-way, 5.0 mm"
 			(at 35.56 124.46 0)
 			(hide yes)
@@ -14190,7 +14212,7 @@
 				)
 			)
 		)
-		(property "Fit" "DK"
+		(property "Fit" "hand"
 			(at 35.56 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -14280,6 +14302,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C6787349"
+			(at 276.86 213.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "MPN" "Phoenix Contact MKDS 1,5/3 (1715035), 3-way, 5.0 mm"
 			(at 276.86 213.36 0)
 			(hide yes)
@@ -14291,7 +14324,7 @@
 				)
 			)
 		)
-		(property "Fit" "DK"
+		(property "Fit" "hand"
 			(at 276.86 213.36 0)
 			(hide yes)
 			(show_name no)
