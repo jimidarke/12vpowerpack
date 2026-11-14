@@ -1,4 +1,9 @@
-0.7.0
+0.7.1
+
+## 0.7.1
+- Voltage and power budget (2026-11-14), new section in `architecture.md`: car input (nominal 13.8–14.4 V, start 11.5–12.7 V across tolerances, clamp 18 V stand-off / 29.2 V surge, reverse to −18 V), 12 V output (about 10.8–14.8 V at the plug, 9.9 V worst case at 5 A near the cutoff; car faults pass through to about 22 V), 5 V rail (5.016 V, 4.86–5.17 V worst case, at least 3.37 A available), heat (about 9 W worst case, 3.6 W of it in R_CHG)
+- Low-voltage cutoff tolerance recorded: 10.48–11.45 V on `SYS` (VEN-H ±2.4 %, 1 % divider)
+- `requirements.md` and `README.md` ranges updated to match; estimates (fuse, copper, battery and jack resistance, buck efficiency) tagged **[TBC, bench]**
 
 ## 0.7.0
 - First routing pass: `kicad/gen/route_pcb.py` adds the power path as copper zones (top), GND zone (bottom), J_SLA_P bottom zone and the XIAO antenna keep-out; Freerouting 1.9.0 routes the signal nets; hand-placed tracks for CHG_F (bottom, 1.0 mm), the Q_OR2 gate, the INA226 Kelvin sense lines and the G_OUT bus. DRC: 0 unconnected, 0 shorts, 0 clearance errors, 0 parity errors

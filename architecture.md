@@ -52,7 +52,7 @@ Main nets: `VIN_CAR` (after F_IN and the TVS, car side of U_OR1), `SYS_IN` (U_OR
 - Recharge is slow: replacing a 3 Ah discharge takes several hours of driving. Lower R_CHG (and raise F_CHG and the resistor rating to match) if a unit is used that way; 3.3 Ω suits 2–12 Ah batteries on the carNet duty.
 
 ## Rails
-- **12 V output:** `LOAD` through Q_OUT (P-channel FET, high side) and F_OUT 7.5 A to J_12V. Unregulated, about 10.9–14.8 V. Q_OUT: Diodes DMP4015SK3, −40 V, ±25 V gate, 11 mΩ max at −10 V, TO-252, −55 to 150 °C **[DS DMP4015SK3]**; about 0.1 W at 3 A and 0.3 W at 5 A **[calc]**. Gate network: 100 kΩ gate to source, 47 kΩ from the gate to the driver FET, so the gate sees 68 % of the rail: 7.5 V at 11 V and 10.1 V at 14.8 V **[calc]**. A BZT52C12 (11.4–12.7 V, −65 to 150 °C **[DS BZT52C]**) across gate-source clamps it when the rail rises toward the 29 V clamp level. 47 nF gate to source slows the switch: about 1.5 ms on, 4.7 ms off **[calc]**. Overcurrent protection is F_OUT alone; there is no electronic current limit.
+- **12 V output:** `LOAD` through Q_OUT (P-channel FET, high side) and F_OUT 7.5 A to J_12V. Unregulated: the car feed or the battery less 0.1–0.5 V, so about 10.8–14.8 V at the plug, and 9.9 V worst case at 5 A near the cutoff (see "Voltage and power budget"). Q_OUT: Diodes DMP4015SK3, −40 V, ±25 V gate, 11 mΩ max at −10 V, TO-252, −55 to 150 °C **[DS DMP4015SK3]**; about 0.1 W at 3 A and 0.3 W at 5 A **[calc]**. Gate network: 100 kΩ gate to source, 47 kΩ from the gate to the driver FET, so the gate sees 68 % of the rail: 7.5 V at 11 V and 10.1 V at 14.8 V **[calc]**. A BZT52C12 (11.4–12.7 V, −65 to 150 °C **[DS BZT52C]**) across gate-source clamps it when the rail rises toward the 29 V clamp level. 47 nF gate to source slows the switch: about 1.5 ms on, 4.7 ms off **[calc]**. Overcurrent protection is F_OUT alone; there is no electronic current limit.
 - **5 V:** LMR33630ADDA (400 kHz) from `LOAD`, 3.8–36 V in **[DS]**. Inductor: Bourns SRP6540-8R2M, 8.2 µH, 50.5 mΩ, 4.5 A rms, 5 A saturation, −55 to 125 °C **[DS SRP6540]**, against a high-side current limit of 4.5 A typical, 5.05 A maximum **[DS LMR33630 EC table, ISC]**. Values for 5 V at 400 kHz: L 8 µH, COUT 4 × 22 µF, RFBT 100 kΩ, RFBB 24.9 kΩ, CIN 10 µF + 220 nF, CBOOT 100 nF, CVCC 1 µF, no feed-forward capacitor **[DS LMR33630 Table 9-2]**. Feeds the USB-A port and the XIAO.
 - **USB-A:** VBUS on `5V`, D+ and D− tied together on net `USB_D` (the BC1.2 dedicated-charger signature) with no controller IC. The port is for loads that draw current regardless of the signature (owner's decision 2026-11-14). Most Android phones also charge at full rate on a shorted pair; some Apple devices limit themselves to about 0.5–1 A.
 
@@ -70,7 +70,7 @@ LMR33630 PG ─ OUT_EN ─ 100 kΩ pull-up to 5V ─ N-FET gate ─ pulls Q_OUT 
 ```
 
 - **Small parts:** Q_HOLD is a BSS84 (−50 V, ±20 V gate, −55 to 150 °C **[DS BSS84]**) with the same 12 V Zener clamp and a 1 MΩ / 470 kΩ gate divider (about 9 µA while holding **[calc]**); the two driver N-FETs are 2N7002 (60 V, threshold 1.0–2.5 V, −55 to 150 °C **[DS 2N7002]**); D_IGN is a BAT46W (100 V, 0.25 V at 0.1 mA, −55 to 125 °C **[DS BAT46W]**). 100 V on D_IGN covers a reversed car input with `EN_SRC` held at `SYS`.
-- **Thresholds:** EN rising 1.231 V, 100 mV hysteresis **[DS LMR33630 EC table, VEN-H / VEN-HYS]**. With 887 kΩ / 102 kΩ: on above 11.94 V, off below 10.97 V at `EN_SRC` **[calc]**. On the ignition path D_IGN adds up to 0.25 V at the divider's 12 µA, so the board starts at about 12.2 V on the car feed **[calc]**.
+- **Thresholds:** EN rising 1.231 V, 100 mV hysteresis **[DS LMR33630 EC table, VEN-H / VEN-HYS]**. With 887 kΩ / 102 kΩ: on above 11.94 V, off below 10.97 V at `EN_SRC` **[calc]**. Across VEN-H (1.20–1.26 V) and 1 % resistors: on 11.43–12.44 V, off 10.48–11.45 V **[calc]**. On the ignition path D_IGN adds up to 0.25 V at the divider's 12 µA, so the board starts at about 12.2 V on the car feed **[calc]**.
 - **Ignition on:** `EN_SRC` is fed from `VIN_CAR`, the 5 V rail starts, the XIAO boots and drives `HOLD` high, which connects `EN_SRC` to `SYS` as well.
 - **Ignition off, hold-up:** `EN_SRC` stays on `SYS` (the battery) through Q_HOLD. The XIAO sees `VCAR_SENSE` fall and starts its timer.
 - **Timer expires:** the hold-up time is an ESPHome setting, adjustable from Home Assistant and stored in flash (default 30 min, minimum 1 min). When it expires the XIAO releases `HOLD`. A setting of 0 disables the timer: `HOLD` stays high and the board runs until the hardware low-voltage cutoff. `EN_SRC` falls to zero, the 5 V rail and the XIAO switch off, and nothing can turn back on until the car feed returns.
@@ -92,6 +92,68 @@ LMR33630 PG ─ OUT_EN ─ 100 kΩ pull-up to 5V ─ N-FET gate ─ pulls Q_OUT 
 | Total | about 0.14 mA, or 0.1 Ah per month |
 
 A 7 Ah AGM loses more than that to self-discharge. For long storage, pull F_BAT.
+
+## Voltage and power budget **[calc]**
+Worked 2026-11-14. Where a cell has two figures, the first is typical and the second worst case (hot parts at maximum resistance). Datasheet inputs: Q_OR1 and Q_OR2 at 9 mΩ typical and 15 mΩ worst. The worst case is 11 mΩ at the LM74700-Q1's 8 V minimum gate drive **[DS LM74700-Q1 EC table, V(VCAP) − V(ANODE)]** times 1.4 for heat **[DS CSD18543Q3A RDS(on), Figure 8]**. Q_OUT is 8 mΩ typical and 18 mΩ worst (13 mΩ at VGS −7.5 V times 1.4) **[DS DMP4015SK3]**. J_12V has 30 mΩ per contact, two contacts in the path **[DS PJ-063AH]**. Estimates still to confirm on the bench **[TBC, bench]**:
+- blade fuse plus clip: 7 mΩ (10 A) and 10 mΩ (7.5 A), 11 and 15 mΩ hot
+- board copper: 3–6 mΩ per path, and the same in the return
+- J_12V: 15 mΩ per contact typical
+- 7 Ah AGM: 25–40 mΩ internal resistance
+- 5 V converter: 90 % efficient at 2.25 A
+
+### Car input (J_CAR)
+| | Value | Set by |
+|---|---|---|
+| Nominal | 13.8–14.4 V with the engine running; 12.4–12.6 V with the ignition on and the engine off | car |
+| Board start | 12.14 V nominal, 11.5–12.7 V across tolerances | EN rising threshold 1.20–1.26 V **[DS LMR33630 EC table, VEN-H]**, 887 kΩ / 102 kΩ at 1 %, D_IGN 0.10–0.25 V |
+| Working, steady | 11–14.8 V (requirements) | |
+| Minimum once running | No limit from the car: the battery holds `SYS` through crank dips and dropouts, and U_OR1 blocks backfeed | |
+| Highest with nothing conducting | 18 V | TVS stand-off **[DS SMCJ electrical table]** |
+| Sustained overvoltage | Above 20.0–22.1 V the TVS conducts and F_IN blows | TVS breakdown **[DS SMCJ]** |
+| Surge | Clamped at 29.2 V at 51.4 A. Parts on `SYS` are good to 36 V operating **[DS LMR33630 §7.3, INA226 §5.3]**; capacitors on `VIN_CAR`, `SYS` and `LOAD` are 50 V | **[DS SMCJ]** |
+| Reverse | Blocked to −18 V. Beyond that the TVS conducts and F_IN blows; U_OR1 alone is rated −65 V **[DS LM74700-Q1 §6.1]** | |
+| Current | 4.4–4.9 A continuous (3 A + 2 A USB + 0.5–1.1 A charging), 6.4–6.9 A at the 5 A peak; F_IN is 10 A | |
+
+### 12 V output (J_12V)
+| Condition | At the jack pins | At the plug (after both contacts) |
+|---|---|---|
+| Ignition on, car 14.4 V, light load | 14.35 V | 14.34 V |
+| Ignition on, car 14.4 V, 3 A + 2 A USB | 14.21 / 14.10 V | 14.11 / 13.90 V |
+| Ignition on, car 14.4 V, 5 A + 2 A USB | 14.11 / 13.94 V | 13.95 / 13.61 V |
+| Ignition off, battery 12.9 V resting, 3 A + 2 A USB | 12.64 / 12.48 V | 12.54 / 12.28 V |
+| Minimum: at the cutoff, 5 A + 2 A USB | 10.84 V / 10.25 V | 10.66 V / 9.9 V |
+| Maximum, steady | 14.8 V less about 0.05 V | |
+| Maximum, fault | Whatever the car feed carries: up to 20–22 V sustained until the TVS or F_IN gives way, 29.2 V during a clamped surge. There is no overvoltage cutoff on this output, and J_12V is rated 24 V **[DS PJ-063AH]** | |
+
+- The low-voltage cutoff on `SYS` is 10.97 V nominal and 10.48–11.45 V across tolerances. Most of the spread comes from VEN-H (±2.4 %); the 1 % divider resistors add ±1.8 %. The 100 mV hysteresis has only a typical value **[DS LMR33630 EC table, VEN-HYS]**. With 0.1 % resistors the spread would be about 10.67–11.25 V.
+- Under load, `SYS` sits 0.25–0.45 V below the battery's resting voltage at 6 A. So a peak near the end of the charge trips the cutoff early, which acts as a loaded-voltage cutoff, and the latch holds the board off.
+
+### 5 V rail
+| | Value |
+|---|---|
+| Nominal | 5.016 V: VFB × (1 + 100 kΩ / 24.9 kΩ) |
+| Tolerance | 4.86–5.17 V with VFB 0.985–1.015 V **[DS LMR33630 EC table, VFB]** and 1 % resistors. USB 2.0 allows 4.75–5.25 V |
+| Ripple | Inductor ripple 0.8 A peak-to-peak at 10.5 V in, rising to 1.0 A at 14.8 V and 1.3 A at 36 V; output ripple about 8–10 mV peak-to-peak with about 40 µF of effective output capacitance |
+| PG (switches the 12 V output too) | Low below 4.61 V (92 %) and above 5.37 V (107 %) **[DS LMR33630 EC table, VPG]** |
+| Load | 2 A USB + about 0.25 A XIAO. The converter can deliver at least (ISC + ILIMIT) / 2 = 3.37 A **[DS LMR33630 EC table, §8.3.3 Eq. 1]** |
+| Inductor peak | 2.65 A at 11 V in, 2.9 A at 36 V in, against L1's 4.5 A rms / 5 A saturation **[DS SRP6540]** |
+| Input range | Regulates over the whole `SYS` range. Dropout (about 5.5 V at 2.25 A) is never reached because the enable cuts off at 10.5 V or above. On-time is 348 ns at 36 V against the 108 ns minimum **[DS LMR33630 EC table, tON-MIN DDA]**, so frequency foldback would not start below about 116 V |
+| Input current | 0.85 A at 14.8 V, 1.14 A at 11 V |
+| `XIAO_5V` | About 4.6–4.7 V after D_5V (B5819W, typical forward drop; no datasheet extract yet **[TBC]**) |
+
+### Heat
+| Case | Total | Largest items |
+|---|---|---|
+| Ignition on, car 14.8 V, battery at 11 V, 5 A + 2 A USB (worst) | about 9 W | R_CHG 3.6 W (stands off the board); J_12V contacts 1.5 W if they are at 30 mΩ each; LMR33630 and L1 1.25 W; Q_OR1 0.7 W; F_IN 0.5 W; Q_OUT 0.45 W; F_OUT 0.4 W |
+| Same, 3 A + 2 A USB (continuous) | about 6.9 W | R_CHG 3.8 W; about 3 W on the board |
+| Ignition off, battery 11.2 V, 5 A + 2 A USB | | Q_OR2 0.6 W; F_BAT 0.4 W |
+
+### What follows from it
+1. The 12 V output's worst-case minimum is about 9.9 V at the plug (5 A near the cutoff; 10.3 V at 3 A), below the "about 10.9 V" in the requirements. The firmware soft cutoff (11.9 V and up) keeps normal use well above it; only the hardware backstop goes that low.
+2. A board at the top of its start tolerance (12.7 V) may not start with the ignition on and the engine off. It starts once the engine runs.
+3. At a 12.5 V feed (alternator economy mode) the battery, at 12.6–12.9 V after charging, carries the load while driving.
+4. Until the XIAO drives `HOLD` high (about a second after ignition-on), only the car feed holds `EN_SRC`. A crank dip in that window turns the 5 V rail off, and the board starts again after the crank.
+5. J_12V's contact resistance is the largest loss on the board at 5 A. Measure it on the bench before deciding whether a different jack is worth it.
 
 ## Sensing (XIAO)
 - `VCAR_SENSE`: divider on `VIN_CAR`, 560 kΩ / 100 kΩ with 100 nF. Ignition detect and car-feed voltage. With the ignition off and `EN_SRC` held at `SYS`, D_IGN's reverse leakage in a hot trunk flows into `VIN_CAR`; if the car side is open (no other load on the ignition circuit), the divider can float a few volts. A firmware ignition threshold of about 9 V ignores it **[TBC, bench at 85 °C]**. No clamp diode: a Schottky clamp's leakage at 85 °C would spoil the reading, and the 560 kΩ limits pin current to about 45 µA at the 29 V clamp level and −25 µA with the input reversed **[calc]**. The ESP32-C6's tolerance for that injected current is **[TBC]**.

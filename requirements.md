@@ -10,7 +10,7 @@ A small in-vehicle UPS: a 12 V sealed AGM battery floated on the car's own charg
 One build. No lithium variant, no charger IC, no USB-C PD input, no 12 V converter, no display.
 
 ## Input
-- **Car feed only:** ignition-switched 12 V socket or fuse tap, 11–14.8 V, automotive transients, reverse polarity possible.
+- **Car feed only:** ignition-switched 12 V socket or fuse tap, 11–14.8 V (13.8–14.4 V nominal with the engine running), automotive transients, reverse polarity possible. The board starts at about 12.1 V (11.5–12.7 V across part tolerances, so a board at the top of the range may need the engine running to start); once running, the battery carries it through dips and cranking.
 - The board never feeds the battery back into the car.
 - Surge protection is a simple clamp near 18 V. A 24 V jump start or an alternator load dump may blow the input fuse or the clamp; nothing else is damaged.
 - Not for mains adapters: there is no charge regulation, so the input must be a vehicle charging system (about 13.5–14.8 V when running).
@@ -22,13 +22,13 @@ One build. No lithium variant, no charger IC, no USB-C PD input, no 12 V convert
 - Accepted limits of this method: the battery is undercharged in deep cold (no temperature-compensated voltage), and recharge is slow (about 1 A at most, tapering). It is sized for the carNet duty of about 2.5 Wh per stop, not for heavy battery-only use.
 
 ## Outputs
-- **12 V unregulated**, straight from the car feed or the battery: about 10.9–14.8 V. 3 A continuous, 5 A peak for several seconds, barrel jack (5.5 mm). Loads must tolerate that range.
-- **5 V regulated**, 2 A minimum on USB-A. Also powers the ESP32. The port is for loads that draw their current regardless (Pi, router, camera); D+ and D− are tied together (the BC1.2 dedicated-charger signature) and there is no charging-port controller IC (owner's decision 2026-11-14).
+- **12 V unregulated**, straight from the car feed or the battery less 0.1–0.5 V: about 10.8–14.8 V, and 9.9 V worst case at a 5 A peak near the hardware cutoff. A car-side fault passes through, up to about 22 V sustained (29 V during a clamped surge). 3 A continuous, 5 A peak for several seconds, barrel jack (5.5 mm). Loads must tolerate that range.
+- **5 V regulated**, 5.02 V (4.86–5.17 V worst case), 2 A minimum on USB-A. Also powers the ESP32. The port is for loads that draw their current regardless (Pi, router, camera); D+ and D− are tied together (the BC1.2 dedicated-charger signature) and there is no charging-port controller IC (owner's decision 2026-11-14).
 
 ## Power control
 - Ignition on: both outputs on.
 - Ignition off: outputs stay on from the battery for a hold-up time, then everything switches off, including the ESP32, until the ignition returns. The hold-up time is a firmware setting, adjustable from Home Assistant without reflashing and kept across power cycles (default 30 min). The shortest time is 1 min. A setting of 0 means no timeout: the outputs stay on until the hardware low-voltage cutoff.
-- **Low-voltage cutoff in hardware:** both outputs switch off when the battery falls to about 11.0 V and stay off until the ignition returns.
+- **Low-voltage cutoff in hardware:** both outputs switch off when the battery falls to about 11.0 V (10.5–11.45 V across part tolerances, measured on `SYS` under load) and stay off until the ignition returns.
 - **Soft cutoff in firmware:** the ESP32 switches everything off earlier, at a battery voltage set higher when the battery is cold, so a discharged battery is not left to freeze in a −40 °C trunk. The hardware cutoff stays as the backstop.
 - With no ESP32 fitted, a jumper selects the behaviour: outputs on only with the ignition (default), or on until the low-voltage cutoff.
 - Standby drain with everything off must be small against the battery's self-discharge.
@@ -52,6 +52,7 @@ One build. No lithium variant, no charger IC, no USB-C PD input, no 12 V convert
 - Target ≤ C$110 per board excluding battery and enclosure. Price checkpoint after schematic capture.
 
 ## Sizing figures
+The worked voltage and power budget is in `architecture.md` ("Voltage and power budget").
 - 12 V output: 3 A continuous, 5 A peak.
 - 5 V rail: 2 A × 5 V = 10 W out; at 90 % efficiency about 1.0 A from an 11 V supply.
 - Car feed, ignition on: up to 3 A + 1 A + 1 A charging ≈ 5 A continuous, about 7 A at the output peak.

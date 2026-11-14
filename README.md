@@ -8,11 +8,13 @@ Design phase. The requirements and architecture were cut back to this vehicle-on
 
 ## Specification
 
-- **Input:** ignition-switched car 12 V (11–14.8 V), reverse-polarity and transient protected. The battery never feeds back into the car. Not for mains adapters.
+- **Input:** ignition-switched car 12 V, 13.8–14.4 V nominal with the engine running and 11–14.8 V working. The board starts at about 12.1 V (11.5–12.7 V across part tolerances); once running, the battery carries it through dips and cranking. It is reverse-polarity protected, clamped above 18 V, and the input fuse blows on a sustained 20–22 V. About 5 A continuous and 7 A peak. The battery never feeds back into the car. Not for mains adapters.
 - **Battery:** 12 V sealed AGM, 2–12 Ah, charged from the car feed through a current-limiting resistor. There is no charger IC.
-- **12 V output:** unregulated, about 10.9–14.8 V, 3 A continuous with 5 A peaks, 5.5 mm barrel jack.
-- **5 V output:** 2 A USB-A for loads such as a Pi, router or camera (D+ tied to D−, no charging-port IC).
-- **Power control:** outputs stay on for an adjustable time after ignition-off (a firmware setting, default 30 min; 0 = no timeout), then everything switches off until the ignition returns. A hardware low-voltage cutoff near 11.0 V protects the battery.
+- **12 V output:** unregulated: the car feed or the battery less 0.1–0.5 V, so about 10.8–14.8 V (9.9 V worst case at a 5 A peak near the cutoff). 3 A continuous with 5 A peaks, 5.5 mm barrel jack. A car-side fault passes through, up to about 22 V (29 V during a clamped surge).
+- **5 V output:** 5.02 V (4.86–5.17 V worst case), 2 A USB-A for loads such as a Pi, router or camera (D+ tied to D−, no charging-port IC).
+- **Power control:** outputs stay on for an adjustable time after ignition-off (a firmware setting, default 30 min; 0 = no timeout), then everything switches off until the ignition returns. A hardware low-voltage cutoff near 11.0 V (10.5–11.45 V across part tolerances) protects the battery.
+
+The full voltage and power budget is in [`architecture.md`](architecture.md#voltage-and-power-budget-calc).
 - **Monitoring:** socketed Seeed XIAO ESP32-C6 running ESPHome, reporting car voltage, battery voltage, battery temperature, and power in and out from two INA226 current monitors. Red and green status LEDs. No display.
 - **Safety:** fuses, the charge limit, reverse-polarity blocking and the low-voltage cutoff are hardware. The board stays safe with the ESP32 removed.
 - **Environment:** parts rated −40 to 85 °C.
@@ -45,7 +47,7 @@ Car 12 V in ─ fuse ─ TVS ─ ideal diode ─ SYS ─┬─ switch ─ fuse �
 | Path | Contents |
 |---|---|
 | [`requirements.md`](requirements.md) | What the board must do |
-| [`architecture.md`](architecture.md) | Block diagram, net names, values, power control, ESP32 pin map, connectors |
+| [`architecture.md`](architecture.md) | Block diagram, net names, values, power control, voltage and power budget, ESP32 pin map, connectors |
 | [`netlist.md`](netlist.md) | Pin-by-pin net table the KiCad schematic is generated from and checked against |
 | [`kicad/`](kicad) | KiCad 10 project: generated schematic, board, project library, generator and check scripts ([README](kicad/README.md)) |
 | [`plan.md`](plan.md) | Status, part-choice reasoning, cost estimate, how the capture was done, bench test plan |
