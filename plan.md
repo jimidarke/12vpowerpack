@@ -11,9 +11,9 @@ On 2026-11-13 the scope was cut back to what the first real use needs: a vehicle
 - Vehicle only: ignition-switched car feed in, about 14 V when running.
 - 12 V sealed AGM battery, charged straight from the car feed through a current-limiting resistor. No charger IC.
 - 12 V output passed through unregulated (about 10.9–14.8 V), 3 A continuous, 5 A peak, barrel jack.
-- 5 V 2 A USB-A from a buck converter.
+- 5 V 2 A USB-A from a buck converter, for loads that need no charger signature (D+ tied to D−).
 - Socketed XIAO ESP32-C6 (ESPHome): ignition-off timer (a firmware setting: default 30 min, minimum 1 min, 0 = no timeout, run to the low-voltage cutoff), car and battery voltage, battery temperature, power in and power out. No display.
-- Batch of ~12, ≤ C$110 per board excluding battery and enclosure.
+- Batch of 5 (changed from ~12 on 2026-11-14: a DIY build for the owner, friends and family, in a 3D-printed case), ≤ C$110 per board excluding battery and enclosure.
 - Environment: trunk, −40 °C winters.
 
 ## Design rule
@@ -27,46 +27,95 @@ On 2026-11-13 the scope was cut back to what the first real use needs: a vehicle
 | Car input diode | TI LM74700-Q1 + CSD18543Q3A (60 V, 8.1 mΩ) | reverse polarity, no backfeed to the car, 20 mV drop | datasheet read |
 | Battery discharge diode | second LM74700-Q1 + CSD18543Q3A | same part; no 0.4 V loss or heat at 4–6 A | datasheet read |
 | Charge limit | Vishay AC10 3.3 Ω 10 W + Schurter UMT 250 1.6 A time-lag fuse | about 1 A into a flat battery; the fuse covers a reversed or dead-short battery | datasheets read |
-| Fuses | ATO/ATC blade fuses in Keystone 3560 holders | user-replaceable, −50 °C rated holder | datasheet read |
+| Fuses | ATO/ATC blade fuses in Keystone 3557-2 holders (changed from 3560 on 2026-11-14) | user-replaceable, 30 A, −50 to 145 °C, about C$1.92 against C$4.16 | datasheet read |
 | 5 V inductor | Bourns SRP6540-8R2M | 8.2 µH, 5 A saturation | datasheet read |
 | 5 V rail and low-voltage cutoff | TI LMR33630 | 36 V in, precision enable sets the cutoff, power-good drives the 12 V switch | datasheet read |
 | Surge clamp | SMCJ18CA, ordered as Diodes Inc. SMCJ18CAQ-13-F (bidirectional, 18 V stand-off, 29.2 V clamp) | keeps the rail under the 36 V parts; a jump start or load dump blows the fuse (owner's decision) | datasheet read |
 | 12 V output switch | Diodes DMP4015SK3 (−40 V, 11 mΩ) with a 7.5 A fuse | simplest switch that follows the 5 V rail's power-good | datasheet read |
 | Power-control small parts | BSS84, 2N7002 ×2, BAT46W | hold switch, gate drivers, ignition diode | datasheets read |
-| USB-A port | TI TPS2514A | charging-port signature | datasheet read |
+| USB-A port | D+ tied to D− (dedicated-charger signature); TPS2514A removed 2026-11-14 | the loads are a Pi, router or camera, not phones | no part |
 | Controller | Seeed XIAO ESP32-C6, socketed 2×7 | carried over from v2; −40 to 85 °C | pin map read; socket footprint to choose at layout |
 | Current monitors | TI INA226 ×2 with 5 mΩ shunts: car input and total load | power in and out; battery current by difference; ESPHome native. Sourced from LCSC with the assembly order (owner's decision), two only | datasheet read |
 | Temperature | DS18B20 probe on the battery, 3-way screw terminal | −55 to 125 °C, ±2 °C over the full range; ESPHome native | datasheet read |
-| Status LED | SK6812 addressable RGB, one, on a single pin | WS2812B is only rated to −25 °C; SK6812 to −40 °C | datasheet read; logic level to bench-check |
+| Status LEDs | red and green 0603 LEDs, 1 kΩ each, on D9 and D10 (replaced the SK6812 on 2026-11-14) | fab stock parts with no feeder fee; no 3.3 V-data-into-5 V-LED question at −40 °C | parts in the LCSC table |
 | Barrel jack | Same Sky PJ-063AH (8 A, 2.0 mm pin, for 5.5 × 2.1 mm plugs) | carried over | rated only to −25 °C; accepted by the owner |
 
-The ideal-diode FETs are CSD18543Q3A rather than the CSD18540Q5B of the v2 design (about C$5 each); the smaller part does the job at 7 A. Its price is not checked yet.
+The ideal-diode FETs are CSD18543Q3A rather than the CSD18540Q5B of the v2 design (about C$5 each); the smaller part does the job at 7 A. It is US$1.15 at JLCPCB (2026-11-14).
 
 Considered and not chosen:
 - **BQ25751 charger:** proper three-stage charging with cold compensation and mains-adapter input, at about C$25–30 per board with its FETs and inductor. Dropped by the owner's decision; the cost is undercharging in deep cold.
 - **eFuse for the 12 V output:** adds an electronic current limit, but the ones I know are rated near 23 V, below the surge clamp level. Revisit if the fuse-only protection proves a nuisance.
 - **Hardware timer instead of the ESP32:** cheaper, but fixed and with no reporting.
 
-## Cost estimate
+## Price checkpoint, batch of 5 (2026-11-14)
 
-About C$55–75 per board assembled, at a batch of 12, excluding battery and enclosure. The LCSC price for the INA226 is converted from US$0.62–0.86; DigiKey Canada lists it at C$4.47. This is my rough estimate from the CAD snapshot prices collected on 2026-11-13 (LM74700-Q1 C$2.59, LMR33630 about C$4.50, XIAO C$8.29, INA226 about C$1 from LCSC, PJ-063AH about C$2.20) plus guesses for the parts not yet priced; it is not a costed BOM. The schematic is captured, so the price checkpoint is the next step.
+This replaces the 2026-11-13 checkpoint, which priced a batch of 12 from DigiKey and Mouser snapshots at about C$85–95 per board (it is in git history).
 
-## Status (2026-11-13)
+Basis: per board, at a batch of 5, in CAD at 1.39 CAD/USD, excluding battery, enclosure, wiring, tax, duty and brokerage. The fab-fitted and LCSC parts are priced from the JLCPCB parts library, read live on 2026-11-14 (USD, qty 10–50). JLCPCB fees are from its assembly price page (updated 2026-10-22). DigiKey Canada lines are the 2026-11-13 snapshots; "est." marks a line with no price found.
 
-- Requirements, architecture and part choices: done, at v3.
-- Schematic: captured in Flux, 80 parts, every net verified against `netlist.md`.
-- Next: tidy the capture differences listed in `architecture.md`, run the price checkpoint, then layout.
+| Item | Per board (C$) | Source |
+|---|---|---|
+| Fab-fitted parts (4 E IC types, plus every Basic and Preferred Extended part) | 13.83 | JLCPCB library, live |
+| JLCPCB Economic PCBA fees: setup US$8.18, stencil US$1.53, 4 feeder fees × US$3.07, placement check US$0.45, about 900 joints × US$0.0016; US$23.88 per order | 6.64 | JLCPCB price page, live |
+| PCB, 5 × 2-layer 1 oz ≤ 100 × 100 mm, and shipping to Canada | 5.56–8.34 | est.: board US$2–5, shipping US$15–25 (economy to DHL) |
+| Hand-soldered SMT from LCSC (DMP4015, SMCJ18CA, SRP6540, shunts ×2, BZT52C12 ×2, BAT46W ×2, green LED, 887 k, 102 k, 24.9 k) | 4.47 | JLCPCB library, live |
+| Keystone 3557-2 ×3 | 5.76 | DigiKey Canada snapshot |
+| Seeed XIAO ESP32-C6 | 8.29 | DigiKey Canada snapshot |
+| Vishay AC10 3.3 Ω | 2.50 | est. |
+| Schurter UMT 250 1.6 A | 2.46 | DigiKey Canada snapshot (other values) |
+| PJ-063AH | 2.20 | DigiKey Canada snapshot |
+| Phoenix MKDS 1,5 terminals: 2-way ×2, 3-way ×1 | 4.00 | est. |
+| Würth USB-A | 1.37 | DigiKey Canada snapshot |
+| 1×7 headers ×2 | 1.00 | est. |
+| DS18B20 probe | 2.99 | Universal Solder |
+| Blade fuses ×3 | 1.50 | est. |
+| LCSC minimum-quantity extras and the LCSC share of shipping | about 3 | est. |
+| **Total** | **about 65–70** | target ≤ 110 |
+
+Result: about C$65–70 per board before tax, against C$85–95 for the batch-of-12 checkpoint. The fixed costs (fab fees, board and shipping) are about C$12–15 of that. Expect GST/HST on the imports, and DHL brokerage if Express is chosen.
+
+Where the saving came from:
+- Fuse holders, from the 3560 to the 3557-2: about C$6.70.
+- Fab-fitted and LCSC parts at JLCPCB prices instead of DigiKey snapshots. For example, the LMR33630 is US$0.53 against C$4.50, and the INA226 US$0.56.
+- TPS2514A and the SK6812 network removed: about C$1.50, plus two part types.
+- Hand-soldering eleven E part types instead of paying their feeder fees: about C$9.40 per board. Paying them instead puts the total at about C$75–80.
+
+Footprint and stock points this created (all in `netlist.md`, LCSC part table):
+- The Vishay AC10 and the Schurter UMT 250 are out of stock at LCSC; buy them from DigiKey Canada.
+- The Keystone 3557-2 has only 22 at LCSC, so buy it from DigiKey Canada too.
+- The SRP6540-8R2M is C2041807; the Flux part's C1329351 is the 4.7 µH value.
+
+Options looked at and not taken:
+- The MX74700T (Maxinmicro) for the LM74700-Q1, at US$0.41 against US$2.46: not a drop-in, since its quiescent current is 300 µA against 80 µA, which would roughly triple the standby drain.
+- Replacing 887 k / 102 k / 24.9 k with Basic values: the low-voltage cutoff and the 5 V setpoint would move by more than 0.5 %. Hand-soldering three 0603 resistors is cheaper than the error.
+- An SMD fuse for F_IN, F_BAT and F_OUT: the 3557-2 is already cheap and keeps the fuses user-replaceable.
+
+## Status (2026-11-14)
+
+- Requirements, architecture and part choices: v3.1 (cost trim for a batch of 5).
+- Schematic: v3.1 captured in Flux and verified against `netlist.md` on 2026-11-14 (77 parts, every net).
+- Price checkpoint: about C$65–70 per board at a batch of 5 (table above).
+- Next: the v3.1 hand edits in Flux and a "check"; part properties (package, MPN, LCSC number); footprints; then layout from `blocks/03-layout-brief.md`.
 - Not started: layout, firmware, bench tests.
+
+## Next steps
+
+1. ~~v3.1 schematic edits~~ done and checked 2026-11-14. Leftovers: delete the six empty net labels.
+2. **Part properties:** package, MPN and LCSC number from the LCSC part table, by hand or with the properties-only agent draft (part B; about 1 credit; send only on the owner's go).
+3. **Footprints** (part C): the 3557-2 holders, F_CHG, J_TEMP and the screw terminals, the BSS84 pin check, the XIAO socket, R_CHG.
+4. **Board outline and mounting holes** (owner, by hand): ≤ 100 × 100 mm, 2 layers, 1 oz, 4 × M3. Size it to the case.
+5. **Placement:** agent message 1 in `blocks/03-layout-brief.md` (one objective; verify with `get_layout` and the layout image; refine by hand).
+6. **Routing**, then **DRC**, then the **manufacturing export** for JLCPCB: one message each, never chained.
+7. In parallel: ESPHome configuration (hold-up timer, soft cutoff with cold steps, INA226 ×2, DS18B20, two LEDs) and the bench plan below.
 
 ## Open items
 
-1. Price checkpoint: a costed BOM in CAD against the C$110 target.
-2. Capture differences to settle before layout (`architecture.md`, "Capture status"): part packages, the J_TEMP placeholder, the BSS84LT1G symbol's pin numbers, the D_TVS and L1 order numbers, the F_BAT rating, test points.
-3. Footprints at layout: Keystone 3560 fuse holders, the Schurter fuse, the XIAO socket.
-4. MPNs for the 5 mΩ shunts; temperature ratings of the screw terminals and USB-A receptacle.
-5. GPIO19 behaviour at boot; ESP32-C6 tolerance for the sense dividers' injected current.
-6. ESPHome: the hold-up timer as an adjustable, stored setting (0 = no timeout, otherwise 1 min or more), and whether to report over Wi-Fi/MQTT (as carNet does) or BLE. ESPHome's BLE server support needs checking before relying on it.
-7. Confirm the barrel plugs in use are 5.5 × 2.1 mm; battery size per unit.
+1. Footprints in Flux (next step 3). Part properties were done 2026-11-14.
+2. Live prices for the DigiKey Canada lines and a real PCB and shipping quote at order time.
+3. CJ 2N7002 temperature rating; the effective capacitance of the 1206 X5R parts on the buck (`netlist.md`).
+4. GPIO19 glitch at boot (bench); ESP32-C6 tolerance for the sense dividers' injected current.
+5. ESPHome: the hold-up timer as an adjustable, stored setting (0 = no timeout, otherwise 1 min or more); the soft-cutoff voltages per temperature (`architecture.md`, power control); Wi-Fi/MQTT (as carNet does) or BLE. ESPHome's BLE server support needs checking before relying on it.
+6. Confirm the barrel plugs in use are 5.5 × 2.1 mm; battery size per unit; each car's running feed voltage.
 
 ## Working method with Flux
 
@@ -100,4 +149,7 @@ Order of work from here: tidy the capture differences, the price checkpoint, the
   - low-voltage cutoff near 11.0 V and restart only when the car feed returns, with the ESP32 removed and with it fitted;
   - hold-up timer expiry switching everything off;
   - charge current into a battery at 11 V, and F_CHG opening on a 9 V supply standing in for a failed battery;
-  - standby drain with everything off.
+  - standby drain with everything off;
+  - the soft cutoff stepping up with a cold battery (DS18B20 in a freezer);
+  - `VCAR_SENSE` with the ignition off and the board at 85 °C (D_IGN leakage);
+  - each car's feed voltage with the engine running, before relying on it to charge.

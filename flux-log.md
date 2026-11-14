@@ -29,6 +29,8 @@ Sub-threads ("4S BMS Schematic", "4S Battery Protector Capture", "Li Protector S
 | 2026-11-13 ~16:35 CST | root (owner, in the Flux UI) | Owner asked the agent to restore J_XIAO after deleting it by accident | J_XIAO is now "Seeed Studio XIAO ESP32C6 SMD No-DrillHole" (pins `D0`–`D10`, `5V`, `3V3`, `GND`), unwired; the net labels survived. Usable as is | 1.0 |
 | 2026-11-13 16:55 CST | root | One-batch place-only message: the remaining 61 parts with designators and values, unwired | 54 placed (73 on the canvas), existing 14 nets untouched, values verified by spot check. Skipped: Q_OR1, Q_OR2 (library entry could not be added), F_IN, F_BAT, F_OUT, F_CHG and JP_HOLD (no search result). J_TEMP placed as a 1x3 jumper symbol | 0.7 |
 | 2026-11-13 17:42 CST | root | Place-only message for the seven skipped parts, close alternatives allowed | All seven placed, unwired: Q_OR1 and Q_OR2 (CSD18543Q3A, `kicad-part-library` entry), four generic fuses (each defaulted to 5 A; ratings to set), JP_HOLD ("Jumper 2 Open"). 80 parts on the canvas | 0.9 |
+| 2026-11-14 | root | Place-only message (owner asked) after the owner's v3.1 hand edits: D_RED, D_GRN (KT-0603R symbol, MPN KT-0603YG, C2289), R_LG, R_LR (1 kΩ), D_TVS_NEW (SMCJ18CAQ-13-F), D_5V_NEW (B5819W, C64885), unwired; attachment `place-6-parts.md` | **Verified:** all six placed, unwired, properties as asked; 81 parts, 43 nets, existing nets untouched. Owner to delete D_TVS, D_5V, R1, C1, wire the new parts and rename the `_NEW` designators | 0.9 |
+| 2026-11-14 | root | Properties-only message (owner asked, after the owner deleted five empty nets and set L1's LCSC number): package, MPN, manufacturer and LCSC number on 45 generic R/C, LCSC number on 9 library parts (2N7002 → CJ C8545, BSS84 → LRC LBSS84LT1G C8492); delete `Net 1`. Attachment `bom-properties.md` | **Verified** with `get_bom` and `get_components`: all 54 parts match the LCSC part table, packages correct (1206, 0805, 2512 where listed); 77 parts, 41 nets, wiring unchanged. Still without an LCSC number, as intended: fuses, connectors, J_XIAO, JP_HOLD, R_CHG (footprint step) | 0.6 |
 
 ## Conflicts raised by the agent in block 0 (resolved locally 2026-11-13; see below)
 1. Input current limit 3 A (RILIM) cannot supply 60 W continuous 12 V out from the car feed without battery assist; at 20 V it leaves no margin for losses, the 5 V rail or charging at full load.
@@ -68,8 +70,11 @@ The owner drew the schematic by hand in the Flux editor from `netlist.md`, modul
 - [x] Module 7 — 12 V output switch (verified 2026-11-13, F_OUT in)
 - [x] Module 8 — enable and hold (verified 2026-11-13, JP_HOLD in)
 - [x] Ground net restored: 48 pins on `GND` (verified by free read 2026-11-13)
-- [ ] Tidy: F_BAT rating (still 5 A, should be 10 A); swap D_TVS to SMCJ18CAQ-13-F; L1's LCSC number; delete R1, C1 and the empty nets `Net 1`, `J_12V` and `C_SYSIN`; test points
+- [x] Tidy (2026-11-14): F_BAT 10 A, D_TVS swap, R1 and C1, L1's LCSC number, empty nets. Test points deferred to layout
 - [x] Whole-schematic check against `netlist.md`: all 80 parts placed and every net matches (2026-11-13; drawn by the owner by hand, 3.8 credits spent on the reset and three place-only runs, 1.0 on restoring the XIAO)
-- [ ] Price checkpoint (BOM in CAD)
-- [ ] Before layout: packages for the generic parts, J_TEMP symbol, BSS84LT1G pin numbering, XIAO socket footprint
-- [ ] Layout
+- [x] Price checkpoint (2026-11-13): about C$85–95 per board against the C$110 target; table in `plan.md`. PCB and assembly not quoted
+- [x] v3.1 edits (2026-11-14): owner by hand, six parts placed by the agent; "check" passed the same day, 77 parts, every net matches `netlist.md`. Six empty net labels left to delete; clear the inherited 90 Ω impedance tag on `USB_D` and `5V` before routing
+- [x] Properties (2026-11-14): every SMT part carries its package, MPN and LCSC number from the LCSC part table (agent, 0.6 credits; verified). Empty nets all gone
+- [ ] Before layout: footprints for the 3557-2 holders, F_CHG, J_TEMP, the BSS84 check, the XIAO socket and R_CHG (`blocks/02-v31-schematic-edits.md`, part C)
+- [ ] Flux document `power-board-specification-v3` still names the TPS2514A, the SK6812 and a batch of 12; update it by hand in Flux, or in a later agent message that has other work
+- [ ] Layout: board outline by hand, then placement (draft message in `blocks/03-layout-brief.md`, not sent), then routing, then export; one message each

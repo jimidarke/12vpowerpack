@@ -1,0 +1,34 @@
+Keystone Electronics — Standard Automotive Blade Fuse Clips & Holders, catalog page 47
+Source: https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/8438/Standard-Automotive-Blade-Fuse-Clips-Holders-Datasheet.pdf
+Read 2026-11-14. Transcribed by hand from the PDF (the page is a drawing; no text layer was extracted).
+Only the "2 IN 1 FUSE HOLDER" section (CAT. NO. 3557-x) is transcribed here.
+
+FOR .205 (5.2) x .025 (.64) STANDARD BLADE FUSES
+
+2 IN 1 FUSE HOLDER
+For Littelfuse ATOF 287 series/Bussmann ATC series,
+Littelfuse Low Profile Mini (LP) series or equivalents
+- Low insertion force
+- Fuse holder fully insulates clips to protect fuse from shorting
+- Holder assures proper spacing and reduces assembly time
+- Thru hole PC mountable, maintains position during wave soldering
+
+SPECIFICATIONS
+Contacts: .016 (.41) Brass, Tin-Nickel Plate
+Insulator: Nylon 46, UL Rated 94V-0
+UL Current Rating: 30 Amps @ 500V AC
+UL Temperature Rating: -58ºF to +292ºF (-50ºC to +145ºC)
+
+CAT. NO.   COLOR    FUSE REF.
+3557-2     Black    —
+3557-10    Red      10 Amp
+3557-15    Blue     15 Amp
+3557-20    Yellow   20 Amp
+All colors UL rated for 30 Amp.
+
+Body outline: .780 [19.8] long, .265 [6.8] wide, .290 [7.4] high above board; legs .110 [2.8].
+Mounting Detail: four holes .063 [1.60] DIA. (4) PLS; .530 [13.5] between the two contact pairs
+(along the fuse), .134 [3.4] between the two holes of each pair. Leg pitch .062 [1.57].
+
+Note: the 20 A UL rating seen in some distributor listings belongs to the 3522-2 and 3550-2 clips on
+the same page, not to the 3557.

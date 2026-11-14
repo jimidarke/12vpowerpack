@@ -24,8 +24,8 @@ Research here, capture in Flux. Messaging the Flux agent costs credits; reading 
 
 - `requirements.md` is the spec (v3, vehicle-only). The Flux project carries a short copy, `power-board-specification-v3`; its other documents are marked superseded.
 - `architecture.md` is the single source for net names, resistor values, the power-control scheme, the ESP32 pin map, connectors and fuses, and it lists how the captured schematic differs from it ("Capture status").
-- `blocks/00-reset-v3.md` is the message that reset the Flux project to v3 (sent). `blocks/01-agent-capture.md` holds the templates for agent messages. `blocks/retired/` holds the v2 briefs (lithium, charger, PD, 12 V converter); do not send them.
-- `netlist.md` is the pin-by-pin net table, in eight modules, with the Flux library part for each designator and notes on the symbols as placed. The schematic in Flux was drawn from it and verified against it on 2026-11-13; it must stay consistent with `architecture.md`.
+- `blocks/00-reset-v3.md` is the message that reset the Flux project to v3 (sent). `blocks/01-agent-capture.md` holds the templates for agent messages. `blocks/02-v31-schematic-edits.md` lists the v3.1 edits to make in Flux (hand edits, plus a properties-only agent draft, not sent). `blocks/03-layout-brief.md` is the board and placement brief (draft, not sent). `blocks/retired/` holds the v2 briefs (lithium, charger, PD, 12 V converter); do not send them.
+- `netlist.md` is the pin-by-pin net table, in eight modules, with the Flux library part for each designator, notes on the symbols as placed, and the LCSC part table that is the BOM for the fab. The schematic in Flux was drawn from it and verified against it on 2026-11-13; the v3.1 changes of 2026-11-14 are in the table but not yet in Flux. It must stay consistent with `architecture.md`.
 - `datasheets/*.txt` are text extracts of the part datasheets. They are large (100–370 KB each), so search them instead of reading them whole.
 - `plan.md` holds the status, part-choice reasoning, cost estimate, what was learned about using the Flux agent, and the bench verification plan.
 - `flux-log.md` records every agent message, its result and credits, and the checklist of what is done.
@@ -39,7 +39,7 @@ Values in `architecture.md` carry a status tag: **[DS]** read in a datasheet ext
 - The battery never feeds back into the car input, and the input is a vehicle charging system only (no mains adapters: there is no charge regulation).
 - The low-voltage cutoff covers both outputs and latches off until the ignition returns.
 - All parts must be rated −40 to 85 °C or better. The one accepted exception is the barrel jack (PJ-063AH, −25 °C).
-- Target is ≤ C$110 per board at a batch of about 12. Quote prices in CAD. The price checkpoint is the next step now that the schematic is captured.
+- Target is ≤ C$110 per board at a batch of 5 (a DIY build for the owner, friends and family, in a 3D-printed case; not for sale). Quote prices in CAD. JLCPCB fits the SMT parts; the owner hand-solders the through-hole parts and any easy SMT part whose per-order feeder fee is not worth paying. The price checkpoint is in `plan.md`.
 
 ## Related project
 

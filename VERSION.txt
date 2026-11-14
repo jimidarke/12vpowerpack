@@ -1,4 +1,14 @@
-0.3.2
+0.4.0
+
+## 0.4.0
+- v3.1 cost trim for a DIY batch of 5 (owner's decisions 2026-11-14): TPS2514A removed (USB D+ tied to D−, dumb loads only); SK6812 + 1N4148W replaced by red and green 0603 LEDs on D9/D10; fuse holders Keystone 3560 → 3557-2 (30 A, −50 to 145 °C); D_5V B140B → B5819W; screw terminals Phoenix MKDS 1,5 (−40 °C rated)
+- `netlist.md`: modules 4 and 6 rewritten; LCSC part table (JLCPCB library read live) with who fits each part: fab, hand from LCSC, or hand from DigiKey Canada
+- Price checkpoint for 5 boards: about C$65–70 per board before tax (was C$85–95 at 12)
+- Design review: firmware soft cutoff that rises in the cold (a discharged battery freezes near −10 °C); smart-alternator and D_IGN-leakage notes; GPIO19/GPIO20 are not strapping pins
+- `blocks/02-v31-schematic-edits.md` (Flux hand-edit list and a properties-only draft) and `blocks/03-layout-brief.md` (board, copper widths, placement zones, placement draft); neither sent
+- `datasheets/keystone-3557.txt` added
+- v3.1 captured in Flux (owner's hand edits, plus a 0.9-credit place-only run for six parts) and verified: 77 parts, every net matches `netlist.md`
+- BOM properties set in Flux (0.6-credit properties-only run): package, MPN and LCSC number on every SMT part, checked with `get_bom`; empty nets removed (41 nets)
 
 ## 0.3.2
 - Schematic captured in Flux: 80 parts, every net verified against `netlist.md` (owner wired by hand; agent placed parts)
