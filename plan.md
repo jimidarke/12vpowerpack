@@ -98,14 +98,14 @@ Options looked at and not taken:
 
 - Requirements, architecture and part choices: v3.1 (cost trim for a batch of 5).
 - Schematic: moved to KiCad 10 on 2026-11-14 (`kicad/`), generated from `netlist.md`, ERC clean, every pin checked. The Flux capture is archived; comparing it net by net found Q_OR2's gate unwired there.
-- Board: 100 × 70 mm outline, 4 × M3, every part placed; first routing pass done on 2026-11-14 (power pours by `kicad/gen/route_pcb.py`, signal nets by Freerouting; DRC clean, 0 unconnected). Silkscreen pass the same day (`kicad/gen/silk_pcb.py`: reference labels 0.8 mm, 32 functional labels: polarity, fuse and output ratings, test-point nets). Review on 2026-11-14 found three routing fixes (GND neck of about 1.7 mm to J_CAR pin 2, one GND via at D_TVS, few GND vias at the buck capacitors; `kicad/README.md`), and the `Power` net class not applied (fixed in the project file). Those fixes, thermal vias, fiducials and hand tidying are still to do. First placed from `blocks/04-placement-gen.py` at 100 × 80 mm, then re-placed by `kicad/gen/place_pcb.py` on 2026-11-14 so the parts are spread out and every silkscreen label is readable. The owner lays it out in KiCad on the laptop.
+- Board: 100 × 70 mm outline, 4 × M3, every part placed; first routing pass done on 2026-11-14 (power pours by `kicad/gen/route_pcb.py`, signal nets by Freerouting; DRC clean, 0 unconnected). Silkscreen pass the same day (`kicad/gen/silk_pcb.py`: reference labels 0.8 mm, 32 functional labels: polarity, fuse and output ratings, test-point nets). Review on 2026-11-14 found three routing fixes (GND plane pinched on the way to J_CAR pin 2 by the `TEMP_DQ` track, one GND via at D_TVS, few GND vias at the buck capacitors; `kicad/README.md`), and the `Power` net class not applied (fixed in the project file). The three fixes were made the same day (0.8.1: `TEMP_DQ` onto the top layer near J_TEMP, 5 vias at D_TVS, more GND vias at the buck capacitors), and the four parts without 3D models got them. Thermal vias, fiducials and hand tidying are still to do. First placed from `blocks/04-placement-gen.py` at 100 × 80 mm, then re-placed by `kicad/gen/place_pcb.py` on 2026-11-14 so the parts are spread out and every silkscreen label is readable. The owner lays it out in KiCad on the laptop.
 - Price checkpoint: about C$66–68 per board at a batch of 5 (second pass 2026-11-14, table above).
-- Next: the routing fixes and the laptop checks in `kicad/README.md` (terminal-block wire entry, datasheet-drawn footprints) by the owner in KiCad, DRC here, then the JLCPCB export.
+- Next: thermal vias, fiducials and the laptop checks in `kicad/README.md` (terminal-block wire entry, datasheet-drawn footprints) by the owner in KiCad, DRC here, then the JLCPCB export.
 - Not started: firmware, bench tests.
 
 ## Next steps
 
-From 2026-11-14 the work is in KiCad (`kicad/README.md`): the routing fixes and hand finishing by the owner on the laptop, then DRC and the JLCPCB files (Gerbers, BOM and pick-and-place filtered on the `Fit` field) generated here with `kicad-cli`. The Flux steps below are history.
+From 2026-11-14 the work is in KiCad (`kicad/README.md`): hand finishing by the owner on the laptop, then DRC and the JLCPCB files (Gerbers, BOM and pick-and-place filtered on the `Fit` field) generated here with `kicad-cli`. The Flux steps below are history.
 
 ### Flux steps (history)
 

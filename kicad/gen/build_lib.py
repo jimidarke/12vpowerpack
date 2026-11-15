@@ -79,6 +79,7 @@ def xiao():
           '")\n\t\t(effects (font (size 0.8 0.8) (thickness 0.12))))\n')
     s += ('\t(fp_text user "ANT" (at 0 9.3 0) (layer "F.SilkS") (uuid "' + uid(n + "antt") +
           '")\n\t\t(effects (font (size 0.8 0.8) (thickness 0.12))))\n')
+    s += model("XIAO_ESP32C6_Socketed.step")  # from build_models.py
     write_fp(n, s + ")\n")
 
 
@@ -95,6 +96,7 @@ def ac10():
     s += rect("F.Fab", 4, -4, 48, 4, 0.1, n + "fab")
     s += rect("F.SilkS", 3.88, -4.12, 48.12, 4.12, 0.12, n + "silk")
     s += rect("F.CrtYd", -1.35, -4.5, 53.35, 4.5, 0.05, n + "crt")
+    s += model("R_Axial_Vishay_AC10.step")  # from build_models.py
     write_fp(n, s + ")\n")
 
 

@@ -7,7 +7,7 @@
 	(title_block
 		(title "12 V vehicle UPS power board")
 		(date "2026-11-14")
-		(rev "0.8.0")
+		(rev "0.8.1")
 		(comment 1 "Generated from netlist.md by kicad/gen/gen_sch.py. Edit netlist.md, not this sheet.")
 		(comment 2 "Every pin carries a net label; labels with the same name are connected.")
 	)

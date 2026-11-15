@@ -48,4 +48,6 @@
 		(effects (font (size 0.8 0.8) (thickness 0.12))))
 	(fp_text user "ANT" (at 0 9.3 0) (layer "F.SilkS") (uuid "e96674d8-10f6-5d62-9a7a-8988c8c31aa9")
 		(effects (font (size 0.8 0.8) (thickness 0.12))))
+	(model "${KIPRJMOD}/lib/pwrpack.3dshapes/XIAO_ESP32C6_Socketed.step"
+		(offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))
 )

@@ -1,4 +1,12 @@
-0.8.0
+0.8.1
+
+## 0.8.1
+- Three routing fixes from the 0.8.0 review (2026-11-14, owner's request; scripted edits, zones refilled, DRC 0 unconnected, 0 clearance, 0 parity):
+  - `TEMP_DQ`: the first 13 mm from J_TEMP pin 2 moved to the top layer, with a via at (38.0, 9.9) mm from the top-left corner; the old bottom track sealed the GND plane's strip above J_TEMP. Sheet-resistance solve of the bottom plane, 7 A from J_CAR pin 2 to J_12V: 4.6 → 2.8 mΩ, peak current density away from the pins 4.8 → 2.9 A/mm (99.9th percentile 2.7 → 1.4 A/mm). The remaining peak is at the end of the `TEMP_DQ` track and in the strip above J_TEMP
+  - D_TVS pin 2: copper patch beside the pad with four 0.8/0.4 mm vias; the old 0.6/0.3 mm via moved onto the patch (5 vias, was 1)
+  - Buck capacitors: two more GND vias at C_IN5 (3), one more at C_HF5 (3) and at each of C_O1–C_O4 (2 each)
+- 3D models for the four parts that had none: `kicad/gen/build_models.py` (CadQuery) writes envelope models from datasheet dimensions for the socketed XIAO ESP32-C6, the AC10 (raised 4 mm, straight leads bent to 52 mm) and the Schurter UMT 250; U_5V now points at the stock Texas HTSOP-8 model (its footprint named a file KiCad does not ship). The XIAO and AC10 library footprints carry their models; F_CHG and U_5V are set on the board
+- Board now: 380 track segments, 72 vias
 
 ## 0.8.0
 - Silkscreen pass (2026-11-14, owner's request), by the new `kicad/gen/silk_pcb.py`: reference labels 1.0 → 0.8 mm (below JLCPCB's stated 1.0 mm minimum height, accepted to make room; they may print soft); 32 functional labels at 1.0 mm or more, added as a group `silk_labels`: `-`/`+` and CAR/BATT under J_CAR and J_SLA, 3V3/DQ/GND under J_TEMP, "DS18B20 PROBE", "12V AGM ONLY", fuse ratings (10A, 10A, 7.5A, 1.6A T), "12V OUT / 3A 5A PEAK / CENTRE +", "USB 5V OUT", net names beside TP1–TP8, "XIAO ESP32-C6" in the socket outline, "HOT!" by R_CHG, the JP_HOLD note, board name and "REV 0.8". F_IN, F_BAT and D_TVS labels moved to make room. Only F.Silkscreen text changed; DRC unchanged (13 edge-silkscreen warnings)
