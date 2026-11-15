@@ -2,7 +2,7 @@
 
     python kicad/gen/silk_pcb.py [--dry-run]      (KiCad's Python; close the board in KiCad first)
 
-Touches only F.Silkscreen text. Tracks, zones, pads and footprint positions are not changed.
+Touches only silkscreen text (front, and the labels marked back=True on the back). Tracks, zones, pads and footprint positions are not changed.
 
 1. Every visible reference label becomes REF_H mm high (was 1.0), in place. That is below JLCPCB's
    stated minimum of 1.0 mm; the functional labels stay at 1.0 mm or more.
@@ -32,7 +32,8 @@ EDGE = 0.4                   # label to board edge
 MOVE_REF = {"F_IN": (4.3, 58.35), "F_BAT": (71.4, 58.35), "D_TVS": (32.5, 59.1)}
 
 # (text, x, y, height, options). Options: rot=90, glyph=0.7 (a lone + or -: ink is that fraction of the height), r=search radius (default 2.5), lockx=True
-# (search up and down only), inside="REF" (may sit inside that part's outline), thick=line width.
+# (search up and down only), inside="REF" (may sit inside that part's outline), thick=line width,
+# back=True (on the bottom silkscreen, mirrored so it reads from the back), italic=True.
 LABELS = [
     # car input: J_CAR pin 2 (left) is GND, pin 1 (right) is +
     ("-", 11.0, 58.35, 1.5, dict(lockx=True, r=0.6, thick=0.25, glyph=0.7)),
@@ -60,6 +61,9 @@ LABELS = [
     # board identity and notes
     ("12V VEHICLE UPS", 14.5, 5.3, 1.0, dict(r=1.0)),
     ("REV 0.8", 14.5, 3.4, 1.0, dict(r=1.0)),
+    ("Darke Tech", 52.0, 5.0, 1.8, dict(thick=0.25)),
+    ("info@darketech.ca", 52.0, 2.4, 1.0, {}),
+    ("to my loving and patient family", 50.0, 6.0, 1.0, dict(back=True, italic=True)),
     ("XIAO ESP32-C6", 13.5, 30.0, 1.0, dict(inside="J_XIAO")),
     ("HOT!", 89.6, 28.0, 1.0, dict(rot=90, thick=0.2)),
     ("JP_HOLD: CLOSE IF NO XIAO", 70.0, 42.2, 1.0, dict(r=4.0)),
@@ -131,8 +135,8 @@ def main():
             if ref in MOVE_REF:
                 r.SetPosition(pos(*MOVE_REF[ref]))
 
-    # obstacles: (owner, kind, box)
-    obs = []
+    # obstacles: (owner, kind, box). The back of the board only has the through-hole pads.
+    obs, obs_back = [], []
     for ref, f in fps.items():
         f.BuildCourtyardCaches()
         c = f.GetCourtyard(pcbnew.F_CrtYd)
@@ -140,6 +144,8 @@ def main():
             obs.append((ref, "courtyard", box(c.BBox())))
         for p in f.Pads():
             obs.append((ref, "pad", box(p.GetBoundingBox())))
+            if p.HasHole():
+                obs_back.append((ref, "pad", box(p.GetBoundingBox())))
         if f.Reference().IsVisible():
             obs.append((ref, "label", tbox(f.Reference())))
         for g in f.GraphicalItems():
@@ -164,7 +170,11 @@ def main():
             raise SystemExit(f"{text!r}: height {h} is below {MIN_H} mm")
         t = pcbnew.PCB_TEXT(board)
         t.SetText(text)
-        t.SetLayer(pcbnew.F_SilkS)
+        back = o.get("back")
+        pool = obs_back if back else obs
+        t.SetLayer(pcbnew.B_SilkS if back else pcbnew.F_SilkS)
+        t.SetMirrored(bool(back))
+        t.SetItalic(bool(o.get("italic")))
         style(t, h, o.get("thick", 0.15))
         t.SetHorizJustify(pcbnew.GR_TEXT_H_ALIGN_CENTER)
         t.SetVertJustify(pcbnew.GR_TEXT_V_ALIGN_CENTER)
@@ -185,10 +195,10 @@ def main():
             b = ink(t, o)
             if b[0] < EDGE or b[1] < EDGE or b[2] > BW - EDGE or b[3] > BH - EDGE:
                 continue
-            if any(hit(b, ob, CLEAR) for owner, kind, ob in obs
+            if any(hit(b, ob, CLEAR) for owner, kind, ob in pool
                    if not (owner == skip and kind in ("courtyard", "outline"))):
                 continue
-            obs.append((text, "label", b))
+            pool.append((text, "label", b))
             board.Add(t)
             grp.AddItem(t)
             report.append(f"  {text:26s} ({x + dx:5.2f}, {y + dy:5.2f})  moved {math.hypot(dx, dy):.2f}")
@@ -196,7 +206,7 @@ def main():
         else:
             t.SetPosition(pos(x, y))
             b = ink(t, o)
-            why = sorted({f"{owner} {kind}" for owner, kind, ob in obs if hit(b, ob, CLEAR)})
+            why = sorted({f"{owner} {kind}" for owner, kind, ob in pool if hit(b, ob, CLEAR)})
             failed.append(f"  {text!r} at ({x}, {y}): no free spot within {r} mm; in the way: {', '.join(why) or 'board edge'}")
     print("\n".join(report))
     if failed:

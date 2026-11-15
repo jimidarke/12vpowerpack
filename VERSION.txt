@@ -1,4 +1,10 @@
-0.8.1
+0.8.2
+
+## 0.8.2
+- Thermal vias (2026-11-14, owner's request; scripted, zones refilled, DRC 0 unconnected, 0 clearance, 0 parity): six 0.6/0.3 mm vias at each of Q_OR1 (`SYS_IN`) and Q_OR2 (`SYS`), three in the paste-free strip of the drain pad and three in the pour beside the drain pins; eight at Q_OUT (`12V_SW`), three on the tab's centre line and five in the pour beside it. Each set lands on a copper island on the bottom layer on the same net (about 7 × 7 mm, 7 × 7 mm and 8.4 × 7.4 mm), cut out of the GND plane. The islands raise the plane's resistance from J_CAR pin 2 to J_12V from 2.8 to 3.0 mΩ; the peak density is unchanged (2.8 A/mm)
+- Fiducials FID1–FID3 (stock `Fiducial_1mm_Mask2mm`, board-only, not in the schematic or BOM) at (77.25, 9.0), (88.5, 59.5) and (6.0, 61.0) mm from the top-left corner
+- Silkscreen: "Darke Tech" and info@darketech.ca on the front between J_USBA and J_12V; "to my loving and patient family" on the back. `silk_pcb.py` takes `back=True` and `italic=True`; 35 labels
+- Board now: 380 track segments, 92 vias, 15 zones
 
 ## 0.8.1
 - Three routing fixes from the 0.8.0 review (2026-11-14, owner's request; scripted edits, zones refilled, DRC 0 unconnected, 0 clearance, 0 parity):
