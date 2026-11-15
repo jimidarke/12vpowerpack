@@ -57,6 +57,10 @@ Every part has a model except the test points, the solder jumper and the mountin
 
 To redo it after a placement change: restore the unrouted board (`git checkout v0.6.0 -- kicad/powerpack.kicad_pcb` or your own unrouted copy), run `place_pcb.py`, then `bash kicad/gen/route.sh`. Run `silk_pcb.py` last: `place_pcb.py` puts the reference labels back at 1.0 mm and the functional labels are not in the v0.6.0 board. From here on, route by hand in KiCad; these scripts refuse a board that already has tracks.
 
+### JLCPCB files
+
+`python3 gen/fab_jlc.py` (from the repository root: `python3 kicad/gen/fab_jlc.py`) reads the schematic and the board and writes `out/jlcpcb/`: `powerpack-gerbers.zip` (nine layers, drill files in mm with PTH and NPTH separate), `powerpack-bom.csv` (symbols with `Fit` = `fab`, one line per LCSC number) and `powerpack-cpl.csv` (those designators only, mm). It uses the Linux `kicad-cli` when there is one and the Windows binary otherwise, and fails if a fitted part has no LCSC number, is missing from the board or sits on the bottom. Rotations are KiCad's; when JLCPCB's placement preview shows a part turned, add the correction to `ROT_OFFSET` in the script and run it again.
+
 ### On the laptop (WSL)
 
 The laptop's WSL has no Linux KiCad. The Windows KiCad 10 binaries run from WSL and do the same job; use them in place of `python3` and `kicad-cli` above for anything that needs `pcbnew` or KiCad itself:

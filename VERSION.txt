@@ -1,4 +1,7 @@
-0.8.2
+0.9.0
+
+## 0.9.0
+- JLCPCB export (2026-11-14): `kicad/gen/fab_jlc.py` writes `kicad/out/jlcpcb/` from the schematic and the board: `powerpack-gerbers.zip` (nine layers, drill files in mm, PTH and NPTH separate), `powerpack-bom.csv` (the 52 symbols with `Fit` = `fab`, 23 lines, one per LCSC number) and `powerpack-cpl.csv` (those designators, mm). Runs with the Linux or the Windows `kicad-cli`. Rotations are KiCad's until JLCPCB's preview is checked (`ROT_OFFSET`). Checked before export: ERC clean, netlist matches `netlist.md`, DRC 0 errors, 0 unconnected, 0 parity (13 known silk-edge warnings)
 
 ## 0.8.2
 - Thermal vias (2026-11-14, owner's request; scripted, zones refilled, DRC 0 unconnected, 0 clearance, 0 parity): six 0.6/0.3 mm vias at each of Q_OR1 (`SYS_IN`) and Q_OR2 (`SYS`), three in the paste-free strip of the drain pad and three in the pour beside the drain pins; eight at Q_OUT (`12V_SW`), three on the tab's centre line and five in the pour beside it. Each set lands on a copper island on the bottom layer on the same net (about 7 × 7 mm, 7 × 7 mm and 8.4 × 7.4 mm), cut out of the GND plane. The islands raise the plane's resistance from J_CAR pin 2 to J_12V from 2.8 to 3.0 mΩ; the peak density is unchanged (2.8 A/mm)
