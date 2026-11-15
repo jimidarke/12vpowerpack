@@ -100,7 +100,8 @@ Options looked at and not taken:
 - Schematic: moved to KiCad 10 on 2026-11-14 (`kicad/`), generated from `netlist.md`, ERC clean, every pin checked. The Flux capture is archived; comparing it net by net found Q_OR2's gate unwired there.
 - Board: 100 × 70 mm outline, 4 × M3, every part placed; first routing pass done on 2026-11-14 (power pours by `kicad/gen/route_pcb.py`, signal nets by Freerouting; DRC clean, 0 unconnected). Silkscreen pass the same day (`kicad/gen/silk_pcb.py`: reference labels 0.8 mm, 35 labels: polarity, fuse and output ratings, test-point nets). Review on 2026-11-14 found three routing fixes (GND plane pinched on the way to J_CAR pin 2 by the `TEMP_DQ` track, one GND via at D_TVS, few GND vias at the buck capacitors; `kicad/README.md`), and the `Power` net class not applied (fixed in the project file). The three fixes were made the same day (0.8.1: `TEMP_DQ` onto the top layer near J_TEMP, 5 vias at D_TVS, more GND vias at the buck capacitors), and the four parts without 3D models got them. Thermal vias under Q_OR1, Q_OR2 and Q_OUT and three fiducials were added in 0.8.2. First placed from `blocks/04-placement-gen.py` at 100 × 80 mm, then re-placed by `kicad/gen/place_pcb.py` on 2026-11-14 so the parts are spread out and every silkscreen label is readable. The owner lays it out in KiCad on the laptop.
 - Price checkpoint: about C$66–68 per board at a batch of 5 (second pass 2026-11-14, table above).
-- Next: the laptop checks in `kicad/README.md` (terminal-block wire entry, datasheet-drawn footprints) by the owner in KiCad, DRC here, then the JLCPCB export.
+- JLCPCB order placed 2026-11-14 (v0.9.0 files from `kicad/gen/fab_jlc.py`): 5 boards, Economic PCBA, all 23 BOM lines matched. Quote before shipping C$112.63 (C$22.53 per board): PCB C$5.70; fitted parts C$72.12; setup C$11.73, stencil C$2.21, Extended fees C$17.60 (the 4 E types; the 3 PE parts free), SMT C$1.97, nitrogen reflow C$1.30. The first quote came out as Standard PCBA (C$178.46) because the surface finish chosen was outside Economic's list; JLCPCB's message only said the specs did not fit Economic. Express shipping was quoted at C$44.24. With that, the build is about C$72–76 per board, against the C$110 target.
+- Next: order the hand-soldered parts (DigiKey Canada, Mouser, LCSC), firmware, and the bench plan below when the boards arrive.
 - Not started: firmware, bench tests.
 
 ## Next steps
@@ -120,7 +121,7 @@ From 2026-11-14 the work is in KiCad (`kicad/README.md`): hand finishing by the 
 ## Open items
 
 1. Footprints in Flux (next step 3). Part properties were done 2026-11-14.
-2. Live prices for the DigiKey Canada lines and a real PCB and shipping quote at order time.
+2. Live prices for the DigiKey Canada lines at order time. The PCB and assembly quote is in the status above (2026-11-14).
 3. CJ 2N7002 temperature rating; the effective capacitance of the 1206 X5R parts on the buck (`netlist.md`).
 4. GPIO19 glitch at boot (bench); ESP32-C6 tolerance for the sense dividers' injected current.
 5. ESPHome: a "last gasp" report before releasing `HOLD` (no LiPo backup; owner's decision 2026-11-14); the hold-up timer as an adjustable, stored setting (0 = no timeout, otherwise 1 min or more); the soft-cutoff voltages per temperature (`architecture.md`, power control); Wi-Fi/MQTT (as carNet does) or BLE. ESPHome's BLE server support needs checking before relying on it.
